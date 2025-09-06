@@ -45,6 +45,13 @@
             font-size: 1.1em;
         }
 
+        .week-date {
+            color: #764ba2;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
         .main-controls {
             display: flex;
             gap: 15px;
@@ -352,6 +359,108 @@
             margin-bottom: 10px;
         }
 
+        .saved-weeks-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .saved-week-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .saved-week-info {
+            flex: 1;
+        }
+
+        .saved-week-date {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.1em;
+        }
+
+        .saved-week-summary {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .saved-week-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mini-btn {
+            padding: 8px 15px;
+            font-size: 0.95em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .mini-btn-load {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .mini-btn-load:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+        }
+
+        .mini-btn-delete {
+            background: #f44336;
+            color: white;
+        }
+
+        .mini-btn-delete:hover {
+            background: #da190b;
+            transform: translateY(-1px);
+        }
+
+        .confirm-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 2000;
+            max-width: 450px;
+            display: none;
+        }
+
+        .confirm-dialog.active {
+            display: block;
+        }
+
+        .confirm-dialog h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .confirm-dialog p {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
         @media (max-width: 768px) {
             .shopping-list {
                 columns: 1;
@@ -375,8 +484,8 @@
                 background: white;
             }
             
-            .btn, .tabs, .main-controls {
-                display: none;
+            .btn, .tabs, .main-controls, .swap-btn {
+                display: none !important;
             }
             
             .tab-content {
@@ -564,110 +673,6 @@
             text-align: center;
         }
 
-        .week-date {
-            color: #764ba2;
-            font-weight: bold;
-            margin-top: 10px;
-            font-size: 1.1em;
-        }
-
-        .saved-weeks-list {
-            display: grid;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .saved-week-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        .saved-week-info {
-            flex: 1;
-        }
-
-        .saved-week-date {
-            font-weight: bold;
-            color: #764ba2;
-        }
-
-        .saved-week-summary {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 3px;
-        }
-
-        .saved-week-actions {
-            display: flex;
-            gap: 5px;
-        }
-
-        .mini-btn {
-            padding: 5px 10px;
-            font-size: 0.9em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .mini-btn-load {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .mini-btn-load:hover {
-            background: #45a049;
-        }
-
-        .mini-btn-delete {
-            background: #f44336;
-            color: white;
-        }
-
-        .mini-btn-delete:hover {
-            background: #da190b;
-        }
-
-        .confirm-dialog {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            z-index: 2000;
-            max-width: 400px;
-            display: none;
-        }
-
-        .confirm-dialog.active {
-            display: block;
-        }
-
-        .confirm-dialog h3 {
-            color: #764ba2;
-            margin-bottom: 15px;
-        }
-
-        .confirm-dialog p {
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .confirm-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
         #qrcode {
             display: flex;
             justify-content: center;
@@ -689,6 +694,7 @@
             <h1>🍽️ Familien-Wochenessensplaner</h1>
             <p>Intelligente Wochenplanung für 2 Erwachsene und 2 Kleinkinder</p>
             <p>Budget: <span id="budgetDisplay">175 CHF</span> pro Woche (25 CHF/Tag)</p>
+            <p class="week-date" id="weekDateDisplay">Woche vom ... bis ...</p>
         </div>
 
         <div class="stats-box">
@@ -697,14 +703,20 @@
         </div>
 
         <div class="main-controls">
-            <button class="btn btn-primary" onclick="generateNewPlan()">
+            <button class="btn btn-primary" onclick="confirmGenerateNewPlan()">
                 🎲 Neuen Plan generieren
+            </button>
+            <button class="btn btn-secondary" onclick="saveCurrentWeek()">
+                💾 Woche speichern
+            </button>
+            <button class="btn btn-secondary" onclick="showSavedWeeks()">
+                📂 Gespeicherte Wochen
             </button>
             <button class="btn btn-secondary" onclick="exportToPDF()">
                 📄 Als PDF exportieren
             </button>
             <button class="btn btn-secondary" onclick="savePreferences()">
-                💾 Einstellungen speichern
+                ⚙️ Einstellungen speichern
             </button>
             <button class="btn btn-secondary" onclick="showSyncDialog()">
                 🔄 Synchronisieren
@@ -2520,676 +2532,115 @@
         let shoppingListData = {};
         let preferences = {};
         let weeksSincePizza = 0;
+        let currentWeekStart = null;
+        let savedWeeks = [];
 
         // Initialisierung beim Laden
         window.addEventListener('DOMContentLoaded', function() {
             loadPreferences();
+            loadSavedWeeks();
             updateRecipeStats();
+            calculateCurrentWeekDates();
             generateNewPlan();
         });
 
-        // Rezept-Statistiken aktualisieren
-        function updateRecipeStats() {
-            const meatCount = recipes.meat.length;
-            const vegCount = recipes.vegetarian.length;
-            const kidsCount = recipes.kids.length;
-            const total = meatCount + vegCount + kidsCount;
+        // Wochendatum berechnen (Freitag bis Donnerstag)
+        function calculateCurrentWeekDates() {
+            const today = new Date();
+            const dayOfWeek = today.getDay();
             
-            document.getElementById('totalRecipes').textContent = total;
-            document.getElementById('meatCount').textContent = meatCount;
-            document.getElementById('vegCount').textContent = vegCount;
-            document.getElementById('kidsCount').textContent = kidsCount;
+            // Berechne den letzten Freitag
+            let daysToLastFriday = (dayOfWeek + 2) % 7;
+            if (dayOfWeek >= 5 || dayOfWeek === 0) {
+                daysToLastFriday = (dayOfWeek === 5) ? 0 : (dayOfWeek === 6) ? 1 : 2;
+            }
+            
+            currentWeekStart = new Date(today);
+            currentWeekStart.setDate(today.getDate() - daysToLastFriday);
+            currentWeekStart.setHours(0, 0, 0, 0);
+            
+            const weekEnd = new Date(currentWeekStart);
+            weekEnd.setDate(currentWeekStart.getDate() + 6);
+            
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
+            const endStr = weekEnd.toLocaleDateString('de-CH', options);
+            
+            document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
         }
 
-        // Tab-Wechsel Funktion
-        function switchTab(event, tabName) {
-            // Alle Tabs inaktiv
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Alle Tab-Inhalte verstecken
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Aktiven Tab markieren
-            event.target.classList.add('active');
-            
-            // Entsprechenden Inhalt anzeigen
-            document.getElementById(tabName).classList.add('active');
-        }
-
-        // Präferenzen laden
-        function loadPreferences() {
-            const saved = localStorage.getItem('mealPlannerPrefs');
+        // Gespeicherte Wochen laden
+        function loadSavedWeeks() {
+            const saved = localStorage.getItem('savedWeekPlans');
             if (saved) {
-                preferences = JSON.parse(saved);
-                if (preferences.dailyBudget) {
-                    document.getElementById('dailyBudget').value = preferences.dailyBudget;
-                }
-                if (preferences.vegDays) {
-                    document.getElementById('vegDays').value = preferences.vegDays;
-                }
-                if (preferences.adultsCount) {
-                    document.getElementById('adultsCount').value = preferences.adultsCount;
-                }
-                if (preferences.childrenCount) {
-                    document.getElementById('childrenCount').value = preferences.childrenCount;
-                }
-                if (preferences.weeksSincePizza !== undefined) {
-                    weeksSincePizza = preferences.weeksSincePizza;
-                }
-            }
-            updateBudgetDisplay();
-        }
-
-        // Präferenzen speichern
-        function savePreferences() {
-            preferences = {
-                dailyBudget: document.getElementById('dailyBudget').value,
-                adultsCount: document.getElementById('adultsCount').value,
-                childrenCount: document.getElementById('childrenCount').value,
-                vegDays: document.getElementById('vegDays').value,
-                noFish: document.getElementById('noFish').checked,
-                noCheese: document.getElementById('noCheese').checked,
-                weeksSincePizza: weeksSincePizza
-            };
-            localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
-            alert('✅ Einstellungen wurden gespeichert!');
-        }
-
-        // Budget-Anzeige aktualisieren
-        function updateBudgetDisplay() {
-            const dailyBudget = document.getElementById('dailyBudget').value;
-            const weeklyBudget = dailyBudget * 7;
-            document.getElementById('budgetDisplay').textContent = `${weeklyBudget} CHF`;
-        }
-
-        // Hilfsfunktion: Array mischen
-        function shuffleArray(array) {
-            const newArray = [...array];
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        }
-
-        // Vegetarische Tage verteilen
-        function distributeVegDays(totalDays, vegCount) {
-            if (vegCount === 0) return [];
-            if (vegCount >= totalDays) return Array.from({length: totalDays}, (_, i) => i);
-            
-            const positions = [];
-            const spacing = Math.floor(totalDays / vegCount);
-            
-            for (let i = 0; i < vegCount; i++) {
-                let pos = i * spacing + Math.floor(Math.random() * Math.max(1, spacing - 1));
-                if (pos >= totalDays) pos = totalDays - 1;
-                if (!positions.includes(pos)) {
-                    positions.push(pos);
-                }
-            }
-            
-            return positions;
-        }
-
-        // Neuen Wochenplan generieren
-        function generateNewPlan() {
-            // Loading anzeigen
-            document.getElementById('loadingOverview').classList.add('active');
-            
-            setTimeout(() => {
-                const vegDays = parseInt(document.getElementById('vegDays').value);
-                const days = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag'];
-                
-                // Rezepte mischen
-                const meatRecipes = shuffleArray(recipes.meat);
-                const vegRecipes = shuffleArray(recipes.vegetarian);
-                const kidsRecipes = shuffleArray(recipes.kids);
-                
-                // Reset
-                currentWeekPlan = [];
-                shoppingListData = {};
-                
-                // Vegetarische Tage verteilen
-                const vegDayPositions = distributeVegDays(7, vegDays);
-                
-                let meatIndex = 0;
-                let vegIndex = 0;
-                let kidsIndex = 0;
-                
-                // Wochenplan erstellen
-                days.forEach((day, index) => {
-                    let recipe;
-                    if (vegDayPositions.includes(index)) {
-                        recipe = vegRecipes[vegIndex++ % vegRecipes.length];
-                    } else {
-                        recipe = meatRecipes[meatIndex++ % meatRecipes.length];
-                    }
-                    
-                    const dayPlan = {
-                        day: day,
-                        dinner: recipe,
-                        kidsLunch: null
-                    };
-                    
-                    // Kinder-Mittagessen für Dienstag und Donnerstag
-                    if (day === 'Dienstag' || day === 'Donnerstag') {
-                        dayPlan.kidsLunch = kidsRecipes[kidsIndex++ % kidsRecipes.length];
-                    }
-                    
-                    currentWeekPlan.push(dayPlan);
-                    
-                    // Zutaten zur Einkaufsliste hinzufügen
-                    addToShoppingList(recipe);
-                    if (dayPlan.kidsLunch) {
-                        addToShoppingList(dayPlan.kidsLunch);
-                    }
-                });
-                
-                // Anzeigen aktualisieren
-                displayWeekOverview();
-                displayShoppingList();
-                displayRecipes();
-                
-                // Loading ausblenden
-                document.getElementById('loadingOverview').classList.remove('active');
-            }, 800);
-        }
-
-        // Zur Einkaufsliste hinzufügen
-        function addToShoppingList(recipe) {
-            for (const [ingredient, amount] of Object.entries(recipe.ingredients)) {
-                if (!shoppingListData[ingredient]) {
-                    shoppingListData[ingredient] = amount;
-                } else {
-                    shoppingListData[ingredient] += `, ${amount}`;
-                }
+                savedWeeks = JSON.parse(saved);
             }
         }
 
-        // Wochenübersicht anzeigen
-        function displayWeekOverview() {
-            const container = document.getElementById('weekOverview');
-            container.innerHTML = '';
-            let totalCost = 0;
-            
-            currentWeekPlan.forEach((dayPlan, index) => {
-                let dayCost = dayPlan.dinner.price;
-                if (dayPlan.kidsLunch) {
-                    dayCost += dayPlan.kidsLunch.price;
-                }
-                totalCost += dayCost;
-                
-                const dayCard = document.createElement('div');
-                dayCard.className = 'day-card';
-                dayCard.innerHTML = `
-                    <button class="swap-btn" onclick="swapRecipe(${index}, 'dinner')" title="Rezept tauschen">🔄</button>
-                    <div class="day-header">
-                        <span class="day-name">${dayPlan.day}</span>
-                        <span class="price-tag">${dayCost} CHF</span>
-                    </div>
-                    <div class="meal-info">
-                        <div class="meal-name">🍽️ Abendessen: ${dayPlan.dinner.name}</div>
-                        <div class="meal-details">${dayPlan.dinner.category} • ${dayPlan.dinner.workTip}</div>
-                    </div>
-                    ${dayPlan.kidsLunch ? `
-                        <div class="meal-info" style="position:relative;">
-                            <button class="swap-btn" onclick="swapRecipe(${index}, 'kidsLunch')" title="Kinder-Rezept tauschen" style="position:absolute; right:-5px; top:-5px; width:30px; height:30px; font-size:14px;">🔄</button>
-                            <div class="meal-name">👶 Kinder-Mittag: ${dayPlan.kidsLunch.name}</div>
-                            <div class="meal-details">Speziell für die Kleinen</div>
-                        </div>
-                    ` : ''}
-                `;
-                container.appendChild(dayCard);
-            });
-            
-            document.getElementById('totalCost').textContent = totalCost.toFixed(2);
-        }
-        
-        // Einzelnes Rezept austauschen
-        function swapRecipe(dayIndex, mealType) {
-            const dayPlan = currentWeekPlan[dayIndex];
-            let availableRecipes = [];
-            let currentRecipe = null;
-            
-            if (mealType === 'dinner') {
-                currentRecipe = dayPlan.dinner;
-                // Wähle basierend auf Kategorie
-                if (currentRecipe.category === 'Fleisch') {
-                    availableRecipes = recipes.meat.filter(r => r.name !== currentRecipe.name);
-                } else if (currentRecipe.category === 'Vegetarisch') {
-                    availableRecipes = recipes.vegetarian.filter(r => r.name !== currentRecipe.name);
-                }
-            } else if (mealType === 'kidsLunch') {
-                currentRecipe = dayPlan.kidsLunch;
-                availableRecipes = recipes.kids.filter(r => r.name !== currentRecipe.name);
+        // Aktuelle Woche speichern
+        function saveCurrentWeek() {
+            if (currentWeekPlan.length === 0) {
+                alert('❌ Kein Wochenplan zum Speichern vorhanden!');
+                return;
             }
             
-            if (availableRecipes.length > 0) {
-                // Zufälliges neues Rezept wählen
-                const newRecipe = availableRecipes[Math.floor(Math.random() * availableRecipes.length)];
-                
-                // Alte Zutaten aus Einkaufsliste entfernen
-                removeFromShoppingList(currentRecipe);
-                
-                // Rezept austauschen
-                if (mealType === 'dinner') {
-                    currentWeekPlan[dayIndex].dinner = newRecipe;
-                } else {
-                    currentWeekPlan[dayIndex].kidsLunch = newRecipe;
-                }
-                
-                // Neue Zutaten zur Einkaufsliste hinzufügen
-                addToShoppingList(newRecipe);
-                
-                // Anzeigen aktualisieren
-                displayWeekOverview();
-                displayShoppingList();
-                displayRecipes();
-                
-                // Feedback Animation
-                const dayCards = document.querySelectorAll('.day-card');
-                dayCards[dayIndex].style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    dayCards[dayIndex].style.animation = '';
-                }, 500);
-            }
-        }
-        
-        // Aus Einkaufsliste entfernen
-        function removeFromShoppingList(recipe) {
-            // Vereinfachte Entfernung - Einkaufsliste neu aufbauen
-            rebuildShoppingList();
-        }
-        
-        // Einkaufsliste neu aufbauen
-        function rebuildShoppingList() {
-            shoppingListData = {};
-            currentWeekPlan.forEach(dayPlan => {
-                addToShoppingList(dayPlan.dinner);
-                if (dayPlan.kidsLunch) {
-                    addToShoppingList(dayPlan.kidsLunch);
-                }
-            });
-        }
-
-        // Einkaufsliste anzeigen
-        function displayShoppingList() {
-            const container = document.getElementById('shoppingList');
-            container.innerHTML = '';
-            
-            const categories = {
-                '🥩 Fleisch & Geflügel': [],
-                '🥕 Gemüse & Obst': [],
-                '🧀 Milchprodukte': [],
-                '🍝 Nudeln, Reis & Beilagen': [],
-                '🥫 Konserven & Haltbares': [],
-                '🧂 Gewürze & Öle': []
-            };
-            
-            // Zutaten kategorisieren
-            for (const [ingredient, amount] of Object.entries(shoppingListData)) {
-                const lower = ingredient.toLowerCase();
-                
-                if (lower.includes('fleisch') || lower.includes('hähnchen') || 
-                    lower.includes('schwein') || lower.includes('rind') || 
-                    lower.includes('hack') || lower.includes('schnitzel') ||
-                    lower.includes('lamm') || lower.includes('kalb') ||
-                    lower.includes('ente') || lower.includes('pute')) {
-                    categories['🥩 Fleisch & Geflügel'].push({ingredient, amount});
-                } else if (lower.includes('milch') || lower.includes('käse') || 
-                           lower.includes('sahne') || lower.includes('butter') ||
-                           lower.includes('joghurt') || lower.includes('mozzarella') ||
-                           lower.includes('ricotta') || lower.includes('feta')) {
-                    categories['🧀 Milchprodukte'].push({ingredient, amount});
-                } else if (lower.includes('nudel') || lower.includes('reis') || 
-                           lower.includes('spaghetti') || lower.includes('penne') ||
-                           lower.includes('kartoffel') || lower.includes('spätzle') ||
-                           lower.includes('gnocchi') || lower.includes('couscous')) {
-                    categories['🍝 Nudeln, Reis & Beilagen'].push({ingredient, amount});
-                } else if (lower.includes('dose') || lower.includes('bohnen')) {
-                    categories['🥫 Konserven & Haltbares'].push({ingredient, amount});
-                } else if (lower.includes('salz') || lower.includes('pfeffer') ||
-                           lower.includes('öl') || lower.includes('gewürz')) {
-                    categories['🧂 Gewürze & Öle'].push({ingredient, amount});
-                } else {
-                    categories['🥕 Gemüse & Obst'].push({ingredient, amount});
-                }
-            }
-            
-            // HTML erstellen
-            for (const [category, items] of Object.entries(categories)) {
-                if (items.length === 0) continue;
-                
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'shopping-category';
-                categoryDiv.innerHTML = `<h3>${category}</h3>`;
-                
-                items.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'shopping-item';
-                    itemDiv.innerHTML = `
-                        <input type="checkbox">
-                        <span>${item.ingredient}: ${item.amount}</span>
-                    `;
-                    categoryDiv.appendChild(itemDiv);
-                });
-                
-                container.appendChild(categoryDiv);
-            }
-        }
-
-        // Rezepte anzeigen
-        function displayRecipes() {
-            const container = document.getElementById('recipesList');
-            container.innerHTML = '';
-            
-            currentWeekPlan.forEach(dayPlan => {
-                // Abendessen Rezept
-                const recipeDiv = document.createElement('div');
-                recipeDiv.className = 'recipe-details';
-                recipeDiv.innerHTML = `
-                    <h3>🍽️ ${dayPlan.day} - ${dayPlan.dinner.name}</h3>
-                    <div class="ingredients-list">
-                        <h4>Zutaten (für 4,5 Portionen):</h4>
-                        <ul>
-                            ${Object.entries(dayPlan.dinner.ingredients).map(([ing, amount]) => 
-                                `<li>${ing}: ${amount}</li>`
-                            ).join('')}
-                        </ul>
-                    </div>
-                    <div class="instructions">
-                        <h4>Zubereitung:</h4>
-                        <ol>
-                            ${dayPlan.dinner.instructions.map(step => 
-                                `<li>${step}</li>`
-                            ).join('')}
-                        </ol>
-                    </div>
-                    <div class="tips-box">
-                        <h4>💡 Tipps:</h4>
-                        <p><strong>Für Kinder:</strong> ${dayPlan.dinner.childTip}</p>
-                        <p><strong>Fürs Büro:</strong> ${dayPlan.dinner.workTip}</p>
-                    </div>
-                `;
-                container.appendChild(recipeDiv);
-                
-                // Kinder-Mittagessen
-                if (dayPlan.kidsLunch) {
-                    const kidsDiv = document.createElement('div');
-                    kidsDiv.className = 'recipe-details';
-                    kidsDiv.innerHTML = `
-                        <h3>👶 ${dayPlan.day} Mittag - ${dayPlan.kidsLunch.name}</h3>
-                        <div class="ingredients-list">
-                            <h4>Zutaten (für 2 Kinder):</h4>
-                            <ul>
-                                ${Object.entries(dayPlan.kidsLunch.ingredients).map(([ing, amount]) => 
-                                    `<li>${ing}: ${amount}</li>`
-                                ).join('')}
-                            </ul>
-                        </div>
-                        <div class="instructions">
-                            <h4>Zubereitung:</h4>
-                            <ol>
-                                ${dayPlan.kidsLunch.instructions.map(step => 
-                                    `<li>${step}</li>`
-                                ).join('')}
-                            </ol>
-                        </div>
-                        <div class="tips-box">
-                            <h4>💡 Tipp:</h4>
-                            <p>${dayPlan.kidsLunch.childTip}</p>
-                        </div>
-                    `;
-                    container.appendChild(kidsDiv);
-                }
-            });
-        }
-
-        // PDF Export
-        function exportToPDF() {
-            window.print();
-        }
-
-        // ========== SYNC FUNKTIONEN ==========
-        
-        // Sync Dialog anzeigen
-        function showSyncDialog() {
-            const modal = document.getElementById('syncModal');
-            modal.classList.add('active');
-            
-            // Generate sync code if we have a plan
-            if (currentWeekPlan.length > 0) {
-                generateSyncCode();
-            }
-        }
-        
-        // Sync Dialog schließen
-        function closeSyncDialog() {
-            const modal = document.getElementById('syncModal');
-            modal.classList.remove('active');
-            document.getElementById('syncStatus').innerHTML = '';
-        }
-        
-        // Sync Code generieren
-        function generateSyncCode() {
-            const syncData = {
-                version: '1.0',
-                timestamp: new Date().toISOString(),
+            const weekData = {
+                id: Date.now(),
+                weekStart: currentWeekStart.toISOString(),
+                savedDate: new Date().toISOString(),
                 weekPlan: currentWeekPlan,
                 shoppingList: shoppingListData,
-                preferences: preferences,
-                weeksSincePizza: weeksSincePizza
+                totalCost: document.getElementById('totalCost').textContent,
+                summary: getSummaryText()
             };
             
-            // Compress to base64
-            const jsonString = JSON.stringify(syncData);
-            const compressed = btoa(encodeURIComponent(jsonString));
-            
-            // Display code
-            const codeElement = document.getElementById('syncCode');
-            codeElement.textContent = compressed;
-            
-            // Generate QR Code if library is loaded
-            const qrContainer = document.getElementById('qrcode');
-            qrContainer.innerHTML = ''; // Clear previous QR
-            
-            // Only create QR if QRCode is defined and string is not too long
-            if (typeof QRCode !== 'undefined' && compressed.length < 2000) {
-                new QRCode(qrContainer, {
-                    text: compressed,
-                    width: 200,
-                    height: 200,
-                    colorDark: "#764ba2",
-                    colorLight: "#ffffff",
-                    correctLevel: QRCode.CorrectLevel.M
-                });
-            } else {
-                qrContainer.innerHTML = '<p style="color: #999; text-align: center;">Code zu lang für QR - bitte kopieren</p>';
-            }
-        }
-        
-        // Sync Code kopieren
-        function copySyncCode() {
-            const codeElement = document.getElementById('syncCode');
-            const code = codeElement.textContent;
-            
-            if (code === 'Generiere erst einen Wochenplan...') {
-                alert('❌ Bitte erst einen Wochenplan generieren!');
-                return;
-            }
-            
-            // Copy to clipboard
-            navigator.clipboard.writeText(code).then(() => {
-                // Show success
-                const btn = event.target;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✅ Kopiert!';
-                btn.style.background = '#4CAF50';
-                
-                // Update sync info
-                const syncInfo = document.getElementById('syncInfo');
-                const now = new Date();
-                syncInfo.textContent = `Code erstellt: ${now.toLocaleDateString('de-CH')} um ${now.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}`;
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                }, 2000);
-            }).catch(err => {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = code;
-                textArea.style.position = 'fixed';
-                textArea.style.opacity = '0';
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                alert('✅ Code wurde kopiert!');
-            });
-        }
-        
-        // Per WhatsApp teilen
-        function shareViaWhatsApp() {
-            const codeElement = document.getElementById('syncCode');
-            const code = codeElement.textContent;
-            
-            if (code === 'Generiere erst einen Wochenplan...') {
-                alert('❌ Bitte erst einen Wochenplan generieren!');
-                return;
-            }
-            
-            const message = `🍽️ *Wochenessensplan Sync-Code*\n\nHier ist unser Essensplan für diese Woche:\n\n${code}\n\n_Füge diesen Code in der App unter "Synchronisieren" ein._`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        // Native Share API
-        function shareNative() {
-            const codeElement = document.getElementById('syncCode');
-            const code = codeElement.textContent;
-            
-            if (code === 'Generiere erst einen Wochenplan...') {
-                alert('❌ Bitte erst einen Wochenplan generieren!');
-                return;
-            }
-            
-            const shareText = `🍽️ Wochenessensplan Sync-Code\n\n${code}\n\nFüge diesen Code in der App unter "Synchronisieren" ein.`;
-            
-            // Check if Web Share API is available
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Wochenessensplan',
-                    text: shareText
-                }).then(() => {
-                    console.log('Erfolgreich geteilt');
-                }).catch((error) => {
-                    console.log('Teilen abgebrochen:', error);
-                });
-            } else {
-                // Fallback: Copy to clipboard
-                navigator.clipboard.writeText(shareText).then(() => {
-                    alert('✅ Code wurde kopiert! Du kannst ihn jetzt in einer beliebigen App teilen.');
-                });
-            }
-        }
-        
-        // Sync Code importieren
-        function importSyncCode() {
-            const input = document.getElementById('syncInput');
-            const code = input.value.trim();
-            const statusDiv = document.getElementById('syncStatus');
-            
-            if (!code) {
-                statusDiv.innerHTML = '<div class="sync-error">❌ Bitte einen Code einfügen!</div>';
-                return;
-            }
-            
-            try {
-                // Decode from base64
-                const jsonString = decodeURIComponent(atob(code));
-                const syncData = JSON.parse(jsonString);
-                
-                // Validate data
-                if (!syncData.version || !syncData.weekPlan) {
-                    throw new Error('Ungültiger Sync-Code');
+            // Maximal 10 gespeicherte Wochen
+            if (savedWeeks.length >= 10) {
+                if (confirm('⚠️ Es sind bereits 10 Wochen gespeichert. Die älteste Woche wird überschrieben. Fortfahren?')) {
+                    savedWeeks.shift();
+                } else {
+                    return;
                 }
-                
-                // Import data
-                currentWeekPlan = syncData.weekPlan;
-                shoppingListData = syncData.shoppingList || {};
-                preferences = syncData.preferences || preferences;
-                weeksSincePizza = syncData.weeksSincePizza || weeksSincePizza;
-                
-                // Save preferences
-                localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
-                
-                // Update displays
-                loadPreferences();
-                displayWeekOverview();
-                displayShoppingList();
-                displayRecipes();
-                
-                // Show success
-                statusDiv.innerHTML = '<div class="sync-success">✅ Wochenplan erfolgreich importiert!</div>';
-                
-                // Update sync info
-                const syncInfo = document.getElementById('syncInfo');
-                const now = new Date();
-                syncInfo.textContent = `Synchronisiert: ${now.toLocaleDateString('de-CH')} um ${now.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}`;
-                
-                // Check if it's pizza week
-                const hasPizza = currentWeekPlan.some(day => day.dinner.special === 'pizza-weekend');
-                if (hasPizza) {
-                    setTimeout(() => {
-                        alert('🍕 Pizza-Wochenende wurde importiert! Freitag und Samstag gibt es Pizza!');
-                    }, 500);
-                }
-                
-                // Clear input
-                input.value = '';
-                
-                // Close modal after 2 seconds
-                setTimeout(() => {
-                    closeSyncDialog();
-                }, 2000);
-                
-            } catch (error) {
-                statusDiv.innerHTML = `<div class="sync-error">❌ Fehler beim Importieren: ${error.message}</div>`;
             }
+            
+            savedWeeks.push(weekData);
+            localStorage.setItem('savedWeekPlans', JSON.stringify(savedWeeks));
+            
+            // Visuelles Feedback
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Gespeichert!';
+            btn.style.background = '#4CAF50';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+            }, 2000);
         }
-        
-        // Aus Zwischenablage einfügen
-        function pasteFromClipboard() {
-            navigator.clipboard.readText().then(text => {
-                document.getElementById('syncInput').value = text;
-                // Show visual feedback
-                const btn = event.target;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✅ Eingefügt!';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                }, 1500);
-            }).catch(err => {
-                // Fallback for browsers that don't support clipboard API
-                alert('Bitte manuell einfügen (Strg+V oder Cmd+V)');
-            });
+
+        // Zusammenfassung erstellen
+        function getSummaryText() {
+            const meatCount = currentWeekPlan.filter(d => d.dinner.category === 'Fleisch').length;
+            const vegCount = currentWeekPlan.filter(d => d.dinner.category === 'Vegetarisch').length;
+            return `${meatCount}x Fleisch, ${vegCount}x Vegetarisch`;
         }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('syncModal');
-            if (event.target === modal) {
-                closeSyncDialog();
+
+        // Gespeicherte Wochen anzeigen
+        function showSavedWeeks() {
+            if (savedWeeks.length === 0) {
+                alert('📁 Keine gespeicherten Wochen vorhanden.');
+                return;
             }
-        }
-    </script>
-</body>
-</html>
+            
+            // Modal erstellen
+            const modal = document.createElement('div');
+            modal.className = 'modal active';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>📂 Gespeicherte Wochen</h2>
+                        <button class="close-modal" onclick="this.closest('.modal').remove()">×</button>
+                    </div>
+                    <div class="saved-weeks-list">
+                        ${savedWeeks.map((week, index) => {
+                            const weekStart = new Date(
