@@ -1071,6 +1071,21 @@
 
         // Initialisierung beim Laden
         window.addEventListener('DOMContentLoaded', function() {
+            // Überprüfe ob alle wichtigen Elemente vorhanden sind
+            const requiredElements = ['githubModal', 'weekOverview', 'shoppingList', 'recipesList'];
+            let allElementsFound = true;
+            
+            requiredElements.forEach(id => {
+                if (!document.getElementById(id)) {
+                    console.error(`Element mit ID '${id}' nicht gefunden!`);
+                    allElementsFound = false;
+                }
+            });
+            
+            if (!allElementsFound) {
+                console.warn('Einige Elemente fehlen - App könnte nicht vollständig funktionieren');
+            }
+            
             loadRecipes();
             loadPreferences();
             loadSavedWeeks();
