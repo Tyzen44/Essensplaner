@@ -1518,46 +1518,53 @@
                 
                 // Pizza-Rezepte definieren
                 const pizzaFriday = {
-                    name: "🍕 Pizza-Abend (Lieferservice)",
+                    name: "🍕 Pizza-Freitag (Selbstgemacht)",
                     category: "Pizza-Weekend",
-                    price: 45,
+                    price: 7,
                     ingredients: {
-                        "Pizza nach Wahl": "2-3 große Pizzen",
-                        "Getränke": "nach Bedarf",
-                        "Salat (optional)": "1 Portion"
+                        "Pizzamehl (für 2 Tage)": "1kg",
+                        "San Marzano Tomaten": "1 Dose",
+                        "Galbani Mozzarella Cucina": "300g",
+                        "Belag nach Wahl": "Salami oder Thunfisch",
+                        "Olivenöl": "2 EL",
+                        "Hefe": "1 Würfel",
+                        "Salz": "1 TL"
                     },
                     instructions: [
-                        "Lieblings-Pizzeria aussuchen",
-                        "Pizzen bestellen (verschiedene Sorten)",
-                        "Tisch gemütlich decken",
-                        "Film aussuchen für Familienabend",
-                        "Pizza genießen!"
+                        "Teig für 2 Tage vorbereiten (1kg Mehl)",
+                        "24 Stunden im Kühlschrank gehen lassen",
+                        "Teig portionieren und ausrollen",
+                        "Mit San Marzano Tomatensauce bestreichen",
+                        "Galbani Mozzarella und Belag verteilen",
+                        "Bei 250°C ca. 10-12 Min backen",
+                        "Restlichen Teig für morgen aufbewahren"
                     ],
-                    childTip: "Kinder dürfen Pizza aussuchen",
-                    workTip: "Kein Kochen - perfekt nach Arbeitswoche!",
+                    childTip: "Kinder können beim Belegen helfen",
+                    workTip: "Reste kalt zum Mitnehmen",
                     special: "pizza-weekend"
                 };
                 
                 const pizzaSaturday = {
-                    name: "🍕 Selbstgemachte Pizza",
+                    name: "🍕 Pizza-Samstag (Tag 2)",
                     category: "Pizza-Weekend",
-                    price: 20,
+                    price: 7,
                     ingredients: {
-                        "Pizzateig": "1kg (fertig oder selbstgemacht)",
-                        "Tomatensauce": "400ml",
-                        "Mozzarella": "500g",
-                        "Belag nach Wahl": "Schinken, Pilze, Paprika, etc.",
-                        "Olivenöl": "4 EL"
+                        "Teig vom Vortag": "bereits vorbereitet",
+                        "Restliche San Marzano Sauce": "vom Vortag",
+                        "Galbani Mozzarella Cucina": "300g",
+                        "Belag Variation": "z.B. Schinken, Pilze, Gemüse",
+                        "Oregano": "nach Geschmack"
                     },
                     instructions: [
-                        "Teig ausrollen oder vorbereiten",
-                        "Kinder beim Belegen helfen lassen",
-                        "Jeder macht seine eigene Pizza",
-                        "Bei 220°C backen",
-                        "Gemeinsam genießen"
+                        "Teig vom Vortag verwenden",
+                        "Nochmal 30 Min bei Raumtemperatur ruhen lassen",
+                        "Ausrollen und belegen",
+                        "Heute andere Beläge ausprobieren",
+                        "Bei 250°C ca. 10-12 Min backen",
+                        "Gemütlicher Pizza-Samstag!"
                     ],
-                    childTip: "Kinder lieben Pizza-Gesichter",
-                    workTip: "Reste kalt zum Mitnehmen",
+                    childTip: "Kinder können eigene Mini-Pizzen machen",
+                    workTip: "Perfektes Wochenend-Essen",
                     special: "pizza-weekend"
                 };
                 
@@ -1730,6 +1737,9 @@
                 setTimeout(() => {
                     dayCards[dayIndex].style.animation = '';
                 }, 500);
+                
+                // Auto-Save nach Rezepttausch
+                triggerAutoSave();
             } else {
                 alert('⚠️ Keine alternativen Rezepte mit den aktuellen Filtereinstellungen verfügbar.');
             }
@@ -1939,16 +1949,16 @@
                     const result = await response.json();
                     
                     document.getElementById('saveStatus').innerHTML = 
-                        `<div class="status-success">
-                            ✅ Erfolgreich aktualisiert!<br>
-                            <a href="${result.html_url}" target="_blank" style="color: #0366d6;">Auf GitHub ansehen →</a>
-                        </div>`;
+                        '<div class="status-success">' +
+                        '✅ Erfolgreich aktualisiert!<br>' +
+                        '<a href="' + result.html_url + '" target="_blank" style="color: #0366d6;">Auf GitHub ansehen →</a>' +
+                        '</div>';
                 } else {
-                    throw new Error(`GitHub API Fehler: ${response.status}`);
+                    throw new Error('GitHub API Fehler: ' + response.status);
                 }
             } catch (error) {
                 document.getElementById('saveStatus').innerHTML = 
-                    `<div class="status-error">❌ Fehler: ${error.message}</div>`;
+                    '<div class="status-error">❌ Fehler: ' + error.message + '</div>';
             }
         }
         
