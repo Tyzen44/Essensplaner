@@ -527,7 +527,6 @@
             100% { transform: scale(1); }
         }
 
-        /* Sync Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -825,1707 +824,107 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Umfangreiche Rezept-Datenbank (85 Rezepte)
-        const recipes = {
-            meat: [
-                {
-                    name: "Spaghetti Carbonara",
-                    category: "Fleisch",
-                    price: 18,
-                    ingredients: {
-                        "Spaghetti": "500g",
-                        "Speck/Pancetta": "200g",
-                        "Eier": "4 Stück",
-                        "Parmesan": "150g",
-                        "Knoblauch": "2 Zehen",
-                        "Schwarzer Pfeffer": "nach Geschmack"
-                    },
-                    instructions: [
-                        "Wasser für Nudeln aufsetzen und salzen",
-                        "Speck in kleine Würfel schneiden und knusprig braten",
-                        "Spaghetti al dente kochen",
-                        "Eier mit Parmesan verquirlen",
-                        "Nudeln zum Speck geben, vom Herd nehmen",
-                        "Ei-Käse-Mischung unterrühren"
-                    ],
-                    childTip: "Für Kinder weniger Pfeffer verwenden",
-                    workTip: "Lässt sich gut erwärmen"
-                },
-                {
-                    name: "Hähnchenbrust mit Rösti",
-                    category: "Fleisch",
-                    price: 22,
-                    ingredients: {
-                        "Hähnchenbrust": "600g",
-                        "Kartoffeln": "800g",
-                        "Grüne Bohnen": "400g",
-                        "Butter": "50g",
-                        "Zwiebel": "1 Stück"
-                    },
-                    instructions: [
-                        "Kartoffeln raspeln und ausdrücken",
-                        "Hähnchen würzen und braten",
-                        "Rösti goldbraun braten",
-                        "Bohnen bissfest kochen",
-                        "Alles zusammen anrichten"
-                    ],
-                    childTip: "Hähnchen in kleine Stücke schneiden",
-                    workTip: "Rösti werden beim Erwärmen wieder knusprig"
-                },
-                {
-                    name: "Rindergulasch mit Spätzle",
-                    category: "Fleisch",
-                    price: 28,
-                    ingredients: {
-                        "Rindergulasch": "700g",
-                        "Spätzle": "500g",
-                        "Zwiebeln": "3 große",
-                        "Paprika": "2 Stück",
-                        "Tomatenmark": "3 EL",
-                        "Paprikapulver": "2 EL"
-                    },
-                    instructions: [
-                        "Fleisch scharf anbraten",
-                        "Zwiebeln und Paprika zugeben",
-                        "Mit Fond ablöschen",
-                        "1,5 Std köcheln lassen",
-                        "Spätzle kochen",
-                        "Mit Spätzle servieren"
-                    ],
-                    childTip: "Weniger Paprika für Kinder",
-                    workTip: "Wird beim Erwärmen noch besser"
-                },
-                {
-                    name: "Schweinemedaillons mit Champignonsauce",
-                    category: "Fleisch",
-                    price: 26,
-                    ingredients: {
-                        "Schweinefilet": "600g",
-                        "Champignons": "400g",
-                        "Sahne": "250ml",
-                        "Kartoffeln": "1kg",
-                        "Brokkoli": "500g"
-                    },
-                    instructions: [
-                        "Medaillons braten",
-                        "Champignons anbraten",
-                        "Mit Sahne ablöschen",
-                        "Kartoffeln kochen",
-                        "Brokkoli dämpfen",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Sauce separat servieren",
-                    workTip: "Fleisch und Sauce getrennt erwärmen"
-                },
-                {
-                    name: "Hackfleisch-Kartoffel-Auflauf",
-                    category: "Fleisch",
-                    price: 20,
-                    ingredients: {
-                        "Hackfleisch": "500g",
-                        "Kartoffeln": "1kg",
-                        "Zwiebeln": "2 Stück",
-                        "Käse": "200g",
-                        "Milch": "300ml"
-                    },
-                    instructions: [
-                        "Kartoffeln in Scheiben schneiden",
-                        "Hackfleisch anbraten",
-                        "Schichten und überbacken",
-                        "45 Min bei 180°C backen"
-                    ],
-                    childTip: "Perfekt für Kinder",
-                    workTip: "Portionsweise einfrieren möglich"
-                },
-                {
-                    name: "Hähnchen-Curry",
-                    category: "Fleisch",
-                    price: 24,
-                    ingredients: {
-                        "Hähnchenbrust": "600g",
-                        "Kokosmilch": "400ml",
-                        "Currypaste": "2 EL",
-                        "Reis": "400g",
-                        "Gemüse": "400g"
-                    },
-                    instructions: [
-                        "Hähnchen anbraten",
-                        "Currypaste einrühren",
-                        "Mit Kokosmilch ablöschen",
-                        "Gemüse zugeben",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Sehr milde Currypaste verwenden",
-                    workTip: "Curry schmeckt aufgewärmt noch besser"
-                },
-                {
-                    name: "Bolognese mit Penne",
-                    category: "Fleisch",
-                    price: 19,
-                    ingredients: {
-                        "Rinderhack": "500g",
-                        "Penne": "500g",
-                        "Dosentomaten": "800g",
-                        "Zwiebeln": "2 Stück",
-                        "Möhren": "2 Stück"
-                    },
-                    instructions: [
-                        "Gemüse würfeln und anschwitzen",
-                        "Hackfleisch krümelig braten",
-                        "Tomaten zugeben",
-                        "2 Stunden köcheln",
-                        "Penne kochen",
-                        "Mit Parmesan servieren"
-                    ],
-                    childTip: "Gemüse sehr fein hacken",
-                    workTip: "Sauce einfrieren, Nudeln frisch"
-                },
-                {
-                    name: "Gyros mit Tzatziki",
-                    category: "Fleisch",
-                    price: 25,
-                    ingredients: {
-                        "Schweinefleisch": "700g",
-                        "Pita": "6 Stück",
-                        "Joghurt": "300g",
-                        "Gurke": "1 Stück",
-                        "Pommes": "500g"
-                    },
-                    instructions: [
-                        "Fleisch marinieren und braten",
-                        "Tzatziki zubereiten",
-                        "Pommes backen",
-                        "Pita erwärmen",
-                        "Alles zusammen servieren"
-                    ],
-                    childTip: "Weniger Knoblauch",
-                    workTip: "Komponenten getrennt transportieren"
-                },
-                {
-                    name: "Chili con Carne",
-                    category: "Fleisch",
-                    price: 21,
-                    ingredients: {
-                        "Rinderhack": "600g",
-                        "Kidneybohnen": "2 Dosen",
-                        "Mais": "1 Dose",
-                        "Paprika": "2 Stück",
-                        "Reis": "400g"
-                    },
-                    instructions: [
-                        "Hackfleisch anbraten",
-                        "Gemüse zugeben",
-                        "Bohnen und Mais einrühren",
-                        "1 Stunde köcheln",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Sehr mild würzen",
-                    workTip: "Perfekt zum Einfrieren"
-                },
-                {
-                    name: "Schnitzel mit Kartoffelsalat",
-                    category: "Fleisch",
-                    price: 25,
-                    ingredients: {
-                        "Schnitzel": "600g",
-                        "Paniermehl": "200g",
-                        "Kartoffeln": "1kg",
-                        "Mayonnaise": "150g",
-                        "Gurken": "3 kleine"
-                    },
-                    instructions: [
-                        "Kartoffelsalat vorbereiten",
-                        "Schnitzel panieren",
-                        "Goldbraun braten",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Schnitzel in Streifen schneiden",
-                    workTip: "Kalt auch lecker"
-                },
-                {
-                    name: "Geschnetzeltes Zürcher Art",
-                    category: "Fleisch",
-                    price: 30,
-                    ingredients: {
-                        "Kalbfleisch": "600g",
-                        "Champignons": "300g",
-                        "Sahne": "250ml",
-                        "Rösti": "800g Kartoffeln",
-                        "Weißwein": "150ml"
-                    },
-                    instructions: [
-                        "Fleisch in Streifen schneiden",
-                        "Scharf anbraten",
-                        "Pilze zugeben",
-                        "Mit Wein und Sahne ablöschen",
-                        "Rösti zubereiten"
-                    ],
-                    childTip: "Weniger Wein verwenden",
-                    workTip: "Gut erwärmbar"
-                },
-                {
-                    name: "Shepherd's Pie",
-                    category: "Fleisch", 
-                    price: 20,
-                    ingredients: {
-                        "Lammhack": "600g",
-                        "Kartoffeln": "1,2kg",
-                        "Erbsen": "200g",
-                        "Möhren": "3 Stück",
-                        "Tomatenmark": "2 EL"
-                    },
-                    instructions: [
-                        "Kartoffelpüree vorbereiten",
-                        "Hackfleisch mit Gemüse anbraten",
-                        "In Form schichten",
-                        "30 Min überbacken"
-                    ],
-                    childTip: "Kinder lieben die Kartoffelhaube",
-                    workTip: "Portionsweise einfrieren"
-                },
-                {
-                    name: "Asia-Hackfleischpfanne",
-                    category: "Fleisch",
-                    price: 18,
-                    ingredients: {
-                        "Hackfleisch": "500g",
-                        "Glasnudeln": "200g",
-                        "Chinakohl": "1 kleiner",
-                        "Sojasauce": "4 EL",
-                        "Ingwer": "1 Stück"
-                    },
-                    instructions: [
-                        "Glasnudeln einweichen",
-                        "Hackfleisch anbraten",
-                        "Gemüse zugeben",
-                        "Nudeln untermischen",
-                        "Mit Sojasauce würzen"
-                    ],
-                    childTip: "Weniger Ingwer",
-                    workTip: "Schnell erwärmt"
-                },
-                {
-                    name: "Hähnchen-Fajitas",
-                    category: "Fleisch",
-                    price: 23,
-                    ingredients: {
-                        "Hähnchen": "600g",
-                        "Tortillas": "8 Stück",
-                        "Paprika": "3 Stück",
-                        "Zwiebeln": "2 große",
-                        "Fajita-Gewürz": "2 EL"
-                    },
-                    instructions: [
-                        "Hähnchen marinieren",
-                        "Mit Gemüse anbraten",
-                        "Tortillas erwärmen",
-                        "Füllen und servieren"
-                    ],
-                    childTip: "Weniger Gewürz",
-                    workTip: "Füllung separat transportieren"
-                },
-                {
-                    name: "Königsberger Klopse",
-                    category: "Fleisch",
-                    price: 22,
-                    ingredients: {
-                        "Hackfleisch": "500g",
-                        "Kapern": "3 EL",
-                        "Sahne": "200ml",
-                        "Kartoffeln": "1kg",
-                        "Mehl": "2 EL"
-                    },
-                    instructions: [
-                        "Klopse formen",
-                        "In Brühe garziehen",
-                        "Sauce mit Mehlschwitze",
-                        "Kartoffeln kochen",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Ohne Kapern für Kinder",
-                    workTip: "In Sauce transportieren"
-                },
-                {
-                    name: "Pulled Pork Burger",
-                    category: "Fleisch",
-                    price: 27,
-                    ingredients: {
-                        "Schweineschulter": "800g",
-                        "BBQ-Sauce": "200ml",
-                        "Burger-Brötchen": "8 Stück",
-                        "Krautsalat": "400g",
-                        "Pommes": "600g"
-                    },
-                    instructions: [
-                        "Schwein 4-5 Std bei 120°C garen",
-                        "Fleisch zerzupfen",
-                        "Mit BBQ-Sauce mischen",
-                        "Burger zusammenbauen"
-                    ],
-                    childTip: "Milde BBQ-Sauce",
-                    workTip: "Super aufwärmbar"
-                },
-                {
-                    name: "Moussaka",
-                    category: "Fleisch",
-                    price: 24,
-                    ingredients: {
-                        "Lammhack": "600g",
-                        "Auberginen": "2 große",
-                        "Kartoffeln": "500g",
-                        "Bechamel": "500ml",
-                        "Tomaten": "400g"
-                    },
-                    instructions: [
-                        "Gemüse in Scheiben schneiden",
-                        "Hackfleisch anbraten",
-                        "Schichten in Form",
-                        "Mit Bechamel übergießen",
-                        "45 Min backen"
-                    ],
-                    childTip: "Ohne Zimt für Kinder",
-                    workTip: "Aufgewärmt noch besser"
-                },
-                {
-                    name: "Thai-Rindfleisch",
-                    category: "Fleisch",
-                    price: 26,
-                    ingredients: {
-                        "Rindfleisch": "600g",
-                        "Thai-Basilikum": "2 Bund",
-                        "Reis": "400g",
-                        "Sojasauce": "4 EL",
-                        "Chili": "1 Stück"
-                    },
-                    instructions: [
-                        "Fleisch in Streifen schneiden",
-                        "Im Wok anbraten",
-                        "Basilikum unterheben",
-                        "Mit Sojasauce würzen",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Ohne Chili",
-                    workTip: "Schnell aufgewärmt"
-                },
-                {
-                    name: "Burritos",
-                    category: "Fleisch",
-                    price: 22,
-                    ingredients: {
-                        "Rinderhack": "500g",
-                        "Tortillas": "6 große",
-                        "Reis": "300g",
-                        "Bohnen": "1 Dose",
-                        "Käse": "200g"
-                    },
-                    instructions: [
-                        "Reis kochen",
-                        "Hackfleisch anbraten",
-                        "Bohnen erwärmen",
-                        "Tortillas füllen",
-                        "Einrollen"
-                    ],
-                    childTip: "Milde Würzung",
-                    workTip: "In Alufolie gut transportierbar"
-                },
-                {
-                    name: "Cordon Bleu",
-                    category: "Fleisch",
-                    price: 29,
-                    ingredients: {
-                        "Schnitzel": "4 Stück",
-                        "Schinken": "100g",
-                        "Käse": "100g",
-                        "Paniermehl": "200g",
-                        "Salat": "300g"
-                    },
-                    instructions: [
-                        "Schnitzel füllen",
-                        "Panieren",
-                        "Goldbraun braten",
-                        "Mit Salat servieren"
-                    ],
-                    childTip: "In Streifen schneiden",
-                    workTip: "Kalt auch lecker"
-                },
-                {
-                    name: "Lammkoteletts mit Couscous",
-                    category: "Fleisch",
-                    price: 32,
-                    ingredients: {
-                        "Lammkoteletts": "8 Stück",
-                        "Couscous": "400g",
-                        "Minze": "1 Bund",
-                        "Granatapfel": "1 Stück",
-                        "Joghurt": "200g"
-                    },
-                    instructions: [
-                        "Lammkoteletts marinieren",
-                        "Scharf anbraten",
-                        "Couscous zubereiten",
-                        "Mit Minz-Joghurt servieren"
-                    ],
-                    childTip: "Milder würzen",
-                    workTip: "Kalt als Salat"
-                },
-                {
-                    name: "Entenbrust mit Rotkohl",
-                    category: "Fleisch",
-                    price: 35,
-                    ingredients: {
-                        "Entenbrust": "2 Stück",
-                        "Rotkohl": "1 Kopf",
-                        "Äpfel": "2 Stück",
-                        "Kartoffelklöße": "8 Stück",
-                        "Preiselbeeren": "100g"
-                    },
-                    instructions: [
-                        "Entenbrust einschneiden",
-                        "Rosa braten",
-                        "Rotkohl schmoren",
-                        "Klöße kochen",
-                        "Mit Preiselbeeren servieren"
-                    ],
-                    childTip: "Hähnchen als Alternative",
-                    workTip: "Festtagsessen"
-                },
-                {
-                    name: "Hackbraten mit Kartoffelpüree",
-                    category: "Fleisch",
-                    price: 19,
-                    ingredients: {
-                        "Hackfleisch": "700g",
-                        "Ei": "2 Stück",
-                        "Semmelbrösel": "100g",
-                        "Kartoffeln": "1,2kg",
-                        "Erbsen": "300g"
-                    },
-                    instructions: [
-                        "Hackbraten formen",
-                        "60 Min backen",
-                        "Kartoffelpüree zubereiten",
-                        "Erbsen kochen",
-                        "In Scheiben servieren"
-                    ],
-                    childTip: "Kinder-Liebling",
-                    workTip: "Kalt als Sandwich"
-                },
-                {
-                    name: "Wiener Schnitzel",
-                    category: "Fleisch",
-                    price: 28,
-                    ingredients: {
-                        "Kalbsschnitzel": "4 Stück",
-                        "Eier": "3 Stück",
-                        "Semmelbrösel": "200g",
-                        "Kartoffelsalat": "1kg",
-                        "Preiselbeeren": "100g"
-                    },
-                    instructions: [
-                        "Schnitzel klopfen",
-                        "Klassisch panieren",
-                        "In Butterschmalz braten",
-                        "Mit Kartoffelsalat servieren"
-                    ],
-                    childTip: "Der Klassiker",
-                    workTip: "Kalt im Brötchen"
-                },
-                {
-                    name: "Sauerbraten",
-                    category: "Fleisch",
-                    price: 30,
-                    ingredients: {
-                        "Rinderbraten": "1kg",
-                        "Rotwein": "500ml",
-                        "Lebkuchen": "2 Stück",
-                        "Kartoffelklöße": "8 Stück",
-                        "Rotkohl": "1 Kopf"
-                    },
-                    instructions: [
-                        "Fleisch 3 Tage marinieren",
-                        "Scharf anbraten",
-                        "2 Std schmoren",
-                        "Sauce mit Lebkuchen binden",
-                        "Mit Klößen servieren"
-                    ],
-                    childTip: "Ohne Alkohol zubereiten",
-                    workTip: "Wird besser beim Aufwärmen"
-                },
-                {
-                    name: "Kalbsragout",
-                    category: "Fleisch",
-                    price: 31,
-                    ingredients: {
-                        "Kalbfleisch": "700g",
-                        "Champignons": "300g",
-                        "Sahne": "300ml",
-                        "Reis": "400g",
-                        "Möhren": "3 Stück"
-                    },
-                    instructions: [
-                        "Kalbfleisch würfeln",
-                        "Anbraten",
-                        "Gemüse zugeben",
-                        "Mit Sahne ablöschen",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Sehr mild",
-                    workTip: "Gut aufwärmbar"
-                },
-                {
-                    name: "Rouladen",
-                    category: "Fleisch",
-                    price: 27,
-                    ingredients: {
-                        "Rinderrouladen": "4 Stück",
-                        "Speck": "100g",
-                        "Gurken": "4 kleine",
-                        "Senf": "4 EL",
-                        "Kartoffeln": "1kg"
-                    },
-                    instructions: [
-                        "Rouladen füllen",
-                        "Anbraten",
-                        "90 Min schmoren",
-                        "Sauce einkochen",
-                        "Mit Kartoffeln servieren"
-                    ],
-                    childTip: "Sauce extra",
-                    workTip: "Klassiker zum Aufwärmen"
-                },
-                {
-                    name: "Leberkäse mit Spiegelei",
-                    category: "Fleisch",
-                    price: 16,
-                    ingredients: {
-                        "Leberkäse": "600g",
-                        "Eier": "4 Stück",
-                        "Kartoffelsalat": "800g",
-                        "Senf": "nach Geschmack"
-                    },
-                    instructions: [
-                        "Leberkäse braten",
-                        "Spiegeleier braten",
-                        "Kartoffelsalat anrichten",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Ohne Spiegelei",
-                    workTip: "Bayerischer Klassiker"
-                },
-                {
-                    name: "Putenschnitzel Hawaii",
-                    category: "Fleisch",
-                    price: 24,
-                    ingredients: {
-                        "Putenschnitzel": "4 Stück",
-                        "Ananas": "4 Scheiben",
-                        "Schinken": "4 Scheiben",
-                        "Käse": "200g",
-                        "Reis": "400g"
-                    },
-                    instructions: [
-                        "Schnitzel braten",
-                        "Mit Schinken und Ananas belegen",
-                        "Mit Käse überbacken",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Süß-herzhaft beliebt",
-                    workTip: "Auch kalt lecker"
-                }
-            ],
-            vegetarian: [
-                {
-                    name: "Gemüse-Lasagne",
-                    category: "Vegetarisch",
-                    price: 16,
-                    ingredients: {
-                        "Lasagneplatten": "250g",
-                        "Zucchini": "2 Stück",
-                        "Aubergine": "1 Stück",
-                        "Tomaten": "800g",
-                        "Mozzarella": "250g"
-                    },
-                    instructions: [
-                        "Gemüse in Scheiben schneiden",
-                        "Anbraten und würzen",
-                        "Lasagne schichten",
-                        "45 Min backen"
-                    ],
-                    childTip: "Viel Käse macht es lecker",
-                    workTip: "Perfekt zum Aufwärmen"
-                },
-                {
-                    name: "Käsespätzle",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Spätzle": "600g",
-                        "Emmentaler": "300g",
-                        "Zwiebeln": "3 große",
-                        "Butter": "50g",
-                        "Salat": "1 Kopf"
-                    },
-                    instructions: [
-                        "Spätzle kochen",
-                        "Zwiebeln rösten",
-                        "Mit Käse schichten",
-                        "Überbacken",
-                        "Mit Salat servieren"
-                    ],
-                    childTip: "Kinder-Lieblingsgericht",
-                    workTip: "Mit Milch aufwärmen"
-                },
-                {
-                    name: "Gemüse-Curry",
-                    category: "Vegetarisch",
-                    price: 15,
-                    ingredients: {
-                        "Kichererbsen": "2 Dosen",
-                        "Kokosmilch": "400ml",
-                        "Gemüse": "600g",
-                        "Currypaste": "2 EL",
-                        "Reis": "400g"
-                    },
-                    instructions: [
-                        "Gemüse würfeln",
-                        "Currypaste anrösten",
-                        "Gemüse zugeben",
-                        "Mit Kokosmilch ablöschen",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Sehr mild würzen",
-                    workTip: "Wird aufgewärmt aromatischer"
-                },
-                {
-                    name: "Pizza Margherita",
-                    category: "Vegetarisch",
-                    price: 12,
-                    ingredients: {
-                        "Pizzateig": "500g",
-                        "Tomatensauce": "200ml",
-                        "Mozzarella": "250g",
-                        "Basilikum": "1 Bund",
-                        "Olivenöl": "3 EL"
-                    },
-                    instructions: [
-                        "Teig ausrollen",
-                        "Mit Sauce bestreichen",
-                        "Mozzarella verteilen",
-                        "15 Min bei 220°C backen",
-                        "Mit Basilikum garnieren"
-                    ],
-                    childTip: "Der Klassiker",
-                    workTip: "Kalt als Pizza-Schnitte"
-                },
-                {
-                    name: "Risotto mit Pilzen",
-                    category: "Vegetarisch",
-                    price: 18,
-                    ingredients: {
-                        "Risottoreis": "400g",
-                        "Pilze": "400g",
-                        "Weißwein": "200ml",
-                        "Parmesan": "150g",
-                        "Brühe": "1,5L"
-                    },
-                    instructions: [
-                        "Pilze anbraten",
-                        "Reis anschwitzen",
-                        "Nach und nach Brühe zugeben",
-                        "Ständig rühren",
-                        "Mit Parmesan verfeinern"
-                    ],
-                    childTip: "Weniger Weißwein",
-                    workTip: "Mit Brühe aufwärmen"
-                },
-                {
-                    name: "Quesadillas",
-                    category: "Vegetarisch",
-                    price: 13,
-                    ingredients: {
-                        "Tortillas": "8 Stück",
-                        "Bohnen": "1 Dose",
-                        "Mais": "1 Dose",
-                        "Käse": "300g",
-                        "Paprika": "2 Stück"
-                    },
-                    instructions: [
-                        "Bohnen zerdrücken",
-                        "Gemüse anbraten",
-                        "Tortilla belegen",
-                        "In Pfanne braten",
-                        "Mit Dips servieren"
-                    ],
-                    childTip: "Milde Salsa",
-                    workTip: "Kalt auch lecker"
-                },
-                {
-                    name: "Pasta Primavera",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Penne": "500g",
-                        "Gemüse": "600g",
-                        "Sahne": "200ml",
-                        "Parmesan": "100g",
-                        "Knoblauch": "2 Zehen"
-                    },
-                    instructions: [
-                        "Nudeln kochen",
-                        "Gemüse anbraten",
-                        "Mit Sahne ablöschen",
-                        "Nudeln untermischen",
-                        "Mit Parmesan servieren"
-                    ],
-                    childTip: "Gemüse klein schneiden",
-                    workTip: "Mit Wasser aufwärmen"
-                },
-                {
-                    name: "Shakshuka",
-                    category: "Vegetarisch",
-                    price: 12,
-                    ingredients: {
-                        "Eier": "6 Stück",
-                        "Tomaten": "800g",
-                        "Paprika": "2 Stück",
-                        "Feta": "150g",
-                        "Fladenbrot": "4 Stück"
-                    },
-                    instructions: [
-                        "Gemüse anbraten",
-                        "Tomaten zugeben",
-                        "Mulden formen",
-                        "Eier hineinschlagen",
-                        "Stocken lassen"
-                    ],
-                    childTip: "Eier gut durchgaren",
-                    workTip: "Frisch zubereiten"
-                },
-                {
-                    name: "Buddha Bowl",
-                    category: "Vegetarisch",
-                    price: 16,
-                    ingredients: {
-                        "Quinoa": "250g",
-                        "Süßkartoffel": "2 Stück",
-                        "Kichererbsen": "1 Dose",
-                        "Avocado": "2 Stück",
-                        "Tahini": "3 EL"
-                    },
-                    instructions: [
-                        "Quinoa kochen",
-                        "Süßkartoffel rösten",
-                        "Kichererbsen würzen",
-                        "In Bowls anrichten",
-                        "Mit Tahini-Dressing"
-                    ],
-                    childTip: "Komponenten getrennt",
-                    workTip: "Als Meal-Prep perfekt"
-                },
-                {
-                    name: "Gnocchi mit Tomatensauce",
-                    category: "Vegetarisch",
-                    price: 15,
-                    ingredients: {
-                        "Gnocchi": "800g",
-                        "Tomaten": "800g",
-                        "Mozzarella": "250g",
-                        "Basilikum": "1 Bund",
-                        "Knoblauch": "2 Zehen"
-                    },
-                    instructions: [
-                        "Sauce köcheln lassen",
-                        "Gnocchi kochen",
-                        "Mit Sauce mischen",
-                        "Mozzarella unterheben",
-                        "Mit Basilikum garnieren"
-                    ],
-                    childTip: "Kinder lieben Gnocchi",
-                    workTip: "Sehr gut aufwärmbar"
-                },
-                {
-                    name: "Spinat-Ricotta-Cannelloni",
-                    category: "Vegetarisch",
-                    price: 17,
-                    ingredients: {
-                        "Cannelloni": "250g",
-                        "Spinat": "450g",
-                        "Ricotta": "400g",
-                        "Tomatensauce": "500ml",
-                        "Mozzarella": "200g"
-                    },
-                    instructions: [
-                        "Spinat auftauen",
-                        "Mit Ricotta mischen",
-                        "Cannelloni füllen",
-                        "Mit Sauce übergießen",
-                        "35 Min backen"
-                    ],
-                    childTip: "Sehr mild und käsig",
-                    workTip: "Perfekt aufwärmbar"
-                },
-                {
-                    name: "Falafel-Wrap",
-                    category: "Vegetarisch",
-                    price: 15,
-                    ingredients: {
-                        "Falafel-Mix": "300g",
-                        "Wraps": "6 Stück",
-                        "Hummus": "200g",
-                        "Salat": "200g",
-                        "Tomaten": "3 Stück"
-                    },
-                    instructions: [
-                        "Falafel zubereiten",
-                        "Frittieren oder backen",
-                        "Wraps belegen",
-                        "Mit Hummus bestreichen",
-                        "Einrollen"
-                    ],
-                    childTip: "Falafel klein brechen",
-                    workTip: "Komponenten getrennt"
-                },
-                {
-                    name: "Gemüse-Paella",
-                    category: "Vegetarisch",
-                    price: 18,
-                    ingredients: {
-                        "Paella-Reis": "400g",
-                        "Gemüse": "800g",
-                        "Safran": "1 Prise",
-                        "Brühe": "1L",
-                        "Zitronen": "2 Stück"
-                    },
-                    instructions: [
-                        "Gemüse anbraten",
-                        "Reis zugeben",
-                        "Mit Brühe ablöschen",
-                        "Safran zugeben",
-                        "Ohne Rühren garen"
-                    ],
-                    childTip: "Buntes Reisgericht",
-                    workTip: "Kalt als Reissalat"
-                },
-                {
-                    name: "Halloumi-Spieße",
-                    category: "Vegetarisch",
-                    price: 19,
-                    ingredients: {
-                        "Halloumi": "400g",
-                        "Gemüse": "600g",
-                        "Couscous": "300g",
-                        "Zitronen": "2 Stück",
-                        "Oregano": "2 TL"
-                    },
-                    instructions: [
-                        "Halloumi und Gemüse würfeln",
-                        "Auf Spieße stecken",
-                        "Grillen oder backen",
-                        "Couscous zubereiten",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Halloumi ist mild",
-                    workTip: "Kalt auch gut"
-                },
-                {
-                    name: "Bauernfrühstück",
-                    category: "Vegetarisch",
-                    price: 11,
-                    ingredients: {
-                        "Kartoffeln": "1kg",
-                        "Eier": "6 Stück",
-                        "Zwiebeln": "2 Stück",
-                        "Gurken": "4 Stück",
-                        "Milch": "100ml"
-                    },
-                    instructions: [
-                        "Kartoffeln in Scheiben",
-                        "Anbraten mit Zwiebeln",
-                        "Eier verquirlen",
-                        "Darüber gießen",
-                        "Stocken lassen"
-                    ],
-                    childTip: "Comfort Food",
-                    workTip: "Auch kalt lecker"
-                },
-                {
-                    name: "Süßkartoffel-Curry",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Süßkartoffeln": "800g",
-                        "Linsen": "200g",
-                        "Kokosmilch": "400ml",
-                        "Spinat": "200g",
-                        "Naan": "4 Stück"
-                    },
-                    instructions: [
-                        "Süßkartoffeln würfeln",
-                        "Mit Linsen köcheln",
-                        "Kokosmilch zugeben",
-                        "Spinat unterheben",
-                        "Mit Naan servieren"
-                    ],
-                    childTip: "Süßlich und mild",
-                    workTip: "Wird cremiger beim Aufwärmen"
-                },
-                {
-                    name: "Gemüse-Couscous",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Couscous": "400g",
-                        "Gemüse": "600g",
-                        "Kichererbsen": "1 Dose",
-                        "Rosinen": "50g",
-                        "Minze": "1 Bund"
-                    },
-                    instructions: [
-                        "Couscous quellen lassen",
-                        "Gemüse anbraten",
-                        "Mit Couscous mischen",
-                        "Rosinen zugeben",
-                        "Mit Minze garnieren"
-                    ],
-                    childTip: "Rosinen machen es süß",
-                    workTip: "Kalt als Salat super"
-                },
-                {
-                    name: "Ratatouille",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Aubergine": "1 Stück",
-                        "Zucchini": "2 Stück",
-                        "Paprika": "2 Stück",
-                        "Tomaten": "4 Stück",
-                        "Reis": "400g"
-                    },
-                    instructions: [
-                        "Gemüse würfeln",
-                        "Nacheinander anbraten",
-                        "30 Min schmoren",
-                        "Reis kochen",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Gemüse weich kochen",
-                    workTip: "Klassiker zum Aufwärmen"
-                },
-                {
-                    name: "Linsen-Bolognese",
-                    category: "Vegetarisch",
-                    price: 13,
-                    ingredients: {
-                        "Rote Linsen": "250g",
-                        "Spaghetti": "500g",
-                        "Tomaten": "800g",
-                        "Gemüse": "400g",
-                        "Parmesan": "100g"
-                    },
-                    instructions: [
-                        "Gemüse würfeln",
-                        "Linsen zugeben",
-                        "Mit Tomaten köcheln",
-                        "Spaghetti kochen",
-                        "Mit Parmesan servieren"
-                    ],
-                    childTip: "Wie echte Bolognese",
-                    workTip: "Sauce einfrieren"
-                },
-                {
-                    name: "Blumenkohl-Wings",
-                    category: "Vegetarisch",
-                    price: 15,
-                    ingredients: {
-                        "Blumenkohl": "1 großer",
-                        "Mehl": "150g",
-                        "Milch": "200ml",
-                        "BBQ-Sauce": "200ml",
-                        "Pommes": "500g"
-                    },
-                    instructions: [
-                        "Blumenkohl in Röschen",
-                        "Panieren",
-                        "Backen",
-                        "Mit BBQ-Sauce",
-                        "Mit Pommes servieren"
-                    ],
-                    childTip: "Sieht aus wie Chicken",
-                    workTip: "Frisch am besten"
-                },
-                {
-                    name: "Käse-Lauch-Suppe",
-                    category: "Vegetarisch",
-                    price: 13,
-                    ingredients: {
-                        "Lauch": "3 Stangen",
-                        "Schmelzkäse": "400g",
-                        "Gemüsebrühe": "1L",
-                        "Baguette": "1 Stück",
-                        "Sahne": "200ml"
-                    },
-                    instructions: [
-                        "Lauch anbraten",
-                        "Mit Brühe ablöschen",
-                        "Käse einrühren",
-                        "Mit Sahne verfeinern",
-                        "Mit Baguette servieren"
-                    ],
-                    childTip: "Sehr cremig und mild",
-                    workTip: "Perfekt aufwärmbar"
-                },
-                {
-                    name: "Gemüse-Tempura",
-                    category: "Vegetarisch",
-                    price: 16,
-                    ingredients: {
-                        "Gemüse gemischt": "800g",
-                        "Tempuramehl": "200g",
-                        "Eiswasser": "300ml",
-                        "Reis": "400g",
-                        "Sojasauce": "100ml"
-                    },
-                    instructions: [
-                        "Gemüse vorbereiten",
-                        "Tempurateig anrühren",
-                        "Frittieren",
-                        "Mit Reis servieren",
-                        "Sojasauce zum Dippen"
-                    ],
-                    childTip: "Knusprig und lustig",
-                    workTip: "Frisch zubereiten"
-                },
-                {
-                    name: "Spinat-Gorgonzola-Pasta",
-                    category: "Vegetarisch",
-                    price: 17,
-                    ingredients: {
-                        "Penne": "500g",
-                        "Spinat": "400g",
-                        "Gorgonzola": "200g",
-                        "Walnüsse": "100g",
-                        "Sahne": "250ml"
-                    },
-                    instructions: [
-                        "Nudeln kochen",
-                        "Spinat anbraten",
-                        "Gorgonzola schmelzen",
-                        "Walnüsse rösten",
-                        "Alles mischen"
-                    ],
-                    childTip: "Ohne Gorgonzola möglich",
-                    workTip: "Mit Wasser aufwärmen"
-                },
-                {
-                    name: "Rösti-Auflauf",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Kartoffeln": "1,5kg",
-                        "Zwiebeln": "2 Stück",
-                        "Käse": "300g",
-                        "Sahne": "300ml",
-                        "Lauch": "1 Stange"
-                    },
-                    instructions: [
-                        "Kartoffeln raspeln",
-                        "Schichten in Form",
-                        "Mit Sahne übergießen",
-                        "Mit Käse bedecken",
-                        "45 Min backen"
-                    ],
-                    childTip: "Goldbraun und käsig",
-                    workTip: "Super aufwärmbar"
-                },
-                {
-                    name: "Tofu-Teriyaki",
-                    category: "Vegetarisch",
-                    price: 15,
-                    ingredients: {
-                        "Tofu": "400g",
-                        "Teriyaki-Sauce": "200ml",
-                        "Reis": "400g",
-                        "Brokkoli": "500g",
-                        "Sesam": "2 EL"
-                    },
-                    instructions: [
-                        "Tofu marinieren",
-                        "Scharf anbraten",
-                        "Brokkoli dämpfen",
-                        "Mit Teriyaki glasieren",
-                        "Mit Sesam bestreuen"
-                    ],
-                    childTip: "Süßlich durch Sauce",
-                    workTip: "Gut aufwärmbar"
-                },
-                {
-                    name: "Kürbis-Risotto",
-                    category: "Vegetarisch",
-                    price: 16,
-                    ingredients: {
-                        "Hokkaido": "1 kleiner",
-                        "Risottoreis": "400g",
-                        "Weißwein": "200ml",
-                        "Parmesan": "150g",
-                        "Salbei": "1 Bund"
-                    },
-                    instructions: [
-                        "Kürbis würfeln",
-                        "Anbraten",
-                        "Reis zugeben",
-                        "Nach und nach Brühe",
-                        "Mit Salbei garnieren"
-                    ],
-                    childTip: "Orange und cremig",
-                    workTip: "Mit Brühe aufwärmen"
-                },
-                {
-                    name: "Griechischer Bauernsalat",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Feta": "400g",
-                        "Tomaten": "6 Stück",
-                        "Gurken": "2 Stück",
-                        "Oliven": "200g",
-                        "Fladenbrot": "4 Stück"
-                    },
-                    instructions: [
-                        "Gemüse würfeln",
-                        "Feta bröckeln",
-                        "Mit Olivenöl mischen",
-                        "Mit Oregano würzen",
-                        "Mit Fladenbrot servieren"
-                    ],
-                    childTip: "Ohne Oliven für Kinder",
-                    workTip: "Als Meal-Prep ideal"
-                },
-                {
-                    name: "Pilz-Stroganoff",
-                    category: "Vegetarisch",
-                    price: 18,
-                    ingredients: {
-                        "Pilze gemischt": "600g",
-                        "Zwiebeln": "2 Stück",
-                        "Saure Sahne": "300ml",
-                        "Reis": "400g",
-                        "Petersilie": "1 Bund"
-                    },
-                    instructions: [
-                        "Pilze anbraten",
-                        "Zwiebeln zugeben",
-                        "Mit Sahne ablöschen",
-                        "Würzen",
-                        "Mit Reis servieren"
-                    ],
-                    childTip: "Cremig und mild",
-                    workTip: "Gut aufwärmbar"
-                },
-                {
-                    name: "Mozzarella-Tomaten-Tarte",
-                    category: "Vegetarisch",
-                    price: 15,
-                    ingredients: {
-                        "Blätterteig": "1 Rolle",
-                        "Tomaten": "5 Stück",
-                        "Mozzarella": "250g",
-                        "Pesto": "100g",
-                        "Rucola": "100g"
-                    },
-                    instructions: [
-                        "Blätterteig auslegen",
-                        "Mit Pesto bestreichen",
-                        "Tomaten und Mozzarella",
-                        "25 Min backen",
-                        "Mit Rucola garnieren"
-                    ],
-                    childTip: "Wie Pizza",
-                    workTip: "Kalt auch gut"
-                },
-                {
-                    name: "Linsen-Dal",
-                    category: "Vegetarisch",
-                    price: 12,
-                    ingredients: {
-                        "Rote Linsen": "300g",
-                        "Kokosmilch": "400ml",
-                        "Tomaten": "3 Stück",
-                        "Naan-Brot": "4 Stück",
-                        "Koriander": "1 Bund"
-                    },
-                    instructions: [
-                        "Linsen kochen",
-                        "Tomaten zugeben",
-                        "Mit Kokosmilch cremig",
-                        "Würzen",
-                        "Mit Naan servieren"
-                    ],
-                    childTip: "Sehr mild möglich",
-                    workTip: "Perfekt aufwärmbar"
-                },
-                {
-                    name: "Zucchini-Puffer",
-                    category: "Vegetarisch",
-                    price: 11,
-                    ingredients: {
-                        "Zucchini": "3 große",
-                        "Eier": "3 Stück",
-                        "Mehl": "150g",
-                        "Käse": "150g",
-                        "Tzatziki": "300g"
-                    },
-                    instructions: [
-                        "Zucchini raspeln",
-                        "Ausdrücken",
-                        "Mit Ei und Mehl mischen",
-                        "Puffer braten",
-                        "Mit Tzatziki servieren"
-                    ],
-                    childTip: "Knusprig außen",
-                    workTip: "Auch kalt lecker"
-                },
-                {
-                    name: "Champignon-Rahm-Geschnetzeltes",
-                    category: "Vegetarisch",
-                    price: 16,
-                    ingredients: {
-                        "Champignons": "800g",
-                        "Sahne": "400ml",
-                        "Zwiebeln": "2 Stück",
-                        "Spätzle": "500g",
-                        "Petersilie": "1 Bund"
-                    },
-                    instructions: [
-                        "Pilze in Streifen",
-                        "Scharf anbraten",
-                        "Mit Sahne ablöschen",
-                        "Spätzle kochen",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Wie mit Fleisch",
-                    workTip: "Sehr gut aufwärmbar"
-                },
-                {
-                    name: "Gemüse-Frittata",
-                    category: "Vegetarisch",
-                    price: 13,
-                    ingredients: {
-                        "Eier": "8 Stück",
-                        "Gemüse": "600g",
-                        "Käse": "200g",
-                        "Milch": "200ml",
-                        "Salat": "1 Kopf"
-                    },
-                    instructions: [
-                        "Gemüse anbraten",
-                        "Eier-Milch-Mix drüber",
-                        "Mit Käse bestreuen",
-                        "Im Ofen stocken",
-                        "Mit Salat servieren"
-                    ],
-                    childTip: "Buntes Omelett",
-                    workTip: "Kalt als Snack"
-                },
-                {
-                    name: "Polenta mit Ratatouille",
-                    category: "Vegetarisch",
-                    price: 14,
-                    ingredients: {
-                        "Polenta": "300g",
-                        "Gemüse für Ratatouille": "800g",
-                        "Tomaten": "400g",
-                        "Parmesan": "150g",
-                        "Kräuter": "gemischt"
-                    },
-                    instructions: [
-                        "Polenta kochen",
-                        "Ratatouille schmoren",
-                        "Polenta in Form",
-                        "Anbraten",
-                        "Mit Ratatouille servieren"
-                    ],
-                    childTip: "Mais-Brei mit Gemüse",
-                    workTip: "Gut aufwärmbar"
-                }
-            ],
-            kids: [
-                {
-                    name: "Mini-Frikadellen",
-                    category: "Kinder",
-                    price: 8,
-                    ingredients: {
-                        "Hackfleisch": "250g",
-                        "Ei": "1 Stück",
-                        "Semmelbrösel": "3 EL",
-                        "Kartoffelbrei": "500g"
-                    },
-                    instructions: [
-                        "Hackfleisch mischen",
-                        "Kleine Frikadellen formen",
-                        "Braten",
-                        "Mit Kartoffelbrei servieren"
-                    ],
-                    childTip: "Sehr mild würzen",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Pfannkuchen",
-                    category: "Kinder",
-                    price: 6,
-                    ingredients: {
-                        "Mehl": "200g",
-                        "Milch": "400ml",
-                        "Eier": "3 Stück",
-                        "Apfelmus": "400g"
-                    },
-                    instructions: [
-                        "Teig anrühren",
-                        "Dünne Pfannkuchen backen",
-                        "Mit Apfelmus servieren"
-                    ],
-                    childTip: "Der Klassiker",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Nudeln mit Butter",
-                    category: "Kinder",
-                    price: 5,
-                    ingredients: {
-                        "Nudeln": "200g",
-                        "Butter": "50g",
-                        "Parmesan": "50g",
-                        "Erbsen": "100g"
-                    },
-                    instructions: [
-                        "Nudeln kochen",
-                        "Mit Butter mischen",
-                        "Parmesan drüber"
-                    ],
-                    childTip: "Einfach und beliebt",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Pizza-Schnecken",
-                    category: "Kinder",
-                    price: 8,
-                    ingredients: {
-                        "Pizzateig": "1 Rolle",
-                        "Tomatensauce": "150ml",
-                        "Salami": "100g",
-                        "Käse": "150g"
-                    },
-                    instructions: [
-                        "Teig belegen",
-                        "Aufrollen",
-                        "In Scheiben schneiden",
-                        "20 Min backen"
-                    ],
-                    childTip: "Mini-Pizzen",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Chicken Nuggets",
-                    category: "Kinder",
-                    price: 10,
-                    ingredients: {
-                        "Hähnchen": "300g",
-                        "Cornflakes": "100g",
-                        "Ei": "1 Stück",
-                        "Pommes": "400g"
-                    },
-                    instructions: [
-                        "Hähnchen schneiden",
-                        "In Cornflakes wenden",
-                        "Backen",
-                        "Mit Pommes servieren"
-                    ],
-                    childTip: "Gesünder als gekaufte",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Kartoffelpuffer",
-                    category: "Kinder",
-                    price: 7,
-                    ingredients: {
-                        "Kartoffeln": "600g",
-                        "Ei": "1 Stück",
-                        "Mehl": "2 EL",
-                        "Apfelmus": "400g",
-                        "Öl": "zum Braten"
-                    },
-                    instructions: [
-                        "Kartoffeln reiben",
-                        "Mit Ei und Mehl mischen",
-                        "Kleine Puffer braten",
-                        "Mit Apfelmus servieren"
-                    ],
-                    childTip: "Knusprig und süß",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Käse-Schinken-Toast",
-                    category: "Kinder",
-                    price: 6,
-                    ingredients: {
-                        "Toastbrot": "8 Scheiben",
-                        "Schinken": "150g",
-                        "Käse": "150g",
-                        "Butter": "zum Bestreichen",
-                        "Tomaten": "2 Stück"
-                    },
-                    instructions: [
-                        "Toast buttern",
-                        "Belegen",
-                        "Toasten",
-                        "In Dreiecke schneiden"
-                    ],
-                    childTip: "Der Klassiker",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Hühnersuppe",
-                    category: "Kinder",
-                    price: 9,
-                    ingredients: {
-                        "Hühnerbrühe": "1L",
-                        "Suppennudeln": "100g",
-                        "Möhren": "2 Stück",
-                        "Hühnerfleisch": "150g",
-                        "Petersilie": "1 Bund"
-                    },
-                    instructions: [
-                        "Brühe aufkochen",
-                        "Möhren würfeln",
-                        "Nudeln kochen",
-                        "Hühnerfleisch zugeben",
-                        "Mit Petersilie garnieren"
-                    ],
-                    childTip: "Bei Erkältung ideal",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Grießbrei",
-                    category: "Kinder",
-                    price: 5,
-                    ingredients: {
-                        "Milch": "500ml",
-                        "Grieß": "80g",
-                        "Zucker": "2 EL",
-                        "Zimt": "1 TL",
-                        "Kompott": "200g"
-                    },
-                    instructions: [
-                        "Milch aufkochen",
-                        "Grieß einrieseln",
-                        "Rühren und kochen",
-                        "Mit Zimt bestreuen",
-                        "Mit Kompott servieren"
-                    ],
-                    childTip: "Süßes Mittagessen",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Würstchen im Schlafrock",
-                    category: "Kinder",
-                    price: 8,
-                    ingredients: {
-                        "Würstchen": "4 Stück",
-                        "Blätterteig": "1 Rolle",
-                        "Ei": "1 Stück",
-                        "Ketchup": "zum Dippen"
-                    },
-                    instructions: [
-                        "Blätterteig schneiden",
-                        "Würstchen einwickeln",
-                        "Mit Ei bestreichen",
-                        "15 Min backen",
-                        "Mit Ketchup servieren"
-                    ],
-                    childTip: "Fingerfood",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Tomatensuppe",
-                    category: "Kinder",
-                    price: 6,
-                    ingredients: {
-                        "Tomaten passiert": "500ml",
-                        "Reis": "80g",
-                        "Sahne": "100ml",
-                        "Brühe": "500ml",
-                        "Basilikum": "einige Blätter"
-                    },
-                    instructions: [
-                        "Brühe mit Tomaten aufkochen",
-                        "Reis zugeben",
-                        "15 Min köcheln",
-                        "Mit Sahne verfeinern",
-                        "Mit Basilikum garnieren"
-                    ],
-                    childTip: "Mild und sättigend",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Eierkuchen-Röllchen",
-                    category: "Kinder",
-                    price: 7,
-                    ingredients: {
-                        "Eier": "3 Stück",
-                        "Mehl": "150g",
-                        "Milch": "250ml",
-                        "Frischkäse": "150g",
-                        "Schinken": "100g"
-                    },
-                    instructions: [
-                        "Eierkuchen backen",
-                        "Mit Frischkäse bestreichen",
-                        "Schinken drauf",
-                        "Aufrollen und schneiden"
-                    ],
-                    childTip: "Fingerfood",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Milchreis",
-                    category: "Kinder",
-                    price: 6,
-                    ingredients: {
-                        "Milchreis": "200g",
-                        "Milch": "800ml",
-                        "Zucker": "3 EL",
-                        "Obst": "300g",
-                        "Zimt": "zum Bestreuen"
-                    },
-                    instructions: [
-                        "Milch aufkochen",
-                        "Reis zugeben",
-                        "30 Min quellen",
-                        "Obst schneiden",
-                        "Mit Zimt servieren"
-                    ],
-                    childTip: "Süß und gesund",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Mini-Hackbällchen",
-                    category: "Kinder",
-                    price: 9,
-                    ingredients: {
-                        "Hackfleisch": "250g",
-                        "Semmelbrösel": "3 EL",
-                        "Ei": "1 Stück",
-                        "Tomatensauce": "400ml",
-                        "Nudeln": "200g"
-                    },
-                    instructions: [
-                        "Kleine Bällchen formen",
-                        "In Sauce köcheln",
-                        "Nudeln kochen",
-                        "Zusammen servieren"
-                    ],
-                    childTip: "Kleine Bällchen sind praktisch",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Gemüse-Muffins",
-                    category: "Kinder",
-                    price: 7,
-                    ingredients: {
-                        "Mehl": "200g",
-                        "Eier": "2 Stück",
-                        "Milch": "150ml",
-                        "Zucchini": "1 kleine",
-                        "Käse": "100g"
-                    },
-                    instructions: [
-                        "Gemüse raspeln",
-                        "Teig anrühren",
-                        "In Muffinformen",
-                        "20 Min backen"
-                    ],
-                    childTip: "Verstecktes Gemüse",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Spaghetti mit Tomatensauce",
-                    category: "Kinder",
-                    price: 5,
-                    ingredients: {
-                        "Spaghetti": "200g",
-                        "Tomatensauce": "300ml",
-                        "Parmesan": "50g",
-                        "Basilikum": "einige Blätter"
-                    },
-                    instructions: [
-                        "Spaghetti kochen",
-                        "Sauce erwärmen",
-                        "Mischen",
-                        "Mit Parmesan bestreuen"
-                    ],
-                    childTip: "Der absolute Klassiker",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Brotzeit-Teller",
-                    category: "Kinder",
-                    price: 7,
-                    ingredients: {
-                        "Vollkornbrot": "4 Scheiben",
-                        "Käse": "100g",
-                        "Wurst": "100g",
-                        "Gemüsesticks": "200g"
-                    },
-                    instructions: [
-                        "Brot in Dreiecke",
-                        "Gemüse schneiden",
-                        "Alles anrichten"
-                    ],
-                    childTip: "Bunter Teller",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Kaiserschmarrn",
-                    category: "Kinder",
-                    price: 8,
-                    ingredients: {
-                        "Eier": "4 Stück",
-                        "Mehl": "150g",
-                        "Milch": "200ml",
-                        "Rosinen": "50g",
-                        "Puderzucker": "zum Bestäuben"
-                    },
-                    instructions: [
-                        "Teig anrühren",
-                        "In Pfanne backen",
-                        "Zerreißen",
-                        "Mit Puderzucker bestäuben"
-                    ],
-                    childTip: "Süßes Hauptgericht",
-                    workTip: "Nur für Kinder"
-                },
-                {
-                    name: "Gemüse-Reis-Pfanne",
-                    category: "Kinder",
-                    price: 7,
-                    ingredients: {
-                        "Reis": "200g",
-                        "Möhren": "2 Stück",
-                        "Erbsen": "150g",
-                        "Mais": "150g",
-                        "Ei": "2 Stück"
-                    },
-                    instructions: [
-                        "Reis kochen",
-                        "Gemüse anbraten",
-                        "Reis untermischen",
-                        "Ei unterrühren"
-                    ],
-                    childTip: "Buntes Essen",
-                    workTip: "Nur für Kinder"
-                }
-            ]
-        };
+        // Rezept-Datenbank aus externer Datei laden oder inline definieren
+        let recipes = {};
+        
+        // Inline Rezept-Datenbank (85 Rezepte)
+        function loadRecipes() {
+            recipes = {
+                meat: [
+                    {name:"Spaghetti Carbonara",category:"Fleisch",price:18,ingredients:{"Spaghetti":"500g","Speck/Pancetta":"200g","Eier":"4 Stück","Parmesan":"150g","Knoblauch":"2 Zehen","Schwarzer Pfeffer":"nach Geschmack"},instructions:["Wasser für Nudeln aufsetzen und salzen","Speck in kleine Würfel schneiden und knusprig braten","Spaghetti al dente kochen","Eier mit Parmesan verquirlen","Nudeln zum Speck geben, vom Herd nehmen","Ei-Käse-Mischung unterrühren"],childTip:"Für Kinder weniger Pfeffer verwenden",workTip:"Lässt sich gut erwärmen"},
+                    {name:"Hähnchenbrust mit Rösti",category:"Fleisch",price:22,ingredients:{"Hähnchenbrust":"600g","Kartoffeln":"800g","Grüne Bohnen":"400g","Butter":"50g","Zwiebel":"1 Stück"},instructions:["Kartoffeln raspeln und ausdrücken","Hähnchen würzen und braten","Rösti goldbraun braten","Bohnen bissfest kochen","Alles zusammen anrichten"],childTip:"Hähnchen in kleine Stücke schneiden",workTip:"Rösti werden beim Erwärmen wieder knusprig"},
+                    {name:"Rindergulasch mit Spätzle",category:"Fleisch",price:28,ingredients:{"Rindergulasch":"700g","Spätzle":"500g","Zwiebeln":"3 große","Paprika":"2 Stück","Tomatenmark":"3 EL","Paprikapulver":"2 EL"},instructions:["Fleisch scharf anbraten","Zwiebeln und Paprika zugeben","Mit Fond ablöschen","1,5 Std köcheln lassen","Spätzle kochen","Mit Spätzle servieren"],childTip:"Weniger Paprika für Kinder",workTip:"Wird beim Erwärmen noch besser"},
+                    {name:"Schweinemedaillons mit Champignonsauce",category:"Fleisch",price:26,ingredients:{"Schweinefilet":"600g","Champignons":"400g","Sahne":"250ml","Kartoffeln":"1kg","Brokkoli":"500g"},instructions:["Medaillons braten","Champignons anbraten","Mit Sahne ablöschen","Kartoffeln kochen","Brokkoli dämpfen","Zusammen servieren"],childTip:"Sauce separat servieren",workTip:"Fleisch und Sauce getrennt erwärmen"},
+                    {name:"Hackfleisch-Kartoffel-Auflauf",category:"Fleisch",price:20,ingredients:{"Hackfleisch":"500g","Kartoffeln":"1kg","Zwiebeln":"2 Stück","Käse":"200g","Milch":"300ml"},instructions:["Kartoffeln in Scheiben schneiden","Hackfleisch anbraten","Schichten und überbacken","45 Min bei 180°C backen"],childTip:"Perfekt für Kinder",workTip:"Portionsweise einfrieren möglich"},
+                    {name:"Hähnchen-Curry",category:"Fleisch",price:24,ingredients:{"Hähnchenbrust":"600g","Kokosmilch":"400ml","Currypaste":"2 EL","Reis":"400g","Gemüse":"400g"},instructions:["Hähnchen anbraten","Currypaste einrühren","Mit Kokosmilch ablöschen","Gemüse zugeben","Mit Reis servieren"],childTip:"Sehr milde Currypaste verwenden",workTip:"Curry schmeckt aufgewärmt noch besser"},
+                    {name:"Bolognese mit Penne",category:"Fleisch",price:19,ingredients:{"Rinderhack":"500g","Penne":"500g","Dosentomaten":"800g","Zwiebeln":"2 Stück","Möhren":"2 Stück"},instructions:["Gemüse würfeln und anschwitzen","Hackfleisch krümelig braten","Tomaten zugeben","2 Stunden köcheln","Penne kochen","Mit Parmesan servieren"],childTip:"Gemüse sehr fein hacken",workTip:"Sauce einfrieren, Nudeln frisch"},
+                    {name:"Gyros mit Tzatziki",category:"Fleisch",price:25,ingredients:{"Schweinefleisch":"700g","Pita":"6 Stück","Joghurt":"300g","Gurke":"1 Stück","Pommes":"500g"},instructions:["Fleisch marinieren und braten","Tzatziki zubereiten","Pommes backen","Pita erwärmen","Alles zusammen servieren"],childTip:"Weniger Knoblauch",workTip:"Komponenten getrennt transportieren"},
+                    {name:"Chili con Carne",category:"Fleisch",price:21,ingredients:{"Rinderhack":"600g","Kidneybohnen":"2 Dosen","Mais":"1 Dose","Paprika":"2 Stück","Reis":"400g"},instructions:["Hackfleisch anbraten","Gemüse zugeben","Bohnen und Mais einrühren","1 Stunde köcheln","Mit Reis servieren"],childTip:"Sehr mild würzen",workTip:"Perfekt zum Einfrieren"},
+                    {name:"Schnitzel mit Kartoffelsalat",category:"Fleisch",price:25,ingredients:{"Schnitzel":"600g","Paniermehl":"200g","Kartoffeln":"1kg","Mayonnaise":"150g","Gurken":"3 kleine"},instructions:["Kartoffelsalat vorbereiten","Schnitzel panieren","Goldbraun braten","Zusammen servieren"],childTip:"Schnitzel in Streifen schneiden",workTip:"Kalt auch lecker"},
+                    {name:"Geschnetzeltes Zürcher Art",category:"Fleisch",price:30,ingredients:{"Kalbfleisch":"600g","Champignons":"300g","Sahne":"250ml","Rösti":"800g Kartoffeln","Weißwein":"150ml"},instructions:["Fleisch in Streifen schneiden","Scharf anbraten","Pilze zugeben","Mit Wein und Sahne ablöschen","Rösti zubereiten"],childTip:"Weniger Wein verwenden",workTip:"Gut erwärmbar"},
+                    {name:"Shepherd's Pie",category:"Fleisch",price:20,ingredients:{"Lammhack":"600g","Kartoffeln":"1,2kg","Erbsen":"200g","Möhren":"3 Stück","Tomatenmark":"2 EL"},instructions:["Kartoffelpüree vorbereiten","Hackfleisch mit Gemüse anbraten","In Form schichten","30 Min überbacken"],childTip:"Kinder lieben die Kartoffelhaube",workTip:"Portionsweise einfrieren"},
+                    {name:"Asia-Hackfleischpfanne",category:"Fleisch",price:18,ingredients:{"Hackfleisch":"500g","Glasnudeln":"200g","Chinakohl":"1 kleiner","Sojasauce":"4 EL","Ingwer":"1 Stück"},instructions:["Glasnudeln einweichen","Hackfleisch anbraten","Gemüse zugeben","Nudeln untermischen","Mit Sojasauce würzen"],childTip:"Weniger Ingwer",workTip:"Schnell erwärmt"},
+                    {name:"Hähnchen-Fajitas",category:"Fleisch",price:23,ingredients:{"Hähnchen":"600g","Tortillas":"8 Stück","Paprika":"3 Stück","Zwiebeln":"2 große","Fajita-Gewürz":"2 EL"},instructions:["Hähnchen marinieren","Mit Gemüse anbraten","Tortillas erwärmen","Füllen und servieren"],childTip:"Weniger Gewürz",workTip:"Füllung separat transportieren"},
+                    {name:"Königsberger Klopse",category:"Fleisch",price:22,ingredients:{"Hackfleisch":"500g","Kapern":"3 EL","Sahne":"200ml","Kartoffeln":"1kg","Mehl":"2 EL"},instructions:["Klopse formen","In Brühe garziehen","Sauce mit Mehlschwitze","Kartoffeln kochen","Zusammen servieren"],childTip:"Ohne Kapern für Kinder",workTip:"In Sauce transportieren"},
+                    {name:"Pulled Pork Burger",category:"Fleisch",price:27,ingredients:{"Schweineschulter":"800g","BBQ-Sauce":"200ml","Burger-Brötchen":"8 Stück","Krautsalat":"400g","Pommes":"600g"},instructions:["Schwein 4-5 Std bei 120°C garen","Fleisch zerzupfen","Mit BBQ-Sauce mischen","Burger zusammenbauen"],childTip:"Milde BBQ-Sauce",workTip:"Super aufwärmbar"},
+                    {name:"Moussaka",category:"Fleisch",price:24,ingredients:{"Lammhack":"600g","Auberginen":"2 große","Kartoffeln":"500g","Bechamel":"500ml","Tomaten":"400g"},instructions:["Gemüse in Scheiben schneiden","Hackfleisch anbraten","Schichten in Form","Mit Bechamel übergießen","45 Min backen"],childTip:"Ohne Zimt für Kinder",workTip:"Aufgewärmt noch besser"},
+                    {name:"Thai-Rindfleisch",category:"Fleisch",price:26,ingredients:{"Rindfleisch":"600g","Thai-Basilikum":"2 Bund","Reis":"400g","Sojasauce":"4 EL","Chili":"1 Stück"},instructions:["Fleisch in Streifen schneiden","Im Wok anbraten","Basilikum unterheben","Mit Sojasauce würzen","Mit Reis servieren"],childTip:"Ohne Chili",workTip:"Schnell aufgewärmt"},
+                    {name:"Burritos",category:"Fleisch",price:22,ingredients:{"Rinderhack":"500g","Tortillas":"6 große","Reis":"300g","Bohnen":"1 Dose","Käse":"200g"},instructions:["Reis kochen","Hackfleisch anbraten","Bohnen erwärmen","Tortillas füllen","Einrollen"],childTip:"Milde Würzung",workTip:"In Alufolie gut transportierbar"},
+                    {name:"Cordon Bleu",category:"Fleisch",price:29,ingredients:{"Schnitzel":"4 Stück","Schinken":"100g","Käse":"100g","Paniermehl":"200g","Salat":"300g"},instructions:["Schnitzel füllen","Panieren","Goldbraun braten","Mit Salat servieren"],childTip:"In Streifen schneiden",workTip:"Kalt auch lecker"},
+                    {name:"Lammkoteletts mit Couscous",category:"Fleisch",price:32,ingredients:{"Lammkoteletts":"8 Stück","Couscous":"400g","Minze":"1 Bund","Granatapfel":"1 Stück","Joghurt":"200g"},instructions:["Lammkoteletts marinieren","Scharf anbraten","Couscous zubereiten","Mit Minz-Joghurt servieren"],childTip:"Milder würzen",workTip:"Kalt als Salat"},
+                    {name:"Entenbrust mit Rotkohl",category:"Fleisch",price:35,ingredients:{"Entenbrust":"2 Stück","Rotkohl":"1 Kopf","Äpfel":"2 Stück","Kartoffelklöße":"8 Stück","Preiselbeeren":"100g"},instructions:["Entenbrust einschneiden","Rosa braten","Rotkohl schmoren","Klöße kochen","Mit Preiselbeeren servieren"],childTip:"Hähnchen als Alternative",workTip:"Festtagsessen"},
+                    {name:"Hackbraten mit Kartoffelpüree",category:"Fleisch",price:19,ingredients:{"Hackfleisch":"700g","Ei":"2 Stück","Semmelbrösel":"100g","Kartoffeln":"1,2kg","Erbsen":"300g"},instructions:["Hackbraten formen","60 Min backen","Kartoffelpüree zubereiten","Erbsen kochen","In Scheiben servieren"],childTip:"Kinder-Liebling",workTip:"Kalt als Sandwich"},
+                    {name:"Wiener Schnitzel",category:"Fleisch",price:28,ingredients:{"Kalbsschnitzel":"4 Stück","Eier":"3 Stück","Semmelbrösel":"200g","Kartoffelsalat":"1kg","Preiselbeeren":"100g"},instructions:["Schnitzel klopfen","Klassisch panieren","In Butterschmalz braten","Mit Kartoffelsalat servieren"],childTip:"Der Klassiker",workTip:"Kalt im Brötchen"},
+                    {name:"Sauerbraten",category:"Fleisch",price:30,ingredients:{"Rinderbraten":"1kg","Rotwein":"500ml","Lebkuchen":"2 Stück","Kartoffelklöße":"8 Stück","Rotkohl":"1 Kopf"},instructions:["Fleisch 3 Tage marinieren","Scharf anbraten","2 Std schmoren","Sauce mit Lebkuchen binden","Mit Klößen servieren"],childTip:"Ohne Alkohol zubereiten",workTip:"Wird besser beim Aufwärmen"},
+                    {name:"Kalbsragout",category:"Fleisch",price:31,ingredients:{"Kalbfleisch":"700g","Champignons":"300g","Sahne":"300ml","Reis":"400g","Möhren":"3 Stück"},instructions:["Kalbfleisch würfeln","Anbraten","Gemüse zugeben","Mit Sahne ablöschen","Mit Reis servieren"],childTip:"Sehr mild",workTip:"Gut aufwärmbar"},
+                    {name:"Rouladen",category:"Fleisch",price:27,ingredients:{"Rinderrouladen":"4 Stück","Speck":"100g","Gurken":"4 kleine","Senf":"4 EL","Kartoffeln":"1kg"},instructions:["Rouladen füllen","Anbraten","90 Min schmoren","Sauce einkochen","Mit Kartoffeln servieren"],childTip:"Sauce extra",workTip:"Klassiker zum Aufwärmen"},
+                    {name:"Leberkäse mit Spiegelei",category:"Fleisch",price:16,ingredients:{"Leberkäse":"600g","Eier":"4 Stück","Kartoffelsalat":"800g","Senf":"nach Geschmack"},instructions:["Leberkäse braten","Spiegeleier braten","Kartoffelsalat anrichten","Zusammen servieren"],childTip:"Ohne Spiegelei",workTip:"Bayerischer Klassiker"},
+                    {name:"Putenschnitzel Hawaii",category:"Fleisch",price:24,ingredients:{"Putenschnitzel":"4 Stück","Ananas":"4 Scheiben","Schinken":"4 Scheiben","Käse":"200g","Reis":"400g"},instructions:["Schnitzel braten","Mit Schinken und Ananas belegen","Mit Käse überbacken","Mit Reis servieren"],childTip:"Süß-herzhaft beliebt",workTip:"Auch kalt lecker"},
+                    {name:"Rindersteaks mit Ofengemüse",category:"Fleisch",price:33,ingredients:{"Rindersteaks":"4 Stück","Kartoffeln":"800g","Paprika":"2 Stück","Zucchini":"2 Stück","Kräuterbutter":"100g"},instructions:["Gemüse schneiden und würzen","Im Ofen rösten","Steaks medium braten","Mit Kräuterbutter servieren"],childTip:"Steaks durchbraten für Kinder",workTip:"Kalt als Salat"}
+                ],
+                vegetarian: [
+                    {name:"Gemüse-Lasagne",category:"Vegetarisch",price:16,ingredients:{"Lasagneplatten":"250g","Zucchini":"2 Stück","Aubergine":"1 Stück","Tomaten":"800g","Mozzarella":"250g"},instructions:["Gemüse in Scheiben schneiden","Anbraten und würzen","Lasagne schichten","45 Min backen"],childTip:"Viel Käse macht es lecker",workTip:"Perfekt zum Aufwärmen"},
+                    {name:"Käsespätzle",category:"Vegetarisch",price:14,ingredients:{"Spätzle":"600g","Emmentaler":"300g","Zwiebeln":"3 große","Butter":"50g","Salat":"1 Kopf"},instructions:["Spätzle kochen","Zwiebeln rösten","Mit Käse schichten","Überbacken","Mit Salat servieren"],childTip:"Kinder-Lieblingsgericht",workTip:"Mit Milch aufwärmen"},
+                    {name:"Gemüse-Curry",category:"Vegetarisch",price:15,ingredients:{"Kichererbsen":"2 Dosen","Kokosmilch":"400ml","Gemüse":"600g","Currypaste":"2 EL","Reis":"400g"},instructions:["Gemüse würfeln","Currypaste anrösten","Gemüse zugeben","Mit Kokosmilch ablöschen","Mit Reis servieren"],childTip:"Sehr mild würzen",workTip:"Wird aufgewärmt aromatischer"},
+                    {name:"Pizza Margherita",category:"Vegetarisch",price:12,ingredients:{"Pizzateig":"500g","Tomatensauce":"200ml","Mozzarella":"250g","Basilikum":"1 Bund","Olivenöl":"3 EL"},instructions:["Teig ausrollen","Mit Sauce bestreichen","Mozzarella verteilen","15 Min bei 220°C backen","Mit Basilikum garnieren"],childTip:"Der Klassiker",workTip:"Kalt als Pizza-Schnitte"},
+                    {name:"Risotto mit Pilzen",category:"Vegetarisch",price:18,ingredients:{"Risottoreis":"400g","Pilze":"400g","Weißwein":"200ml","Parmesan":"150g","Brühe":"1,5L"},instructions:["Pilze anbraten","Reis anschwitzen","Nach und nach Brühe zugeben","Ständig rühren","Mit Parmesan verfeinern"],childTip:"Weniger Weißwein",workTip:"Mit Brühe aufwärmen"},
+                    {name:"Quesadillas",category:"Vegetarisch",price:13,ingredients:{"Tortillas":"8 Stück","Bohnen":"1 Dose","Mais":"1 Dose","Käse":"300g","Paprika":"2 Stück"},instructions:["Bohnen zerdrücken","Gemüse anbraten","Tortilla belegen","In Pfanne braten","Mit Dips servieren"],childTip:"Milde Salsa",workTip:"Kalt auch lecker"},
+                    {name:"Pasta Primavera",category:"Vegetarisch",price:14,ingredients:{"Penne":"500g","Gemüse":"600g","Sahne":"200ml","Parmesan":"100g","Knoblauch":"2 Zehen"},instructions:["Nudeln kochen","Gemüse anbraten","Mit Sahne ablöschen","Nudeln untermischen","Mit Parmesan servieren"],childTip:"Gemüse klein schneiden",workTip:"Mit Wasser aufwärmen"},
+                    {name:"Shakshuka",category:"Vegetarisch",price:12,ingredients:{"Eier":"6 Stück","Tomaten":"800g","Paprika":"2 Stück","Feta":"150g","Fladenbrot":"4 Stück"},instructions:["Gemüse anbraten","Tomaten zugeben","Mulden formen","Eier hineinschlagen","Stocken lassen"],childTip:"Eier gut durchgaren",workTip:"Frisch zubereiten"},
+                    {name:"Buddha Bowl",category:"Vegetarisch",price:16,ingredients:{"Quinoa":"250g","Süßkartoffel":"2 Stück","Kichererbsen":"1 Dose","Avocado":"2 Stück","Tahini":"3 EL"},instructions:["Quinoa kochen","Süßkartoffel rösten","Kichererbsen würzen","In Bowls anrichten","Mit Tahini-Dressing"],childTip:"Komponenten getrennt",workTip:"Als Meal-Prep perfekt"},
+                    {name:"Gnocchi mit Tomatensauce",category:"Vegetarisch",price:15,ingredients:{"Gnocchi":"800g","Tomaten":"800g","Mozzarella":"250g","Basilikum":"1 Bund","Knoblauch":"2 Zehen"},instructions:["Sauce köcheln lassen","Gnocchi kochen","Mit Sauce mischen","Mozzarella unterheben","Mit Basilikum garnieren"],childTip:"Kinder lieben Gnocchi",workTip:"Sehr gut aufwärmbar"},
+                    {name:"Spinat-Ricotta-Cannelloni",category:"Vegetarisch",price:17,ingredients:{"Cannelloni":"250g","Spinat":"450g","Ricotta":"400g","Tomatensauce":"500ml","Mozzarella":"200g"},instructions:["Spinat auftauen","Mit Ricotta mischen","Cannelloni füllen","Mit Sauce übergießen","35 Min backen"],childTip:"Sehr mild und käsig",workTip:"Perfekt aufwärmbar"},
+                    {name:"Falafel-Wrap",category:"Vegetarisch",price:15,ingredients:{"Falafel-Mix":"300g","Wraps":"6 Stück","Hummus":"200g","Salat":"200g","Tomaten":"3 Stück"},instructions:["Falafel zubereiten","Frittieren oder backen","Wraps belegen","Mit Hummus bestreichen","Einrollen"],childTip:"Falafel klein brechen",workTip:"Komponenten getrennt"},
+                    {name:"Gemüse-Paella",category:"Vegetarisch",price:18,ingredients:{"Paella-Reis":"400g","Gemüse":"800g","Safran":"1 Prise","Brühe":"1L","Zitronen":"2 Stück"},instructions:["Gemüse anbraten","Reis zugeben","Mit Brühe ablöschen","Safran zugeben","Ohne Rühren garen"],childTip:"Buntes Reisgericht",workTip:"Kalt als Reissalat"},
+                    {name:"Halloumi-Spieße",category:"Vegetarisch",price:19,ingredients:{"Halloumi":"400g","Gemüse":"600g","Couscous":"300g","Zitronen":"2 Stück","Oregano":"2 TL"},instructions:["Halloumi und Gemüse würfeln","Auf Spieße stecken","Grillen oder backen","Couscous zubereiten","Zusammen servieren"],childTip:"Halloumi ist mild",workTip:"Kalt auch gut"},
+                    {name:"Bauernfrühstück",category:"Vegetarisch",price:11,ingredients:{"Kartoffeln":"1kg","Eier":"6 Stück","Zwiebeln":"2 Stück","Gurken":"4 Stück","Milch":"100ml"},instructions:["Kartoffeln in Scheiben","Anbraten mit Zwiebeln","Eier verquirlen","Darüber gießen","Stocken lassen"],childTip:"Comfort Food",workTip:"Auch kalt lecker"},
+                    {name:"Süßkartoffel-Curry",category:"Vegetarisch",price:14,ingredients:{"Süßkartoffeln":"800g","Linsen":"200g","Kokosmilch":"400ml","Spinat":"200g","Naan":"4 Stück"},instructions:["Süßkartoffeln würfeln","Mit Linsen köcheln","Kokosmilch zugeben","Spinat unterheben","Mit Naan servieren"],childTip:"Süßlich und mild",workTip:"Wird cremiger beim Aufwärmen"},
+                    {name:"Gemüse-Couscous",category:"Vegetarisch",price:14,ingredients:{"Couscous":"400g","Gemüse":"600g","Kichererbsen":"1 Dose","Rosinen":"50g","Minze":"1 Bund"},instructions:["Couscous quellen lassen","Gemüse anbraten","Mit Couscous mischen","Rosinen zugeben","Mit Minze garnieren"],childTip:"Rosinen machen es süß",workTip:"Kalt als Salat super"},
+                    {name:"Ratatouille",category:"Vegetarisch",price:14,ingredients:{"Aubergine":"1 Stück","Zucchini":"2 Stück","Paprika":"2 Stück","Tomaten":"4 Stück","Reis":"400g"},instructions:["Gemüse würfeln","Nacheinander anbraten","30 Min schmoren","Reis kochen","Zusammen servieren"],childTip:"Gemüse weich kochen",workTip:"Klassiker zum Aufwärmen"},
+                    {name:"Linsen-Bolognese",category:"Vegetarisch",price:13,ingredients:{"Rote Linsen":"250g","Spaghetti":"500g","Tomaten":"800g","Gemüse":"400g","Parmesan":"100g"},instructions:["Gemüse würfeln","Linsen zugeben","Mit Tomaten köcheln","Spaghetti kochen","Mit Parmesan servieren"],childTip:"Wie echte Bolognese",workTip:"Sauce einfrieren"},
+                    {name:"Blumenkohl-Wings",category:"Vegetarisch",price:15,ingredients:{"Blumenkohl":"1 großer","Mehl":"150g","Milch":"200ml","BBQ-Sauce":"200ml","Pommes":"500g"},instructions:["Blumenkohl in Röschen","Panieren","Backen","Mit BBQ-Sauce","Mit Pommes servieren"],childTip:"Sieht aus wie Chicken",workTip:"Frisch am besten"},
+                    {name:"Käse-Lauch-Suppe",category:"Vegetarisch",price:13,ingredients:{"Lauch":"3 Stangen","Schmelzkäse":"400g","Gemüsebrühe":"1L","Baguette":"1 Stück","Sahne":"200ml"},instructions:["Lauch anbraten","Mit Brühe ablöschen","Käse einrühren","Mit Sahne verfeinern","Mit Baguette servieren"],childTip:"Sehr cremig und mild",workTip:"Perfekt aufwärmbar"},
+                    {name:"Gemüse-Tempura",category:"Vegetarisch",price:16,ingredients:{"Gemüse gemischt":"800g","Tempuramehl":"200g","Eiswasser":"300ml","Reis":"400g","Sojasauce":"100ml"},instructions:["Gemüse vorbereiten","Tempurateig anrühren","Frittieren","Mit Reis servieren","Sojasauce zum Dippen"],childTip:"Knusprig und lustig",workTip:"Frisch zubereiten"},
+                    {name:"Spinat-Gorgonzola-Pasta",category:"Vegetarisch",price:17,ingredients:{"Penne":"500g","Spinat":"400g","Gorgonzola":"200g","Walnüsse":"100g","Sahne":"250ml"},instructions:["Nudeln kochen","Spinat anbraten","Gorgonzola schmelzen","Walnüsse rösten","Alles mischen"],childTip:"Ohne Gorgonzola möglich",workTip:"Mit Wasser aufwärmen"},
+                    {name:"Rösti-Auflauf",category:"Vegetarisch",price:14,ingredients:{"Kartoffeln":"1,5kg","Zwiebeln":"2 Stück","Käse":"300g","Sahne":"300ml","Lauch":"1 Stange"},instructions:["Kartoffeln raspeln","Schichten in Form","Mit Sahne übergießen","Mit Käse bedecken","45 Min backen"],childTip:"Goldbraun und käsig",workTip:"Super aufwärmbar"},
+                    {name:"Tofu-Teriyaki",category:"Vegetarisch",price:15,ingredients:{"Tofu":"400g","Teriyaki-Sauce":"200ml","Reis":"400g","Brokkoli":"500g","Sesam":"2 EL"},instructions:["Tofu marinieren","Scharf anbraten","Brokkoli dämpfen","Mit Teriyaki glasieren","Mit Sesam bestreuen"],childTip:"Süßlich durch Sauce",workTip:"Gut aufwärmbar"},
+                    {name:"Kürbis-Risotto",category:"Vegetarisch",price:16,ingredients:{"Hokkaido":"1 kleiner","Risottoreis":"400g","Weißwein":"200ml","Parmesan":"150g","Salbei":"1 Bund"},instructions:["Kürbis würfeln","Anbraten","Reis zugeben","Nach und nach Brühe","Mit Salbei garnieren"],childTip:"Orange und cremig",workTip:"Mit Brühe aufwärmen"},
+                    {name:"Griechischer Bauernsalat",category:"Vegetarisch",price:14,ingredients:{"Feta":"400g","Tomaten":"6 Stück","Gurken":"2 Stück","Oliven":"200g","Fladenbrot":"4 Stück"},instructions:["Gemüse würfeln","Feta bröckeln","Mit Olivenöl mischen","Mit Oregano würzen","Mit Fladenbrot servieren"],childTip:"Ohne Oliven für Kinder",workTip:"Als Meal-Prep ideal"},
+                    {name:"Pilz-Stroganoff",category:"Vegetarisch",price:18,ingredients:{"Pilze gemischt":"600g","Zwiebeln":"2 Stück","Saure Sahne":"300ml","Reis":"400g","Petersilie":"1 Bund"},instructions:["Pilze anbraten","Zwiebeln zugeben","Mit Sahne ablöschen","Würzen","Mit Reis servieren"],childTip:"Cremig und mild",workTip:"Gut aufwärmbar"},
+                    {name:"Mozzarella-Tomaten-Tarte",category:"Vegetarisch",price:15,ingredients:{"Blätterteig":"1 Rolle","Tomaten":"5 Stück","Mozzarella":"250g","Pesto":"100g","Rucola":"100g"},instructions:["Blätterteig auslegen","Mit Pesto bestreichen","Tomaten und Mozzarella","25 Min backen","Mit Rucola garnieren"],childTip:"Wie Pizza",workTip:"Kalt auch gut"},
+                    {name:"Linsen-Dal",category:"Vegetarisch",price:12,ingredients:{"Rote Linsen":"300g","Kokosmilch":"400ml","Tomaten":"3 Stück","Naan-Brot":"4 Stück","Koriander":"1 Bund"},instructions:["Linsen kochen","Tomaten zugeben","Mit Kokosmilch cremig","Würzen","Mit Naan servieren"],childTip:"Sehr mild möglich",workTip:"Perfekt aufwärmbar"},
+                    {name:"Zucchini-Puffer",category:"Vegetarisch",price:11,ingredients:{"Zucchini":"3 große","Eier":"3 Stück","Mehl":"150g","Käse":"150g","Tzatziki":"300g"},instructions:["Zucchini raspeln","Ausdrücken","Mit Ei und Mehl mischen","Puffer braten","Mit Tzatziki servieren"],childTip:"Knusprig außen",workTip:"Auch kalt lecker"},
+                    {name:"Champignon-Rahm-Geschnetzeltes",category:"Vegetarisch",price:16,ingredients:{"Champignons":"800g","Sahne":"400ml","Zwiebeln":"2 Stück","Spätzle":"500g","Petersilie":"1 Bund"},instructions:["Pilze in Streifen","Scharf anbraten","Mit Sahne ablöschen","Spätzle kochen","Zusammen servieren"],childTip:"Wie mit Fleisch",workTip:"Sehr gut aufwärmbar"},
+                    {name:"Gemüse-Frittata",category:"Vegetarisch",price:13,ingredients:{"Eier":"8 Stück","Gemüse":"600g","Käse":"200g","Milch":"200ml","Salat":"1 Kopf"},instructions:["Gemüse anbraten","Eier-Milch-Mix drüber","Mit Käse bestreuen","Im Ofen stocken","Mit Salat servieren"],childTip:"Buntes Omelett",workTip:"Kalt als Snack"},
+                    {name:"Polenta mit Ratatouille",category:"Vegetarisch",price:14,ingredients:{"Polenta":"300g","Gemüse für Ratatouille":"800g","Tomaten":"400g","Parmesan":"150g","Kräuter":"gemischt"},instructions:["Polenta kochen","Ratatouille schmoren","Polenta in Form","Anbraten","Mit Ratatouille servieren"],childTip:"Mais-Brei mit Gemüse",workTip:"Gut aufwärmbar"},
+                    {name:"Kartoffel-Gemüse-Gratin",category:"Vegetarisch",price:13,ingredients:{"Kartoffeln":"1kg","Brokkoli":"500g","Sahne":"400ml","Käse":"250g","Muskat":"1 Prise"},instructions:["Kartoffeln schneiden","Mit Gemüse schichten","Sahne-Käse-Mix drüber","45 Min backen"],childTip:"Käsig und cremig",workTip:"Perfekt aufwärmbar"}
+                ],
+                kids: [
+                    {name:"Mini-Frikadellen",category:"Kinder",price:8,ingredients:{"Hackfleisch":"250g","Ei":"1 Stück","Semmelbrösel":"3 EL","Kartoffelbrei":"500g"},instructions:["Hackfleisch mischen","Kleine Frikadellen formen","Braten","Mit Kartoffelbrei servieren"],childTip:"Sehr mild würzen",workTip:"Nur für Kinder"},
+                    {name:"Pfannkuchen",category:"Kinder",price:6,ingredients:{"Mehl":"200g","Milch":"400ml","Eier":"3 Stück","Apfelmus":"400g"},instructions:["Teig anrühren","Dünne Pfannkuchen backen","Mit Apfelmus servieren"],childTip:"Der Klassiker",workTip:"Nur für Kinder"},
+                    {name:"Nudeln mit Butter",category:"Kinder",price:5,ingredients:{"Nudeln":"200g","Butter":"50g","Parmesan":"50g","Erbsen":"100g"},instructions:["Nudeln kochen","Mit Butter mischen","Parmesan drüber"],childTip:"Einfach und beliebt",workTip:"Nur für Kinder"},
+                    {name:"Pizza-Schnecken",category:"Kinder",price:8,ingredients:{"Pizzateig":"1 Rolle","Tomatensauce":"150ml","Salami":"100g","Käse":"150g"},instructions:["Teig belegen","Aufrollen","In Scheiben schneiden","20 Min backen"],childTip:"Mini-Pizzen",workTip:"Nur für Kinder"},
+                    {name:"Chicken Nuggets",category:"Kinder",price:10,ingredients:{"Hähnchen":"300g","Cornflakes":"100g","Ei":"1 Stück","Pommes":"400g"},instructions:["Hähnchen schneiden","In Cornflakes wenden","Backen","Mit Pommes servieren"],childTip:"Gesünder als gekaufte",workTip:"Nur für Kinder"},
+                    {name:"Kartoffelpuffer",category:"Kinder",price:7,ingredients:{"Kartoffeln":"600g","Ei":"1 Stück","Mehl":"2 EL","Apfelmus":"400g","Öl":"zum Braten"},instructions:["Kartoffeln reiben","Mit Ei und Mehl mischen","Kleine Puffer braten","Mit Apfelmus servieren"],childTip:"Knusprig und süß",workTip:"Nur für Kinder"},
+                    {name:"Käse-Schinken-Toast",category:"Kinder",price:6,ingredients:{"Toastbrot":"8 Scheiben","Schinken":"150g","Käse":"150g","Butter":"zum Bestreichen","Tomaten":"2 Stück"},instructions:["Toast buttern","Belegen","Toasten","In Dreiecke schneiden"],childTip:"Der Klassiker",workTip:"Nur für Kinder"},
+                    {name:"Hühnersuppe",category:"Kinder",price:9,ingredients:{"Hühnerbrühe":"1L","Suppennudeln":"100g","Möhren":"2 Stück","Hühnerfleisch":"150g","Petersilie":"1 Bund"},instructions:["Brühe aufkochen","Möhren würfeln","Nudeln kochen","Hühnerfleisch zugeben","Mit Petersilie garnieren"],childTip:"Bei Erkältung ideal",workTip:"Nur für Kinder"},
+                    {name:"Grießbrei",category:"Kinder",price:5,ingredients:{"Milch":"500ml","Grieß":"80g","Zucker":"2 EL","Zimt":"1 TL","Kompott":"200g"},instructions:["Milch aufkochen","Grieß einrieseln","Rühren und kochen","Mit Zimt bestreuen","Mit Kompott servieren"],childTip:"Süßes Mittagessen",workTip:"Nur für Kinder"},
+                    {name:"Würstchen im Schlafrock",category:"Kinder",price:8,ingredients:{"Würstchen":"4 Stück","Blätterteig":"1 Rolle","Ei":"1 Stück","Ketchup":"zum Dippen"},instructions:["Blätterteig schneiden","Würstchen einwickeln","Mit Ei bestreichen","15 Min backen","Mit Ketchup servieren"],childTip:"Fingerfood",workTip:"Nur für Kinder"},
+                    {name:"Tomatensuppe",category:"Kinder",price:6,ingredients:{"Tomaten passiert":"500ml","Reis":"80g","Sahne":"100ml","Brühe":"500ml","Basilikum":"einige Blätter"},instructions:["Brühe mit Tomaten aufkochen","Reis zugeben","15 Min köcheln","Mit Sahne verfeinern","Mit Basilikum garnieren"],childTip:"Mild und sättigend",workTip:"Nur für Kinder"},
+                    {name:"Eierkuchen-Röllchen",category:"Kinder",price:7,ingredients:{"Eier":"3 Stück","Mehl":"150g","Milch":"250ml","Frischkäse":"150g","Schinken":"100g"},instructions:["Eierkuchen backen","Mit Frischkäse bestreichen","Schinken drauf","Aufrollen und schneiden"],childTip:"Fingerfood",workTip:"Nur für Kinder"},
+                    {name:"Milchreis",category:"Kinder",price:6,ingredients:{"Milchreis":"200g","Milch":"800ml","Zucker":"3 EL","Obst":"300g","Zimt":"zum Bestreuen"},instructions:["Milch aufkochen","Reis zugeben","30 Min quellen","Obst schneiden","Mit Zimt servieren"],childTip:"Süß und gesund",workTip:"Nur für Kinder"},
+                    {name:"Mini-Hackbällchen",category:"Kinder",price:9,ingredients:{"Hackfleisch":"250g","Semmelbrösel":"3 EL","Ei":"1 Stück","Tomatensauce":"400ml","Nudeln":"200g"},instructions:["Kleine Bällchen formen","In Sauce köcheln","Nudeln kochen","Zusammen servieren"],childTip:"Kleine Bällchen sind praktisch",workTip:"Nur für Kinder"},
+                    {name:"Gemüse-Muffins",category:"Kinder",price:7,ingredients:{"Mehl":"200g","Eier":"2 Stück","Milch":"150ml","Zucchini":"1 kleine","Käse":"100g"},instructions:["Gemüse raspeln","Teig anrühren","In Muffinformen","20 Min backen"],childTip:"Verstecktes Gemüse",workTip:"Nur für Kinder"},
+                    {name:"Spaghetti mit Tomatensauce",category:"Kinder",price:5,ingredients:{"Spaghetti":"200g","Tomatensauce":"300ml","Parmesan":"50g","Basilikum":"einige Blätter"},instructions:["Spaghetti kochen","Sauce erwärmen","Mischen","Mit Parmesan bestreuen"],childTip:"Der absolute Klassiker",workTip:"Nur für Kinder"},
+                    {name:"Brotzeit-Teller",category:"Kinder",price:7,ingredients:{"Vollkornbrot":"4 Scheiben","Käse":"100g","Wurst":"100g","Gemüsesticks":"200g"},instructions:["Brot in Dreiecke","Gemüse schneiden","Alles anrichten"],childTip:"Bunter Teller",workTip:"Nur für Kinder"},
+                    {name:"Kaiserschmarrn",category:"Kinder",price:8,ingredients:{"Eier":"4 Stück","Mehl":"150g","Milch":"200ml","Rosinen":"50g","Puderzucker":"zum Bestäuben"},instructions:["Teig anrühren","In Pfanne backen","Zerreißen","Mit Puderzucker bestäuben"],childTip:"Süßes Hauptgericht",workTip:"Nur für Kinder"},
+                    {name:"Gemüse-Reis-Pfanne",category:"Kinder",price:7,ingredients:{"Reis":"200g","Möhren":"2 Stück","Erbsen":"150g","Mais":"150g","Ei":"2 Stück"},instructions:["Reis kochen","Gemüse anbraten","Reis untermischen","Ei unterrühren"],childTip:"Buntes Essen",workTip:"Nur für Kinder"},
+                    {name:"Fischstäbchen",category:"Kinder",price:9,ingredients:{"Fischstäbchen":"8 Stück","Kartoffelpüree":"500g","Erbsen":"200g","Remoulade":"100g"},instructions:["Fischstäbchen backen","Kartoffelpüree zubereiten","Erbsen kochen","Zusammen servieren"],childTip:"Knusprig und mild",workTip:"Nur für Kinder"}
+                ]
+            };
+        }
 
         // Globale Variablen
         let currentWeekPlan = [];
@@ -2537,6 +936,7 @@
 
         // Initialisierung beim Laden
         window.addEventListener('DOMContentLoaded', function() {
+            loadRecipes();
             loadPreferences();
             loadSavedWeeks();
             updateRecipeStats();
@@ -2544,12 +944,38 @@
             generateNewPlan();
         });
 
+        // Rezept-Statistiken aktualisieren
+        function updateRecipeStats() {
+            const meatCount = recipes.meat ? recipes.meat.length : 0;
+            const vegCount = recipes.vegetarian ? recipes.vegetarian.length : 0;
+            const kidsCount = recipes.kids ? recipes.kids.length : 0;
+            const total = meatCount + vegCount + kidsCount;
+            
+            document.getElementById('totalRecipes').textContent = total;
+            document.getElementById('meatCount').textContent = meatCount;
+            document.getElementById('vegCount').textContent = vegCount;
+            document.getElementById('kidsCount').textContent = kidsCount;
+        }
+
+        // Tab-Wechsel Funktion
+        function switchTab(event, tabName) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
         // Wochendatum berechnen (Freitag bis Donnerstag)
         function calculateCurrentWeekDates() {
             const today = new Date();
             const dayOfWeek = today.getDay();
             
-            // Berechne den letzten Freitag
             let daysToLastFriday = (dayOfWeek + 2) % 7;
             if (dayOfWeek >= 5 || dayOfWeek === 0) {
                 daysToLastFriday = (dayOfWeek === 5) ? 0 : (dayOfWeek === 6) ? 1 : 2;
@@ -2567,6 +993,30 @@
             const endStr = weekEnd.toLocaleDateString('de-CH', options);
             
             document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
+        }
+
+        // Präferenzen laden
+        function loadPreferences() {
+            const saved = localStorage.getItem('mealPlannerPrefs');
+            if (saved) {
+                preferences = JSON.parse(saved);
+                if (preferences.dailyBudget) {
+                    document.getElementById('dailyBudget').value = preferences.dailyBudget;
+                }
+                if (preferences.vegDays) {
+                    document.getElementById('vegDays').value = preferences.vegDays;
+                }
+                if (preferences.adultsCount) {
+                    document.getElementById('adultsCount').value = preferences.adultsCount;
+                }
+                if (preferences.childrenCount) {
+                    document.getElementById('childrenCount').value = preferences.childrenCount;
+                }
+                if (preferences.weeksSincePizza !== undefined) {
+                    weeksSincePizza = preferences.weeksSincePizza;
+                }
+            }
+            updateBudgetDisplay();
         }
 
         // Gespeicherte Wochen laden
@@ -2594,7 +1044,6 @@
                 summary: getSummaryText()
             };
             
-            // Maximal 10 gespeicherte Wochen
             if (savedWeeks.length >= 10) {
                 if (confirm('⚠️ Es sind bereits 10 Wochen gespeichert. Die älteste Woche wird überschrieben. Fortfahren?')) {
                     savedWeeks.shift();
@@ -2606,7 +1055,6 @@
             savedWeeks.push(weekData);
             localStorage.setItem('savedWeekPlans', JSON.stringify(savedWeeks));
             
-            // Visuelles Feedback
             const btn = event.target;
             const originalText = btn.innerHTML;
             btn.innerHTML = '✅ Gespeichert!';
@@ -2632,7 +1080,6 @@
                 return;
             }
             
-            // Modal erstellen
             const modal = document.createElement('div');
             modal.className = 'modal active';
             modal.innerHTML = `
@@ -2643,4 +1090,658 @@
                     </div>
                     <div class="saved-weeks-list">
                         ${savedWeeks.map((week, index) => {
-                            const weekStart = new Date(
+                            const weekStart = new Date(week.weekStart);
+                            const weekEnd = new Date(weekStart);
+                            weekEnd.setDate(weekStart.getDate() + 6);
+                            const startStr = weekStart.toLocaleDateString('de-CH');
+                            const endStr = weekEnd.toLocaleDateString('de-CH');
+                            
+                            return `
+                                <div class="saved-week-item">
+                                    <div class="saved-week-info">
+                                        <div class="saved-week-date">${startStr} - ${endStr}</div>
+                                        <div class="saved-week-summary">${week.summary} • ${week.totalCost} CHF</div>
+                                    </div>
+                                    <div class="saved-week-actions">
+                                        <button class="mini-btn mini-btn-load" onclick="loadSavedWeek(${index})">Laden</button>
+                                        <button class="mini-btn mini-btn-delete" onclick="deleteSavedWeek(${index})">🗑️</button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Gespeicherte Woche laden
+        function loadSavedWeek(index) {
+            const week = savedWeeks[index];
+            
+            if (currentWeekPlan.length > 0) {
+                if (!confirm('⚠️ Der aktuelle Wochenplan wird überschrieben. Fortfahren?')) {
+                    return;
+                }
+            }
+            
+            currentWeekPlan = week.weekPlan;
+            shoppingListData = week.shoppingList;
+            currentWeekStart = new Date(week.weekStart);
+            
+            const weekEnd = new Date(currentWeekStart);
+            weekEnd.setDate(currentWeekStart.getDate() + 6);
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
+            const endStr = weekEnd.toLocaleDateString('de-CH', options);
+            document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
+            
+            displayWeekOverview();
+            displayShoppingList();
+            displayRecipes();
+            
+            document.querySelector('.modal').remove();
+            
+            alert('✅ Wochenplan wurde geladen!');
+        }
+
+        // Gespeicherte Woche löschen
+        function deleteSavedWeek(index) {
+            if (confirm('🗑️ Diese gespeicherte Woche wirklich löschen?')) {
+                savedWeeks.splice(index, 1);
+                localStorage.setItem('savedWeekPlans', JSON.stringify(savedWeeks));
+                
+                document.querySelector('.modal').remove();
+                showSavedWeeks();
+            }
+        }
+
+        // Bestätigung vor neuem Plan
+        function confirmGenerateNewPlan() {
+            if (currentWeekPlan.length > 0) {
+                const confirmDialog = document.createElement('div');
+                confirmDialog.className = 'confirm-dialog active';
+                confirmDialog.innerHTML = `
+                    <h3>⚠️ Neuen Plan generieren?</h3>
+                    <p>Der aktuelle Wochenplan geht verloren, wenn er nicht gespeichert wurde.</p>
+                    <p><strong>Tipp:</strong> Speichere den aktuellen Plan mit "Woche speichern" bevor du einen neuen generierst.</p>
+                    <div class="confirm-actions">
+                        <button class="btn btn-secondary" onclick="this.closest('.confirm-dialog').remove()">Abbrechen</button>
+                        <button class="btn btn-primary" onclick="this.closest('.confirm-dialog').remove(); generateNewPlan();">Neuen Plan erstellen</button>
+                    </div>
+                `;
+                document.body.appendChild(confirmDialog);
+            } else {
+                generateNewPlan();
+            }
+        }
+
+        // Präferenzen speichern
+        function savePreferences() {
+            preferences = {
+                dailyBudget: document.getElementById('dailyBudget').value,
+                adultsCount: document.getElementById('adultsCount').value,
+                childrenCount: document.getElementById('childrenCount').value,
+                vegDays: document.getElementById('vegDays').value,
+                noFish: document.getElementById('noFish').checked,
+                noCheese: document.getElementById('noCheese').checked,
+                weeksSincePizza: weeksSincePizza
+            };
+            localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
+            alert('✅ Einstellungen wurden gespeichert!');
+        }
+
+        // Budget-Anzeige aktualisieren
+        function updateBudgetDisplay() {
+            const dailyBudget = document.getElementById('dailyBudget').value;
+            const weeklyBudget = dailyBudget * 7;
+            document.getElementById('budgetDisplay').textContent = `${weeklyBudget} CHF`;
+        }
+
+        // Hilfsfunktion: Array mischen
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Vegetarische Tage verteilen
+        function distributeVegDays(totalDays, vegCount) {
+            if (vegCount === 0) return [];
+            if (vegCount >= totalDays) return Array.from({length: totalDays}, (_, i) => i);
+            
+            const positions = [];
+            const spacing = Math.floor(totalDays / vegCount);
+            
+            for (let i = 0; i < vegCount; i++) {
+                let pos = i * spacing + Math.floor(Math.random() * Math.max(1, spacing - 1));
+                if (pos >= totalDays) pos = totalDays - 1;
+                if (!positions.includes(pos)) {
+                    positions.push(pos);
+                }
+            }
+            
+            return positions;
+        }
+
+        // Neuen Wochenplan generieren
+        function generateNewPlan() {
+            document.getElementById('loadingOverview').classList.add('active');
+            
+            setTimeout(() => {
+                const vegDays = parseInt(document.getElementById('vegDays').value);
+                const days = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag'];
+                
+                const meatRecipes = shuffleArray(recipes.meat);
+                const vegRecipes = shuffleArray(recipes.vegetarian);
+                const kidsRecipes = shuffleArray(recipes.kids);
+                
+                currentWeekPlan = [];
+                shoppingListData = {};
+                
+                const vegDayPositions = distributeVegDays(7, vegDays);
+                
+                let meatIndex = 0;
+                let vegIndex = 0;
+                let kidsIndex = 0;
+                
+                days.forEach((day, index) => {
+                    let recipe;
+                    if (vegDayPositions.includes(index)) {
+                        recipe = vegRecipes[vegIndex++ % vegRecipes.length];
+                    } else {
+                        recipe = meatRecipes[meatIndex++ % meatRecipes.length];
+                    }
+                    
+                    const dayPlan = {
+                        day: day,
+                        dinner: recipe,
+                        kidsLunch: null
+                    };
+                    
+                    if (day === 'Dienstag' || day === 'Donnerstag') {
+                        dayPlan.kidsLunch = kidsRecipes[kidsIndex++ % kidsRecipes.length];
+                    }
+                    
+                    currentWeekPlan.push(dayPlan);
+                    
+                    addToShoppingList(recipe);
+                    if (dayPlan.kidsLunch) {
+                        addToShoppingList(dayPlan.kidsLunch);
+                    }
+                });
+                
+                displayWeekOverview();
+                displayShoppingList();
+                displayRecipes();
+                
+                document.getElementById('loadingOverview').classList.remove('active');
+            }, 800);
+        }
+
+        // Zur Einkaufsliste hinzufügen
+        function addToShoppingList(recipe) {
+            for (const [ingredient, amount] of Object.entries(recipe.ingredients)) {
+                if (!shoppingListData[ingredient]) {
+                    shoppingListData[ingredient] = amount;
+                } else {
+                    shoppingListData[ingredient] += `, ${amount}`;
+                }
+            }
+        }
+
+        // Wochenübersicht anzeigen
+        function displayWeekOverview() {
+            const container = document.getElementById('weekOverview');
+            container.innerHTML = '';
+            let totalCost = 0;
+            
+            currentWeekPlan.forEach((dayPlan, index) => {
+                let dayCost = dayPlan.dinner.price;
+                if (dayPlan.kidsLunch) {
+                    dayCost += dayPlan.kidsLunch.price;
+                }
+                totalCost += dayCost;
+                
+                const dayDate = new Date(currentWeekStart);
+                dayDate.setDate(currentWeekStart.getDate() + index);
+                const dateStr = dayDate.toLocaleDateString('de-CH', { day: '2-digit', month: '2-digit' });
+                
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                dayCard.innerHTML = `
+                    <button class="swap-btn" onclick="swapRecipe(${index}, 'dinner')" title="Rezept tauschen">🔄</button>
+                    <div class="day-header">
+                        <span class="day-name">${dayPlan.day} <small style="color:#999;">${dateStr}</small></span>
+                        <span class="price-tag">${dayCost} CHF</span>
+                    </div>
+                    <div class="meal-info">
+                        <div class="meal-name">🍽️ Abendessen: ${dayPlan.dinner.name}</div>
+                        <div class="meal-details">${dayPlan.dinner.category} • ${dayPlan.dinner.workTip}</div>
+                    </div>
+                    ${dayPlan.kidsLunch ? `
+                        <div class="meal-info" style="position:relative;">
+                            <button class="swap-btn" onclick="swapRecipe(${index}, 'kidsLunch')" title="Kinder-Rezept tauschen" style="position:absolute; right:-5px; top:-5px; width:30px; height:30px; font-size:14px;">🔄</button>
+                            <div class="meal-name">👶 Kinder-Mittag: ${dayPlan.kidsLunch.name}</div>
+                            <div class="meal-details">Speziell für die Kleinen</div>
+                        </div>
+                    ` : ''}
+                `;
+                container.appendChild(dayCard);
+            });
+            
+            document.getElementById('totalCost').textContent = totalCost.toFixed(2);
+        }
+        
+        // Einzelnes Rezept austauschen
+        function swapRecipe(dayIndex, mealType) {
+            const dayPlan = currentWeekPlan[dayIndex];
+            let availableRecipes = [];
+            let currentRecipe = null;
+            
+            if (mealType === 'dinner') {
+                currentRecipe = dayPlan.dinner;
+                if (currentRecipe.category === 'Fleisch') {
+                    availableRecipes = recipes.meat.filter(r => r.name !== currentRecipe.name);
+                } else if (currentRecipe.category === 'Vegetarisch') {
+                    availableRecipes = recipes.vegetarian.filter(r => r.name !== currentRecipe.name);
+                }
+            } else if (mealType === 'kidsLunch') {
+                currentRecipe = dayPlan.kidsLunch;
+                availableRecipes = recipes.kids.filter(r => r.name !== currentRecipe.name);
+            }
+            
+            if (availableRecipes.length > 0) {
+                const newRecipe = availableRecipes[Math.floor(Math.random() * availableRecipes.length)];
+                
+                removeFromShoppingList(currentRecipe);
+                
+                if (mealType === 'dinner') {
+                    currentWeekPlan[dayIndex].dinner = newRecipe;
+                } else {
+                    currentWeekPlan[dayIndex].kidsLunch = newRecipe;
+                }
+                
+                addToShoppingList(newRecipe);
+                
+                displayWeekOverview();
+                displayShoppingList();
+                displayRecipes();
+                
+                const dayCards = document.querySelectorAll('.day-card');
+                dayCards[dayIndex].style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    dayCards[dayIndex].style.animation = '';
+                }, 500);
+            }
+        }
+        
+        // Aus Einkaufsliste entfernen
+        function removeFromShoppingList(recipe) {
+            rebuildShoppingList();
+        }
+        
+        // Einkaufsliste neu aufbauen
+        function rebuildShoppingList() {
+            shoppingListData = {};
+            currentWeekPlan.forEach(dayPlan => {
+                addToShoppingList(dayPlan.dinner);
+                if (dayPlan.kidsLunch) {
+                    addToShoppingList(dayPlan.kidsLunch);
+                }
+            });
+        }
+
+        // Einkaufsliste anzeigen
+        function displayShoppingList() {
+            const container = document.getElementById('shoppingList');
+            container.innerHTML = '';
+            
+            const categories = {
+                '🥩 Fleisch & Geflügel': [],
+                '🥕 Gemüse & Obst': [],
+                '🧀 Milchprodukte': [],
+                '🍝 Nudeln, Reis & Beilagen': [],
+                '🥫 Konserven & Haltbares': [],
+                '🧂 Gewürze & Öle': []
+            };
+            
+            for (const [ingredient, amount] of Object.entries(shoppingListData)) {
+                const lower = ingredient.toLowerCase();
+                
+                if (lower.includes('fleisch') || lower.includes('hähnchen') || 
+                    lower.includes('schwein') || lower.includes('rind') || 
+                    lower.includes('hack') || lower.includes('schnitzel') ||
+                    lower.includes('lamm') || lower.includes('kalb') ||
+                    lower.includes('ente') || lower.includes('pute')) {
+                    categories['🥩 Fleisch & Geflügel'].push({ingredient, amount});
+                } else if (lower.includes('milch') || lower.includes('käse') || 
+                           lower.includes('sahne') || lower.includes('butter') ||
+                           lower.includes('joghurt') || lower.includes('mozzarella') ||
+                           lower.includes('ricotta') || lower.includes('feta')) {
+                    categories['🧀 Milchprodukte'].push({ingredient, amount});
+                } else if (lower.includes('nudel') || lower.includes('reis') || 
+                           lower.includes('spaghetti') || lower.includes('penne') ||
+                           lower.includes('kartoffel') || lower.includes('spätzle') ||
+                           lower.includes('gnocchi') || lower.includes('couscous')) {
+                    categories['🍝 Nudeln, Reis & Beilagen'].push({ingredient, amount});
+                } else if (lower.includes('dose') || lower.includes('bohnen')) {
+                    categories['🥫 Konserven & Haltbares'].push({ingredient, amount});
+                } else if (lower.includes('salz') || lower.includes('pfeffer') ||
+                           lower.includes('öl') || lower.includes('gewürz')) {
+                    categories['🧂 Gewürze & Öle'].push({ingredient, amount});
+                } else {
+                    categories['🥕 Gemüse & Obst'].push({ingredient, amount});
+                }
+            }
+            
+            for (const [category, items] of Object.entries(categories)) {
+                if (items.length === 0) continue;
+                
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'shopping-category';
+                categoryDiv.innerHTML = `<h3>${category}</h3>`;
+                
+                items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'shopping-item';
+                    itemDiv.innerHTML = `
+                        <input type="checkbox">
+                        <span>${item.ingredient}: ${item.amount}</span>
+                    `;
+                    categoryDiv.appendChild(itemDiv);
+                });
+                
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        // Rezepte anzeigen
+        function displayRecipes() {
+            const container = document.getElementById('recipesList');
+            container.innerHTML = '';
+            
+            currentWeekPlan.forEach(dayPlan => {
+                const recipeDiv = document.createElement('div');
+                recipeDiv.className = 'recipe-details';
+                recipeDiv.innerHTML = `
+                    <h3>🍽️ ${dayPlan.day} - ${dayPlan.dinner.name}</h3>
+                    <div class="ingredients-list">
+                        <h4>Zutaten (für 4,5 Portionen):</h4>
+                        <ul>
+                            ${Object.entries(dayPlan.dinner.ingredients).map(([ing, amount]) => 
+                                `<li>${ing}: ${amount}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <h4>Zubereitung:</h4>
+                        <ol>
+                            ${dayPlan.dinner.instructions.map(step => 
+                                `<li>${step}</li>`
+                            ).join('')}
+                        </ol>
+                    </div>
+                    <div class="tips-box">
+                        <h4>💡 Tipps:</h4>
+                        <p><strong>Für Kinder:</strong> ${dayPlan.dinner.childTip}</p>
+                        <p><strong>Fürs Büro:</strong> ${dayPlan.dinner.workTip}</p>
+                    </div>
+                `;
+                container.appendChild(recipeDiv);
+                
+                if (dayPlan.kidsLunch) {
+                    const kidsDiv = document.createElement('div');
+                    kidsDiv.className = 'recipe-details';
+                    kidsDiv.innerHTML = `
+                        <h3>👶 ${dayPlan.day} Mittag - ${dayPlan.kidsLunch.name}</h3>
+                        <div class="ingredients-list">
+                            <h4>Zutaten (für 2 Kinder):</h4>
+                            <ul>
+                                ${Object.entries(dayPlan.kidsLunch.ingredients).map(([ing, amount]) => 
+                                    `<li>${ing}: ${amount}</li>`
+                                ).join('')}
+                            </ul>
+                        </div>
+                        <div class="instructions">
+                            <h4>Zubereitung:</h4>
+                            <ol>
+                                ${dayPlan.kidsLunch.instructions.map(step => 
+                                    `<li>${step}</li>`
+                                ).join('')}
+                            </ol>
+                        </div>
+                        <div class="tips-box">
+                            <h4>💡 Tipp:</h4>
+                            <p>${dayPlan.kidsLunch.childTip}</p>
+                        </div>
+                    `;
+                    container.appendChild(kidsDiv);
+                }
+            });
+        }
+
+        // PDF Export
+        function exportToPDF() {
+            window.print();
+        }
+
+        // ========== SYNC FUNKTIONEN ==========
+        
+        // Sync Dialog anzeigen
+        function showSyncDialog() {
+            const modal = document.getElementById('syncModal');
+            modal.classList.add('active');
+            
+            if (currentWeekPlan.length > 0) {
+                generateSyncCode();
+            }
+        }
+        
+        // Sync Dialog schließen
+        function closeSyncDialog() {
+            const modal = document.getElementById('syncModal');
+            modal.classList.remove('active');
+            document.getElementById('syncStatus').innerHTML = '';
+        }
+        
+        // Sync Code generieren
+        function generateSyncCode() {
+            const syncData = {
+                version: '1.0',
+                timestamp: new Date().toISOString(),
+                weekPlan: currentWeekPlan,
+                shoppingList: shoppingListData,
+                preferences: preferences,
+                weeksSincePizza: weeksSincePizza
+            };
+            
+            const jsonString = JSON.stringify(syncData);
+            const compressed = btoa(encodeURIComponent(jsonString));
+            
+            const codeElement = document.getElementById('syncCode');
+            codeElement.textContent = compressed;
+            
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = '';
+            
+            if (typeof QRCode !== 'undefined' && compressed.length < 2000) {
+                new QRCode(qrContainer, {
+                    text: compressed,
+                    width: 200,
+                    height: 200,
+                    colorDark: "#764ba2",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+            } else {
+                qrContainer.innerHTML = '<p style="color: #999; text-align: center;">Code zu lang für QR - bitte kopieren</p>';
+            }
+        }
+        
+        // Sync Code kopieren
+        function copySyncCode() {
+            const codeElement = document.getElementById('syncCode');
+            const code = codeElement.textContent;
+            
+            if (code === 'Generiere erst einen Wochenplan...') {
+                alert('❌ Bitte erst einen Wochenplan generieren!');
+                return;
+            }
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Kopiert!';
+                btn.style.background = '#4CAF50';
+                
+                const syncInfo = document.getElementById('syncInfo');
+                const now = new Date();
+                syncInfo.textContent = `Code erstellt: ${now.toLocaleDateString('de-CH')} um ${now.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}`;
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            }).catch(err => {
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                alert('✅ Code wurde kopiert!');
+            });
+        }
+        
+        // Per WhatsApp teilen
+        function shareViaWhatsApp() {
+            const codeElement = document.getElementById('syncCode');
+            const code = codeElement.textContent;
+            
+            if (code === 'Generiere erst einen Wochenplan...') {
+                alert('❌ Bitte erst einen Wochenplan generieren!');
+                return;
+            }
+            
+            const message = `🍽️ *Wochenessensplan Sync-Code*\n\nHier ist unser Essensplan für diese Woche:\n\n${code}\n\n_Füge diesen Code in der App unter "Synchronisieren" ein._`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Native Share API
+        function shareNative() {
+            const codeElement = document.getElementById('syncCode');
+            const code = codeElement.textContent;
+            
+            if (code === 'Generiere erst einen Wochenplan...') {
+                alert('❌ Bitte erst einen Wochenplan generieren!');
+                return;
+            }
+            
+            const shareText = `🍽️ Wochenessensplan Sync-Code\n\n${code}\n\nFüge diesen Code in der App unter "Synchronisieren" ein.`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Wochenessensplan',
+                    text: shareText
+                }).then(() => {
+                    console.log('Erfolgreich geteilt');
+                }).catch((error) => {
+                    console.log('Teilen abgebrochen:', error);
+                });
+            } else {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert('✅ Code wurde kopiert! Du kannst ihn jetzt in einer beliebigen App teilen.');
+                });
+            }
+        }
+        
+        // Sync Code importieren
+        function importSyncCode() {
+            const input = document.getElementById('syncInput');
+            const code = input.value.trim();
+            const statusDiv = document.getElementById('syncStatus');
+            
+            if (!code) {
+                statusDiv.innerHTML = '<div class="sync-error">❌ Bitte einen Code einfügen!</div>';
+                return;
+            }
+            
+            try {
+                const jsonString = decodeURIComponent(atob(code));
+                const syncData = JSON.parse(jsonString);
+                
+                if (!syncData.version || !syncData.weekPlan) {
+                    throw new Error('Ungültiger Sync-Code');
+                }
+                
+                currentWeekPlan = syncData.weekPlan;
+                shoppingListData = syncData.shoppingList || {};
+                preferences = syncData.preferences || preferences;
+                weeksSincePizza = syncData.weeksSincePizza || weeksSincePizza;
+                
+                localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
+                
+                loadPreferences();
+                displayWeekOverview();
+                displayShoppingList();
+                displayRecipes();
+                
+                statusDiv.innerHTML = '<div class="sync-success">✅ Wochenplan erfolgreich importiert!</div>';
+                
+                const syncInfo = document.getElementById('syncInfo');
+                const now = new Date();
+                syncInfo.textContent = `Synchronisiert: ${now.toLocaleDateString('de-CH')} um ${now.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}`;
+                
+                const hasPizza = currentWeekPlan.some(day => day.dinner.special === 'pizza-weekend');
+                if (hasPizza) {
+                    setTimeout(() => {
+                        alert('🍕 Pizza-Wochenende wurde importiert! Freitag und Samstag gibt es Pizza!');
+                    }, 500);
+                }
+                
+                input.value = '';
+                
+                setTimeout(() => {
+                    closeSyncDialog();
+                }, 2000);
+                
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="sync-error">❌ Fehler beim Importieren: ${error.message}</div>`;
+            }
+        }
+        
+        // Aus Zwischenablage einfügen
+        function pasteFromClipboard() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('syncInput').value = text;
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Eingefügt!';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 1500);
+            }).catch(err => {
+                alert('Bitte manuell einfügen (Strg+V oder Cmd+V)');
+            });
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('syncModal');
+            if (event.target === modal) {
+                closeSyncDialog();
+            }
+        }
+    </script>
+</body>
+</html>
