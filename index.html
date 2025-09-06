@@ -564,6 +564,110 @@
             text-align: center;
         }
 
+        .week-date {
+            color: #764ba2;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .saved-weeks-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .saved-week-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .saved-week-info {
+            flex: 1;
+        }
+
+        .saved-week-date {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .saved-week-summary {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .saved-week-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .mini-btn {
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mini-btn-load {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .mini-btn-load:hover {
+            background: #45a049;
+        }
+
+        .mini-btn-delete {
+            background: #f44336;
+            color: white;
+        }
+
+        .mini-btn-delete:hover {
+            background: #da190b;
+        }
+
+        .confirm-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 2000;
+            max-width: 400px;
+            display: none;
+        }
+
+        .confirm-dialog.active {
+            display: block;
+        }
+
+        .confirm-dialog h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .confirm-dialog p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
         #qrcode {
             display: flex;
             justify-content: center;
