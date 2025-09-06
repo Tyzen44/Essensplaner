@@ -52,6 +52,22 @@
             font-size: 1.1em;
         }
 
+        .pizza-indicator {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         .main-controls {
             display: flex;
             gap: 15px;
@@ -90,6 +106,16 @@
 
         .btn-secondary:hover {
             background: #f0f0f0;
+        }
+
+        .btn-github {
+            background: linear-gradient(135deg, #24292e 0%, #0366d6 100%);
+            color: white;
+        }
+
+        .btn-github:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(3,102,214,0.3);
         }
 
         .tabs {
@@ -141,6 +167,11 @@
             border-left: 5px solid #764ba2;
             transition: all 0.3s;
             position: relative;
+        }
+
+        .day-card.pizza-day {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffeaa7 100%);
+            border-left: 5px solid #ff6b6b;
         }
         
         .day-card .swap-btn {
@@ -305,7 +336,7 @@
 
         .settings-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
@@ -326,13 +357,25 @@
             color: #666;
         }
 
-        .setting-group input,
-        .setting-group select {
+        .setting-group input[type="number"],
+        .setting-group select,
+        .setting-group input[type="password"] {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin-top: 5px;
+        }
+
+        .setting-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .filter-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .budget-display {
@@ -461,72 +504,6 @@
             justify-content: flex-end;
         }
 
-        @media (max-width: 768px) {
-            .shopping-list {
-                columns: 1;
-            }
-            
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .main-controls {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-        }
-
-        @media print {
-            body {
-                background: white;
-            }
-            
-            .btn, .tabs, .main-controls, .swap-btn {
-                display: none !important;
-            }
-            
-            .tab-content {
-                display: block !important;
-                box-shadow: none;
-                border: 1px solid #ddd;
-                margin-bottom: 30px;
-            }
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 50px;
-        }
-
-        .loading.active {
-            display: block;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #764ba2;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); background: #f0f0ff; }
-            100% { transform: scale(1); }
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -550,7 +527,7 @@
             padding: 30px;
             border-radius: 15px;
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             max-height: 80vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -580,49 +557,35 @@
             color: #333;
         }
 
-        .sync-section {
+        .github-section {
             margin-bottom: 25px;
             padding: 20px;
             background: #f9f9f9;
             border-radius: 10px;
         }
 
-        .sync-section h3 {
-            color: #667eea;
+        .github-section h3 {
+            color: #24292e;
             margin-bottom: 15px;
         }
 
-        .sync-code {
-            background: white;
-            padding: 10px;
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.9em;
-            word-break: break-all;
-            max-height: 100px;
-            overflow-y: auto;
-            margin: 10px 0;
-        }
-
-        .sync-input {
+        .github-input {
             width: 100%;
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 8px;
             font-family: monospace;
             margin: 10px 0;
-            resize: vertical;
-            min-height: 80px;
         }
 
-        .sync-actions {
+        .github-actions {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            margin-top: 15px;
         }
 
-        .sync-btn {
+        .github-btn {
             padding: 10px 20px;
             border: none;
             border-radius: 8px;
@@ -633,57 +596,149 @@
             min-width: 120px;
         }
 
-        .sync-btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .github-btn-primary {
+            background: #24292e;
             color: white;
         }
 
-        .sync-btn-primary:hover {
+        .github-btn-primary:hover {
+            background: #0366d6;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(118,75,162,0.3);
         }
 
-        .sync-btn-secondary {
+        .github-btn-secondary {
             background: white;
-            color: #764ba2;
-            border: 2px solid #764ba2;
+            color: #24292e;
+            border: 2px solid #24292e;
         }
 
-        .sync-btn-secondary:hover {
-            background: #f0f0f0;
+        .github-btn-secondary:hover {
+            background: #f6f8fa;
         }
 
-        .sync-success {
-            color: #4CAF50;
+        .status-message {
             padding: 10px;
-            background: #f0fff4;
             border-radius: 8px;
             margin-top: 10px;
             text-align: center;
             font-weight: bold;
         }
 
-        .sync-error {
-            color: #f44336;
-            padding: 10px;
-            background: #ffebee;
-            border-radius: 8px;
-            margin-top: 10px;
-            text-align: center;
+        .status-success {
+            color: #4CAF50;
+            background: #f0fff4;
         }
 
-        #qrcode {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
+        .status-error {
+            color: #f44336;
+            background: #ffebee;
+        }
+
+        .status-info {
+            color: #2196F3;
+            background: #e3f2fd;
+        }
+
+        .gist-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .gist-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .gist-item:hover {
+            background: #f6f8fa;
+        }
+
+        .gist-item:last-child {
+            border-bottom: none;
+        }
+
+        .gist-title {
+            font-weight: bold;
+            color: #24292e;
+        }
+
+        .gist-date {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #764ba2;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .shopping-list {
+                columns: 1;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .main-controls {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .filter-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .btn, .tabs, .main-controls, .swap-btn {
+                display: none !important;
+            }
+            
+            .tab-content {
+                display: block !important;
+                box-shadow: none;
+                border: 1px solid #ddd;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
@@ -694,11 +749,17 @@
             <p>Intelligente Wochenplanung für 2 Erwachsene und 2 Kleinkinder</p>
             <p>Budget: <span id="budgetDisplay">175 CHF</span> pro Woche (25 CHF/Tag)</p>
             <p class="week-date" id="weekDateDisplay">Woche vom ... bis ...</p>
+            <div id="pizzaIndicator" style="display:none;">
+                <span class="pizza-indicator">🍕 Pizza-Wochenende! 🍕</span>
+            </div>
         </div>
 
         <div class="stats-box">
             <h3>📚 Rezept-Datenbank</h3>
             <p><strong id="totalRecipes">0</strong> Rezepte verfügbar | <strong id="meatCount">0</strong> Fleisch | <strong id="vegCount">0</strong> Vegetarisch | <strong id="kidsCount">0</strong> Kinder</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                Nächstes Pizza-Wochenende in <strong id="pizzaCountdown">...</strong> Woche(n)
+            </p>
         </div>
 
         <div class="main-controls">
@@ -714,11 +775,14 @@
             <button class="btn btn-secondary" onclick="exportToPDF()">
                 📄 Als PDF exportieren
             </button>
+            <button class="btn btn-github" onclick="showGitHubSync()">
+                <svg style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;" fill="white" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                GitHub Sync
+            </button>
             <button class="btn btn-secondary" onclick="savePreferences()">
                 ⚙️ Einstellungen speichern
-            </button>
-            <button class="btn btn-secondary" onclick="showSyncDialog()">
-                🔄 Synchronisieren
             </button>
         </div>
 
@@ -780,56 +844,149 @@
                         <input type="number" id="vegDays" value="3" min="0" max="7">
                     </label>
                     <label>
-                        <input type="checkbox" id="noFish" checked> Keine Fischgerichte
+                        Pizza-Wochenende alle:
+                        <select id="pizzaFrequency">
+                            <option value="2">2 Wochen</option>
+                            <option value="3" selected>2-3 Wochen (Zufall)</option>
+                            <option value="4">3-4 Wochen</option>
+                            <option value="0">Nie</option>
+                        </select>
                     </label>
+                </div>
+
+                <div class="setting-group">
+                    <h3>🚫 Ausschlüsse - Fleisch</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="noLamb"> Kein Lamm
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noPork"> Kein Schwein
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noBeef"> Kein Rind
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noDuck"> Keine Ente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>🧀 Ausschlüsse - Milchprodukte</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="noCottageCheese"> Kein Hüttenkäse
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noGorgonzola"> Kein Gorgonzola
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noFeta"> Kein Feta
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noCheese"> Kein nicht-überbackener Käse
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>🥘 Weitere Ausschlüsse</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="noFish"> Keine Fischgerichte
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noMushrooms"> Keine Pilze
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noNuts"> Keine Nüsse
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noSpicy"> Nicht scharf
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noTofu"> Kein Tofu
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noEggplant"> Keine Aubergine
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>🔐 GitHub Token</h3>
                     <label>
-                        <input type="checkbox" id="noCheese" checked> Kein nicht-überbackener Käse
+                        GitHub Personal Access Token:
+                        <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx">
                     </label>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 5px;">
+                        Für GitHub Sync. Token erstellen: 
+                        <a href="https://github.com/settings/tokens/new" target="_blank" style="color: #0366d6;">
+                            GitHub Settings → Tokens
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Sync Modal -->
-    <div id="syncModal" class="modal">
+    <!-- GitHub Sync Modal -->
+    <div id="githubModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🔄 Synchronisieren</h2>
-                <button class="close-modal" onclick="closeSyncDialog()">×</button>
+                <h2>🔄 GitHub Synchronisation</h2>
+                <button class="close-modal" onclick="closeGitHubSync()">×</button>
             </div>
             
-            <div class="sync-section">
-                <h3>📤 Teilen</h3>
-                <p>Teile deinen Wochenplan mit anderen Geräten:</p>
-                <div class="sync-code" id="syncCode">Generiere erst einen Wochenplan...</div>
-                <div id="qrcode"></div>
-                <div class="sync-actions">
-                    <button class="sync-btn sync-btn-primary" onclick="copySyncCode()">📋 Kopieren</button>
-                    <button class="sync-btn sync-btn-secondary" onclick="shareViaWhatsApp()">💬 WhatsApp</button>
-                    <button class="sync-btn sync-btn-secondary" onclick="shareNative()">📱 Teilen</button>
+            <div class="github-section">
+                <h3>📤 Wochenplan auf GitHub speichern</h3>
+                <p>Speichere deinen aktuellen Wochenplan als Gist auf GitHub:</p>
+                <input type="text" class="github-input" id="gistName" placeholder="Name für den Gist (optional)">
+                <div class="github-actions">
+                    <button class="github-btn github-btn-primary" onclick="saveToGitHub()">
+                        📤 Als Gist speichern
+                    </button>
+                    <button class="github-btn github-btn-secondary" onclick="updateExistingGist()">
+                        🔄 Bestehenden Gist aktualisieren
+                    </button>
                 </div>
-                <p style="margin-top: 10px; color: #666; font-size: 0.9em;" id="syncInfo"></p>
+                <div id="saveStatus"></div>
             </div>
             
-            <div class="sync-section">
-                <h3>📥 Importieren</h3>
-                <p>Füge einen Sync-Code ein:</p>
-                <textarea class="sync-input" id="syncInput" placeholder="Code hier einfügen..."></textarea>
-                <div class="sync-actions">
-                    <button class="sync-btn sync-btn-secondary" onclick="pasteFromClipboard()">📋 Einfügen</button>
-                    <button class="sync-btn sync-btn-primary" onclick="importSyncCode()">✅ Importieren</button>
-                </div>
-                <div id="syncStatus"></div>
+            <div class="github-section">
+                <h3>📥 Wochenplan von GitHub laden</h3>
+                <p>Lade einen gespeicherten Wochenplan von GitHub:</p>
+                <button class="github-btn github-btn-primary" onclick="loadGists()">
+                    📋 Meine Gists anzeigen
+                </button>
+                <div id="gistList" class="gist-list" style="display:none;"></div>
+                
+                <p style="margin-top: 15px;">Oder gib eine Gist-ID direkt ein:</p>
+                <input type="text" class="github-input" id="gistId" placeholder="Gist ID oder URL">
+                <button class="github-btn github-btn-secondary" onclick="loadFromGitHub()">
+                    📥 Von Gist laden
+                </button>
+                <div id="loadStatus"></div>
+            </div>
+
+            <div class="github-section">
+                <h3>ℹ️ Anleitung</h3>
+                <ol style="color: #666; font-size: 0.95em; line-height: 1.8;">
+                    <li>Erstelle einen GitHub Personal Access Token mit "gist" Berechtigung</li>
+                    <li>Füge den Token in den Einstellungen ein</li>
+                    <li>Speichere deine Wochenpläne als private Gists</li>
+                    <li>Teile Gist-URLs mit Familie/Freunden zum gemeinsamen Nutzen</li>
+                </ol>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Rezept-Datenbank aus externer Datei laden oder inline definieren
+        // Rezept-Datenbank
         let recipes = {};
         
-        // Inline Rezept-Datenbank (85 Rezepte)
+        // Rezepte laden
         function loadRecipes() {
             recipes = {
                 meat: [
@@ -933,6 +1090,7 @@
         let weeksSincePizza = 0;
         let currentWeekStart = null;
         let savedWeeks = [];
+        let currentGistId = null;
 
         // Initialisierung beim Laden
         window.addEventListener('DOMContentLoaded', function() {
@@ -941,6 +1099,7 @@
             loadSavedWeeks();
             updateRecipeStats();
             calculateCurrentWeekDates();
+            updatePizzaCountdown();
             generateNewPlan();
         });
 
@@ -955,6 +1114,20 @@
             document.getElementById('meatCount').textContent = meatCount;
             document.getElementById('vegCount').textContent = vegCount;
             document.getElementById('kidsCount').textContent = kidsCount;
+        }
+
+        // Pizza Countdown aktualisieren
+        function updatePizzaCountdown() {
+            const pizzaFreq = document.getElementById('pizzaFrequency').value;
+            if (pizzaFreq === '0') {
+                document.getElementById('pizzaCountdown').textContent = 'deaktiviert';
+            } else if (pizzaFreq === '3') {
+                const nextPizza = Math.max(1, 3 - weeksSincePizza);
+                document.getElementById('pizzaCountdown').textContent = `${nextPizza}`;
+            } else {
+                const nextPizza = Math.max(1, parseInt(pizzaFreq) - weeksSincePizza);
+                document.getElementById('pizzaCountdown').textContent = `${nextPizza}`;
+            }
         }
 
         // Tab-Wechsel Funktion
@@ -1000,21 +1173,33 @@
             const saved = localStorage.getItem('mealPlannerPrefs');
             if (saved) {
                 preferences = JSON.parse(saved);
-                if (preferences.dailyBudget) {
-                    document.getElementById('dailyBudget').value = preferences.dailyBudget;
-                }
-                if (preferences.vegDays) {
-                    document.getElementById('vegDays').value = preferences.vegDays;
-                }
-                if (preferences.adultsCount) {
-                    document.getElementById('adultsCount').value = preferences.adultsCount;
-                }
-                if (preferences.childrenCount) {
-                    document.getElementById('childrenCount').value = preferences.childrenCount;
-                }
+                
+                // Lade alle Einstellungen
+                if (preferences.dailyBudget) document.getElementById('dailyBudget').value = preferences.dailyBudget;
+                if (preferences.vegDays !== undefined) document.getElementById('vegDays').value = preferences.vegDays;
+                if (preferences.adultsCount) document.getElementById('adultsCount').value = preferences.adultsCount;
+                if (preferences.childrenCount) document.getElementById('childrenCount').value = preferences.childrenCount;
                 if (preferences.weeksSincePizza !== undefined) {
                     weeksSincePizza = preferences.weeksSincePizza;
                 }
+                if (preferences.pizzaFrequency !== undefined) document.getElementById('pizzaFrequency').value = preferences.pizzaFrequency;
+                if (preferences.githubToken) document.getElementById('githubToken').value = preferences.githubToken;
+                
+                // Lade Filtereinstellungen
+                if (preferences.noLamb !== undefined) document.getElementById('noLamb').checked = preferences.noLamb;
+                if (preferences.noPork !== undefined) document.getElementById('noPork').checked = preferences.noPork;
+                if (preferences.noBeef !== undefined) document.getElementById('noBeef').checked = preferences.noBeef;
+                if (preferences.noDuck !== undefined) document.getElementById('noDuck').checked = preferences.noDuck;
+                if (preferences.noCottageCheese !== undefined) document.getElementById('noCottageCheese').checked = preferences.noCottageCheese;
+                if (preferences.noGorgonzola !== undefined) document.getElementById('noGorgonzola').checked = preferences.noGorgonzola;
+                if (preferences.noFeta !== undefined) document.getElementById('noFeta').checked = preferences.noFeta;
+                if (preferences.noCheese !== undefined) document.getElementById('noCheese').checked = preferences.noCheese;
+                if (preferences.noFish !== undefined) document.getElementById('noFish').checked = preferences.noFish;
+                if (preferences.noMushrooms !== undefined) document.getElementById('noMushrooms').checked = preferences.noMushrooms;
+                if (preferences.noNuts !== undefined) document.getElementById('noNuts').checked = preferences.noNuts;
+                if (preferences.noSpicy !== undefined) document.getElementById('noSpicy').checked = preferences.noSpicy;
+                if (preferences.noTofu !== undefined) document.getElementById('noTofu').checked = preferences.noTofu;
+                if (preferences.noEggplant !== undefined) document.getElementById('noEggplant').checked = preferences.noEggplant;
             }
             updateBudgetDisplay();
         }
@@ -1030,7 +1215,7 @@
         // Aktuelle Woche speichern
         function saveCurrentWeek() {
             if (currentWeekPlan.length === 0) {
-                alert('❌ Kein Wochenplan zum Speichern vorhanden!');
+                alert('⚠ Kein Wochenplan zum Speichern vorhanden!');
                 return;
             }
             
@@ -1070,13 +1255,19 @@
         function getSummaryText() {
             const meatCount = currentWeekPlan.filter(d => d.dinner.category === 'Fleisch').length;
             const vegCount = currentWeekPlan.filter(d => d.dinner.category === 'Vegetarisch').length;
-            return `${meatCount}x Fleisch, ${vegCount}x Vegetarisch`;
+            const pizzaCount = currentWeekPlan.filter(d => d.dinner.special === 'pizza-weekend').length;
+            
+            let summary = `${meatCount}x Fleisch, ${vegCount}x Vegetarisch`;
+            if (pizzaCount > 0) {
+                summary += `, ${pizzaCount}x Pizza`;
+            }
+            return summary;
         }
 
         // Gespeicherte Wochen anzeigen
         function showSavedWeeks() {
             if (savedWeeks.length === 0) {
-                alert('📁 Keine gespeicherten Wochen vorhanden.');
+                alert('📂 Keine gespeicherten Wochen vorhanden.');
                 return;
             }
             
@@ -1183,9 +1374,24 @@
                 adultsCount: document.getElementById('adultsCount').value,
                 childrenCount: document.getElementById('childrenCount').value,
                 vegDays: document.getElementById('vegDays').value,
-                noFish: document.getElementById('noFish').checked,
+                pizzaFrequency: document.getElementById('pizzaFrequency').value,
+                weeksSincePizza: weeksSincePizza,
+                githubToken: document.getElementById('githubToken').value,
+                // Speichere alle Filter
+                noLamb: document.getElementById('noLamb').checked,
+                noPork: document.getElementById('noPork').checked,
+                noBeef: document.getElementById('noBeef').checked,
+                noDuck: document.getElementById('noDuck').checked,
+                noCottageCheese: document.getElementById('noCottageCheese').checked,
+                noGorgonzola: document.getElementById('noGorgonzola').checked,
+                noFeta: document.getElementById('noFeta').checked,
                 noCheese: document.getElementById('noCheese').checked,
-                weeksSincePizza: weeksSincePizza
+                noFish: document.getElementById('noFish').checked,
+                noMushrooms: document.getElementById('noMushrooms').checked,
+                noNuts: document.getElementById('noNuts').checked,
+                noSpicy: document.getElementById('noSpicy').checked,
+                noTofu: document.getElementById('noTofu').checked,
+                noEggplant: document.getElementById('noEggplant').checked
             };
             localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
             alert('✅ Einstellungen wurden gespeichert!');
@@ -1227,29 +1433,88 @@
             return positions;
         }
 
+        // Rezept filtern basierend auf Präferenzen
+        function filterRecipe(recipe) {
+            const prefs = preferences;
+            const ingredients = Object.keys(recipe.ingredients).join(' ').toLowerCase();
+            const name = recipe.name.toLowerCase();
+            
+            // Fleisch-Filter
+            if (prefs.noLamb && (name.includes('lamm') || ingredients.includes('lamm'))) return false;
+            if (prefs.noPork && (name.includes('schwein') || ingredients.includes('schwein') || 
+                name.includes('speck') || ingredients.includes('speck') || 
+                name.includes('schinken') || ingredients.includes('schinken'))) return false;
+            if (prefs.noBeef && (name.includes('rind') || ingredients.includes('rind') || 
+                name.includes('kalb') || ingredients.includes('kalb'))) return false;
+            if (prefs.noDuck && (name.includes('ente') || ingredients.includes('ente'))) return false;
+            
+            // Milchprodukte-Filter
+            if (prefs.noCottageCheese && (name.includes('hüttenkäse') || ingredients.includes('hüttenkäse'))) return false;
+            if (prefs.noGorgonzola && (name.includes('gorgonzola') || ingredients.includes('gorgonzola'))) return false;
+            if (prefs.noFeta && (name.includes('feta') || ingredients.includes('feta'))) return false;
+            
+            // Weitere Filter
+            if (prefs.noFish && (name.includes('fisch') || ingredients.includes('fisch'))) return false;
+            if (prefs.noMushrooms && (name.includes('pilz') || ingredients.includes('pilz') || 
+                name.includes('champignon') || ingredients.includes('champignon'))) return false;
+            if (prefs.noNuts && (name.includes('nuss') || ingredients.includes('nuss') || 
+                name.includes('walnüsse') || ingredients.includes('walnüsse'))) return false;
+            if (prefs.noSpicy && (name.includes('chili') || ingredients.includes('chili') || 
+                name.includes('scharf') || recipe.childTip.includes('scharf'))) return false;
+            if (prefs.noTofu && (name.includes('tofu') || ingredients.includes('tofu'))) return false;
+            if (prefs.noEggplant && (name.includes('aubergine') || ingredients.includes('aubergine'))) return false;
+            
+            return true;
+        }
+
         // Neuen Wochenplan generieren
         function generateNewPlan() {
             document.getElementById('loadingOverview').classList.add('active');
             
             setTimeout(() => {
                 const vegDays = parseInt(document.getElementById('vegDays').value);
+                const pizzaFreq = document.getElementById('pizzaFrequency').value;
                 const days = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag'];
                 
-                // Pizza-Wochenende alle 2-3 Wochen
-                weeksSincePizza++;
-                const isPizzaWeekend = weeksSincePizza >= 2 && (weeksSincePizza >= 3 || Math.random() > 0.5);
-                
-                if (isPizzaWeekend) {
-                    weeksSincePizza = 0;
-                    // Pizza-Alert
-                    setTimeout(() => {
-                        alert('🍕 PIZZA-WOCHENENDE! 🍕\n\nDiese Woche gibt es Freitag und Samstag Pizza!\n\nGenießt euer entspanntes Wochenende!');
-                    }, 1000);
+                // Pizza-Wochenende Logik
+                let isPizzaWeekend = false;
+                if (pizzaFreq !== '0') {
+                    weeksSincePizza++;
+                    
+                    if (pizzaFreq === '3') {
+                        // 2-3 Wochen mit Zufall
+                        isPizzaWeekend = weeksSincePizza >= 2 && (weeksSincePizza >= 3 || Math.random() > 0.5);
+                    } else if (pizzaFreq === '4') {
+                        // 3-4 Wochen mit Zufall
+                        isPizzaWeekend = weeksSincePizza >= 3 && (weeksSincePizza >= 4 || Math.random() > 0.5);
+                    } else {
+                        // Feste Frequenz
+                        isPizzaWeekend = weeksSincePizza >= parseInt(pizzaFreq);
+                    }
+                    
+                    if (isPizzaWeekend) {
+                        weeksSincePizza = 0;
+                        // Pizza-Alert
+                        setTimeout(() => {
+                            document.getElementById('pizzaIndicator').style.display = 'block';
+                            alert('🍕 PIZZA-WOCHENENDE! 🍕\n\nDiese Woche gibt es Freitag und Samstag Pizza!\n\nGenießt euer entspanntes Wochenende!');
+                        }, 1000);
+                    } else {
+                        document.getElementById('pizzaIndicator').style.display = 'none';
+                    }
+                } else {
+                    document.getElementById('pizzaIndicator').style.display = 'none';
                 }
                 
-                const meatRecipes = shuffleArray(recipes.meat);
-                const vegRecipes = shuffleArray(recipes.vegetarian);
-                const kidsRecipes = shuffleArray(recipes.kids);
+                // Rezepte filtern
+                const filteredMeatRecipes = shuffleArray(recipes.meat.filter(r => filterRecipe(r)));
+                const filteredVegRecipes = shuffleArray(recipes.vegetarian.filter(r => filterRecipe(r)));
+                const filteredKidsRecipes = shuffleArray(recipes.kids.filter(r => filterRecipe(r)));
+                
+                // Prüfen ob genug Rezepte vorhanden
+                if (filteredMeatRecipes.length < 4 || filteredVegRecipes.length < 3) {
+                    alert('⚠️ Warnung: Mit den aktuellen Filtereinstellungen sind nicht genug Rezepte verfügbar. Bitte reduziere die Ausschlüsse in den Einstellungen.');
+                }
                 
                 // Pizza-Rezepte definieren
                 const pizzaFriday = {
@@ -1314,9 +1579,9 @@
                     } else if (isPizzaWeekend && day === 'Samstag') {
                         recipe = pizzaSaturday;
                     } else if (vegDayPositions.includes(index)) {
-                        recipe = vegRecipes[vegIndex++ % vegRecipes.length];
+                        recipe = filteredVegRecipes[vegIndex++ % filteredVegRecipes.length];
                     } else {
-                        recipe = meatRecipes[meatIndex++ % meatRecipes.length];
+                        recipe = filteredMeatRecipes[meatIndex++ % filteredMeatRecipes.length];
                     }
                     
                     const dayPlan = {
@@ -1326,7 +1591,7 @@
                     };
                     
                     if (day === 'Dienstag' || day === 'Donnerstag') {
-                        dayPlan.kidsLunch = kidsRecipes[kidsIndex++ % kidsRecipes.length];
+                        dayPlan.kidsLunch = filteredKidsRecipes[kidsIndex++ % filteredKidsRecipes.length];
                     }
                     
                     currentWeekPlan.push(dayPlan);
@@ -1341,6 +1606,7 @@
                 preferences.weeksSincePizza = weeksSincePizza;
                 localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
                 
+                updatePizzaCountdown();
                 displayWeekOverview();
                 displayShoppingList();
                 displayRecipes();
@@ -1358,6 +1624,22 @@
                     shoppingListData[ingredient] += `, ${amount}`;
                 }
             }
+        }
+
+        // Aus Einkaufsliste entfernen
+        function removeFromShoppingList(recipe) {
+            rebuildShoppingList();
+        }
+        
+        // Einkaufsliste neu aufbauen
+        function rebuildShoppingList() {
+            shoppingListData = {};
+            currentWeekPlan.forEach(dayPlan => {
+                addToShoppingList(dayPlan.dinner);
+                if (dayPlan.kidsLunch) {
+                    addToShoppingList(dayPlan.kidsLunch);
+                }
+            });
         }
 
         // Wochenübersicht anzeigen
@@ -1379,8 +1661,13 @@
                 
                 const dayCard = document.createElement('div');
                 dayCard.className = 'day-card';
+                if (dayPlan.dinner.special === 'pizza-weekend') {
+                    dayCard.className += ' pizza-day';
+                }
+                
                 dayCard.innerHTML = `
-                    <button class="swap-btn" onclick="swapRecipe(${index}, 'dinner')" title="Rezept tauschen">🔄</button>
+                    ${dayPlan.dinner.special !== 'pizza-weekend' ? 
+                        `<button class="swap-btn" onclick="swapRecipe(${index}, 'dinner')" title="Rezept tauschen">🔄</button>` : ''}
                     <div class="day-header">
                         <span class="day-name">${dayPlan.day} <small style="color:#999;">${dateStr}</small></span>
                         <span class="price-tag">${dayCost} CHF</span>
@@ -1412,13 +1699,13 @@
             if (mealType === 'dinner') {
                 currentRecipe = dayPlan.dinner;
                 if (currentRecipe.category === 'Fleisch') {
-                    availableRecipes = recipes.meat.filter(r => r.name !== currentRecipe.name);
+                    availableRecipes = recipes.meat.filter(r => r.name !== currentRecipe.name && filterRecipe(r));
                 } else if (currentRecipe.category === 'Vegetarisch') {
-                    availableRecipes = recipes.vegetarian.filter(r => r.name !== currentRecipe.name);
+                    availableRecipes = recipes.vegetarian.filter(r => r.name !== currentRecipe.name && filterRecipe(r));
                 }
             } else if (mealType === 'kidsLunch') {
                 currentRecipe = dayPlan.kidsLunch;
-                availableRecipes = recipes.kids.filter(r => r.name !== currentRecipe.name);
+                availableRecipes = recipes.kids.filter(r => r.name !== currentRecipe.name && filterRecipe(r));
             }
             
             if (availableRecipes.length > 0) {
@@ -1443,23 +1730,9 @@
                 setTimeout(() => {
                     dayCards[dayIndex].style.animation = '';
                 }, 500);
+            } else {
+                alert('⚠️ Keine alternativen Rezepte mit den aktuellen Filtereinstellungen verfügbar.');
             }
-        }
-        
-        // Aus Einkaufsliste entfernen
-        function removeFromShoppingList(recipe) {
-            rebuildShoppingList();
-        }
-        
-        // Einkaufsliste neu aufbauen
-        function rebuildShoppingList() {
-            shoppingListData = {};
-            currentWeekPlan.forEach(dayPlan => {
-                addToShoppingList(dayPlan.dinner);
-                if (dayPlan.kidsLunch) {
-                    addToShoppingList(dayPlan.kidsLunch);
-                }
-            });
         }
 
         // Einkaufsliste anzeigen
@@ -1596,219 +1869,322 @@
             window.print();
         }
 
-        // ========== SYNC FUNKTIONEN ==========
+        // ========== GITHUB SYNC FUNKTIONEN ==========
         
-        // Sync Dialog anzeigen
-        function showSyncDialog() {
-            const modal = document.getElementById('syncModal');
+        // GitHub Sync Dialog anzeigen
+        function showGitHubSync() {
+            const modal = document.getElementById('githubModal');
             modal.classList.add('active');
-            
-            if (currentWeekPlan.length > 0) {
-                generateSyncCode();
-            }
         }
         
-        // Sync Dialog schließen
-        function closeSyncDialog() {
-            const modal = document.getElementById('syncModal');
+        // GitHub Sync Dialog schließen
+        function closeGitHubSync() {
+            const modal = document.getElementById('githubModal');
             modal.classList.remove('active');
-            document.getElementById('syncStatus').innerHTML = '';
         }
         
-        // Sync Code generieren
-        function generateSyncCode() {
-            const syncData = {
-                version: '1.0',
+        // Wochenplan auf GitHub speichern
+        async function saveToGitHub() {
+            const token = document.getElementById('githubToken').value;
+            const gistName = document.getElementById('gistName').value || `Wochenplan ${new Date().toLocaleDateString('de-CH')}`;
+            
+            if (!token) {
+                document.getElementById('saveStatus').innerHTML = 
+                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
+                return;
+            }
+            
+            if (currentWeekPlan.length === 0) {
+                document.getElementById('saveStatus').innerHTML = 
+                    '<div class="status-error">⚠️ Kein Wochenplan zum Speichern vorhanden!</div>';
+                return;
+            }
+            
+            const data = {
+                version: '2.0',
                 timestamp: new Date().toISOString(),
                 weekPlan: currentWeekPlan,
                 shoppingList: shoppingListData,
                 preferences: preferences,
-                weeksSincePizza: weeksSincePizza
+                weeksSincePizza: weeksSincePizza,
+                weekStart: currentWeekStart.toISOString(),
+                totalCost: document.getElementById('totalCost').textContent
             };
             
-            const jsonString = JSON.stringify(syncData);
-            const compressed = btoa(encodeURIComponent(jsonString));
+            const gistData = {
+                description: gistName,
+                public: false,
+                files: {
+                    'wochenplan.json': {
+                        content: JSON.stringify(data, null, 2)
+                    }
+                }
+            };
             
-            const codeElement = document.getElementById('syncCode');
-            codeElement.textContent = compressed;
-            
-            const qrContainer = document.getElementById('qrcode');
-            qrContainer.innerHTML = '';
-            
-            if (typeof QRCode !== 'undefined' && compressed.length < 2000) {
-                new QRCode(qrContainer, {
-                    text: compressed,
-                    width: 200,
-                    height: 200,
-                    colorDark: "#764ba2",
-                    colorLight: "#ffffff",
-                    correctLevel: QRCode.CorrectLevel.M
-                });
-            } else {
-                qrContainer.innerHTML = '<p style="color: #999; text-align: center;">Code zu lang für QR - bitte kopieren</p>';
-            }
-        }
-        
-        // Sync Code kopieren
-        function copySyncCode() {
-            const codeElement = document.getElementById('syncCode');
-            const code = codeElement.textContent;
-            
-            if (code === 'Generiere erst einen Wochenplan...') {
-                alert('❌ Bitte erst einen Wochenplan generieren!');
-                return;
-            }
-            
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = event.target;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✅ Kopiert!';
-                btn.style.background = '#4CAF50';
+            try {
+                document.getElementById('saveStatus').innerHTML = 
+                    '<div class="status-info">🔄 Aktualisiere Gist...</div>';
                 
-                const syncInfo = document.getElementById('syncInfo');
-                const now = new Date();
-                syncInfo.textContent = `Code erstellt: ${now.toLocaleDateString('de-CH')} um ${now.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}`;
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                }, 2000);
-            }).catch(err => {
-                const textArea = document.createElement('textarea');
-                textArea.value = code;
-                textArea.style.position = 'fixed';
-                textArea.style.opacity = '0';
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                alert('✅ Code wurde kopiert!');
-            });
-        }
-        
-        // Per WhatsApp teilen
-        function shareViaWhatsApp() {
-            const codeElement = document.getElementById('syncCode');
-            const code = codeElement.textContent;
-            
-            if (code === 'Generiere erst einen Wochenplan...') {
-                alert('❌ Bitte erst einen Wochenplan generieren!');
-                return;
-            }
-            
-            const message = `🍽️ *Wochenessensplan Sync-Code*\n\nHier ist unser Essensplan für diese Woche:\n\n${code}\n\n_Füge diesen Code in der App unter "Synchronisieren" ein._`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        // Native Share API
-        function shareNative() {
-            const codeElement = document.getElementById('syncCode');
-            const code = codeElement.textContent;
-            
-            if (code === 'Generiere erst einen Wochenplan...') {
-                alert('❌ Bitte erst einen Wochenplan generieren!');
-                return;
-            }
-            
-            const shareText = `🍽️ Wochenessensplan Sync-Code\n\n${code}\n\nFüge diesen Code in der App unter "Synchronisieren" ein.`;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Wochenessensplan',
-                    text: shareText
-                }).then(() => {
-                    console.log('Erfolgreich geteilt');
-                }).catch((error) => {
-                    console.log('Teilen abgebrochen:', error);
+                const response = await fetch(`https://api.github.com/gists/${currentGistId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(gistData)
                 });
-            } else {
-                navigator.clipboard.writeText(shareText).then(() => {
-                    alert('✅ Code wurde kopiert! Du kannst ihn jetzt in einer beliebigen App teilen.');
-                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    
+                    document.getElementById('saveStatus').innerHTML = 
+                        `<div class="status-success">
+                            ✅ Erfolgreich aktualisiert!<br>
+                            <a href="${result.html_url}" target="_blank" style="color: #0366d6;">Auf GitHub ansehen →</a>
+                        </div>`;
+                } else {
+                    throw new Error(`GitHub API Fehler: ${response.status}`);
+                }
+            } catch (error) {
+                document.getElementById('saveStatus').innerHTML = 
+                    `<div class="status-error">❌ Fehler: ${error.message}</div>`;
             }
         }
         
-        // Sync Code importieren
-        function importSyncCode() {
-            const input = document.getElementById('syncInput');
-            const code = input.value.trim();
-            const statusDiv = document.getElementById('syncStatus');
+        // Gists laden und anzeigen
+        async function loadGists() {
+            const token = document.getElementById('githubToken').value;
             
-            if (!code) {
-                statusDiv.innerHTML = '<div class="sync-error">❌ Bitte einen Code einfügen!</div>';
+            if (!token) {
+                document.getElementById('loadStatus').innerHTML = 
+                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
                 return;
             }
             
             try {
-                const jsonString = decodeURIComponent(atob(code));
-                const syncData = JSON.parse(jsonString);
+                document.getElementById('loadStatus').innerHTML = 
+                    '<div class="status-info">📋 Lade Gists...</div>';
                 
-                if (!syncData.version || !syncData.weekPlan) {
-                    throw new Error('Ungültiger Sync-Code');
+                const response = await fetch('https://api.github.com/gists', {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const gists = await response.json();
+                    const mealPlanGists = gists.filter(gist => 
+                        gist.files && gist.files['wochenplan.json']
+                    );
+                    
+                    if (mealPlanGists.length === 0) {
+                        document.getElementById('loadStatus').innerHTML = 
+                            '<div class="status-info">Keine gespeicherten Wochenpläne gefunden.</div>';
+                        return;
+                    }
+                    
+                    const gistList = document.getElementById('gistList');
+                    gistList.innerHTML = mealPlanGists.map(gist => `
+                        <div class="gist-item" onclick="loadGistById('${gist.id}')">
+                            <div class="gist-title">${gist.description || 'Wochenplan'}</div>
+                            <div class="gist-date">
+                                ${new Date(gist.updated_at).toLocaleDateString('de-CH')} 
+                                ${new Date(gist.updated_at).toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    gistList.style.display = 'block';
+                    document.getElementById('loadStatus').innerHTML = '';
+                } else {
+                    throw new Error(`GitHub API Fehler: ${response.status}`);
                 }
-                
-                currentWeekPlan = syncData.weekPlan;
-                shoppingListData = syncData.shoppingList || {};
-                preferences = syncData.preferences || preferences;
-                weeksSincePizza = syncData.weeksSincePizza || weeksSincePizza;
-                
-                localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
-                
-                loadPreferences();
-                displayWeekOverview();
-                displayShoppingList();
-                displayRecipes();
-                
-                statusDiv.innerHTML = '<div class="sync-success">✅ Wochenplan erfolgreich importiert!</div>';
-                
-                const syncInfo = document.getElementById('syncInfo');
-                const now = new Date();
-                syncInfo.textContent = `Synchronisiert: ${now.toLocaleDateString('de-CH')} um ${now.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'})}`;
-                
-                const hasPizza = currentWeekPlan.some(day => day.dinner.special === 'pizza-weekend');
-                if (hasPizza) {
-                    setTimeout(() => {
-                        alert('🍕 Pizza-Wochenende wurde importiert! Freitag und Samstag gibt es Pizza!');
-                    }, 500);
-                }
-                
-                input.value = '';
-                
-                setTimeout(() => {
-                    closeSyncDialog();
-                }, 2000);
-                
             } catch (error) {
-                statusDiv.innerHTML = `<div class="sync-error">❌ Fehler beim Importieren: ${error.message}</div>`;
+                document.getElementById('loadStatus').innerHTML = 
+                    `<div class="status-error">❌ Fehler: ${error.message}</div>`;
             }
         }
         
-        // Aus Zwischenablage einfügen
-        function pasteFromClipboard() {
-            navigator.clipboard.readText().then(text => {
-                document.getElementById('syncInput').value = text;
-                const btn = event.target;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✅ Eingefügt!';
+        // Gist nach ID laden
+        async function loadGistById(gistId) {
+            const token = document.getElementById('githubToken').value;
+            
+            try {
+                document.getElementById('loadStatus').innerHTML = 
+                    '<div class="status-info">📥 Lade Wochenplan...</div>';
                 
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                }, 1500);
-            }).catch(err => {
-                alert('Bitte manuell einfügen (Strg+V oder Cmd+V)');
-            });
+                const response = await fetch(`https://api.github.com/gists/${gistId}`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const gist = await response.json();
+                    const content = gist.files['wochenplan.json'].content;
+                    const data = JSON.parse(content);
+                    
+                    importWeekPlan(data);
+                    currentGistId = gistId;
+                    
+                    document.getElementById('loadStatus').innerHTML = 
+                        '<div class="status-success">✅ Wochenplan erfolgreich geladen!</div>';
+                    
+                    setTimeout(() => {
+                        closeGitHubSync();
+                    }, 2000);
+                } else {
+                    throw new Error(`GitHub API Fehler: ${response.status}`);
+                }
+            } catch (error) {
+                document.getElementById('loadStatus').innerHTML = 
+                    `<div class="status-error">❌ Fehler: ${error.message}</div>`;
+            }
+        }
+        
+        // Von GitHub laden mit ID/URL
+        async function loadFromGitHub() {
+            const input = document.getElementById('gistId').value.trim();
+            const token = document.getElementById('githubToken').value;
+            
+            if (!input) {
+                document.getElementById('loadStatus').innerHTML = 
+                    '<div class="status-error">⚠️ Bitte Gist-ID oder URL eingeben!</div>';
+                return;
+            }
+            
+            if (!token) {
+                document.getElementById('loadStatus').innerHTML = 
+                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
+                return;
+            }
+            
+            // Extract Gist ID from URL if necessary
+            let gistId = input;
+            if (input.includes('gist.github.com')) {
+                const matches = input.match(/([a-f0-9]{32})/);
+                if (matches) {
+                    gistId = matches[1];
+                }
+            }
+            
+            loadGistById(gistId);
+        }
+        
+        // Wochenplan importieren
+        function importWeekPlan(data) {
+            if (!data.weekPlan || !data.version) {
+                throw new Error('Ungültiges Datenformat');
+            }
+            
+            currentWeekPlan = data.weekPlan;
+            shoppingListData = data.shoppingList || {};
+            
+            if (data.preferences) {
+                preferences = { ...preferences, ...data.preferences };
+                if (data.weeksSincePizza !== undefined) {
+                    weeksSincePizza = data.weeksSincePizza;
+                }
+            }
+            
+            if (data.weekStart) {
+                currentWeekStart = new Date(data.weekStart);
+                const weekEnd = new Date(currentWeekStart);
+                weekEnd.setDate(currentWeekStart.getDate() + 6);
+                const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+                const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
+                const endStr = weekEnd.toLocaleDateString('de-CH', options);
+                document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
+            }
+            
+            updatePizzaCountdown();
+            displayWeekOverview();
+            displayShoppingList();
+            displayRecipes();
+            
+            // Pizza-Wochenende Indikator prüfen
+            const hasPizza = currentWeekPlan.some(day => day.dinner.special === 'pizza-weekend');
+            document.getElementById('pizzaIndicator').style.display = hasPizza ? 'block' : 'none';
         }
         
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('syncModal');
-            if (event.target === modal) {
-                closeSyncDialog();
+            const githubModal = document.getElementById('githubModal');
+            if (event.target === githubModal) {
+                closeGitHubSync();
             }
         }
     </script>
 </body>
 </html>
+                document.getElementById('saveStatus').innerHTML = 
+                    '<div class="status-info">📤 Speichere auf GitHub...</div>';
+                
+                const response = await fetch('https://api.github.com/gists', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(gistData)
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    currentGistId = result.id;
+                    
+                    document.getElementById('saveStatus').innerHTML = 
+                        `<div class="status-success">
+                            ✅ Erfolgreich gespeichert!<br>
+                            Gist ID: <code>${result.id}</code><br>
+                            <a href="${result.html_url}" target="_blank" style="color: #0366d6;">Auf GitHub ansehen →</a>
+                        </div>`;
+                } else {
+                    throw new Error(`GitHub API Fehler: ${response.status}`);
+                }
+            } catch (error) {
+                document.getElementById('saveStatus').innerHTML = 
+                    `<div class="status-error">❌ Fehler: ${error.message}</div>`;
+            }
+        }
+        
+        // Bestehenden Gist aktualisieren
+        async function updateExistingGist() {
+            const token = document.getElementById('githubToken').value;
+            
+            if (!token) {
+                document.getElementById('saveStatus').innerHTML = 
+                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
+                return;
+            }
+            
+            if (!currentGistId) {
+                const gistId = prompt('Bitte Gist-ID eingeben:');
+                if (!gistId) return;
+                currentGistId = gistId;
+            }
+            
+            const data = {
+                version: '2.0',
+                timestamp: new Date().toISOString(),
+                weekPlan: currentWeekPlan,
+                shoppingList: shoppingListData,
+                preferences: preferences,
+                weeksSincePizza: weeksSincePizza,
+                weekStart: currentWeekStart.toISOString(),
+                totalCost: document.getElementById('totalCost').textContent
+            };
+            
+            const gistData = {
+                files: {
+                    'wochenplan.json': {
+                        content: JSON.stringify(data, null, 2)
+                    }
+                }
+            };
+            
+            try {
