@@ -1235,9 +1235,66 @@
                 const vegDays = parseInt(document.getElementById('vegDays').value);
                 const days = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag'];
                 
+                // Pizza-Wochenende alle 2-3 Wochen
+                weeksSincePizza++;
+                const isPizzaWeekend = weeksSincePizza >= 2 && (weeksSincePizza >= 3 || Math.random() > 0.5);
+                
+                if (isPizzaWeekend) {
+                    weeksSincePizza = 0;
+                    // Pizza-Alert
+                    setTimeout(() => {
+                        alert('🍕 PIZZA-WOCHENENDE! 🍕\n\nDiese Woche gibt es Freitag und Samstag Pizza!\n\nGenießt euer entspanntes Wochenende!');
+                    }, 1000);
+                }
+                
                 const meatRecipes = shuffleArray(recipes.meat);
                 const vegRecipes = shuffleArray(recipes.vegetarian);
                 const kidsRecipes = shuffleArray(recipes.kids);
+                
+                // Pizza-Rezepte definieren
+                const pizzaFriday = {
+                    name: "🍕 Pizza-Abend (Lieferservice)",
+                    category: "Pizza-Weekend",
+                    price: 45,
+                    ingredients: {
+                        "Pizza nach Wahl": "2-3 große Pizzen",
+                        "Getränke": "nach Bedarf",
+                        "Salat (optional)": "1 Portion"
+                    },
+                    instructions: [
+                        "Lieblings-Pizzeria aussuchen",
+                        "Pizzen bestellen (verschiedene Sorten)",
+                        "Tisch gemütlich decken",
+                        "Film aussuchen für Familienabend",
+                        "Pizza genießen!"
+                    ],
+                    childTip: "Kinder dürfen Pizza aussuchen",
+                    workTip: "Kein Kochen - perfekt nach Arbeitswoche!",
+                    special: "pizza-weekend"
+                };
+                
+                const pizzaSaturday = {
+                    name: "🍕 Selbstgemachte Pizza",
+                    category: "Pizza-Weekend",
+                    price: 20,
+                    ingredients: {
+                        "Pizzateig": "1kg (fertig oder selbstgemacht)",
+                        "Tomatensauce": "400ml",
+                        "Mozzarella": "500g",
+                        "Belag nach Wahl": "Schinken, Pilze, Paprika, etc.",
+                        "Olivenöl": "4 EL"
+                    },
+                    instructions: [
+                        "Teig ausrollen oder vorbereiten",
+                        "Kinder beim Belegen helfen lassen",
+                        "Jeder macht seine eigene Pizza",
+                        "Bei 220°C backen",
+                        "Gemeinsam genießen"
+                    ],
+                    childTip: "Kinder lieben Pizza-Gesichter",
+                    workTip: "Reste kalt zum Mitnehmen",
+                    special: "pizza-weekend"
+                };
                 
                 currentWeekPlan = [];
                 shoppingListData = {};
@@ -1250,7 +1307,13 @@
                 
                 days.forEach((day, index) => {
                     let recipe;
-                    if (vegDayPositions.includes(index)) {
+                    
+                    // Pizza-Wochenende überschreibt normale Planung
+                    if (isPizzaWeekend && day === 'Freitag') {
+                        recipe = pizzaFriday;
+                    } else if (isPizzaWeekend && day === 'Samstag') {
+                        recipe = pizzaSaturday;
+                    } else if (vegDayPositions.includes(index)) {
                         recipe = vegRecipes[vegIndex++ % vegRecipes.length];
                     } else {
                         recipe = meatRecipes[meatIndex++ % meatRecipes.length];
@@ -1273,6 +1336,10 @@
                         addToShoppingList(dayPlan.kidsLunch);
                     }
                 });
+                
+                // Speichere Pizza-Counter
+                preferences.weeksSincePizza = weeksSincePizza;
+                localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
                 
                 displayWeekOverview();
                 displayShoppingList();
