@@ -1,0 +1,1775 @@
+{
+  "version": "1.0",
+  "categories": {
+    "meat": {
+      "name": "Fleischgerichte",
+      "recipes": [
+        {
+          "id": "m001",
+          "name": "Spaghetti Carbonara",
+          "baseIngredients": {
+            "pasta": {"type": "long", "amount": 125, "unit": "g", "variations": ["Spaghetti", "Linguine", "Fettuccine", "Tagliatelle"]},
+            "speck": {"amount": 50, "unit": "g", "variations": ["Pancetta", "Guanciale", "Bacon"]},
+            "eier": {"amount": 1, "unit": "Stück"},
+            "parmesan": {"amount": 40, "unit": "g", "variations": ["Pecorino", "Grana Padano"]},
+            "knoblauch": {"amount": 1, "unit": "Zehe"},
+            "pfeffer": {"amount": 1, "unit": "nach Geschmack"}
+          },
+          "price": 5,
+          "prepTime": 20,
+          "tags": ["italienisch", "schnell", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Wasser für Nudeln aufsetzen und salzen", "Speck in kleine Würfel schneiden und knusprig braten", "Spaghetti al dente kochen", "Eier mit Parmesan verquirlen", "Nudeln zum Speck geben, vom Herd nehmen", "Ei-Käse-Mischung unterrühren"],
+          "childTip": "Für Kinder weniger Pfeffer verwenden",
+          "workTip": "Lässt sich gut erwärmen"
+        },
+        {
+          "id": "m002",
+          "name": "Hähnchenbrust mit Rösti",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "kartoffeln": {"amount": 250, "unit": "g", "variations": ["Süßkartoffeln", "normale Kartoffeln"]},
+            "grüne_bohnen": {"amount": 150, "unit": "g", "variations": ["Brokkoli", "Erbsen", "Zucchini"]},
+            "butter": {"amount": 20, "unit": "g"},
+            "zwiebel": {"amount": 0.5, "unit": "Stück"}
+          },
+          "price": 6,
+          "prepTime": 35,
+          "tags": ["schweizer", "ausgewogen"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Kartoffeln raspeln und ausdrücken", "Hähnchen würzen und braten", "Rösti goldbraun braten", "Bohnen bissfest kochen", "Alles zusammen anrichten"],
+          "childTip": "Hähnchen in kleine Stücke schneiden",
+          "workTip": "Rösti werden beim Erwärmen wieder knusprig"
+        },
+        {
+          "id": "m003",
+          "name": "Rindergulasch mit Spätzle",
+          "baseIngredients": {
+            "rindergulasch": {"amount": 175, "unit": "g"},
+            "spätzle": {"amount": 150, "unit": "g", "variations": ["Knöpfle", "Nudeln", "Reis"]},
+            "zwiebeln": {"amount": 1, "unit": "Stück"},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "tomatenmark": {"amount": 2, "unit": "EL"},
+            "paprikapulver": {"amount": 1, "unit": "EL"}
+          },
+          "price": 7,
+          "prepTime": 120,
+          "tags": ["ungarisch", "deftig", "schmorGericht"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Fleisch scharf anbraten", "Zwiebeln und Paprika zugeben", "Mit Fond ablöschen", "1,5 Std köcheln lassen", "Spätzle kochen", "Mit Spätzle servieren"],
+          "childTip": "Weniger Paprika für Kinder",
+          "workTip": "Wird beim Erwärmen noch besser"
+        },
+        {
+          "id": "m004",
+          "name": "Schweinemedaillons mit Champignonsauce",
+          "baseIngredients": {
+            "schweinefilet": {"amount": 150, "unit": "g"},
+            "champignons": {"amount": 150, "unit": "g", "variations": ["Pfifferlinge", "Steinpilze", "Mischpilze"]},
+            "sahne": {"amount": 100, "unit": "ml"},
+            "kartoffeln": {"amount": 300, "unit": "g"},
+            "brokkoli": {"amount": 150, "unit": "g", "variations": ["Blumenkohl", "Romanesco"]}
+          },
+          "price": 6.5,
+          "prepTime": 30,
+          "tags": ["deutsch", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Medaillons braten", "Champignons anbraten", "Mit Sahne ablöschen", "Kartoffeln kochen", "Brokkoli dämpfen", "Zusammen servieren"],
+          "childTip": "Sauce separat servieren",
+          "workTip": "Fleisch und Sauce getrennt erwärmen"
+        },
+        {
+          "id": "m005",
+          "name": "Hackfleisch-Kartoffel-Auflauf",
+          "baseIngredients": {
+            "hackfleisch": {"amount": 150, "unit": "g"},
+            "kartoffeln": {"amount": 300, "unit": "g"},
+            "zwiebeln": {"amount": 0.5, "unit": "Stück"},
+            "käse": {"amount": 60, "unit": "g", "variations": ["Gouda", "Emmentaler", "Cheddar"]},
+            "milch": {"amount": 100, "unit": "ml"}
+          },
+          "price": 5,
+          "prepTime": 60,
+          "tags": ["auflauf", "familienessen"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Kartoffeln in Scheiben schneiden", "Hackfleisch anbraten", "Schichten und überbacken", "45 Min bei 180°C backen"],
+          "childTip": "Perfekt für Kinder",
+          "workTip": "Portionsweise einfrieren möglich"
+        },
+        {
+          "id": "m006",
+          "name": "Hähnchen-Curry",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "kokosmilch": {"amount": 150, "unit": "ml"},
+            "currypaste": {"amount": 1, "unit": "EL", "variations": ["Rotes Curry", "Grünes Curry", "Gelbes Curry"]},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Basmatireis", "Jasminreis", "Vollkornreis"]},
+            "gemüse": {"amount": 150, "unit": "g"}
+          },
+          "price": 6,
+          "prepTime": 30,
+          "tags": ["asiatisch", "würzig"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Hähnchen anbraten", "Currypaste einrühren", "Mit Kokosmilch ablöschen", "Gemüse zugeben", "Mit Reis servieren"],
+          "childTip": "Sehr milde Currypaste verwenden",
+          "workTip": "Curry schmeckt aufgewärmt noch besser"
+        },
+        {
+          "id": "m007",
+          "name": "Bolognese mit Penne",
+          "baseIngredients": {
+            "pasta": {"type": "short", "amount": 125, "unit": "g", "variations": ["Penne", "Rigatoni", "Fusilli", "Farfalle"]},
+            "rinderhack": {"amount": 150, "unit": "g"},
+            "dosentomaten": {"amount": 200, "unit": "g"},
+            "zwiebeln": {"amount": 0.5, "unit": "Stück"},
+            "möhren": {"amount": 1, "unit": "Stück"}
+          },
+          "price": 5,
+          "prepTime": 120,
+          "tags": ["italienisch", "klassiker"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Gemüse würfeln und anschwitzen", "Hackfleisch krümelig braten", "Tomaten zugeben", "2 Stunden köcheln", "Penne kochen", "Mit Parmesan servieren"],
+          "childTip": "Gemüse sehr fein hacken",
+          "workTip": "Sauce einfrieren, Nudeln frisch"
+        },
+        {
+          "id": "m008",
+          "name": "Gyros mit Tzatziki",
+          "baseIngredients": {
+            "schweinefleisch": {"amount": 200, "unit": "g"},
+            "pita": {"amount": 2, "unit": "Stück", "variations": ["Fladenbrot", "Tortilla"]},
+            "joghurt": {"amount": 100, "unit": "g"},
+            "gurke": {"amount": 0.5, "unit": "Stück"},
+            "pommes": {"amount": 150, "unit": "g", "variations": ["Reis", "Kartoffelspalten"]}
+          },
+          "price": 6.5,
+          "prepTime": 30,
+          "tags": ["griechisch", "streetfood"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Fleisch marinieren und braten", "Tzatziki zubereiten", "Pommes backen", "Pita erwärmen", "Alles zusammen servieren"],
+          "childTip": "Weniger Knoblauch",
+          "workTip": "Komponenten getrennt transportieren"
+        },
+        {
+          "id": "m009",
+          "name": "Chili con Carne",
+          "baseIngredients": {
+            "rinderhack": {"amount": 150, "unit": "g"},
+            "kidneybohnen": {"amount": 125, "unit": "g"},
+            "mais": {"amount": 75, "unit": "g"},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Brot", "Nachos"]}
+          },
+          "price": 5.5,
+          "prepTime": 60,
+          "tags": ["mexikanisch", "scharf"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Hackfleisch anbraten", "Gemüse zugeben", "Bohnen und Mais einrühren", "1 Stunde köcheln", "Mit Reis servieren"],
+          "childTip": "Sehr mild würzen",
+          "workTip": "Perfekt zum Einfrieren"
+        },
+        {
+          "id": "m010",
+          "name": "Schnitzel mit Kartoffelsalat",
+          "baseIngredients": {
+            "schnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Kalb", "Pute"]},
+            "paniermehl": {"amount": 50, "unit": "g"},
+            "kartoffeln": {"amount": 300, "unit": "g"},
+            "mayonnaise": {"amount": 50, "unit": "g"},
+            "gurken": {"amount": 2, "unit": "Stück"}
+          },
+          "price": 6,
+          "prepTime": 40,
+          "tags": ["deutsch", "klassiker"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Kartoffelsalat vorbereiten", "Schnitzel panieren", "Goldbraun braten", "Zusammen servieren"],
+          "childTip": "Schnitzel in Streifen schneiden",
+          "workTip": "Kalt auch lecker"
+        },
+        {
+          "id": "m011",
+          "name": "Lammkoteletts mit Rosmarinkartoffeln",
+          "baseIngredients": {
+            "lammkoteletts": {"amount": 180, "unit": "g"},
+            "kartoffeln": {"amount": 250, "unit": "g"},
+            "rosmarin": {"amount": 2, "unit": "Zweige"},
+            "knoblauch": {"amount": 2, "unit": "Zehen"},
+            "grüner_salat": {"amount": 100, "unit": "g"}
+          },
+          "price": 8,
+          "prepTime": 35,
+          "tags": ["mediterran", "festlich"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Kartoffeln würfeln und würzen", "Mit Rosmarin im Ofen backen", "Lammkoteletts kurz braten", "Mit Salat servieren"],
+          "childTip": "Fleisch sehr zart",
+          "workTip": "Kartoffeln aufwärmen"
+        },
+        {
+          "id": "m012",
+          "name": "Rinderfilet mit grünem Spargel",
+          "baseIngredients": {
+            "rinderfilet": {"amount": 180, "unit": "g"},
+            "grüner_spargel": {"amount": 200, "unit": "g", "variations": ["Weißer Spargel", "Brokkoli"]},
+            "kartoffelpüree": {"amount": 250, "unit": "g"},
+            "rotweinsauce": {"amount": 75, "unit": "ml"}
+          },
+          "price": 9,
+          "prepTime": 30,
+          "tags": ["edel", "festlich"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Filet scharf anbraten", "Spargel blanchieren", "Kartoffelpüree zubereiten", "Mit Sauce servieren"],
+          "childTip": "Fleisch in Streifen",
+          "workTip": "Edel und lecker"
+        },
+        {
+          "id": "m013",
+          "name": "Pulled Pork Burger",
+          "baseIngredients": {
+            "schweineschulter": {"amount": 250, "unit": "g"},
+            "burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn", "Pretzel Bun"]},
+            "coleslaw": {"amount": 75, "unit": "g"},
+            "bbq_sauce": {"amount": 50, "unit": "ml"}
+          },
+          "price": 7,
+          "prepTime": 240,
+          "tags": ["amerikanisch", "bbq"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Fleisch 4 Std schmoren", "Fleisch zupfen", "Mit Sauce mischen", "Im Brötchen servieren"],
+          "childTip": "Weniger BBQ-Sauce",
+          "workTip": "Fleisch einfrieren"
+        },
+        {
+          "id": "m014",
+          "name": "Entenbrust mit Rotkohl",
+          "baseIngredients": {
+            "entenbrust": {"amount": 180, "unit": "g"},
+            "rotkohl": {"amount": 200, "unit": "g"},
+            "klöße": {"amount": 2, "unit": "Stück"},
+            "preiselbeeren": {"amount": 50, "unit": "g"}
+          },
+          "price": 8,
+          "prepTime": 60,
+          "tags": ["festlich", "traditionell"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Entenbrust einschneiden", "Langsam braten", "Rotkohl schmoren", "Mit Klößen servieren"],
+          "childTip": "Haut knusprig machen",
+          "workTip": "Festtagsessen"
+        },
+        {
+          "id": "m015",
+          "name": "Kalbsschnitzel Wiener Art",
+          "baseIngredients": {
+            "kalbsschnitzel": {"amount": 150, "unit": "g"},
+            "semmelbrösel": {"amount": 50, "unit": "g"},
+            "zitrone": {"amount": 0.5, "unit": "Stück"},
+            "petersilienkartoffeln": {"amount": 250, "unit": "g"}
+          },
+          "price": 8,
+          "prepTime": 25,
+          "tags": ["österreichisch", "klassiker"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Schnitzel klopfen", "Panieren und braten", "Kartoffeln kochen", "Mit Zitrone servieren"],
+          "childTip": "Dünn klopfen",
+          "workTip": "Klassiker"
+        },
+        {
+          "id": "m016",
+          "name": "Hähnchen-Saté-Spieße",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "erdnusssauce": {"amount": 75, "unit": "ml"},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
+            "gurkensalat": {"amount": 100, "unit": "g"}
+          },
+          "price": 6,
+          "prepTime": 30,
+          "tags": ["asiatisch", "grillgericht"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Hähnchen marinieren", "Auf Spieße stecken", "Grillen oder braten", "Mit Sauce servieren"],
+          "childTip": "Mild würzen",
+          "workTip": "Party-Hit"
+        },
+        {
+          "id": "m017",
+          "name": "Rinderrouladen",
+          "baseIngredients": {
+            "rinderschnitzel": {"amount": 180, "unit": "g"},
+            "speck": {"amount": 30, "unit": "g"},
+            "gewürzgurken": {"amount": 2, "unit": "Stück"},
+            "senf": {"amount": 1, "unit": "EL"},
+            "rotkohl": {"amount": 150, "unit": "g"}
+          },
+          "price": 7,
+          "prepTime": 120,
+          "tags": ["deutsch", "sonntagsessen"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Rouladen füllen", "Mit Zahnstochern fixieren", "Anbraten und schmoren", "Mit Rotkohl servieren"],
+          "childTip": "Traditionell gut",
+          "workTip": "Sonntags-Klassiker"
+        },
+        {
+          "id": "m018",
+          "name": "Putenschnitzel Hawaii",
+          "baseIngredients": {
+            "putenschnitzel": {"amount": 150, "unit": "g"},
+            "ananas": {"amount": 2, "unit": "Scheiben"},
+            "käse": {"amount": 40, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
+            "reis": {"amount": 125, "unit": "g"}
+          },
+          "price": 6,
+          "prepTime": 25,
+          "tags": ["retro", "fruchtig"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Schnitzel braten", "Mit Ananas belegen", "Käse drauf, überbacken", "Mit Reis servieren"],
+          "childTip": "Kinder lieben es",
+          "workTip": "Retro-Klassiker"
+        },
+        {
+          "id": "m019",
+          "name": "Hackbraten mit Kartoffelbrei",
+          "baseIngredients": {
+            "hackfleisch_gemischt": {"amount": 200, "unit": "g"},
+            "ei": {"amount": 0.5, "unit": "Stück"},
+            "zwiebel": {"amount": 0.5, "unit": "Stück"},
+            "kartoffeln": {"amount": 300, "unit": "g"}
+          },
+          "price": 5,
+          "prepTime": 60,
+          "tags": ["deutsch", "hausmannskost"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Hackbraten formen", "Im Ofen backen", "Kartoffelbrei zubereiten", "Zusammen servieren"],
+          "childTip": "Mit Ketchup",
+          "workTip": "Comfort Food"
+        },
+        {
+          "id": "m020",
+          "name": "Lammcurry",
+          "baseIngredients": {
+            "lammfleisch": {"amount": 180, "unit": "g"},
+            "joghurt": {"amount": 100, "unit": "ml"},
+            "curry_gewürze": {"amount": 2, "unit": "EL"},
+            "naan_brot": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Fladenbrot"]}
+          },
+          "price": 7,
+          "prepTime": 90,
+          "tags": ["indisch", "würzig"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Lamm marinieren", "Langsam schmoren", "Gewürze rösten", "Mit Naan servieren"],
+          "childTip": "Sehr mild",
+          "workTip": "Exotisch lecker"
+        },
+        {
+          "id": "m021",
+          "name": "Hähnchenschenkel mit Ofengemüse",
+          "baseIngredients": {
+            "hähnchenschenkel": {"amount": 1, "unit": "Stück"},
+            "kartoffeln": {"amount": 200, "unit": "g"},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "zucchini": {"amount": 1, "unit": "Stück"}
+          },
+          "price": 5,
+          "prepTime": 45,
+          "tags": ["einfach", "einTopf"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Alles würzen", "Auf Blech verteilen", "45 Min backen", "Heiß servieren"],
+          "childTip": "Einfach und gut",
+          "workTip": "Alles aus einem Topf"
+        },
+        {
+          "id": "m022",
+          "name": "Schweinebraten mit Knödeln",
+          "baseIngredients": {
+            "schweinebraten": {"amount": 200, "unit": "g"},
+            "knödel": {"amount": 2, "unit": "Stück"},
+            "sauerkraut": {"amount": 150, "unit": "g"},
+            "dunkle_sauce": {"amount": 100, "unit": "ml"}
+          },
+          "price": 6,
+          "prepTime": 120,
+          "tags": ["bayrisch", "deftig"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Braten würzen", "2 Std im Ofen", "Knödel kochen", "Mit Kraut servieren"],
+          "childTip": "Bayrischer Klassiker",
+          "workTip": "Deftig gut"
+        },
+        {
+          "id": "m023",
+          "name": "Rindfleisch-Tacos",
+          "baseIngredients": {
+            "rinderhack": {"amount": 150, "unit": "g"},
+            "taco_shells": {"amount": 3, "unit": "Stück", "variations": ["Soft Tacos", "Hard Shell"]},
+            "salat": {"amount": 50, "unit": "g"},
+            "käse": {"amount": 50, "unit": "g"},
+            "salsa": {"amount": 50, "unit": "ml"}
+          },
+          "price": 6,
+          "prepTime": 20,
+          "tags": ["mexikanisch", "fingerfood"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Hackfleisch würzig braten", "Tacos erwärmen", "Füllen und garnieren", "Sofort servieren"],
+          "childTip": "Spaß beim Essen",
+          "workTip": "Mexikanisch"
+        },
+        {
+          "id": "m024",
+          "name": "Putenbrust mit Pilzrahm",
+          "baseIngredients": {
+            "putenbrust": {"amount": 150, "unit": "g"},
+            "mischpilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Pfifferlinge"]},
+            "sahne": {"amount": 75, "unit": "ml"},
+            "nudeln": {"amount": 125, "unit": "g", "variations": ["Reis", "Spätzle"]}
+          },
+          "price": 6,
+          "prepTime": 30,
+          "tags": ["herbstlich", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Pute in Streifen", "Pilze anbraten", "Sahnesauce machen", "Mit Nudeln servieren"],
+          "childTip": "Cremig mild",
+          "workTip": "Herbstgericht"
+        },
+        {
+          "id": "m025",
+          "name": "Königsberger Klopse",
+          "baseIngredients": {
+            "hackfleisch": {"amount": 150, "unit": "g"},
+            "kapern": {"amount": 2, "unit": "EL"},
+            "weiße_sauce": {"amount": 150, "unit": "ml"},
+            "kartoffeln": {"amount": 250, "unit": "g"}
+          },
+          "price": 5,
+          "prepTime": 40,
+          "tags": ["norddeutsch", "traditionell"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Klopse formen", "In Brühe kochen", "Sauce zubereiten", "Mit Kartoffeln servieren"],
+          "childTip": "Tradition pur",
+          "workTip": "Norddeutscher Klassiker"
+        },
+        {
+          "id": "m026",
+          "name": "Hähnchen-Fajitas",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "tortilla": {"amount": 3, "unit": "Stück", "variations": ["Weizen", "Mais", "Vollkorn"]},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "zwiebel": {"amount": 1, "unit": "Stück"}
+          },
+          "price": 6,
+          "prepTime": 25,
+          "tags": ["texmex", "wraps"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Hähnchen in Streifen", "Mit Gemüse braten", "In Tortillas füllen", "Mit Toppings servieren"],
+          "childTip": "Interaktives Essen",
+          "workTip": "Tex-Mex"
+        },
+        {
+          "id": "m027",
+          "name": "Lammkeule mit Bohnen",
+          "baseIngredients": {
+            "lammkeule": {"amount": 200, "unit": "g"},
+            "weiße_bohnen": {"amount": 150, "unit": "g"},
+            "tomaten": {"amount": 150, "unit": "g"},
+            "rosmarin": {"amount": 2, "unit": "Zweige"}
+          },
+          "price": 8,
+          "prepTime": 90,
+          "tags": ["mediterran", "festlich"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Lamm anbraten", "Mit Bohnen schmoren", "Tomaten zugeben", "Langsam garen"],
+          "childTip": "Mediterraner Genuss",
+          "workTip": "Festessen"
+        },
+        {
+          "id": "m028",
+          "name": "Wiener Würstchen mit Linseneintopf",
+          "baseIngredients": {
+            "wiener_würstchen": {"amount": 2, "unit": "Stück"},
+            "linsen": {"amount": 125, "unit": "g"},
+            "suppengemüse": {"amount": 100, "unit": "g"},
+            "speck": {"amount": 30, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 40,
+          "tags": ["eintopf", "deftig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Linsen kochen", "Gemüse dünsten", "Würstchen erwärmen", "Zusammen servieren"],
+          "childTip": "Wärmt von innen",
+          "workTip": "Deftiger Eintopf"
+        },
+        {
+          "id": "m029",
+          "name": "Cordon Bleu",
+          "baseIngredients": {
+            "kalbsschnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Pute"]},
+            "schinken": {"amount": 2, "unit": "Scheiben"},
+            "käse": {"amount": 2, "unit": "Scheiben"},
+            "pommes": {"amount": 200, "unit": "g"}
+          },
+          "price": 7,
+          "prepTime": 30,
+          "tags": ["schweizer", "gefüllt"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Schnitzel füllen", "Panieren", "Goldbraun braten", "Mit Pommes servieren"],
+          "childTip": "Käse schmilzt schön",
+          "workTip": "Restaurant-Klassiker"
+        },
+        {
+          "id": "m030",
+          "name": "Rindersteak mit Kräuterbutter",
+          "baseIngredients": {
+            "rindersteak": {"amount": 200, "unit": "g"},
+            "kräuterbutter": {"amount": 40, "unit": "g"},
+            "ofenkartoffel": {"amount": 1, "unit": "Stück"},
+            "blattsalat": {"amount": 100, "unit": "g"}
+          },
+          "price": 8,
+          "prepTime": 25,
+          "tags": ["steakhouse", "grill"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Steak auf Punkt braten", "Kräuterbutter zubereiten", "Kartoffel backen", "Mit Salat servieren"],
+          "childTip": "Medium für Kinder",
+          "workTip": "Steakhouse-Feeling"
+        },
+        {
+          "id": "m031",
+          "name": "Hähnchen Teriyaki",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "teriyaki_sauce": {"amount": 60, "unit": "ml"},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
+            "brokkoli": {"amount": 150, "unit": "g"}
+          },
+          "price": 6,
+          "prepTime": 25,
+          "tags": ["japanisch", "süßsauer"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Hähnchen marinieren", "In Sauce braten", "Reis kochen", "Mit Brokkoli servieren"],
+          "childTip": "Süß-salzig lecker",
+          "workTip": "Japanisch inspiriert"
+        },
+        {
+          "id": "m032",
+          "name": "Schweinefilet im Speckmantel",
+          "baseIngredients": {
+            "schweinefilet": {"amount": 180, "unit": "g"},
+            "bacon": {"amount": 6, "unit": "Scheiben"},
+            "grüne_bohnen": {"amount": 150, "unit": "g"},
+            "kartoffelgratin": {"amount": 200, "unit": "g"}
+          },
+          "price": 7,
+          "prepTime": 40,
+          "tags": ["festlich", "bacon"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Filet mit Speck umwickeln", "Im Ofen garen", "Bohnen blanchieren", "Mit Gratin servieren"],
+          "childTip": "Saftig und zart",
+          "workTip": "Sonntagsbraten"
+        },
+        {
+          "id": "m033",
+          "name": "Gulaschsuppe",
+          "baseIngredients": {
+            "rindergulasch": {"amount": 125, "unit": "g"},
+            "kartoffeln": {"amount": 150, "unit": "g"},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "brot": {"amount": 3, "unit": "Scheiben"}
+          },
+          "price": 5,
+          "prepTime": 90,
+          "tags": ["suppe", "ungarisch"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Fleisch anbraten", "Gemüse zugeben", "Als Suppe kochen", "Mit Brot servieren"],
+          "childTip": "Wärmende Suppe",
+          "workTip": "Eintopf-Klassiker"
+        },
+        {
+          "id": "m034",
+          "name": "Hähnchen-Nuggets selbstgemacht",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "cornflakes": {"amount": 60, "unit": "g"},
+            "ei": {"amount": 1, "unit": "Stück"},
+            "süßkartoffelpommes": {"amount": 200, "unit": "g", "variations": ["Normale Pommes", "Wedges"]}
+          },
+          "price": 5,
+          "prepTime": 25,
+          "tags": ["kinder", "fingerfood"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Hähnchen würfeln", "In Cornflakes wenden", "Im Ofen backen", "Mit Pommes servieren"],
+          "childTip": "Kinder-Favorit",
+          "workTip": "Gesünder als gekauft"
+        },
+        {
+          "id": "m035",
+          "name": "Rindergeschnetzeltes Stroganoff",
+          "baseIngredients": {
+            "rinderfilet": {"amount": 180, "unit": "g"},
+            "champignons": {"amount": 100, "unit": "g"},
+            "saure_sahne": {"amount": 75, "unit": "ml"},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]}
+          },
+          "price": 7,
+          "prepTime": 25,
+          "tags": ["russisch", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Fleisch in Streifen", "Kurz anbraten", "Sauce zubereiten", "Mit Reis servieren"],
+          "childTip": "Cremig mild",
+          "workTip": "Russischer Klassiker"
+        },
+        {
+          "id": "m036",
+          "name": "Bratwurst mit Sauerkraut",
+          "baseIngredients": {
+            "bratwurst": {"amount": 200, "unit": "g"},
+            "sauerkraut": {"amount": 200, "unit": "g"},
+            "kartoffelpüree": {"amount": 250, "unit": "g"},
+            "senf": {"amount": 2, "unit": "EL"}
+          },
+          "price": 4,
+          "prepTime": 20,
+          "tags": ["deutsch", "deftig"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Bratwurst braten", "Sauerkraut erwärmen", "Püree zubereiten", "Mit Senf servieren"],
+          "childTip": "Deutscher Klassiker",
+          "workTip": "Deftig gut"
+        },
+        {
+          "id": "m037",
+          "name": "Putenschnitzel Jäger Art",
+          "baseIngredients": {
+            "putenschnitzel": {"amount": 150, "unit": "g"},
+            "champignons": {"amount": 150, "unit": "g"},
+            "jägersauce": {"amount": 100, "unit": "ml"},
+            "spätzle": {"amount": 150, "unit": "g", "variations": ["Nudeln", "Reis"]}
+          },
+          "price": 6,
+          "prepTime": 30,
+          "tags": ["deutsch", "pilze"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Schnitzel braten", "Pilzsauce kochen", "Spätzle zubereiten", "Zusammen servieren"],
+          "childTip": "Waldpilz-Geschmack",
+          "workTip": "Traditionell"
+        },
+        {
+          "id": "m038",
+          "name": "Lammspieße griechisch",
+          "baseIngredients": {
+            "lammfleisch": {"amount": 180, "unit": "g"},
+            "tzatziki": {"amount": 75, "unit": "g"},
+            "fladenbrot": {"amount": 2, "unit": "Stück"},
+            "griechischer_salat": {"amount": 150, "unit": "g"}
+          },
+          "price": 7,
+          "prepTime": 30,
+          "tags": ["griechisch", "grill"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Lamm marinieren", "Auf Spieße stecken", "Grillen", "Mit Beilagen servieren"],
+          "childTip": "Mediterraner Genuss",
+          "workTip": "Urlaubsfeeling"
+        },
+        {
+          "id": "m039",
+          "name": "Hähnchen-Wraps",
+          "baseIngredients": {
+            "hähnchenbrust": {"amount": 150, "unit": "g"},
+            "wrap": {"amount": 2, "unit": "Stück", "variations": ["Weizen", "Vollkorn", "Spinat"]},
+            "salat": {"amount": 50, "unit": "g"},
+            "joghurt_dressing": {"amount": 50, "unit": "ml"}
+          },
+          "price": 5,
+          "prepTime": 20,
+          "tags": ["wraps", "togo"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Hähnchen braten", "Wrap füllen", "Einrollen", "Kalt oder warm servieren"],
+          "childTip": "Praktisch zum Essen",
+          "workTip": "Ideal zum Mitnehmen"
+        },
+        {
+          "id": "m040",
+          "name": "Kalbsleber Berliner Art",
+          "baseIngredients": {
+            "kalbsleber": {"amount": 150, "unit": "g"},
+            "äpfel": {"amount": 1, "unit": "Stück"},
+            "zwiebeln": {"amount": 1, "unit": "Stück"},
+            "kartoffelpüree": {"amount": 250, "unit": "g"}
+          },
+          "price": 6,
+          "prepTime": 25,
+          "tags": ["berliner", "innereien"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Leber kurz braten", "Äpfel und Zwiebeln rösten", "Püree zubereiten", "Zusammen servieren"],
+          "childTip": "Eisenreich",
+          "workTip": "Traditionsgericht"
+        }
+      ]
+    },
+    "vegetarian": {
+      "name": "Vegetarische Gerichte",
+      "recipes": [
+        {
+          "id": "v001",
+          "name": "Gemüse-Lasagne",
+          "baseIngredients": {
+            "lasagneplatten": {"amount": 100, "unit": "g"},
+            "zucchini": {"amount": 1, "unit": "Stück"},
+            "aubergine": {"amount": 0.5, "unit": "Stück"},
+            "tomaten": {"amount": 300, "unit": "g"},
+            "mozzarella": {"amount": 125, "unit": "g", "variations": ["Ricotta", "Feta", "Büffelmozzarella"]}
+          },
+          "price": 4,
+          "prepTime": 60,
+          "tags": ["italienisch", "auflauf"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Gemüse in Scheiben schneiden", "Anbraten und würzen", "Lasagne schichten", "45 Min backen"],
+          "childTip": "Viel Käse macht es lecker",
+          "workTip": "Perfekt zum Aufwärmen"
+        },
+        {
+          "id": "v002",
+          "name": "Käsespätzle",
+          "baseIngredients": {
+            "spätzle": {"amount": 200, "unit": "g"},
+            "emmentaler": {"amount": 100, "unit": "g", "variations": ["Bergkäse", "Gruyère", "Appenzeller"]},
+            "zwiebeln": {"amount": 1, "unit": "Stück"},
+            "butter": {"amount": 25, "unit": "g"},
+            "salat": {"amount": 100, "unit": "g"}
+          },
+          "price": 3.5,
+          "prepTime": 30,
+          "tags": ["schwäbisch", "käsig"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Spätzle kochen", "Zwiebeln rösten", "Mit Käse schichten", "Überbacken", "Mit Salat servieren"],
+          "childTip": "Kinder-Lieblingsgericht",
+          "workTip": "Mit Milch aufwärmen"
+        },
+        {
+          "id": "v003",
+          "name": "Gemüse-Curry",
+          "baseIngredients": {
+            "kichererbsen": {"amount": 125, "unit": "g"},
+            "kokosmilch": {"amount": 150, "unit": "ml"},
+            "gemüse": {"amount": 200, "unit": "g", "variations": ["Blumenkohl", "Süßkartoffel", "Spinat"]},
+            "currypaste": {"amount": 1, "unit": "EL", "variations": ["Rot", "Grün", "Gelb"]},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Basmati", "Jasmin", "Naan"]}
+          },
+          "price": 4,
+          "prepTime": 30,
+          "tags": ["asiatisch", "vegan"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Gemüse würfeln", "Currypaste anrösten", "Gemüse zugeben", "Mit Kokosmilch ablöschen", "Mit Reis servieren"],
+          "childTip": "Sehr mild würzen",
+          "workTip": "Wird aufgewärmt aromatischer"
+        },
+        {
+          "id": "v004",
+          "name": "Pizza Margherita",
+          "baseIngredients": {
+            "pizzateig": {"amount": 200, "unit": "g"},
+            "tomatensauce": {"amount": 75, "unit": "ml"},
+            "mozzarella": {"amount": 125, "unit": "g"},
+            "basilikum": {"amount": 5, "unit": "Blätter"},
+            "olivenöl": {"amount": 1, "unit": "EL"}
+          },
+          "price": 3,
+          "prepTime": 20,
+          "tags": ["italienisch", "klassiker"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Teig ausrollen", "Mit Sauce bestreichen", "Mozzarella verteilen", "15 Min bei 220°C backen", "Mit Basilikum garnieren"],
+          "childTip": "Der Klassiker",
+          "workTip": "Kalt als Pizza-Schnitte"
+        },
+        {
+          "id": "v005",
+          "name": "Risotto mit Pilzen",
+          "baseIngredients": {
+            "risottoreis": {"amount": 125, "unit": "g"},
+            "pilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Steinpilze", "Pfifferlinge"]},
+            "weißwein": {"amount": 75, "unit": "ml"},
+            "parmesan": {"amount": 50, "unit": "g"},
+            "brühe": {"amount": 500, "unit": "ml"}
+          },
+          "price": 4.5,
+          "prepTime": 35,
+          "tags": ["italienisch", "cremig"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Pilze anbraten", "Reis anschwitzen", "Nach und nach Brühe zugeben", "Ständig rühren", "Mit Parmesan verfeinern"],
+          "childTip": "Weniger Weißwein",
+          "workTip": "Mit Brühe aufwärmen"
+        },
+        {
+          "id": "v006",
+          "name": "Spinat-Ricotta-Cannelloni",
+          "baseIngredients": {
+            "cannelloni": {"amount": 125, "unit": "g"},
+            "spinat": {"amount": 150, "unit": "g"},
+            "ricotta": {"amount": 100, "unit": "g"},
+            "tomatensauce": {"amount": 150, "unit": "ml"},
+            "parmesan": {"amount": 50, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 45,
+          "tags": ["italienisch", "überbacken"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Spinat blanchieren", "Mit Ricotta mischen", "Cannelloni füllen", "Mit Sauce überbacken"],
+          "childTip": "Verstecktes Gemüse",
+          "workTip": "Vorbereiten und backen"
+        },
+        {
+          "id": "v007",
+          "name": "Pad Thai vegetarisch",
+          "baseIngredients": {
+            "reisnudeln": {"amount": 125, "unit": "g"},
+            "tofu": {"amount": 100, "unit": "g"},
+            "erdnüsse": {"amount": 30, "unit": "g"},
+            "sojasprossen": {"amount": 50, "unit": "g"},
+            "tamarinde": {"amount": 2, "unit": "EL"}
+          },
+          "price": 4,
+          "prepTime": 25,
+          "tags": ["thailändisch", "streetfood"],
+          "childFriendly": false,
+          "workFriendly": false,
+          "instructions": ["Nudeln einweichen", "Tofu anbraten", "Sauce mischen", "Alles vermengen"],
+          "childTip": "Ohne Erdnüsse für Kinder",
+          "workTip": "Asiatisch lecker"
+        },
+        {
+          "id": "v008",
+          "name": "Gnocchi mit Salbei-Butter",
+          "baseIngredients": {
+            "gnocchi": {"amount": 200, "unit": "g"},
+            "butter": {"amount": 40, "unit": "g"},
+            "salbei": {"amount": 10, "unit": "Blätter"},
+            "parmesan": {"amount": 50, "unit": "g"}
+          },
+          "price": 3.5,
+          "prepTime": 15,
+          "tags": ["italienisch", "schnell"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Gnocchi kochen", "Butter bräunen", "Salbei frittieren", "Alles vermengen"],
+          "childTip": "Einfach und gut",
+          "workTip": "Schnelles Essen"
+        },
+        {
+          "id": "v009",
+          "name": "Shakshuka",
+          "baseIngredients": {
+            "tomaten": {"amount": 300, "unit": "g"},
+            "eier": {"amount": 2, "unit": "Stück"},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "feta": {"amount": 50, "unit": "g"},
+            "brot": {"amount": 3, "unit": "Scheiben"}
+          },
+          "price": 3,
+          "prepTime": 25,
+          "tags": ["orientalisch", "frühstück"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Gemüse schmoren", "Mulden formen", "Eier einschlagen", "Zugedeckt garen"],
+          "childTip": "Frühstück mal anders",
+          "workTip": "Orientalisch"
+        },
+        {
+          "id": "v010",
+          "name": "Quinoa-Bowl",
+          "baseIngredients": {
+            "quinoa": {"amount": 100, "unit": "g"},
+            "avocado": {"amount": 1, "unit": "Stück"},
+            "kichererbsen": {"amount": 75, "unit": "g"},
+            "tahini": {"amount": 2, "unit": "EL"},
+            "gemüse": {"amount": 150, "unit": "g"}
+          },
+          "price": 4.5,
+          "prepTime": 25,
+          "tags": ["bowl", "superfood"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Quinoa kochen", "Gemüse rösten", "Bowl arrangieren", "Mit Tahini toppen"],
+          "childTip": "Superfood",
+          "workTip": "Gesund und sättigend"
+        },
+        {
+          "id": "v011",
+          "name": "Moussaka vegetarisch",
+          "baseIngredients": {
+            "aubergine": {"amount": 1, "unit": "Stück"},
+            "kartoffeln": {"amount": 200, "unit": "g"},
+            "linsen": {"amount": 75, "unit": "g"},
+            "béchamel": {"amount": 150, "unit": "ml"},
+            "käse": {"amount": 50, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 60,
+          "tags": ["griechisch", "auflauf"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Schichten vorbereiten", "Linsen kochen", "Alles schichten", "Im Ofen backen"],
+          "childTip": "Griechischer Auflauf",
+          "workTip": "Macht satt"
+        },
+        {
+          "id": "v012",
+          "name": "Falafel mit Hummus",
+          "baseIngredients": {
+            "kichererbsen": {"amount": 150, "unit": "g"},
+            "petersilie": {"amount": 0.5, "unit": "Bund"},
+            "hummus": {"amount": 75, "unit": "g"},
+            "pita": {"amount": 2, "unit": "Stück"}
+          },
+          "price": 3.5,
+          "prepTime": 30,
+          "tags": ["orientalisch", "streetfood"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Kichererbsen pürieren", "Bällchen formen", "Frittieren", "Mit Hummus servieren"],
+          "childTip": "Knusprig außen",
+          "workTip": "Orientalisch"
+        },
+        {
+          "id": "v013",
+          "name": "Ravioli mit Tomatensauce",
+          "baseIngredients": {
+            "ravioli": {"amount": 175, "unit": "g", "variations": ["Spinat-Ricotta", "Käse", "Pilz"]},
+            "tomatensauce": {"amount": 150, "unit": "ml"},
+            "basilikum": {"amount": 8, "unit": "Blätter"},
+            "parmesan": {"amount": 40, "unit": "g"}
+          },
+          "price": 3.5,
+          "prepTime": 15,
+          "tags": ["italienisch", "schnell"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Ravioli kochen", "Sauce erhitzen", "Zusammen servieren", "Mit Käse bestreuen"],
+          "childTip": "Pasta-Klassiker",
+          "workTip": "Schnell gemacht"
+        },
+        {
+          "id": "v014",
+          "name": "Buddha Bowl",
+          "baseIngredients": {
+            "süßkartoffel": {"amount": 150, "unit": "g"},
+            "brokkoli": {"amount": 100, "unit": "g"},
+            "quinoa": {"amount": 75, "unit": "g"},
+            "tahini_dressing": {"amount": 50, "unit": "ml"}
+          },
+          "price": 4,
+          "prepTime": 30,
+          "tags": ["bowl", "gesund"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Gemüse rösten", "Quinoa kochen", "Bowl arrangieren", "Dressing darüber"],
+          "childTip": "Bunt und gesund",
+          "workTip": "Instagram-würdig"
+        },
+        {
+          "id": "v015",
+          "name": "Caprese-Auflauf",
+          "baseIngredients": {
+            "tomaten": {"amount": 250, "unit": "g"},
+            "mozzarella": {"amount": 125, "unit": "g"},
+            "basilikum": {"amount": 0.5, "unit": "Bund"},
+            "ciabatta": {"amount": 3, "unit": "Scheiben"}
+          },
+          "price": 4,
+          "prepTime": 25,
+          "tags": ["italienisch", "sommer"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Tomaten schichten", "Mozzarella dazu", "Überbacken", "Mit Brot servieren"],
+          "childTip": "Italien pur",
+          "workTip": "Sommerlich leicht"
+        },
+        {
+          "id": "v016",
+          "name": "Pilz-Stroganoff",
+          "baseIngredients": {
+            "champignons": {"amount": 200, "unit": "g", "variations": ["Mischpilze", "Austernpilze"]},
+            "saure_sahne": {"amount": 75, "unit": "ml"},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]},
+            "petersilie": {"amount": 2, "unit": "EL"}
+          },
+          "price": 3.5,
+          "prepTime": 25,
+          "tags": ["russisch", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Pilze anbraten", "Sauce zubereiten", "Reis kochen", "Zusammen servieren"],
+          "childTip": "Cremig mild",
+          "workTip": "Comfort Food"
+        },
+        {
+          "id": "v017",
+          "name": "Zucchini-Puffer",
+          "baseIngredients": {
+            "zucchini": {"amount": 300, "unit": "g"},
+            "ei": {"amount": 1, "unit": "Stück"},
+            "mehl": {"amount": 50, "unit": "g"},
+            "joghurt_dip": {"amount": 75, "unit": "g"}
+          },
+          "price": 3,
+          "prepTime": 20,
+          "tags": ["puffer", "gemüse"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Zucchini raspeln", "Teig machen", "Puffer braten", "Mit Dip servieren"],
+          "childTip": "Gemüse versteckt",
+          "workTip": "Leicht und lecker"
+        },
+        {
+          "id": "v018",
+          "name": "Tortellini in Sahnesauce",
+          "baseIngredients": {
+            "tortellini": {"amount": 175, "unit": "g", "variations": ["Käse", "Spinat", "Pilz"]},
+            "sahne": {"amount": 100, "unit": "ml"},
+            "erbsen": {"amount": 75, "unit": "g"},
+            "parmesan": {"amount": 40, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 15,
+          "tags": ["italienisch", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Tortellini kochen", "Sahnesauce machen", "Erbsen zugeben", "Mit Käse servieren"],
+          "childTip": "Cremig gut",
+          "workTip": "Kinder-Hit"
+        },
+        {
+          "id": "v019",
+          "name": "Ratatouille",
+          "baseIngredients": {
+            "zucchini": {"amount": 1, "unit": "Stück"},
+            "aubergine": {"amount": 0.5, "unit": "Stück"},
+            "paprika": {"amount": 1, "unit": "Stück"},
+            "tomaten": {"amount": 200, "unit": "g"},
+            "baguette": {"amount": 4, "unit": "Scheiben"}
+          },
+          "price": 3.5,
+          "prepTime": 45,
+          "tags": ["französisch", "gemüse"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Gemüse schneiden", "Schichten legen", "Im Ofen garen", "Mit Brot servieren"],
+          "childTip": "Französisch",
+          "workTip": "Gesund"
+        },
+        {
+          "id": "v020",
+          "name": "Spinat-Gorgonzola-Pasta",
+          "baseIngredients": {
+            "pasta": {"type": "any", "amount": 150, "unit": "g", "variations": ["Penne", "Fusilli", "Rigatoni"]},
+            "spinat": {"amount": 100, "unit": "g"},
+            "gorgonzola": {"amount": 60, "unit": "g"},
+            "walnüsse": {"amount": 30, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 20,
+          "tags": ["italienisch", "käsig"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Pasta kochen", "Spinat dünsten", "Sauce machen", "Alles mischen"],
+          "childTip": "Für Käse-Fans",
+          "workTip": "Schnell fertig"
+        },
+        {
+          "id": "v021",
+          "name": "Gemüse-Tempura",
+          "baseIngredients": {
+            "gemüse_gemischt": {"amount": 200, "unit": "g"},
+            "tempurateig": {"amount": 75, "unit": "g"},
+            "sojasauce": {"amount": 30, "unit": "ml"},
+            "reis": {"amount": 125, "unit": "g"}
+          },
+          "price": 3.5,
+          "prepTime": 25,
+          "tags": ["japanisch", "frittiert"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Teig anrühren", "Gemüse eintauchen", "Frittieren", "Mit Reis servieren"],
+          "childTip": "Knusprig",
+          "workTip": "Japanisch"
+        },
+        {
+          "id": "v022",
+          "name": "Kürbis-Risotto",
+          "baseIngredients": {
+            "kürbis": {"amount": 200, "unit": "g", "variations": ["Hokkaido", "Butternut"]},
+            "risottoreis": {"amount": 125, "unit": "g"},
+            "weißwein": {"amount": 75, "unit": "ml"},
+            "parmesan": {"amount": 40, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 35,
+          "tags": ["italienisch", "herbstlich"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Kürbis würfeln", "Risotto kochen", "Kürbis einrühren", "Mit Käse servieren"],
+          "childTip": "Herbstlich",
+          "workTip": "Orange und lecker"
+        },
+        {
+          "id": "v023",
+          "name": "Halloumi-Burger",
+          "baseIngredients": {
+            "halloumi": {"amount": 150, "unit": "g"},
+            "burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn"]},
+            "hummus": {"amount": 50, "unit": "g"},
+            "salat": {"amount": 50, "unit": "g"}
+          },
+          "price": 4.5,
+          "prepTime": 15,
+          "tags": ["burger", "vegetarisch"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Halloumi grillen", "Brötchen toasten", "Burger bauen", "Sofort servieren"],
+          "childTip": "Quietschkäse",
+          "workTip": "Vegetarischer Burger"
+        },
+        {
+          "id": "v024",
+          "name": "Penne all'Arrabbiata",
+          "baseIngredients": {
+            "pasta": {"type": "short", "amount": 150, "unit": "g", "variations": ["Penne", "Rigatoni"]},
+            "tomaten": {"amount": 250, "unit": "g"},
+            "chili": {"amount": 1, "unit": "Stück"},
+            "knoblauch": {"amount": 2, "unit": "Zehen"}
+          },
+          "price": 3,
+          "prepTime": 20,
+          "tags": ["italienisch", "scharf"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Sauce kochen", "Scharf würzen", "Penne kochen", "Zusammen servieren"],
+          "childTip": "Ohne Chili für Kinder",
+          "workTip": "Feurig"
+        },
+        {
+          "id": "v025",
+          "name": "Bärlauch-Spätzle",
+          "baseIngredients": {
+            "spätzle": {"amount": 200, "unit": "g"},
+            "bärlauch": {"amount": 50, "unit": "g"},
+            "sahne": {"amount": 75, "unit": "ml"},
+            "parmesan": {"amount": 40, "unit": "g"}
+          },
+          "price": 3.5,
+          "prepTime": 25,
+          "tags": ["frühling", "saisonal"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Spätzle kochen", "Bärlauch hacken", "Sauce machen", "Alles mischen"],
+          "childTip": "Frühlingsgericht",
+          "workTip": "Saisonal"
+        },
+        {
+          "id": "v026",
+          "name": "Linsen-Dal",
+          "baseIngredients": {
+            "rote_linsen": {"amount": 125, "unit": "g"},
+            "kokosmilch": {"amount": 100, "unit": "ml"},
+            "curry_gewürze": {"amount": 2, "unit": "EL"},
+            "naan": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Chapati"]}
+          },
+          "price": 3,
+          "prepTime": 30,
+          "tags": ["indisch", "vegan"],
+          "childFriendly": false,
+          "workFriendly": true,
+          "instructions": ["Linsen kochen", "Gewürze rösten", "Cremig rühren", "Mit Naan servieren"],
+          "childTip": "Indisch mild",
+          "workTip": "Proteinreich"
+        },
+        {
+          "id": "v027",
+          "name": "Gnocchi-Auflauf",
+          "baseIngredients": {
+            "gnocchi": {"amount": 200, "unit": "g"},
+            "tomatensauce": {"amount": 150, "unit": "ml"},
+            "mozzarella": {"amount": 100, "unit": "g"},
+            "basilikum": {"amount": 8, "unit": "Blätter"}
+          },
+          "price": 3.5,
+          "prepTime": 25,
+          "tags": ["italienisch", "auflauf"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Gnocchi anbraten", "Mit Sauce mischen", "Käse drauf", "Überbacken"],
+          "childTip": "Käse zieht Fäden",
+          "workTip": "Ofengericht"
+        },
+        {
+          "id": "v028",
+          "name": "Süßkartoffel-Curry",
+          "baseIngredients": {
+            "süßkartoffel": {"amount": 200, "unit": "g"},
+            "kokosmilch": {"amount": 150, "unit": "ml"},
+            "spinat": {"amount": 75, "unit": "g"},
+            "reis": {"amount": 125, "unit": "g", "variations": ["Quinoa", "Couscous"]}
+          },
+          "price": 3.5,
+          "prepTime": 30,
+          "tags": ["curry", "vegan"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Kartoffeln würfeln", "Curry kochen", "Spinat zugeben", "Mit Reis servieren"],
+          "childTip": "Süß und mild",
+          "workTip": "Vegan möglich"
+        },
+        {
+          "id": "v029",
+          "name": "Pilz-Quiche",
+          "baseIngredients": {
+            "mürbeteig": {"amount": 150, "unit": "g"},
+            "champignons": {"amount": 150, "unit": "g"},
+            "eier": {"amount": 2, "unit": "Stück"},
+            "sahne": {"amount": 100, "unit": "ml"},
+            "käse": {"amount": 50, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 45,
+          "tags": ["französisch", "quiche"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Teig ausrollen", "Pilze andünsten", "Guss machen", "Backen"],
+          "childTip": "Französisch",
+          "workTip": "Auch kalt gut"
+        },
+        {
+          "id": "v030",
+          "name": "Tomaten-Mozzarella-Tarte",
+          "baseIngredients": {
+            "blätterteig": {"amount": 150, "unit": "g"},
+            "tomaten": {"amount": 250, "unit": "g"},
+            "mozzarella": {"amount": 125, "unit": "g"},
+            "pesto": {"amount": 30, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 25,
+          "tags": ["tarte", "sommer"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Teig ausrollen", "Belegen", "Backen", "Heiß servieren"],
+          "childTip": "Sommerlich",
+          "workTip": "Party-Hit"
+        },
+        {
+          "id": "v031",
+          "name": "Gemüse-Couscous",
+          "baseIngredients": {
+            "couscous": {"amount": 125, "unit": "g"},
+            "gemüse": {"amount": 200, "unit": "g"},
+            "rosinen": {"amount": 30, "unit": "g"},
+            "minze": {"amount": 8, "unit": "Blätter"}
+          },
+          "price": 3,
+          "prepTime": 20,
+          "tags": ["orientalisch", "leicht"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Couscous quellen", "Gemüse rösten", "Alles mischen", "Lauwarm servieren"],
+          "childTip": "Orientalisch",
+          "workTip": "Salat-Alternative"
+        },
+        {
+          "id": "v032",
+          "name": "Kartoffel-Lauch-Gratin",
+          "baseIngredients": {
+            "kartoffeln": {"amount": 300, "unit": "g"},
+            "lauch": {"amount": 100, "unit": "g"},
+            "sahne": {"amount": 125, "unit": "ml"},
+            "käse": {"amount": 60, "unit": "g", "variations": ["Gruyère", "Emmentaler"]}
+          },
+          "price": 3,
+          "prepTime": 50,
+          "tags": ["auflauf", "gratin"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Schichten legen", "Sahne darüber", "Mit Käse bedecken", "Goldbraun backen"],
+          "childTip": "Schmelzender Käse",
+          "workTip": "Beilage oder Hauptgang"
+        },
+        {
+          "id": "v033",
+          "name": "Tagliatelle mit Zitronen-Butter",
+          "baseIngredients": {
+            "pasta": {"type": "long", "amount": 150, "unit": "g", "variations": ["Tagliatelle", "Linguine", "Fettuccine"]},
+            "butter": {"amount": 40, "unit": "g"},
+            "zitrone": {"amount": 1, "unit": "Stück"},
+            "parmesan": {"amount": 40, "unit": "g"}
+          },
+          "price": 3,
+          "prepTime": 15,
+          "tags": ["italienisch", "sommerlich"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Pasta kochen", "Butter schmelzen", "Zitrone zugeben", "Mit Käse servieren"],
+          "childTip": "Frisch und leicht",
+          "workTip": "Sommerlich"
+        },
+        {
+          "id": "v034",
+          "name": "Auberginen-Parmigiana",
+          "baseIngredients": {
+            "aubergine": {"amount": 1, "unit": "Stück"},
+            "tomatensauce": {"amount": 150, "unit": "ml"},
+            "mozzarella": {"amount": 100, "unit": "g"},
+            "parmesan": {"amount": 50, "unit": "g"}
+          },
+          "price": 4,
+          "prepTime": 50,
+          "tags": ["italienisch", "auflauf"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Auberginen braten", "Schichten legen", "Käse darüber", "Überbacken"],
+          "childTip": "Italienischer Auflauf",
+          "workTip": "Vorbereiten möglich"
+        },
+        {
+          "id": "v035",
+          "name": "Brokkoli-Käse-Suppe",
+          "baseIngredients": {
+            "brokkoli": {"amount": 200, "unit": "g"},
+            "cheddar": {"amount": 75, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
+            "sahne": {"amount": 75, "unit": "ml"},
+            "brot": {"amount": 3, "unit": "Scheiben"}
+          },
+          "price": 3,
+          "prepTime": 25,
+          "tags": ["suppe", "cremig"],
+          "childFriendly": true,
+          "workFriendly": true,
+          "instructions": ["Brokkoli kochen", "Pürieren", "Käse einrühren", "Mit Brot servieren"],
+          "childTip": "Grün und cremig",
+          "workTip": "Wärmend"
+        }
+      ]
+    },
+    "kids": {
+      "name": "Kinderessen",
+      "recipes": [
+        {
+          "id": "k001",
+          "name": "Mini-Frikadellen",
+          "baseIngredients": {
+            "hackfleisch": {"amount": 80, "unit": "g"},
+            "ei": {"amount": 0.5, "unit": "Stück"},
+            "semmelbrösel": {"amount": 2, "unit": "EL"},
+            "kartoffelbrei": {"amount": 150, "unit": "g"}
+          },
+          "price": 2,
+          "prepTime": 25,
+          "tags": ["kinder", "fingerfood"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Hackfleisch mischen", "Kleine Frikadellen formen", "Braten", "Mit Kartoffelbrei servieren"],
+          "childTip": "Sehr mild würzen",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k002",
+          "name": "Pfannkuchen",
+          "baseIngredients": {
+            "mehl": {"amount": 75, "unit": "g"},
+            "milch": {"amount": 150, "unit": "ml"},
+            "eier": {"amount": 1, "unit": "Stück"},
+            "apfelmus": {"amount": 100, "unit": "g", "variations": ["Nutella", "Marmelade", "Zimt-Zucker"]}
+          },
+          "price": 1.5,
+          "prepTime": 15,
+          "tags": ["süß", "klassiker"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Teig anrühren", "Dünne Pfannkuchen backen", "Mit Apfelmus servieren"],
+          "childTip": "Der Klassiker",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k003",
+          "name": "Nudeln mit Butter",
+          "baseIngredients": {
+            "nudeln": {"amount": 75, "unit": "g", "variations": ["Spaghetti", "Fusilli", "Farfalle"]},
+            "butter": {"amount": 20, "unit": "g"},
+            "parmesan": {"amount": 20, "unit": "g"},
+            "erbsen": {"amount": 50, "unit": "g"}
+          },
+          "price": 1.5,
+          "prepTime": 10,
+          "tags": ["einfach", "schnell"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Nudeln kochen", "Mit Butter mischen", "Parmesan drüber"],
+          "childTip": "Einfach und beliebt",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k004",
+          "name": "Pizza-Schnecken",
+          "baseIngredients": {
+            "pizzateig": {"amount": 100, "unit": "g"},
+            "tomatensauce": {"amount": 50, "unit": "ml"},
+            "salami": {"amount": 5, "unit": "Scheiben", "variations": ["Schinken", "Champignons"]},
+            "käse": {"amount": 50, "unit": "g"}
+          },
+          "price": 2,
+          "prepTime": 20,
+          "tags": ["pizza", "fingerfood"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Teig belegen", "Aufrollen", "In Scheiben schneiden", "20 Min backen"],
+          "childTip": "Mini-Pizzen",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k005",
+          "name": "Chicken Nuggets",
+          "baseIngredients": {
+            "hähnchen": {"amount": 100, "unit": "g"},
+            "cornflakes": {"amount": 40, "unit": "g"},
+            "ei": {"amount": 0.5, "unit": "Stück"},
+            "pommes": {"amount": 125, "unit": "g"}
+          },
+          "price": 2.5,
+          "prepTime": 20,
+          "tags": ["fingerfood", "knusprig"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Hähnchen schneiden", "In Cornflakes wenden", "Backen", "Mit Pommes servieren"],
+          "childTip": "Gesünder als gekaufte",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k006",
+          "name": "Spaghetti mit Tomatensauce",
+          "baseIngredients": {
+            "spaghetti": {"amount": 75, "unit": "g"},
+            "tomatensauce": {"amount": 100, "unit": "ml"},
+            "parmesan": {"amount": 20, "unit": "g"}
+          },
+          "price": 1.5,
+          "prepTime": 12,
+          "tags": ["pasta", "klassiker"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Spaghetti kochen", "Sauce erwärmen", "Zusammen servieren"],
+          "childTip": "Kinder-Klassiker",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k007",
+          "name": "Fischstäbchen mit Püree",
+          "baseIngredients": {
+            "fischstäbchen": {"amount": 3, "unit": "Stück"},
+            "kartoffelpüree": {"amount": 150, "unit": "g"},
+            "erbsen": {"amount": 50, "unit": "g"}
+          },
+          "price": 2,
+          "prepTime": 15,
+          "tags": ["fisch", "knusprig"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Fischstäbchen backen", "Püree zubereiten", "Mit Erbsen servieren"],
+          "childTip": "Knusprig",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k008",
+          "name": "Würstchen im Schlafrock",
+          "baseIngredients": {
+            "wiener": {"amount": 2, "unit": "Stück"},
+            "blätterteig": {"amount": 75, "unit": "g"},
+            "ketchup": {"amount": 30, "unit": "ml"}
+          },
+          "price": 2,
+          "prepTime": 15,
+          "tags": ["party", "fingerfood"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Würstchen einwickeln", "Goldbraun backen", "Mit Ketchup servieren"],
+          "childTip": "Party-Hit",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k009",
+          "name": "Käse-Sandwich",
+          "baseIngredients": {
+            "toast": {"amount": 2, "unit": "Scheiben"},
+            "käse": {"amount": 2, "unit": "Scheiben", "variations": ["Gouda", "Cheddar"]},
+            "butter": {"amount": 15, "unit": "g"},
+            "gurke": {"amount": 5, "unit": "Scheiben"}
+          },
+          "price": 1.5,
+          "prepTime": 5,
+          "tags": ["sandwich", "schnell"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Toast buttern", "Käse drauf", "Toasten", "Warm servieren"],
+          "childTip": "Schnell gemacht",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k010",
+          "name": "Mini-Hamburger",
+          "baseIngredients": {
+            "hackfleisch": {"amount": 80, "unit": "g"},
+            "mini_brötchen": {"amount": 1, "unit": "Stück"},
+            "käse": {"amount": 1, "unit": "Scheibe"},
+            "ketchup": {"amount": 20, "unit": "ml"}
+          },
+          "price": 2.5,
+          "prepTime": 15,
+          "tags": ["burger", "mini"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Mini-Patty formen", "Braten", "Burger bauen", "Servieren"],
+          "childTip": "Wie bei McDonald's",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k011",
+          "name": "Eierkuchen mit Marmelade",
+          "baseIngredients": {
+            "mehl": {"amount": 75, "unit": "g"},
+            "milch": {"amount": 150, "unit": "ml"},
+            "ei": {"amount": 1, "unit": "Stück"},
+            "marmelade": {"amount": 50, "unit": "g", "variations": ["Erdbeere", "Aprikose", "Himbeere"]}
+          },
+          "price": 1.5,
+          "prepTime": 15,
+          "tags": ["süß", "pfannkuchen"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Teig machen", "Dünn backen", "Mit Marmelade füllen", "Einrollen"],
+          "childTip": "Süß und lecker",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k012",
+          "name": "Kartoffelpuffer",
+          "baseIngredients": {
+            "kartoffeln": {"amount": 200, "unit": "g"},
+            "ei": {"amount": 0.5, "unit": "Stück"},
+            "apfelmus": {"amount": 75, "unit": "g"}
+          },
+          "price": 1.5,
+          "prepTime": 20,
+          "tags": ["puffer", "kartoffel"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Kartoffeln reiben", "Puffer formen", "Goldbraun braten", "Mit Apfelmus"],
+          "childTip": "Reibekuchen",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k013",
+          "name": "Milchreis",
+          "baseIngredients": {
+            "milchreis": {"amount": 50, "unit": "g"},
+            "milch": {"amount": 200, "unit": "ml"},
+            "zucker": {"amount": 1, "unit": "TL"},
+            "zimt": {"amount": 1, "unit": "Prise"}
+          },
+          "price": 1.5,
+          "prepTime": 25,
+          "tags": ["süß", "reis"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Reis kochen", "Süßen", "Mit Zimt bestreuen", "Warm servieren"],
+          "childTip": "Comfort Food",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k014",
+          "name": "Gemüse-Sticks mit Dip",
+          "baseIngredients": {
+            "möhren": {"amount": 75, "unit": "g"},
+            "gurke": {"amount": 75, "unit": "g"},
+            "paprika": {"amount": 75, "unit": "g"},
+            "frischkäse_dip": {"amount": 60, "unit": "g"}
+          },
+          "price": 1.5,
+          "prepTime": 10,
+          "tags": ["gesund", "gemüse"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Gemüse schneiden", "Dip anrühren", "Zusammen servieren"],
+          "childTip": "Gesunder Snack",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k015",
+          "name": "Nudelauflauf",
+          "baseIngredients": {
+            "nudeln": {"amount": 75, "unit": "g"},
+            "schinken": {"amount": 3, "unit": "Scheiben"},
+            "käse": {"amount": 2, "unit": "Scheiben"},
+            "sahne": {"amount": 60, "unit": "ml"}
+          },
+          "price": 2,
+          "prepTime": 25,
+          "tags": ["auflauf", "pasta"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Nudeln kochen", "Alles mischen", "Überbacken", "Heiß servieren"],
+          "childTip": "Käse-Liebe",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k016",
+          "name": "French Toast",
+          "baseIngredients": {
+            "toast": {"amount": 2, "unit": "Scheiben"},
+            "ei": {"amount": 1, "unit": "Stück"},
+            "milch": {"amount": 50, "unit": "ml"},
+            "ahornsirup": {"amount": 30, "unit": "ml", "variations": ["Puderzucker", "Zimt"]}
+          },
+          "price": 1.5,
+          "prepTime": 10,
+          "tags": ["süß", "frühstück"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Toast in Ei-Milch", "In Pfanne braten", "Mit Sirup servieren"],
+          "childTip": "Amerikanisch",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k017",
+          "name": "Tomatensuppe mit Reis",
+          "baseIngredients": {
+            "tomatensuppe": {"amount": 200, "unit": "ml"},
+            "reis": {"amount": 40, "unit": "g"},
+            "croutons": {"amount": 30, "unit": "g"}
+          },
+          "price": 1.5,
+          "prepTime": 15,
+          "tags": ["suppe", "warm"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Suppe erwärmen", "Reis kochen", "Zusammen servieren"],
+          "childTip": "Klassiker",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k018",
+          "name": "Käsespieße",
+          "baseIngredients": {
+            "käsewürfel": {"amount": 60, "unit": "g"},
+            "weintrauben": {"amount": 50, "unit": "g"},
+            "salzstangen": {"amount": 15, "unit": "Stück"}
+          },
+          "price": 2,
+          "prepTime": 5,
+          "tags": ["fingerfood", "kalt"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Alles aufspießen", "Hübsch anrichten", "Servieren"],
+          "childTip": "Fingerfood",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k019",
+          "name": "Mini-Quiche",
+          "baseIngredients": {
+            "mürbeteig": {"amount": 75, "unit": "g"},
+            "ei": {"amount": 1, "unit": "Stück"},
+            "schinken": {"amount": 2, "unit": "Scheiben"},
+            "käse": {"amount": 30, "unit": "g"}
+          },
+          "price": 2,
+          "prepTime": 25,
+          "tags": ["quiche", "mini"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Förmchen auslegen", "Füllung machen", "Backen", "Warm servieren"],
+          "childTip": "Klein und fein",
+          "workTip": "Nur für Kinder"
+        },
+        {
+          "id": "k020",
+          "name": "Grießbrei",
+          "baseIngredients": {
+            "grieß": {"amount": 40, "unit": "g"},
+            "milch": {"amount": 200, "unit": "ml"},
+            "zucker": {"amount": 1, "unit": "TL"},
+            "beeren": {"amount": 50, "unit": "g", "variations": ["Erdbeeren", "Himbeeren", "Blaubeeren"]}
+          },
+          "price": 1.5,
+          "prepTime": 15,
+          "tags": ["süß", "brei"],
+          "childFriendly": true,
+          "workFriendly": false,
+          "instructions": ["Grieß einrühren", "Kochen", "Süßen", "Mit Beeren toppen"],
+          "childTip": "Wohlfühlessen",
+          "workTip": "Nur für Kinder"
+        }
+      ]
+    }
+  },
+  "smartRules": {
+    "pastaVariations": {
+      "long": ["Spaghetti", "Linguine", "Tagliatelle", "Fettuccine", "Capellini"],
+      "short": ["Penne", "Fusilli", "Rigatoni", "Farfalle", "Orecchiette", "Conchiglie"],
+      "filled": ["Tortellini", "Ravioli", "Cannelloni", "Cappelletti", "Agnolotti"],
+      "special": ["Gnocchi", "Spätzle", "Lasagne", "Orzo"]
+    },
+    "proteinSubstitutes": {
+      "hähnchen": ["Pute", "Kalb", "Kaninchen"],
+      "rind": ["Lamm", "Wild", "Bison"],
+      "schwein": ["Hähnchen", "Pute", "Ente"]
+    },
+    "vegetableSeasons": {
+      "spring": ["Spargel", "Bärlauch", "Spinat", "Radieschen", "Erbsen", "Rhabarber"],
+      "summer": ["Tomaten", "Zucchini", "Paprika", "Aubergine", "Gurken", "Beeren"],
+      "autumn": ["Kürbis", "Pilze", "Kohl", "Rote Beete", "Äpfel", "Birnen"],
+      "winter": ["Rosenkohl", "Grünkohl", "Lauch", "Sellerie", "Pastinaken", "Schwarzwurzeln"]
+    },
+    "avoidRepetition": {
+      "minDaysBetween": 5,
+      "similarIngredients": ["Tomaten", "Käse", "Sahne", "Kartoffeln", "Reis"],
+      "cookingMethods": ["gebraten", "überbacken", "gekocht", "gedünstet", "gegrillt", "geschmort"]
+    }
+  }
+}
