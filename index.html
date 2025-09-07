@@ -1496,7 +1496,24 @@
             
             showLoading('Erstelle intelligenten Wochenplan...');
             
+            // Debug: Prüfe ob Kindergerichte vorhanden sind
+            if (AppData.recipes.categories.kids && AppData.recipes.categories.kids.recipes.length > 0) {
+                console.log(`✅ ${AppData.recipes.categories.kids.recipes.length} Kindergerichte verfügbar`);
+                showToast(`Plan mit ${AppData.recipes.categories.kids.recipes.length} Kindergerichten erstellt`, 'info');
+            } else {
+                console.warn('⚠️ KEINE Kindergerichte gefunden!');
+                showToast('Warnung: Keine Kindergerichte in der Datenbank!', 'error');
+            }
+            
             AppData.weekPlan = SmartPlanner.createPlan(AppData.recipes, AppData.preferences);
+            
+            // Debug: Prüfe welche Tage Kindergerichte haben
+            AppData.weekPlan.forEach((day, index) => {
+                if (day.kidsLunch) {
+                    console.log(`✅ ${day.day} hat Kindergericht: ${day.kidsLunch.name}`);
+                }
+            });
+            
             generateShoppingList();
             
             await saveToCloud();
@@ -1505,7 +1522,7 @@
             updatePizzaCountdown();
             hideLoading();
             
-            showToast('Neuer Plan erstellt', 'success');
+            showToast('Neuer Plan erstellt - Dienstag & Donnerstag mit Kindergerichten', 'success');
         }
 
         // Plan optimieren
