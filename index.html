@@ -781,25 +781,459 @@
             }
         }
 
+        /* Mobile First - Smartphone Optimierung */
         @media (max-width: 768px) {
-            .shopping-list {
-                columns: 1;
+            body {
+                font-size: 16px; /* Verhindert Zoom auf iOS */
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+                margin-bottom: 15px;
             }
             
             .header h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
+                line-height: 1.2;
             }
             
+            .header p {
+                font-size: 0.9em;
+            }
+            
+            .stats-box {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .stats-box p {
+                font-size: 0.85em;
+            }
+            
+            /* Hauptbuttons */
             .main-controls {
                 flex-direction: column;
+                gap: 10px;
+                margin-bottom: 20px;
             }
             
             .btn {
                 width: 100%;
+                padding: 18px 20px;
+                font-size: 1em;
+                min-height: 50px;
             }
             
+            /* Tab-Navigation optimiert */
+            .tabs {
+                padding: 8px;
+                gap: 5px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .tab {
+                padding: 12px 16px;
+                font-size: 0.9em;
+                white-space: nowrap;
+                min-height: 44px;
+                flex-shrink: 0;
+            }
+            
+            /* Tab-Inhalt */
+            .tab-content {
+                padding: 20px 15px;
+            }
+            
+            /* Wochenübersicht */
+            .day-card {
+                padding: 15px;
+                margin-bottom: 10px;
+                position: relative;
+                padding-right: 45px;
+            }
+            
+            .day-card .swap-btn {
+                width: 40px;
+                height: 40px;
+                right: 5px;
+                top: 15px;
+            }
+            
+            .day-name {
+                font-size: 1.1em;
+            }
+            
+            .meal-name {
+                font-size: 1em;
+                line-height: 1.4;
+            }
+            
+            .meal-details {
+                font-size: 0.85em;
+            }
+            
+            .portions-info {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+            
+            /* Einkaufsliste */
+            .shopping-list {
+                columns: 1;
+            }
+            
+            .shopping-category {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .shopping-category h3 {
+                font-size: 1.1em;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #764ba2;
+            }
+            
+            .shopping-item {
+                padding: 10px 0;
+                font-size: 0.95em;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .shopping-item:last-child {
+                border-bottom: none;
+            }
+            
+            .shopping-item input[type="checkbox"] {
+                width: 24px;
+                height: 24px;
+                margin-right: 15px;
+            }
+            
+            /* Rezepte */
+            .recipe-details {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .recipe-details h3 {
+                font-size: 1.2em;
+                line-height: 1.3;
+            }
+            
+            .ingredients-list {
+                padding: 12px;
+                font-size: 0.95em;
+            }
+            
+            .instructions {
+                padding: 12px;
+                font-size: 0.95em;
+            }
+            
+            .instructions li {
+                margin-bottom: 12px;
+                line-height: 1.5;
+            }
+            
+            .tips-box {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+            
+            /* Einstellungen */
+            .settings-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .setting-group {
+                padding: 15px;
+            }
+            
+            .setting-group h3 {
+                font-size: 1.1em;
+                margin-bottom: 12px;
+            }
+            
+            .setting-group label {
+                font-size: 0.95em;
+                margin-bottom: 12px;
+                display: block;
+            }
+            
+            .setting-group input[type="number"],
+            .setting-group select,
+            .setting-group input[type="password"] {
+                padding: 12px;
+                font-size: 16px; /* Verhindert Zoom auf iOS */
+                min-height: 44px;
+            }
+            
+            .setting-group input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+            
+            /* Portionseinstellungen */
+            .portion-settings {
+                padding: 12px;
+            }
+            
+            .person-portion {
+                padding: 12px;
+                margin-bottom: 8px;
+            }
+            
+            .person-portion input {
+                width: 100px !important;
+                font-size: 16px;
+                padding: 8px;
+            }
+            
+            /* Filter-Gruppen */
             .filter-group {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .filter-group label {
+                padding: 10px;
+                background: #f9f9f9;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+            }
+            
+            /* Budget-Anzeige */
+            .budget-display {
+                font-size: 1.1em;
+                padding: 12px;
+                margin: 15px 0;
+            }
+            
+            /* Modals */
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                max-height: 90vh;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.3em;
+            }
+            
+            .github-section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .github-section h3 {
+                font-size: 1.1em;
+            }
+            
+            .github-input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            
+            .github-btn {
+                padding: 12px 16px;
+                font-size: 0.95em;
+                min-height: 44px;
+            }
+            
+            .github-actions {
+                flex-direction: column;
+            }
+            
+            /* Gespeicherte Wochen */
+            .saved-week-item {
+                padding: 12px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .saved-week-info {
+                width: 100%;
+            }
+            
+            .saved-week-actions {
+                width: 100%;
+                display: flex;
+                gap: 10px;
+            }
+            
+            .mini-btn {
+                flex: 1;
+                padding: 10px;
+                min-height: 44px;
+            }
+            
+            /* Confirm Dialog */
+            .confirm-dialog {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .confirm-dialog h3 {
+                font-size: 1.2em;
+            }
+            
+            .confirm-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .confirm-actions .btn {
+                width: 100%;
+            }
+            
+            /* Pizza Indicator */
+            .pizza-indicator {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+            
+            /* Loading */
+            .loading {
+                padding: 30px;
+            }
+            
+            .spinner {
+                width: 40px;
+                height: 40px;
+            }
+            
+            /* Bessere Touch-Targets */
+            button, 
+            input[type="checkbox"],
+            input[type="number"],
+            select,
+            .tab,
+            .shopping-item,
+            .gist-item,
+            .saved-week-item {
+                min-height: 44px;
+                cursor: pointer;
+            }
+            
+            /* Horizontales Scrollen verhindern */
+            * {
+                max-width: 100%;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+            
+            /* Swipe-Hinweis für Tabs */
+            .tabs::after {
+                content: '→';
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #764ba2;
+                font-size: 20px;
+                opacity: 0.5;
+                pointer-events: none;
+                animation: swipeHint 2s infinite;
+            }
+            
+            @keyframes swipeHint {
+                0%, 100% { transform: translateY(-50%) translateX(0); }
+                50% { transform: translateY(-50%) translateX(5px); }
+            }
+        }
+        
+        /* Noch kleinere Smartphones */
+        @media (max-width: 375px) {
+            .header h1 {
+                font-size: 1.3em;
+            }
+            
+            .tab {
+                padding: 10px 12px;
+                font-size: 0.85em;
+            }
+            
+            .btn {
+                font-size: 0.95em;
+                padding: 16px 15px;
+            }
+            
+            .day-name {
+                font-size: 1em;
+            }
+            
+            .meal-name {
+                font-size: 0.95em;
+            }
+        }
+        
+        /* Landscape Modus für Smartphones */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .header {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.3em;
+            }
+            
+            .main-controls {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .btn {
+                width: calc(50% - 5px);
+            }
+            
+            .tabs {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background: white;
+            }
+        }
+        
+        /* iOS Safari Fixes */
+        @supports (-webkit-touch-callout: none) {
+            input[type="number"],
+            input[type="password"],
+            select {
+                font-size: 16px !important;
+            }
+            
+            .shopping-item input[type="checkbox"] {
+                -webkit-appearance: none;
+                appearance: none;
+                background: white;
+                border: 2px solid #764ba2;
+                border-radius: 4px;
+                position: relative;
+            }
+            
+            .shopping-item input[type="checkbox"]:checked {
+                background: #764ba2;
+            }
+            
+            .shopping-item input[type="checkbox"]:checked::after {
+                content: '✓';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
             }
         }
 
