@@ -232,6 +232,20 @@
             font-weight: bold;
         }
 
+        .meal-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 8px;
+        }
+
+        .meal-type {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
         .meal-name {
             font-weight: 600;
             margin-bottom: 5px;
@@ -289,6 +303,67 @@
         .swap-btn:hover {
             background: #764ba2;
             transform: rotate(180deg);
+        }
+
+        /* Personen-Einstellungen */
+        .person-settings {
+            display: grid;
+            gap: 15px;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .person-item {
+            display: grid;
+            grid-template-columns: auto 1fr 100px auto;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .person-item input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .person-item input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .person-item .remove-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .person-item .remove-btn:hover {
+            background: #d32f2f;
+        }
+
+        .add-person-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .add-person-btn:hover {
+            background: #45a049;
         }
 
         /* Einkaufsliste */
@@ -455,8 +530,6 @@
             padding: 40px;
             max-width: 500px;
             width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
         }
 
         .setup-content h2 {
@@ -577,6 +650,11 @@
             .filter-group {
                 grid-template-columns: 1fr;
             }
+
+            .person-item {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
         }
     </style>
 </head>
@@ -587,7 +665,7 @@
         <p>Synchronisiere mit Cloud...</p>
     </div>
 
-    <!-- Setup Modal -->
+    <!-- Setup Modal - NUR für Cloud-Verbindung -->
     <div class="setup-modal" id="setupModal">
         <div class="setup-content">
             <h2>Cloud-Verbindung einrichten</h2>
@@ -599,20 +677,18 @@
                 </small>
             </div>
             <div class="form-group">
-                <label>Gist ID (optional - für bestehenden Plan):</label>
+                <label>Gist ID (optional):</label>
                 <input type="text" id="existingGistId" placeholder="Leer lassen für neuen Plan">
-            </div>
-            <div class="form-group">
-                <label>Anzahl Erwachsene:</label>
-                <input type="number" id="adultsCount" value="2" min="1" max="6">
-            </div>
-            <div class="form-group">
-                <label>Anzahl Kinder:</label>
-                <input type="number" id="childrenCount" value="2" min="0" max="6">
+                <small style="color: #666; display: block; margin-top: 5px;">
+                    Nur ausfüllen, wenn Sie einen bestehenden Plan laden möchten
+                </small>
             </div>
             <button class="btn btn-primary" style="width: 100%;" onclick="connectToCloud()">
-                Mit Cloud verbinden
+                ☁️ Mit Cloud verbinden
             </button>
+            <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
+                Nach der Verbindung können Sie in den Einstellungen Ihre Familie und Portionsgrößen individuell anpassen.
+            </p>
         </div>
     </div>
 
@@ -631,7 +707,7 @@
                 <span id="weekDate">Woche wird geladen...</span>
             </p>
             <div id="pizzaIndicator" style="display: none;">
-                <span class="pizza-indicator">Pizza-Wochenende!</span>
+                <span class="pizza-indicator">🍕 Pizza-Wochenende!</span>
             </div>
         </div>
 
@@ -650,16 +726,16 @@
         <!-- Hauptsteuerung -->
         <div class="main-controls">
             <button class="btn btn-primary" onclick="generateSmartPlan()">
-                Neuen Plan generieren
+                📅 Neuen Plan generieren
             </button>
             <button class="btn btn-secondary" onclick="optimizeCurrentPlan()">
-                Plan optimieren
+                ⚡ Plan optimieren
             </button>
             <button class="btn btn-secondary" onclick="exportToPDF()">
-                Als PDF exportieren
+                📄 Als PDF exportieren
             </button>
             <button class="btn btn-secondary" onclick="forceCloudSync()">
-                Cloud synchronisieren
+                ☁️ Cloud synchronisieren
             </button>
         </div>
 
@@ -702,15 +778,11 @@
             <h2>Einstellungen</h2>
             <div class="settings-grid">
                 <div class="setting-group">
-                    <h3>Familie</h3>
-                    <label>
-                        Anzahl Erwachsene:
-                        <input type="number" id="settingsAdults" value="2" min="1" max="6" onchange="updatePreferences()">
-                    </label>
-                    <label>
-                        Anzahl Kinder:
-                        <input type="number" id="settingsChildren" value="2" min="0" max="6" onchange="updatePreferences()">
-                    </label>
+                    <h3>Familie & Portionen</h3>
+                    <div id="personsList" class="person-settings">
+                        <!-- Wird dynamisch gefüllt -->
+                    </div>
+                    <button class="add-person-btn" onclick="addPerson()">+ Person hinzufügen</button>
                 </div>
                 
                 <div class="setting-group">
@@ -822,8 +894,12 @@
             weekPlan: [],
             recipes: null,
             preferences: {
-                adults: 2,
-                children: 2,
+                persons: [
+                    { name: 'Person 1', portions: 1.2 },
+                    { name: 'Person 2', portions: 0.8 },
+                    { name: 'Kind 1', portions: 0.5 },
+                    { name: 'Kind 2', portions: 0.5 }
+                ],
                 weeksSincePizza: 0,
                 vegDays: 3,
                 dailyBudget: 25,
@@ -842,11 +918,29 @@
                 }
             },
             currentWeekStart: null,
-            shoppingList: {}
+            shoppingList: {},
+            kidsLunchTueThu: null
         };
 
         // Intelligente Planungs-Engine
         const SmartPlanner = {
+            // Berechne Portionen für einen Tag
+            calculatePortionsForDay: function(dayIndex) {
+                let totalPortions = 0;
+                
+                // Basis-Portionen aller Personen
+                AppData.preferences.persons.forEach(person => {
+                    totalPortions += person.portions;
+                });
+                
+                // Sonntag bis Donnerstag: +1 Portion für nächsten Tag (Arbeit)
+                if (dayIndex >= 0 && dayIndex <= 3 || dayIndex === 6) {
+                    totalPortions += 1;
+                }
+                
+                return totalPortions;
+            },
+
             // Pizza-Logik
             shouldHavePizzaWeekend: function() {
                 const freq = AppData.preferences.pizzaFrequency;
@@ -855,11 +949,9 @@
                 if (freq === "0") return false;
                 
                 if (freq === "3") {
-                    // 2-3 Wochen mit Zufall
                     if (weeksSince >= 3) return true;
                     if (weeksSince >= 2) return Math.random() > 0.5;
                 } else {
-                    // Feste Frequenz
                     return weeksSince >= parseInt(freq);
                 }
                 return false;
@@ -869,7 +961,6 @@
             filterRecipes: function(recipes, category) {
                 const filters = AppData.preferences.filters;
                 return recipes.filter(recipe => {
-                    // Prüfe alle Zutaten
                     const ingredients = JSON.stringify(recipe.baseIngredients).toLowerCase();
                     const name = recipe.name.toLowerCase();
                     
@@ -911,18 +1002,26 @@
                 // Gefilterte Rezepte
                 const meatRecipes = this.filterRecipes(recipes.categories.meat.recipes);
                 const vegRecipes = this.filterRecipes(recipes.categories.vegetarian.recipes);
+                const kidsRecipes = recipes.categories.kids ? recipes.categories.kids.recipes : [];
+                
+                // Wähle Kindergerichte für Dienstag und Donnerstag
+                const kidsLunchTue = kidsRecipes[Math.floor(Math.random() * kidsRecipes.length)];
+                const kidsLunchThu = kidsRecipes.filter(r => r.id !== kidsLunchTue.id)[
+                    Math.floor(Math.random() * (kidsRecipes.length - 1))
+                ];
+                AppData.kidsLunchTueThu = { tuesday: kidsLunchTue, thursday: kidsLunchThu };
                 
                 // Verteile vegetarische Tage intelligent
                 const vegDayIndices = this.distributeVegDays(7, preferences.vegDays);
                 
                 days.forEach((day, index) => {
                     let recipe = null;
+                    let kidsLunch = null;
                     
                     // Pizza-Wochenende (Freitag und Samstag)
                     if (isPizzaWeekend && (index === 4 || index === 5)) {
                         recipe = this.createPizzaRecipe(index === 4 ? 'Freitag' : 'Samstag');
                     } else {
-                        // Wähle zwischen Fleisch und Vegetarisch
                         const isVegDay = vegDayIndices.includes(index);
                         const availableRecipes = isVegDay ? vegRecipes : meatRecipes;
                         
@@ -939,10 +1038,18 @@
                         recipe = this.addVariations(recipe);
                     }
                     
+                    // Kindergerichte für Dienstag und Donnerstag
+                    if (index === 1) { // Dienstag
+                        kidsLunch = kidsLunchTue;
+                    } else if (index === 3) { // Donnerstag
+                        kidsLunch = kidsLunchThu;
+                    }
+                    
                     plan.push({
                         day: day,
                         date: this.getDateForDay(index),
                         dinner: recipe,
+                        kidsLunch: kidsLunch,
                         variations: recipe.variations || []
                     });
                     
@@ -1005,15 +1112,10 @@
                 const isWeekend = dayIndex >= 5;
                 const needsWorkFriendly = dayIndex < 4;
                 
-                // Filtere nach verschiedenen Kriterien
                 let candidates = availableRecipes.filter(recipe => {
-                    // Nicht bereits verwendet
                     if (usedRecipes.has(recipe.id)) return false;
-                    
-                    // Arbeitstauglichkeit prüfen
                     if (needsWorkFriendly && recipe.workFriendly === false) return false;
                     
-                    // Prüfe Wiederholungen von Hauptzutaten (5 Tage Abstand)
                     for (let [ingredient, lastDay] of usedMainIngredients) {
                         if (recipe.baseIngredients && recipe.baseIngredients[ingredient]) {
                             if (Math.abs(dayIndex - lastDay) < 5) {
@@ -1025,18 +1127,15 @@
                     return true;
                 });
                 
-                // Fallback wenn keine Kandidaten
                 if (candidates.length === 0) {
                     candidates = availableRecipes.filter(r => !usedRecipes.has(r.id));
                 }
                 
-                // Wähle zufällig
                 if (candidates.length > 0) {
                     const selected = candidates[Math.floor(Math.random() * candidates.length)];
-                    return {...selected}; // Kopie erstellen
+                    return {...selected};
                 }
                 
-                // Letzter Fallback
                 return availableRecipes[Math.floor(Math.random() * availableRecipes.length)];
             },
 
@@ -1064,7 +1163,6 @@
             trackIngredients: function(recipe, usedMainIngredients, dayIndex) {
                 if (!recipe.baseIngredients) return;
                 
-                // Hauptzutaten tracken
                 const mainIngredients = ['pasta', 'reis', 'kartoffel', 'fleisch', 'käse', 'sahne'];
                 
                 Object.keys(recipe.baseIngredients).forEach(ingredient => {
@@ -1097,13 +1195,17 @@
 
         // Initialisierung
         window.addEventListener('DOMContentLoaded', async function() {
-            const savedToken = sessionStorage.getItem('githubToken');
-            const savedGistId = sessionStorage.getItem('currentGistId');
+            const savedToken = localStorage.getItem('githubToken');
+            const savedGistId = localStorage.getItem('currentGistId');
             
             if (savedToken && savedGistId) {
                 CloudSync.token = savedToken;
                 CloudSync.gistId = savedGistId;
                 await initializeApp();
+            } else if (savedToken) {
+                CloudSync.token = savedToken;
+                showSetupModal();
+                document.getElementById('githubToken').value = savedToken;
             } else {
                 showSetupModal();
             }
@@ -1118,8 +1220,6 @@
         async function connectToCloud() {
             const token = document.getElementById('githubToken').value;
             const gistId = document.getElementById('existingGistId').value;
-            const adults = document.getElementById('adultsCount').value;
-            const children = document.getElementById('childrenCount').value;
             
             if (!token) {
                 showToast('Bitte GitHub Token eingeben!', 'error');
@@ -1129,15 +1229,21 @@
             showLoading('Verbinde mit Cloud...');
             
             CloudSync.token = token;
-            sessionStorage.setItem('githubToken', token);
+            localStorage.setItem('githubToken', token);
             
-            AppData.preferences.adults = parseInt(adults);
-            AppData.preferences.children = parseInt(children);
+            if (!gistId) {
+                AppData.preferences.persons = [
+                    { name: 'Person 1', portions: 1.2 },
+                    { name: 'Person 2', portions: 0.8 },
+                    { name: 'Kind 1', portions: 0.5 },
+                    { name: 'Kind 2', portions: 0.5 }
+                ];
+            }
             
             try {
                 if (gistId) {
                     CloudSync.gistId = gistId;
-                    sessionStorage.setItem('currentGistId', gistId);
+                    localStorage.setItem('currentGistId', gistId);
                     await loadFromCloud();
                 } else {
                     await createNewCloudPlan();
@@ -1145,6 +1251,7 @@
                 
                 document.getElementById('setupModal').classList.remove('active');
                 await initializeApp();
+                showToast('Erfolgreich verbunden! Personen können Sie in den Einstellungen anpassen.', 'success');
                 
             } catch (error) {
                 showToast('Fehler: ' + error.message, 'error');
@@ -1161,6 +1268,14 @@
                 
                 if (CloudSync.gistId) {
                     await loadFromCloud();
+                    if (!AppData.preferences.persons || AppData.preferences.persons.length === 0) {
+                        AppData.preferences.persons = [
+                            { name: 'Person 1', portions: 1.2 },
+                            { name: 'Person 2', portions: 0.8 },
+                            { name: 'Kind 1', portions: 0.5 },
+                            { name: 'Kind 2', portions: 0.5 }
+                        ];
+                    }
                 } else {
                     await generateSmartPlan();
                 }
@@ -1170,6 +1285,7 @@
                 displayWeekPlan();
                 updateStatistics();
                 updatePizzaCountdown();
+                displayPersonsList();
                 hideLoading();
                 
             } catch (error) {
@@ -1247,10 +1363,11 @@
                 files: {
                     'wochenplan.json': {
                         content: JSON.stringify({
-                            version: '2.0',
+                            version: '3.0',
                             weekPlan: [],
                             preferences: AppData.preferences,
                             shoppingList: {},
+                            kidsLunchTueThu: null,
                             lastUpdate: new Date().toISOString()
                         }, null, 2)
                     }
@@ -1298,10 +1415,11 @@
             AppData.weekPlan = data.weekPlan || [];
             AppData.preferences = {...AppData.preferences, ...data.preferences};
             AppData.shoppingList = data.shoppingList || {};
+            AppData.kidsLunchTueThu = data.kidsLunchTueThu || null;
             CloudSync.lastSync = new Date();
             
-            // Update UI mit geladenen Einstellungen
             loadPreferencesToUI();
+            displayPersonsList();
         }
 
         // In Cloud speichern
@@ -1309,10 +1427,11 @@
             if (!CloudSync.gistId) return;
             
             const data = {
-                version: '2.0',
+                version: '3.0',
                 weekPlan: AppData.weekPlan,
                 preferences: AppData.preferences,
                 shoppingList: AppData.shoppingList,
+                kidsLunchTueThu: AppData.kidsLunchTueThu,
                 lastUpdate: new Date().toISOString()
             };
             
@@ -1344,7 +1463,7 @@
                 if (CloudSync.isOnline) {
                     await saveToCloud();
                 }
-            }, 30000); // Alle 30 Sekunden
+            }, 30000);
         }
 
         // Auto-Save bei Änderungen
@@ -1393,9 +1512,6 @@
         async function optimizeCurrentPlan() {
             showLoading('Optimiere Plan...');
             
-            // Hier könnte echte Optimierung stattfinden
-            // z.B. Preisoptimierung, bessere Verteilung, etc.
-            
             setTimeout(() => {
                 hideLoading();
                 showToast('Plan optimiert', 'success');
@@ -1412,9 +1528,18 @@
             AppData.weekPlan.forEach((day, index) => {
                 if (!day.dinner) return;
                 
-                const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
+                const portions = SmartPlanner.calculatePortionsForDay(index);
                 const dayCost = day.dinner.price * portions;
                 totalCost += dayCost;
+                
+                let kidsLunchCost = 0;
+                if (day.kidsLunch) {
+                    const kidsPortions = AppData.preferences.persons
+                        .filter(p => p.name.toLowerCase().includes('kind'))
+                        .reduce((sum, p) => sum + p.portions, 0);
+                    kidsLunchCost = day.kidsLunch.price * kidsPortions;
+                    totalCost += kidsLunchCost;
+                }
                 
                 const dayCard = document.createElement('div');
                 dayCard.className = 'day-card';
@@ -1437,20 +1562,42 @@
                     `).join('');
                 }
                 
+                let kidsLunchHtml = '';
+                if (day.kidsLunch) {
+                    kidsLunchHtml = `
+                        <div class="meal-section" style="background: #fff3e0;">
+                            <div class="meal-type">🧒 Kinder-Mittagessen</div>
+                            <div class="meal-name">${day.kidsLunch.name}</div>
+                            <div class="meal-details">
+                                ${kidsLunchCost.toFixed(2)} CHF
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                let portionInfo = `${portions.toFixed(1)} Portionen`;
+                if (index <= 3 || index === 6) {
+                    portionInfo += ' (inkl. +1 für Arbeit)';
+                }
+                
                 dayCard.innerHTML = `
                     ${day.dinner.special !== 'pizza-weekend' ? 
                         `<button class="swap-btn" onclick="changeMeal(${index})">↻</button>` : ''}
                     <div class="day-header">
                         <span class="day-name">${day.day} <small style="color: #999;">${day.date}</small></span>
-                        <span class="price-tag">${dayCost.toFixed(2)} CHF</span>
+                        <span class="price-tag">${(dayCost + kidsLunchCost).toFixed(2)} CHF</span>
                     </div>
-                    <div class="meal-name">
-                        ${day.dinner.name}
+                    ${kidsLunchHtml}
+                    <div class="meal-section">
+                        <div class="meal-type">🍽️ Abendessen</div>
+                        <div class="meal-name">
+                            ${day.dinner.name}
+                        </div>
+                        <div class="meal-details">
+                            ${day.dinner.category || ''} • ${portionInfo}
+                        </div>
+                        ${variationsHtml}
                     </div>
-                    <div class="meal-details">
-                        ${day.dinner.category || ''} • ${portions} Portionen
-                    </div>
-                    ${variationsHtml}
                 `;
                 
                 grid.appendChild(dayCard);
@@ -1458,7 +1605,6 @@
             
             document.getElementById('totalCost').textContent = totalCost.toFixed(2);
             
-            // Update Wochendatum
             const weekStart = new Date();
             const weekEnd = new Date();
             weekEnd.setDate(weekStart.getDate() + 6);
@@ -1504,9 +1650,10 @@
         // Einkaufsliste generieren
         function generateShoppingList() {
             AppData.shoppingList = {};
-            const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
             
-            AppData.weekPlan.forEach(day => {
+            AppData.weekPlan.forEach((day, index) => {
+                const portions = SmartPlanner.calculatePortionsForDay(index);
+                
                 if (day.dinner && day.dinner.baseIngredients) {
                     Object.entries(day.dinner.baseIngredients).forEach(([key, value]) => {
                         const ingredient = day.variations && day.variations.find(v => v.type === key)
@@ -1522,6 +1669,25 @@
                         
                         if (value.amount > 0) {
                             AppData.shoppingList[ingredient].amount += value.amount * portions;
+                        }
+                    });
+                }
+                
+                if (day.kidsLunch && day.kidsLunch.baseIngredients) {
+                    const kidsPortions = AppData.preferences.persons
+                        .filter(p => p.name.toLowerCase().includes('kind'))
+                        .reduce((sum, p) => sum + p.portions, 0);
+                    
+                    Object.entries(day.kidsLunch.baseIngredients).forEach(([key, value]) => {
+                        if (!AppData.shoppingList[key]) {
+                            AppData.shoppingList[key] = {
+                                amount: 0,
+                                unit: value.unit || ''
+                            };
+                        }
+                        
+                        if (value.amount > 0) {
+                            AppData.shoppingList[key].amount += value.amount * kidsPortions;
                         }
                     });
                 }
@@ -1615,50 +1781,132 @@
             const container = document.getElementById('recipesList');
             container.innerHTML = '';
             
-            AppData.weekPlan.forEach(day => {
-                if (!day.dinner) return;
+            AppData.weekPlan.forEach((day, index) => {
+                const portions = SmartPlanner.calculatePortionsForDay(index);
                 
-                const recipeDiv = document.createElement('div');
-                recipeDiv.style.cssText = 'background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 20px;';
-                
-                const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
-                
-                recipeDiv.innerHTML = `
-                    <h3 style="color: #764ba2; margin-bottom: 15px;">
-                        ${day.day} - ${day.dinner.name}
-                    </h3>
-                    <p style="color: #666; margin-bottom: 10px;">Für ${portions} Portionen</p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                        <h4>Zutaten:</h4>
-                        <ul>
-                            ${day.dinner.baseIngredients ? Object.entries(day.dinner.baseIngredients).map(([ing, data]) => 
-                                `<li>${ing}: ${data.amount * portions} ${data.unit || ''}</li>`
-                            ).join('') : ''}
-                        </ul>
-                    </div>
-                    ${day.dinner.instructions ? `
-                        <div style="background: white; padding: 15px; border-radius: 8px;">
-                            <h4>Zubereitung:</h4>
-                            <ol>
-                                ${day.dinner.instructions.map(step => `<li>${step}</li>`).join('')}
-                            </ol>
+                if (day.dinner) {
+                    const recipeDiv = document.createElement('div');
+                    recipeDiv.style.cssText = 'background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 20px;';
+                    
+                    recipeDiv.innerHTML = `
+                        <h3 style="color: #764ba2; margin-bottom: 15px;">
+                            ${day.day} - Abendessen: ${day.dinner.name}
+                        </h3>
+                        <p style="color: #666; margin-bottom: 10px;">Für ${portions} Portionen</p>
+                        <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                            <h4>Zutaten:</h4>
+                            <ul>
+                                ${day.dinner.baseIngredients ? Object.entries(day.dinner.baseIngredients).map(([ing, data]) => 
+                                    `<li>${ing}: ${(data.amount * portions).toFixed(1)} ${data.unit || ''}</li>`
+                                ).join('') : ''}
+                            </ul>
                         </div>
-                    ` : ''}
+                        ${day.dinner.instructions ? `
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <h4>Zubereitung:</h4>
+                                <ol>
+                                    ${day.dinner.instructions.map(step => `<li>${step}</li>`).join('')}
+                                </ol>
+                            </div>
+                        ` : ''}
+                    `;
+                    
+                    container.appendChild(recipeDiv);
+                }
+                
+                if (day.kidsLunch) {
+                    const kidsPortions = AppData.preferences.persons
+                        .filter(p => p.name.toLowerCase().includes('kind'))
+                        .reduce((sum, p) => sum + p.portions, 0);
+                    
+                    const kidsDiv = document.createElement('div');
+                    kidsDiv.style.cssText = 'background: #fff3e0; border-radius: 10px; padding: 20px; margin-bottom: 20px;';
+                    
+                    kidsDiv.innerHTML = `
+                        <h3 style="color: #ff9800; margin-bottom: 15px;">
+                            ${day.day} - Kinder-Mittagessen: ${day.kidsLunch.name}
+                        </h3>
+                        <p style="color: #666; margin-bottom: 10px;">Für ${kidsPortions} Kinder-Portionen</p>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <h4>Zutaten:</h4>
+                            <ul>
+                                ${day.kidsLunch.baseIngredients ? Object.entries(day.kidsLunch.baseIngredients).map(([ing, data]) => 
+                                    `<li>${ing}: ${(data.amount * kidsPortions).toFixed(1)} ${data.unit || ''}</li>`
+                                ).join('') : ''}
+                            </ul>
+                        </div>
+                    `;
+                    
+                    container.appendChild(kidsDiv);
+                }
+            });
+        }
+
+        // Personenliste anzeigen
+        function displayPersonsList() {
+            const container = document.getElementById('personsList');
+            container.innerHTML = '';
+            
+            AppData.preferences.persons.forEach((person, index) => {
+                const personDiv = document.createElement('div');
+                personDiv.className = 'person-item';
+                
+                personDiv.innerHTML = `
+                    <span>Name:</span>
+                    <input type="text" value="${person.name}" onchange="updatePersonName(${index}, this.value)">
+                    <input type="number" value="${person.portions}" min="0.1" max="3" step="0.1" 
+                           onchange="updatePersonPortions(${index}, this.value)">
+                    <button class="remove-btn" onclick="removePerson(${index})">Entfernen</button>
                 `;
                 
-                container.appendChild(recipeDiv);
+                container.appendChild(personDiv);
             });
+        }
+
+        // Person hinzufügen
+        function addPerson() {
+            const newPerson = {
+                name: `Person ${AppData.preferences.persons.length + 1}`,
+                portions: 1.0
+            };
+            AppData.preferences.persons.push(newPerson);
+            displayPersonsList();
+            triggerAutoSave();
+        }
+
+        // Person entfernen
+        function removePerson(index) {
+            if (AppData.preferences.persons.length > 1) {
+                AppData.preferences.persons.splice(index, 1);
+                displayPersonsList();
+                displayWeekPlan();
+                generateShoppingList();
+                triggerAutoSave();
+            } else {
+                showToast('Mindestens eine Person muss vorhanden sein', 'error');
+            }
+        }
+
+        // Person Name aktualisieren
+        function updatePersonName(index, name) {
+            AppData.preferences.persons[index].name = name;
+            triggerAutoSave();
+        }
+
+        // Person Portionen aktualisieren
+        function updatePersonPortions(index, portions) {
+            AppData.preferences.persons[index].portions = parseFloat(portions);
+            displayWeekPlan();
+            generateShoppingList();
+            triggerAutoSave();
         }
 
         // Einstellungen aktualisieren
         function updatePreferences() {
-            AppData.preferences.adults = parseInt(document.getElementById('settingsAdults').value);
-            AppData.preferences.children = parseInt(document.getElementById('settingsChildren').value);
             AppData.preferences.vegDays = parseInt(document.getElementById('vegDays').value);
             AppData.preferences.dailyBudget = parseInt(document.getElementById('dailyBudget').value);
             AppData.preferences.pizzaFrequency = document.getElementById('pizzaFrequency').value;
             
-            // Filter
             AppData.preferences.filters.noLamb = document.getElementById('noLamb').checked;
             AppData.preferences.filters.noPork = document.getElementById('noPork').checked;
             AppData.preferences.filters.noBeef = document.getElementById('noBeef').checked;
@@ -1670,14 +1918,12 @@
             AppData.preferences.filters.noNuts = document.getElementById('noNuts').checked;
             AppData.preferences.filters.noSpicy = document.getElementById('noSpicy').checked;
             
-            // Token
             const token = document.getElementById('settingsGithubToken').value;
             if (token) {
                 CloudSync.token = token;
-                sessionStorage.setItem('githubToken', token);
+                localStorage.setItem('githubToken', token);
             }
             
-            // Update Budget-Anzeige
             const weeklyBudget = AppData.preferences.dailyBudget * 7;
             document.getElementById('weeklyBudget').textContent = `${weeklyBudget} CHF`;
             
@@ -1686,13 +1932,10 @@
 
         // Präferenzen in UI laden
         function loadPreferencesToUI() {
-            document.getElementById('settingsAdults').value = AppData.preferences.adults;
-            document.getElementById('settingsChildren').value = AppData.preferences.children;
             document.getElementById('vegDays').value = AppData.preferences.vegDays;
             document.getElementById('dailyBudget').value = AppData.preferences.dailyBudget;
             document.getElementById('pizzaFrequency').value = AppData.preferences.pizzaFrequency;
             
-            // Filter
             if (AppData.preferences.filters) {
                 document.getElementById('noLamb').checked = AppData.preferences.filters.noLamb || false;
                 document.getElementById('noPork').checked = AppData.preferences.filters.noPork || false;
