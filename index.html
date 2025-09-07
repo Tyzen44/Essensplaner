@@ -1646,9 +1646,9 @@
             // Auto-Sync prüfen und aktivieren
             const token = localStorage.getItem('githubToken');
             const gistId = localStorage.getItem('currentGistId');
-            const autoSync = localStorage.getItem('autoSyncEnabled');
+            const autoSyncStored = localStorage.getItem('autoSyncEnabled');
             
-            if (token && gistId && autoSync === 'true') {
+            if (token && gistId && autoSyncStored === 'true') {
                 currentGistId = gistId;
                 autoSyncEnabled = true;
                 
@@ -1656,6 +1656,9 @@
                 loadLatestFromGist().then(() => {
                     enableAutoSync();
                     console.log('Auto-Sync aktiviert für Gist:', gistId.substring(0, 8) + '...');
+                }).catch(error => {
+                    console.error('Fehler beim Laden:', error);
+                    generateNewPlan();
                 });
             } else {
                 // Generiere neuen Plan nur wenn kein Sync aktiv
@@ -1664,17 +1667,24 @@
             
             // Radio Button Handler für Sync-Optionen
             const radios = document.querySelectorAll('input[name="syncMode"]');
-            radios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'new') {
-                        document.getElementById('newGistOptions').style.display = 'block';
-                        document.getElementById('existingGistOptions').style.display = 'none';
-                    } else {
-                        document.getElementById('newGistOptions').style.display = 'none';
-                        document.getElementById('existingGistOptions').style.display = 'block';
-                    }
+            if (radios.length > 0) {
+                radios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        const newGistOptions = document.getElementById('newGistOptions');
+                        const existingGistOptions = document.getElementById('existingGistOptions');
+                        
+                        if (newGistOptions && existingGistOptions) {
+                            if (this.value === 'new') {
+                                newGistOptions.style.display = 'block';
+                                existingGistOptions.style.display = 'none';
+                            } else {
+                                newGistOptions.style.display = 'none';
+                                existingGistOptions.style.display = 'block';
+                            }
+                        }
+                    });
                 });
-            });
+            }
             
             // Polling für Updates wenn Auto-Sync aktiv
             if (autoSyncEnabled) {
