@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "categories": {
     "meat": {
       "name": "Fleischgerichte",
@@ -8,12 +8,12 @@
           "id": "m001",
           "name": "Spaghetti Carbonara",
           "baseIngredients": {
-            "pasta": {"type": "long", "amount": 125, "unit": "g", "variations": ["Spaghetti", "Linguine", "Fettuccine", "Tagliatelle"]},
-            "speck": {"amount": 50, "unit": "g", "variations": ["Pancetta", "Guanciale", "Bacon"]},
-            "eier": {"amount": 1, "unit": "Stück"},
-            "parmesan": {"amount": 40, "unit": "g", "variations": ["Pecorino", "Grana Padano"]},
-            "knoblauch": {"amount": 1, "unit": "Zehe"},
-            "pfeffer": {"amount": 1, "unit": "nach Geschmack"}
+            "Pasta": {"type": "long", "amount": 125, "unit": "g", "variations": ["Spaghetti", "Linguine", "Fettuccine", "Tagliatelle"]},
+            "Speck": {"amount": 50, "unit": "g", "variations": ["Pancetta", "Guanciale", "Bacon"]},
+            "Eier": {"amount": 1, "unit": "Stück"},
+            "Parmesan": {"amount": 40, "unit": "g", "variations": ["Pecorino", "Grana Padano"]},
+            "Knoblauch": {"amount": 1, "unit": "Zehe"},
+            "Pfeffer": {"amount": 1, "unit": "nach Geschmack"}
           },
           "price": 5,
           "prepTime": 20,
@@ -28,11 +28,11 @@
           "id": "m002",
           "name": "Hähnchenbrust mit Rösti",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "kartoffeln": {"amount": 250, "unit": "g", "variations": ["Süßkartoffeln", "normale Kartoffeln"]},
-            "grüne_bohnen": {"amount": 150, "unit": "g", "variations": ["Brokkoli", "Erbsen", "Zucchini"]},
-            "butter": {"amount": 20, "unit": "g"},
-            "zwiebel": {"amount": 0.5, "unit": "Stück"}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Kartoffeln": {"amount": 250, "unit": "g", "variations": ["Süßkartoffeln", "normale Kartoffeln"]},
+            "Grüne Bohnen": {"amount": 150, "unit": "g", "variations": ["Brokkoli", "Erbsen", "Zucchini"]},
+            "Butter": {"amount": 20, "unit": "g"},
+            "Zwiebel": {"amount": 0.5, "unit": "Stück"}
           },
           "price": 6,
           "prepTime": 35,
@@ -47,16 +47,16 @@
           "id": "m003",
           "name": "Rindergulasch mit Spätzle",
           "baseIngredients": {
-            "rindergulasch": {"amount": 175, "unit": "g"},
-            "spätzle": {"amount": 150, "unit": "g", "variations": ["Knöpfle", "Nudeln", "Reis"]},
-            "zwiebeln": {"amount": 1, "unit": "Stück"},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "tomatenmark": {"amount": 2, "unit": "EL"},
-            "paprikapulver": {"amount": 1, "unit": "EL"}
+            "Rindergulasch": {"amount": 175, "unit": "g"},
+            "Spätzle": {"amount": 150, "unit": "g", "variations": ["Knöpfle", "Nudeln", "Reis"]},
+            "Zwiebeln": {"amount": 1, "unit": "Stück"},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Tomatenmark": {"amount": 2, "unit": "EL"},
+            "Paprikapulver": {"amount": 1, "unit": "EL"}
           },
           "price": 7,
           "prepTime": 120,
-          "tags": ["ungarisch", "deftig", "schmorGericht"],
+          "tags": ["ungarisch", "deftig", "schmorgericht"],
           "childFriendly": true,
           "workFriendly": true,
           "instructions": ["Fleisch scharf anbraten", "Zwiebeln und Paprika zugeben", "Mit Fond ablöschen", "1,5 Std köcheln lassen", "Spätzle kochen", "Mit Spätzle servieren"],
@@ -67,11 +67,11 @@
           "id": "m004",
           "name": "Schweinemedaillons mit Champignonsauce",
           "baseIngredients": {
-            "schweinefilet": {"amount": 150, "unit": "g"},
-            "champignons": {"amount": 150, "unit": "g", "variations": ["Pfifferlinge", "Steinpilze", "Mischpilze"]},
-            "sahne": {"amount": 100, "unit": "ml"},
-            "kartoffeln": {"amount": 300, "unit": "g"},
-            "brokkoli": {"amount": 150, "unit": "g", "variations": ["Blumenkohl", "Romanesco"]}
+            "Schweinefilet": {"amount": 150, "unit": "g"},
+            "Champignons": {"amount": 150, "unit": "g", "variations": ["Pfifferlinge", "Steinpilze", "Mischpilze"]},
+            "Sahne": {"amount": 100, "unit": "ml"},
+            "Kartoffeln": {"amount": 300, "unit": "g"},
+            "Brokkoli": {"amount": 150, "unit": "g", "variations": ["Blumenkohl", "Romanesco"]}
           },
           "price": 6.5,
           "prepTime": 30,
@@ -86,11 +86,11 @@
           "id": "m005",
           "name": "Hackfleisch-Kartoffel-Auflauf",
           "baseIngredients": {
-            "hackfleisch": {"amount": 150, "unit": "g"},
-            "kartoffeln": {"amount": 300, "unit": "g"},
-            "zwiebeln": {"amount": 0.5, "unit": "Stück"},
-            "käse": {"amount": 60, "unit": "g", "variations": ["Gouda", "Emmentaler", "Cheddar"]},
-            "milch": {"amount": 100, "unit": "ml"}
+            "Hackfleisch": {"amount": 150, "unit": "g"},
+            "Kartoffeln": {"amount": 300, "unit": "g"},
+            "Zwiebeln": {"amount": 0.5, "unit": "Stück"},
+            "Käse": {"amount": 60, "unit": "g", "variations": ["Gouda", "Emmentaler", "Cheddar"]},
+            "Milch": {"amount": 100, "unit": "ml"}
           },
           "price": 5,
           "prepTime": 60,
@@ -105,11 +105,11 @@
           "id": "m006",
           "name": "Hähnchen-Curry",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "kokosmilch": {"amount": 150, "unit": "ml"},
-            "currypaste": {"amount": 1, "unit": "EL", "variations": ["Rotes Curry", "Grünes Curry", "Gelbes Curry"]},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Basmatireis", "Jasminreis", "Vollkornreis"]},
-            "gemüse": {"amount": 150, "unit": "g"}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Kokosmilch": {"amount": 150, "unit": "ml"},
+            "Currypaste": {"amount": 1, "unit": "EL", "variations": ["Rotes Curry", "Grünes Curry", "Gelbes Curry"]},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Basmatireis", "Jasminreis", "Vollkornreis"]},
+            "Gemüse": {"amount": 150, "unit": "g"}
           },
           "price": 6,
           "prepTime": 30,
@@ -124,11 +124,11 @@
           "id": "m007",
           "name": "Bolognese mit Penne",
           "baseIngredients": {
-            "pasta": {"type": "short", "amount": 125, "unit": "g", "variations": ["Penne", "Rigatoni", "Fusilli", "Farfalle"]},
-            "rinderhack": {"amount": 150, "unit": "g"},
-            "dosentomaten": {"amount": 200, "unit": "g"},
-            "zwiebeln": {"amount": 0.5, "unit": "Stück"},
-            "möhren": {"amount": 1, "unit": "Stück"}
+            "Pasta": {"type": "short", "amount": 125, "unit": "g", "variations": ["Penne", "Rigatoni", "Fusilli", "Farfalle"]},
+            "Rinderhack": {"amount": 150, "unit": "g"},
+            "Dosentomaten": {"amount": 200, "unit": "g"},
+            "Zwiebeln": {"amount": 0.5, "unit": "Stück"},
+            "Möhren": {"amount": 1, "unit": "Stück"}
           },
           "price": 5,
           "prepTime": 120,
@@ -143,11 +143,11 @@
           "id": "m008",
           "name": "Gyros mit Tzatziki",
           "baseIngredients": {
-            "schweinefleisch": {"amount": 200, "unit": "g"},
-            "pita": {"amount": 2, "unit": "Stück", "variations": ["Fladenbrot", "Tortilla"]},
-            "joghurt": {"amount": 100, "unit": "g"},
-            "gurke": {"amount": 0.5, "unit": "Stück"},
-            "pommes": {"amount": 150, "unit": "g", "variations": ["Reis", "Kartoffelspalten"]}
+            "Schweinefleisch": {"amount": 200, "unit": "g"},
+            "Pita": {"amount": 2, "unit": "Stück", "variations": ["Fladenbrot", "Tortilla"]},
+            "Joghurt": {"amount": 100, "unit": "g"},
+            "Gurke": {"amount": 0.5, "unit": "Stück"},
+            "Pommes": {"amount": 150, "unit": "g", "variations": ["Reis", "Kartoffelspalten"]}
           },
           "price": 6.5,
           "prepTime": 30,
@@ -162,11 +162,11 @@
           "id": "m009",
           "name": "Chili con Carne",
           "baseIngredients": {
-            "rinderhack": {"amount": 150, "unit": "g"},
-            "kidneybohnen": {"amount": 125, "unit": "g"},
-            "mais": {"amount": 75, "unit": "g"},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Brot", "Nachos"]}
+            "Rinderhack": {"amount": 150, "unit": "g"},
+            "Kidneybohnen": {"amount": 125, "unit": "g"},
+            "Mais": {"amount": 75, "unit": "g"},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Brot", "Nachos"]}
           },
           "price": 5.5,
           "prepTime": 60,
@@ -181,11 +181,11 @@
           "id": "m010",
           "name": "Schnitzel mit Kartoffelsalat",
           "baseIngredients": {
-            "schnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Kalb", "Pute"]},
-            "paniermehl": {"amount": 50, "unit": "g"},
-            "kartoffeln": {"amount": 300, "unit": "g"},
-            "mayonnaise": {"amount": 50, "unit": "g"},
-            "gurken": {"amount": 2, "unit": "Stück"}
+            "Schnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Kalb", "Pute"]},
+            "Paniermehl": {"amount": 50, "unit": "g"},
+            "Kartoffeln": {"amount": 300, "unit": "g"},
+            "Mayonnaise": {"amount": 50, "unit": "g"},
+            "Gurken": {"amount": 2, "unit": "Stück"}
           },
           "price": 6,
           "prepTime": 40,
@@ -200,11 +200,11 @@
           "id": "m011",
           "name": "Lammkoteletts mit Rosmarinkartoffeln",
           "baseIngredients": {
-            "lammkoteletts": {"amount": 180, "unit": "g"},
-            "kartoffeln": {"amount": 250, "unit": "g"},
-            "rosmarin": {"amount": 2, "unit": "Zweige"},
-            "knoblauch": {"amount": 2, "unit": "Zehen"},
-            "grüner_salat": {"amount": 100, "unit": "g"}
+            "Lammkoteletts": {"amount": 180, "unit": "g"},
+            "Kartoffeln": {"amount": 250, "unit": "g"},
+            "Rosmarin": {"amount": 2, "unit": "Zweige"},
+            "Knoblauch": {"amount": 2, "unit": "Zehen"},
+            "Grüner Salat": {"amount": 100, "unit": "g"}
           },
           "price": 8,
           "prepTime": 35,
@@ -219,10 +219,10 @@
           "id": "m012",
           "name": "Rinderfilet mit grünem Spargel",
           "baseIngredients": {
-            "rinderfilet": {"amount": 180, "unit": "g"},
-            "grüner_spargel": {"amount": 200, "unit": "g", "variations": ["Weißer Spargel", "Brokkoli"]},
-            "kartoffelpüree": {"amount": 250, "unit": "g"},
-            "rotweinsauce": {"amount": 75, "unit": "ml"}
+            "Rinderfilet": {"amount": 180, "unit": "g"},
+            "Grüner Spargel": {"amount": 200, "unit": "g", "variations": ["Weißer Spargel", "Brokkoli"]},
+            "Kartoffelpüree": {"amount": 250, "unit": "g"},
+            "Rotweinsauce": {"amount": 75, "unit": "ml"}
           },
           "price": 9,
           "prepTime": 30,
@@ -237,10 +237,10 @@
           "id": "m013",
           "name": "Pulled Pork Burger",
           "baseIngredients": {
-            "schweineschulter": {"amount": 250, "unit": "g"},
-            "burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn", "Pretzel Bun"]},
-            "coleslaw": {"amount": 75, "unit": "g"},
-            "bbq_sauce": {"amount": 50, "unit": "ml"}
+            "Schweineschulter": {"amount": 250, "unit": "g"},
+            "Burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn", "Pretzel Bun"]},
+            "Coleslaw": {"amount": 75, "unit": "g"},
+            "BBQ Sauce": {"amount": 50, "unit": "ml"}
           },
           "price": 7,
           "prepTime": 240,
@@ -255,10 +255,10 @@
           "id": "m014",
           "name": "Entenbrust mit Rotkohl",
           "baseIngredients": {
-            "entenbrust": {"amount": 180, "unit": "g"},
-            "rotkohl": {"amount": 200, "unit": "g"},
-            "klöße": {"amount": 2, "unit": "Stück"},
-            "preiselbeeren": {"amount": 50, "unit": "g"}
+            "Entenbrust": {"amount": 180, "unit": "g"},
+            "Rotkohl": {"amount": 200, "unit": "g"},
+            "Klöße": {"amount": 2, "unit": "Stück"},
+            "Preiselbeeren": {"amount": 50, "unit": "g"}
           },
           "price": 8,
           "prepTime": 60,
@@ -273,10 +273,10 @@
           "id": "m015",
           "name": "Kalbsschnitzel Wiener Art",
           "baseIngredients": {
-            "kalbsschnitzel": {"amount": 150, "unit": "g"},
-            "semmelbrösel": {"amount": 50, "unit": "g"},
-            "zitrone": {"amount": 0.5, "unit": "Stück"},
-            "petersilienkartoffeln": {"amount": 250, "unit": "g"}
+            "Kalbsschnitzel": {"amount": 150, "unit": "g"},
+            "Semmelbrösel": {"amount": 50, "unit": "g"},
+            "Zitrone": {"amount": 0.5, "unit": "Stück"},
+            "Petersilienkartoffeln": {"amount": 250, "unit": "g"}
           },
           "price": 8,
           "prepTime": 25,
@@ -291,10 +291,10 @@
           "id": "m016",
           "name": "Hähnchen-Saté-Spieße",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "erdnusssauce": {"amount": 75, "unit": "ml"},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
-            "gurkensalat": {"amount": 100, "unit": "g"}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Erdnusssauce": {"amount": 75, "unit": "ml"},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
+            "Gurkensalat": {"amount": 100, "unit": "g"}
           },
           "price": 6,
           "prepTime": 30,
@@ -309,11 +309,11 @@
           "id": "m017",
           "name": "Rinderrouladen",
           "baseIngredients": {
-            "rinderschnitzel": {"amount": 180, "unit": "g"},
-            "speck": {"amount": 30, "unit": "g"},
-            "gewürzgurken": {"amount": 2, "unit": "Stück"},
-            "senf": {"amount": 1, "unit": "EL"},
-            "rotkohl": {"amount": 150, "unit": "g"}
+            "Rinderschnitzel": {"amount": 180, "unit": "g"},
+            "Speck": {"amount": 30, "unit": "g"},
+            "Gewürzgurken": {"amount": 2, "unit": "Stück"},
+            "Senf": {"amount": 1, "unit": "EL"},
+            "Rotkohl": {"amount": 150, "unit": "g"}
           },
           "price": 7,
           "prepTime": 120,
@@ -328,10 +328,10 @@
           "id": "m018",
           "name": "Putenschnitzel Hawaii",
           "baseIngredients": {
-            "putenschnitzel": {"amount": 150, "unit": "g"},
-            "ananas": {"amount": 2, "unit": "Scheiben"},
-            "käse": {"amount": 40, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
-            "reis": {"amount": 125, "unit": "g"}
+            "Putenschnitzel": {"amount": 150, "unit": "g"},
+            "Ananas": {"amount": 2, "unit": "Scheiben"},
+            "Käse": {"amount": 40, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
+            "Reis": {"amount": 125, "unit": "g"}
           },
           "price": 6,
           "prepTime": 25,
@@ -346,10 +346,10 @@
           "id": "m019",
           "name": "Hackbraten mit Kartoffelbrei",
           "baseIngredients": {
-            "hackfleisch_gemischt": {"amount": 200, "unit": "g"},
-            "ei": {"amount": 0.5, "unit": "Stück"},
-            "zwiebel": {"amount": 0.5, "unit": "Stück"},
-            "kartoffeln": {"amount": 300, "unit": "g"}
+            "Hackfleisch gemischt": {"amount": 200, "unit": "g"},
+            "Ei": {"amount": 0.5, "unit": "Stück"},
+            "Zwiebel": {"amount": 0.5, "unit": "Stück"},
+            "Kartoffeln": {"amount": 300, "unit": "g"}
           },
           "price": 5,
           "prepTime": 60,
@@ -364,10 +364,10 @@
           "id": "m020",
           "name": "Lammcurry",
           "baseIngredients": {
-            "lammfleisch": {"amount": 180, "unit": "g"},
-            "joghurt": {"amount": 100, "unit": "ml"},
-            "curry_gewürze": {"amount": 2, "unit": "EL"},
-            "naan_brot": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Fladenbrot"]}
+            "Lammfleisch": {"amount": 180, "unit": "g"},
+            "Joghurt": {"amount": 100, "unit": "ml"},
+            "Curry Gewürze": {"amount": 2, "unit": "EL"},
+            "Naan Brot": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Fladenbrot"]}
           },
           "price": 7,
           "prepTime": 90,
@@ -382,14 +382,14 @@
           "id": "m021",
           "name": "Hähnchenschenkel mit Ofengemüse",
           "baseIngredients": {
-            "hähnchenschenkel": {"amount": 1, "unit": "Stück"},
-            "kartoffeln": {"amount": 200, "unit": "g"},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "zucchini": {"amount": 1, "unit": "Stück"}
+            "Hähnchenschenkel": {"amount": 1, "unit": "Stück"},
+            "Kartoffeln": {"amount": 200, "unit": "g"},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Zucchini": {"amount": 1, "unit": "Stück"}
           },
           "price": 5,
           "prepTime": 45,
-          "tags": ["einfach", "einTopf"],
+          "tags": ["einfach", "eintopf"],
           "childFriendly": true,
           "workFriendly": true,
           "instructions": ["Alles würzen", "Auf Blech verteilen", "45 Min backen", "Heiß servieren"],
@@ -400,10 +400,10 @@
           "id": "m022",
           "name": "Schweinebraten mit Knödeln",
           "baseIngredients": {
-            "schweinebraten": {"amount": 200, "unit": "g"},
-            "knödel": {"amount": 2, "unit": "Stück"},
-            "sauerkraut": {"amount": 150, "unit": "g"},
-            "dunkle_sauce": {"amount": 100, "unit": "ml"}
+            "Schweinebraten": {"amount": 200, "unit": "g"},
+            "Knödel": {"amount": 2, "unit": "Stück"},
+            "Sauerkraut": {"amount": 150, "unit": "g"},
+            "Dunkle Sauce": {"amount": 100, "unit": "ml"}
           },
           "price": 6,
           "prepTime": 120,
@@ -418,11 +418,11 @@
           "id": "m023",
           "name": "Rindfleisch-Tacos",
           "baseIngredients": {
-            "rinderhack": {"amount": 150, "unit": "g"},
-            "taco_shells": {"amount": 3, "unit": "Stück", "variations": ["Soft Tacos", "Hard Shell"]},
-            "salat": {"amount": 50, "unit": "g"},
-            "käse": {"amount": 50, "unit": "g"},
-            "salsa": {"amount": 50, "unit": "ml"}
+            "Rinderhack": {"amount": 150, "unit": "g"},
+            "Taco Shells": {"amount": 3, "unit": "Stück", "variations": ["Soft Tacos", "Hard Shell"]},
+            "Salat": {"amount": 50, "unit": "g"},
+            "Käse": {"amount": 50, "unit": "g"},
+            "Salsa": {"amount": 50, "unit": "ml"}
           },
           "price": 6,
           "prepTime": 20,
@@ -437,10 +437,10 @@
           "id": "m024",
           "name": "Putenbrust mit Pilzrahm",
           "baseIngredients": {
-            "putenbrust": {"amount": 150, "unit": "g"},
-            "mischpilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Pfifferlinge"]},
-            "sahne": {"amount": 75, "unit": "ml"},
-            "nudeln": {"amount": 125, "unit": "g", "variations": ["Reis", "Spätzle"]}
+            "Putenbrust": {"amount": 150, "unit": "g"},
+            "Mischpilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Pfifferlinge"]},
+            "Sahne": {"amount": 75, "unit": "ml"},
+            "Nudeln": {"amount": 125, "unit": "g", "variations": ["Reis", "Spätzle"]}
           },
           "price": 6,
           "prepTime": 30,
@@ -455,10 +455,10 @@
           "id": "m025",
           "name": "Königsberger Klopse",
           "baseIngredients": {
-            "hackfleisch": {"amount": 150, "unit": "g"},
-            "kapern": {"amount": 2, "unit": "EL"},
-            "weiße_sauce": {"amount": 150, "unit": "ml"},
-            "kartoffeln": {"amount": 250, "unit": "g"}
+            "Hackfleisch": {"amount": 150, "unit": "g"},
+            "Kapern": {"amount": 2, "unit": "EL"},
+            "Weiße Sauce": {"amount": 150, "unit": "ml"},
+            "Kartoffeln": {"amount": 250, "unit": "g"}
           },
           "price": 5,
           "prepTime": 40,
@@ -473,10 +473,10 @@
           "id": "m026",
           "name": "Hähnchen-Fajitas",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "tortilla": {"amount": 3, "unit": "Stück", "variations": ["Weizen", "Mais", "Vollkorn"]},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "zwiebel": {"amount": 1, "unit": "Stück"}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Tortilla": {"amount": 3, "unit": "Stück", "variations": ["Weizen", "Mais", "Vollkorn"]},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Zwiebel": {"amount": 1, "unit": "Stück"}
           },
           "price": 6,
           "prepTime": 25,
@@ -491,10 +491,10 @@
           "id": "m027",
           "name": "Lammkeule mit Bohnen",
           "baseIngredients": {
-            "lammkeule": {"amount": 200, "unit": "g"},
-            "weiße_bohnen": {"amount": 150, "unit": "g"},
-            "tomaten": {"amount": 150, "unit": "g"},
-            "rosmarin": {"amount": 2, "unit": "Zweige"}
+            "Lammkeule": {"amount": 200, "unit": "g"},
+            "Weiße Bohnen": {"amount": 150, "unit": "g"},
+            "Tomaten": {"amount": 150, "unit": "g"},
+            "Rosmarin": {"amount": 2, "unit": "Zweige"}
           },
           "price": 8,
           "prepTime": 90,
@@ -509,10 +509,10 @@
           "id": "m028",
           "name": "Wiener Würstchen mit Linseneintopf",
           "baseIngredients": {
-            "wiener_würstchen": {"amount": 2, "unit": "Stück"},
-            "linsen": {"amount": 125, "unit": "g"},
-            "suppengemüse": {"amount": 100, "unit": "g"},
-            "speck": {"amount": 30, "unit": "g"}
+            "Wiener Würstchen": {"amount": 2, "unit": "Stück"},
+            "Linsen": {"amount": 125, "unit": "g"},
+            "Suppengemüse": {"amount": 100, "unit": "g"},
+            "Speck": {"amount": 30, "unit": "g"}
           },
           "price": 4,
           "prepTime": 40,
@@ -527,10 +527,10 @@
           "id": "m029",
           "name": "Cordon Bleu",
           "baseIngredients": {
-            "kalbsschnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Pute"]},
-            "schinken": {"amount": 2, "unit": "Scheiben"},
-            "käse": {"amount": 2, "unit": "Scheiben"},
-            "pommes": {"amount": 200, "unit": "g"}
+            "Kalbsschnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Pute"]},
+            "Schinken": {"amount": 2, "unit": "Scheiben"},
+            "Käse": {"amount": 2, "unit": "Scheiben"},
+            "Pommes": {"amount": 200, "unit": "g"}
           },
           "price": 7,
           "prepTime": 30,
@@ -545,10 +545,10 @@
           "id": "m030",
           "name": "Rindersteak mit Kräuterbutter",
           "baseIngredients": {
-            "rindersteak": {"amount": 200, "unit": "g"},
-            "kräuterbutter": {"amount": 40, "unit": "g"},
-            "ofenkartoffel": {"amount": 1, "unit": "Stück"},
-            "blattsalat": {"amount": 100, "unit": "g"}
+            "Rindersteak": {"amount": 200, "unit": "g"},
+            "Kräuterbutter": {"amount": 40, "unit": "g"},
+            "Ofenkartoffel": {"amount": 1, "unit": "Stück"},
+            "Blattsalat": {"amount": 100, "unit": "g"}
           },
           "price": 8,
           "prepTime": 25,
@@ -563,10 +563,10 @@
           "id": "m031",
           "name": "Hähnchen Teriyaki",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "teriyaki_sauce": {"amount": 60, "unit": "ml"},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
-            "brokkoli": {"amount": 150, "unit": "g"}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Teriyaki Sauce": {"amount": 60, "unit": "ml"},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
+            "Brokkoli": {"amount": 150, "unit": "g"}
           },
           "price": 6,
           "prepTime": 25,
@@ -581,10 +581,10 @@
           "id": "m032",
           "name": "Schweinefilet im Speckmantel",
           "baseIngredients": {
-            "schweinefilet": {"amount": 180, "unit": "g"},
-            "bacon": {"amount": 6, "unit": "Scheiben"},
-            "grüne_bohnen": {"amount": 150, "unit": "g"},
-            "kartoffelgratin": {"amount": 200, "unit": "g"}
+            "Schweinefilet": {"amount": 180, "unit": "g"},
+            "Bacon": {"amount": 6, "unit": "Scheiben"},
+            "Grüne Bohnen": {"amount": 150, "unit": "g"},
+            "Kartoffelgratin": {"amount": 200, "unit": "g"}
           },
           "price": 7,
           "prepTime": 40,
@@ -599,10 +599,10 @@
           "id": "m033",
           "name": "Gulaschsuppe",
           "baseIngredients": {
-            "rindergulasch": {"amount": 125, "unit": "g"},
-            "kartoffeln": {"amount": 150, "unit": "g"},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "brot": {"amount": 3, "unit": "Scheiben"}
+            "Rindergulasch": {"amount": 125, "unit": "g"},
+            "Kartoffeln": {"amount": 150, "unit": "g"},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Brot": {"amount": 3, "unit": "Scheiben"}
           },
           "price": 5,
           "prepTime": 90,
@@ -617,10 +617,10 @@
           "id": "m034",
           "name": "Hähnchen-Nuggets selbstgemacht",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "cornflakes": {"amount": 60, "unit": "g"},
-            "ei": {"amount": 1, "unit": "Stück"},
-            "süßkartoffelpommes": {"amount": 200, "unit": "g", "variations": ["Normale Pommes", "Wedges"]}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Cornflakes": {"amount": 60, "unit": "g"},
+            "Ei": {"amount": 1, "unit": "Stück"},
+            "Süßkartoffelpommes": {"amount": 200, "unit": "g", "variations": ["Normale Pommes", "Wedges"]}
           },
           "price": 5,
           "prepTime": 25,
@@ -635,10 +635,10 @@
           "id": "m035",
           "name": "Rindergeschnetzeltes Stroganoff",
           "baseIngredients": {
-            "rinderfilet": {"amount": 180, "unit": "g"},
-            "champignons": {"amount": 100, "unit": "g"},
-            "saure_sahne": {"amount": 75, "unit": "ml"},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]}
+            "Rinderfilet": {"amount": 180, "unit": "g"},
+            "Champignons": {"amount": 100, "unit": "g"},
+            "Saure Sahne": {"amount": 75, "unit": "ml"},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]}
           },
           "price": 7,
           "prepTime": 25,
@@ -653,10 +653,10 @@
           "id": "m036",
           "name": "Bratwurst mit Sauerkraut",
           "baseIngredients": {
-            "bratwurst": {"amount": 200, "unit": "g"},
-            "sauerkraut": {"amount": 200, "unit": "g"},
-            "kartoffelpüree": {"amount": 250, "unit": "g"},
-            "senf": {"amount": 2, "unit": "EL"}
+            "Bratwurst": {"amount": 200, "unit": "g"},
+            "Sauerkraut": {"amount": 200, "unit": "g"},
+            "Kartoffelpüree": {"amount": 250, "unit": "g"},
+            "Senf": {"amount": 2, "unit": "EL"}
           },
           "price": 4,
           "prepTime": 20,
@@ -671,10 +671,10 @@
           "id": "m037",
           "name": "Putenschnitzel Jäger Art",
           "baseIngredients": {
-            "putenschnitzel": {"amount": 150, "unit": "g"},
-            "champignons": {"amount": 150, "unit": "g"},
-            "jägersauce": {"amount": 100, "unit": "ml"},
-            "spätzle": {"amount": 150, "unit": "g", "variations": ["Nudeln", "Reis"]}
+            "Putenschnitzel": {"amount": 150, "unit": "g"},
+            "Champignons": {"amount": 150, "unit": "g"},
+            "Jägersauce": {"amount": 100, "unit": "ml"},
+            "Spätzle": {"amount": 150, "unit": "g", "variations": ["Nudeln", "Reis"]}
           },
           "price": 6,
           "prepTime": 30,
@@ -689,10 +689,10 @@
           "id": "m038",
           "name": "Lammspieße griechisch",
           "baseIngredients": {
-            "lammfleisch": {"amount": 180, "unit": "g"},
-            "tzatziki": {"amount": 75, "unit": "g"},
-            "fladenbrot": {"amount": 2, "unit": "Stück"},
-            "griechischer_salat": {"amount": 150, "unit": "g"}
+            "Lammfleisch": {"amount": 180, "unit": "g"},
+            "Tzatziki": {"amount": 75, "unit": "g"},
+            "Fladenbrot": {"amount": 2, "unit": "Stück"},
+            "Griechischer Salat": {"amount": 150, "unit": "g"}
           },
           "price": 7,
           "prepTime": 30,
@@ -707,10 +707,10 @@
           "id": "m039",
           "name": "Hähnchen-Wraps",
           "baseIngredients": {
-            "hähnchenbrust": {"amount": 150, "unit": "g"},
-            "wrap": {"amount": 2, "unit": "Stück", "variations": ["Weizen", "Vollkorn", "Spinat"]},
-            "salat": {"amount": 50, "unit": "g"},
-            "joghurt_dressing": {"amount": 50, "unit": "ml"}
+            "Hähnchenbrust": {"amount": 150, "unit": "g"},
+            "Wrap": {"amount": 2, "unit": "Stück", "variations": ["Weizen", "Vollkorn", "Spinat"]},
+            "Salat": {"amount": 50, "unit": "g"},
+            "Joghurt Dressing": {"amount": 50, "unit": "ml"}
           },
           "price": 5,
           "prepTime": 20,
@@ -725,10 +725,10 @@
           "id": "m040",
           "name": "Kalbsleber Berliner Art",
           "baseIngredients": {
-            "kalbsleber": {"amount": 150, "unit": "g"},
-            "äpfel": {"amount": 1, "unit": "Stück"},
-            "zwiebeln": {"amount": 1, "unit": "Stück"},
-            "kartoffelpüree": {"amount": 250, "unit": "g"}
+            "Kalbsleber": {"amount": 150, "unit": "g"},
+            "Äpfel": {"amount": 1, "unit": "Stück"},
+            "Zwiebeln": {"amount": 1, "unit": "Stück"},
+            "Kartoffelpüree": {"amount": 250, "unit": "g"}
           },
           "price": 6,
           "prepTime": 25,
@@ -748,11 +748,11 @@
           "id": "v001",
           "name": "Gemüse-Lasagne",
           "baseIngredients": {
-            "lasagneplatten": {"amount": 100, "unit": "g"},
-            "zucchini": {"amount": 1, "unit": "Stück"},
-            "aubergine": {"amount": 0.5, "unit": "Stück"},
-            "tomaten": {"amount": 300, "unit": "g"},
-            "mozzarella": {"amount": 125, "unit": "g", "variations": ["Ricotta", "Feta", "Büffelmozzarella"]}
+            "Lasagneplatten": {"amount": 100, "unit": "g"},
+            "Zucchini": {"amount": 1, "unit": "Stück"},
+            "Aubergine": {"amount": 0.5, "unit": "Stück"},
+            "Tomaten": {"amount": 300, "unit": "g"},
+            "Mozzarella": {"amount": 125, "unit": "g", "variations": ["Ricotta", "Feta", "Büffelmozzarella"]}
           },
           "price": 4,
           "prepTime": 60,
@@ -767,11 +767,11 @@
           "id": "v002",
           "name": "Käsespätzle",
           "baseIngredients": {
-            "spätzle": {"amount": 200, "unit": "g"},
-            "emmentaler": {"amount": 100, "unit": "g", "variations": ["Bergkäse", "Gruyère", "Appenzeller"]},
-            "zwiebeln": {"amount": 1, "unit": "Stück"},
-            "butter": {"amount": 25, "unit": "g"},
-            "salat": {"amount": 100, "unit": "g"}
+            "Spätzle": {"amount": 200, "unit": "g"},
+            "Emmentaler": {"amount": 100, "unit": "g", "variations": ["Bergkäse", "Gruyère", "Appenzeller"]},
+            "Zwiebeln": {"amount": 1, "unit": "Stück"},
+            "Butter": {"amount": 25, "unit": "g"},
+            "Salat": {"amount": 100, "unit": "g"}
           },
           "price": 3.5,
           "prepTime": 30,
@@ -786,11 +786,11 @@
           "id": "v003",
           "name": "Gemüse-Curry",
           "baseIngredients": {
-            "kichererbsen": {"amount": 125, "unit": "g"},
-            "kokosmilch": {"amount": 150, "unit": "ml"},
-            "gemüse": {"amount": 200, "unit": "g", "variations": ["Blumenkohl", "Süßkartoffel", "Spinat"]},
-            "currypaste": {"amount": 1, "unit": "EL", "variations": ["Rot", "Grün", "Gelb"]},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Basmati", "Jasmin", "Naan"]}
+            "Kichererbsen": {"amount": 125, "unit": "g"},
+            "Kokosmilch": {"amount": 150, "unit": "ml"},
+            "Gemüse": {"amount": 200, "unit": "g", "variations": ["Blumenkohl", "Süßkartoffel", "Spinat"]},
+            "Currypaste": {"amount": 1, "unit": "EL", "variations": ["Rot", "Grün", "Gelb"]},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Basmati", "Jasmin", "Naan"]}
           },
           "price": 4,
           "prepTime": 30,
@@ -805,11 +805,11 @@
           "id": "v004",
           "name": "Pizza Margherita",
           "baseIngredients": {
-            "pizzateig": {"amount": 200, "unit": "g"},
-            "tomatensauce": {"amount": 75, "unit": "ml"},
-            "mozzarella": {"amount": 125, "unit": "g"},
-            "basilikum": {"amount": 5, "unit": "Blätter"},
-            "olivenöl": {"amount": 1, "unit": "EL"}
+            "Pizzateig": {"amount": 200, "unit": "g"},
+            "Tomatensauce": {"amount": 75, "unit": "ml"},
+            "Mozzarella": {"amount": 125, "unit": "g"},
+            "Basilikum": {"amount": 5, "unit": "Blätter"},
+            "Olivenöl": {"amount": 1, "unit": "EL"}
           },
           "price": 3,
           "prepTime": 20,
@@ -824,11 +824,11 @@
           "id": "v005",
           "name": "Risotto mit Pilzen",
           "baseIngredients": {
-            "risottoreis": {"amount": 125, "unit": "g"},
-            "pilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Steinpilze", "Pfifferlinge"]},
-            "weißwein": {"amount": 75, "unit": "ml"},
-            "parmesan": {"amount": 50, "unit": "g"},
-            "brühe": {"amount": 500, "unit": "ml"}
+            "Risottoreis": {"amount": 125, "unit": "g"},
+            "Pilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Steinpilze", "Pfifferlinge"]},
+            "Weißwein": {"amount": 75, "unit": "ml"},
+            "Parmesan": {"amount": 50, "unit": "g"},
+            "Brühe": {"amount": 500, "unit": "ml"}
           },
           "price": 4.5,
           "prepTime": 35,
@@ -843,11 +843,11 @@
           "id": "v006",
           "name": "Spinat-Ricotta-Cannelloni",
           "baseIngredients": {
-            "cannelloni": {"amount": 125, "unit": "g"},
-            "spinat": {"amount": 150, "unit": "g"},
-            "ricotta": {"amount": 100, "unit": "g"},
-            "tomatensauce": {"amount": 150, "unit": "ml"},
-            "parmesan": {"amount": 50, "unit": "g"}
+            "Cannelloni": {"amount": 125, "unit": "g"},
+            "Spinat": {"amount": 150, "unit": "g"},
+            "Ricotta": {"amount": 100, "unit": "g"},
+            "Tomatensauce": {"amount": 150, "unit": "ml"},
+            "Parmesan": {"amount": 50, "unit": "g"}
           },
           "price": 4,
           "prepTime": 45,
@@ -862,11 +862,11 @@
           "id": "v007",
           "name": "Pad Thai vegetarisch",
           "baseIngredients": {
-            "reisnudeln": {"amount": 125, "unit": "g"},
-            "tofu": {"amount": 100, "unit": "g"},
-            "erdnüsse": {"amount": 30, "unit": "g"},
-            "sojasprossen": {"amount": 50, "unit": "g"},
-            "tamarinde": {"amount": 2, "unit": "EL"}
+            "Reisnudeln": {"amount": 125, "unit": "g"},
+            "Tofu": {"amount": 100, "unit": "g"},
+            "Erdnüsse": {"amount": 30, "unit": "g"},
+            "Sojasprossen": {"amount": 50, "unit": "g"},
+            "Tamarinde": {"amount": 2, "unit": "EL"}
           },
           "price": 4,
           "prepTime": 25,
@@ -881,10 +881,10 @@
           "id": "v008",
           "name": "Gnocchi mit Salbei-Butter",
           "baseIngredients": {
-            "gnocchi": {"amount": 200, "unit": "g"},
-            "butter": {"amount": 40, "unit": "g"},
-            "salbei": {"amount": 10, "unit": "Blätter"},
-            "parmesan": {"amount": 50, "unit": "g"}
+            "Gnocchi": {"amount": 200, "unit": "g"},
+            "Butter": {"amount": 40, "unit": "g"},
+            "Salbei": {"amount": 10, "unit": "Blätter"},
+            "Parmesan": {"amount": 50, "unit": "g"}
           },
           "price": 3.5,
           "prepTime": 15,
@@ -899,11 +899,11 @@
           "id": "v009",
           "name": "Shakshuka",
           "baseIngredients": {
-            "tomaten": {"amount": 300, "unit": "g"},
-            "eier": {"amount": 2, "unit": "Stück"},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "feta": {"amount": 50, "unit": "g"},
-            "brot": {"amount": 3, "unit": "Scheiben"}
+            "Tomaten": {"amount": 300, "unit": "g"},
+            "Eier": {"amount": 2, "unit": "Stück"},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Feta": {"amount": 50, "unit": "g"},
+            "Brot": {"amount": 3, "unit": "Scheiben"}
           },
           "price": 3,
           "prepTime": 25,
@@ -918,11 +918,11 @@
           "id": "v010",
           "name": "Quinoa-Bowl",
           "baseIngredients": {
-            "quinoa": {"amount": 100, "unit": "g"},
-            "avocado": {"amount": 1, "unit": "Stück"},
-            "kichererbsen": {"amount": 75, "unit": "g"},
-            "tahini": {"amount": 2, "unit": "EL"},
-            "gemüse": {"amount": 150, "unit": "g"}
+            "Quinoa": {"amount": 100, "unit": "g"},
+            "Avocado": {"amount": 1, "unit": "Stück"},
+            "Kichererbsen": {"amount": 75, "unit": "g"},
+            "Tahini": {"amount": 2, "unit": "EL"},
+            "Gemüse": {"amount": 150, "unit": "g"}
           },
           "price": 4.5,
           "prepTime": 25,
@@ -937,11 +937,11 @@
           "id": "v011",
           "name": "Moussaka vegetarisch",
           "baseIngredients": {
-            "aubergine": {"amount": 1, "unit": "Stück"},
-            "kartoffeln": {"amount": 200, "unit": "g"},
-            "linsen": {"amount": 75, "unit": "g"},
-            "béchamel": {"amount": 150, "unit": "ml"},
-            "käse": {"amount": 50, "unit": "g"}
+            "Aubergine": {"amount": 1, "unit": "Stück"},
+            "Kartoffeln": {"amount": 200, "unit": "g"},
+            "Linsen": {"amount": 75, "unit": "g"},
+            "Béchamel": {"amount": 150, "unit": "ml"},
+            "Käse": {"amount": 50, "unit": "g"}
           },
           "price": 4,
           "prepTime": 60,
@@ -956,10 +956,10 @@
           "id": "v012",
           "name": "Falafel mit Hummus",
           "baseIngredients": {
-            "kichererbsen": {"amount": 150, "unit": "g"},
-            "petersilie": {"amount": 0.5, "unit": "Bund"},
-            "hummus": {"amount": 75, "unit": "g"},
-            "pita": {"amount": 2, "unit": "Stück"}
+            "Kichererbsen": {"amount": 150, "unit": "g"},
+            "Petersilie": {"amount": 0.5, "unit": "Bund"},
+            "Hummus": {"amount": 75, "unit": "g"},
+            "Pita": {"amount": 2, "unit": "Stück"}
           },
           "price": 3.5,
           "prepTime": 30,
@@ -974,10 +974,10 @@
           "id": "v013",
           "name": "Ravioli mit Tomatensauce",
           "baseIngredients": {
-            "ravioli": {"amount": 175, "unit": "g", "variations": ["Spinat-Ricotta", "Käse", "Pilz"]},
-            "tomatensauce": {"amount": 150, "unit": "ml"},
-            "basilikum": {"amount": 8, "unit": "Blätter"},
-            "parmesan": {"amount": 40, "unit": "g"}
+            "Ravioli": {"amount": 175, "unit": "g", "variations": ["Spinat-Ricotta", "Käse", "Pilz"]},
+            "Tomatensauce": {"amount": 150, "unit": "ml"},
+            "Basilikum": {"amount": 8, "unit": "Blätter"},
+            "Parmesan": {"amount": 40, "unit": "g"}
           },
           "price": 3.5,
           "prepTime": 15,
@@ -992,10 +992,10 @@
           "id": "v014",
           "name": "Buddha Bowl",
           "baseIngredients": {
-            "süßkartoffel": {"amount": 150, "unit": "g"},
-            "brokkoli": {"amount": 100, "unit": "g"},
-            "quinoa": {"amount": 75, "unit": "g"},
-            "tahini_dressing": {"amount": 50, "unit": "ml"}
+            "Süßkartoffel": {"amount": 150, "unit": "g"},
+            "Brokkoli": {"amount": 100, "unit": "g"},
+            "Quinoa": {"amount": 75, "unit": "g"},
+            "Tahini Dressing": {"amount": 50, "unit": "ml"}
           },
           "price": 4,
           "prepTime": 30,
@@ -1010,10 +1010,10 @@
           "id": "v015",
           "name": "Caprese-Auflauf",
           "baseIngredients": {
-            "tomaten": {"amount": 250, "unit": "g"},
-            "mozzarella": {"amount": 125, "unit": "g"},
-            "basilikum": {"amount": 0.5, "unit": "Bund"},
-            "ciabatta": {"amount": 3, "unit": "Scheiben"}
+            "Tomaten": {"amount": 250, "unit": "g"},
+            "Mozzarella": {"amount": 125, "unit": "g"},
+            "Basilikum": {"amount": 0.5, "unit": "Bund"},
+            "Ciabatta": {"amount": 3, "unit": "Scheiben"}
           },
           "price": 4,
           "prepTime": 25,
@@ -1028,10 +1028,10 @@
           "id": "v016",
           "name": "Pilz-Stroganoff",
           "baseIngredients": {
-            "champignons": {"amount": 200, "unit": "g", "variations": ["Mischpilze", "Austernpilze"]},
-            "saure_sahne": {"amount": 75, "unit": "ml"},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]},
-            "petersilie": {"amount": 2, "unit": "EL"}
+            "Champignons": {"amount": 200, "unit": "g", "variations": ["Mischpilze", "Austernpilze"]},
+            "Saure Sahne": {"amount": 75, "unit": "ml"},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]},
+            "Petersilie": {"amount": 2, "unit": "EL"}
           },
           "price": 3.5,
           "prepTime": 25,
@@ -1046,10 +1046,10 @@
           "id": "v017",
           "name": "Zucchini-Puffer",
           "baseIngredients": {
-            "zucchini": {"amount": 300, "unit": "g"},
-            "ei": {"amount": 1, "unit": "Stück"},
-            "mehl": {"amount": 50, "unit": "g"},
-            "joghurt_dip": {"amount": 75, "unit": "g"}
+            "Zucchini": {"amount": 300, "unit": "g"},
+            "Ei": {"amount": 1, "unit": "Stück"},
+            "Mehl": {"amount": 50, "unit": "g"},
+            "Joghurt Dip": {"amount": 75, "unit": "g"}
           },
           "price": 3,
           "prepTime": 20,
@@ -1064,10 +1064,10 @@
           "id": "v018",
           "name": "Tortellini in Sahnesauce",
           "baseIngredients": {
-            "tortellini": {"amount": 175, "unit": "g", "variations": ["Käse", "Spinat", "Pilz"]},
-            "sahne": {"amount": 100, "unit": "ml"},
-            "erbsen": {"amount": 75, "unit": "g"},
-            "parmesan": {"amount": 40, "unit": "g"}
+            "Tortellini": {"amount": 175, "unit": "g", "variations": ["Käse", "Spinat", "Pilz"]},
+            "Sahne": {"amount": 100, "unit": "ml"},
+            "Erbsen": {"amount": 75, "unit": "g"},
+            "Parmesan": {"amount": 40, "unit": "g"}
           },
           "price": 4,
           "prepTime": 15,
@@ -1082,11 +1082,11 @@
           "id": "v019",
           "name": "Ratatouille",
           "baseIngredients": {
-            "zucchini": {"amount": 1, "unit": "Stück"},
-            "aubergine": {"amount": 0.5, "unit": "Stück"},
-            "paprika": {"amount": 1, "unit": "Stück"},
-            "tomaten": {"amount": 200, "unit": "g"},
-            "baguette": {"amount": 4, "unit": "Scheiben"}
+            "Zucchini": {"amount": 1, "unit": "Stück"},
+            "Aubergine": {"amount": 0.5, "unit": "Stück"},
+            "Paprika": {"amount": 1, "unit": "Stück"},
+            "Tomaten": {"amount": 200, "unit": "g"},
+            "Baguette": {"amount": 4, "unit": "Scheiben"}
           },
           "price": 3.5,
           "prepTime": 45,
@@ -1101,10 +1101,10 @@
           "id": "v020",
           "name": "Spinat-Gorgonzola-Pasta",
           "baseIngredients": {
-            "pasta": {"type": "any", "amount": 150, "unit": "g", "variations": ["Penne", "Fusilli", "Rigatoni"]},
-            "spinat": {"amount": 100, "unit": "g"},
-            "gorgonzola": {"amount": 60, "unit": "g"},
-            "walnüsse": {"amount": 30, "unit": "g"}
+            "Pasta": {"type": "any", "amount": 150, "unit": "g", "variations": ["Penne", "Fusilli", "Rigatoni"]},
+            "Spinat": {"amount": 100, "unit": "g"},
+            "Gorgonzola": {"amount": 60, "unit": "g"},
+            "Walnüsse": {"amount": 30, "unit": "g"}
           },
           "price": 4,
           "prepTime": 20,
@@ -1119,10 +1119,10 @@
           "id": "v021",
           "name": "Gemüse-Tempura",
           "baseIngredients": {
-            "gemüse_gemischt": {"amount": 200, "unit": "g"},
-            "tempurateig": {"amount": 75, "unit": "g"},
-            "sojasauce": {"amount": 30, "unit": "ml"},
-            "reis": {"amount": 125, "unit": "g"}
+            "Gemüse gemischt": {"amount": 200, "unit": "g"},
+            "Tempurateig": {"amount": 75, "unit": "g"},
+            "Sojasauce": {"amount": 30, "unit": "ml"},
+            "Reis": {"amount": 125, "unit": "g"}
           },
           "price": 3.5,
           "prepTime": 25,
@@ -1137,10 +1137,10 @@
           "id": "v022",
           "name": "Kürbis-Risotto",
           "baseIngredients": {
-            "kürbis": {"amount": 200, "unit": "g", "variations": ["Hokkaido", "Butternut"]},
-            "risottoreis": {"amount": 125, "unit": "g"},
-            "weißwein": {"amount": 75, "unit": "ml"},
-            "parmesan": {"amount": 40, "unit": "g"}
+            "Kürbis": {"amount": 200, "unit": "g", "variations": ["Hokkaido", "Butternut"]},
+            "Risottoreis": {"amount": 125, "unit": "g"},
+            "Weißwein": {"amount": 75, "unit": "ml"},
+            "Parmesan": {"amount": 40, "unit": "g"}
           },
           "price": 4,
           "prepTime": 35,
@@ -1155,10 +1155,10 @@
           "id": "v023",
           "name": "Halloumi-Burger",
           "baseIngredients": {
-            "halloumi": {"amount": 150, "unit": "g"},
-            "burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn"]},
-            "hummus": {"amount": 50, "unit": "g"},
-            "salat": {"amount": 50, "unit": "g"}
+            "Halloumi": {"amount": 150, "unit": "g"},
+            "Burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn"]},
+            "Hummus": {"amount": 50, "unit": "g"},
+            "Salat": {"amount": 50, "unit": "g"}
           },
           "price": 4.5,
           "prepTime": 15,
@@ -1173,10 +1173,10 @@
           "id": "v024",
           "name": "Penne all'Arrabbiata",
           "baseIngredients": {
-            "pasta": {"type": "short", "amount": 150, "unit": "g", "variations": ["Penne", "Rigatoni"]},
-            "tomaten": {"amount": 250, "unit": "g"},
-            "chili": {"amount": 1, "unit": "Stück"},
-            "knoblauch": {"amount": 2, "unit": "Zehen"}
+            "Pasta": {"type": "short", "amount": 150, "unit": "g", "variations": ["Penne", "Rigatoni"]},
+            "Tomaten": {"amount": 250, "unit": "g"},
+            "Chili": {"amount": 1, "unit": "Stück"},
+            "Knoblauch": {"amount": 2, "unit": "Zehen"}
           },
           "price": 3,
           "prepTime": 20,
@@ -1191,10 +1191,10 @@
           "id": "v025",
           "name": "Bärlauch-Spätzle",
           "baseIngredients": {
-            "spätzle": {"amount": 200, "unit": "g"},
-            "bärlauch": {"amount": 50, "unit": "g"},
-            "sahne": {"amount": 75, "unit": "ml"},
-            "parmesan": {"amount": 40, "unit": "g"}
+            "Spätzle": {"amount": 200, "unit": "g"},
+            "Bärlauch": {"amount": 50, "unit": "g"},
+            "Sahne": {"amount": 75, "unit": "ml"},
+            "Parmesan": {"amount": 40, "unit": "g"}
           },
           "price": 3.5,
           "prepTime": 25,
@@ -1209,10 +1209,10 @@
           "id": "v026",
           "name": "Linsen-Dal",
           "baseIngredients": {
-            "rote_linsen": {"amount": 125, "unit": "g"},
-            "kokosmilch": {"amount": 100, "unit": "ml"},
-            "curry_gewürze": {"amount": 2, "unit": "EL"},
-            "naan": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Chapati"]}
+            "Rote Linsen": {"amount": 125, "unit": "g"},
+            "Kokosmilch": {"amount": 100, "unit": "ml"},
+            "Curry Gewürze": {"amount": 2, "unit": "EL"},
+            "Naan": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Chapati"]}
           },
           "price": 3,
           "prepTime": 30,
@@ -1227,10 +1227,10 @@
           "id": "v027",
           "name": "Gnocchi-Auflauf",
           "baseIngredients": {
-            "gnocchi": {"amount": 200, "unit": "g"},
-            "tomatensauce": {"amount": 150, "unit": "ml"},
-            "mozzarella": {"amount": 100, "unit": "g"},
-            "basilikum": {"amount": 8, "unit": "Blätter"}
+            "Gnocchi": {"amount": 200, "unit": "g"},
+            "Tomatensauce": {"amount": 150, "unit": "ml"},
+            "Mozzarella": {"amount": 100, "unit": "g"},
+            "Basilikum": {"amount": 8, "unit": "Blätter"}
           },
           "price": 3.5,
           "prepTime": 25,
@@ -1245,10 +1245,10 @@
           "id": "v028",
           "name": "Süßkartoffel-Curry",
           "baseIngredients": {
-            "süßkartoffel": {"amount": 200, "unit": "g"},
-            "kokosmilch": {"amount": 150, "unit": "ml"},
-            "spinat": {"amount": 75, "unit": "g"},
-            "reis": {"amount": 125, "unit": "g", "variations": ["Quinoa", "Couscous"]}
+            "Süßkartoffel": {"amount": 200, "unit": "g"},
+            "Kokosmilch": {"amount": 150, "unit": "ml"},
+            "Spinat": {"amount": 75, "unit": "g"},
+            "Reis": {"amount": 125, "unit": "g", "variations": ["Quinoa", "Couscous"]}
           },
           "price": 3.5,
           "prepTime": 30,
@@ -1263,11 +1263,11 @@
           "id": "v029",
           "name": "Pilz-Quiche",
           "baseIngredients": {
-            "mürbeteig": {"amount": 150, "unit": "g"},
-            "champignons": {"amount": 150, "unit": "g"},
-            "eier": {"amount": 2, "unit": "Stück"},
-            "sahne": {"amount": 100, "unit": "ml"},
-            "käse": {"amount": 50, "unit": "g"}
+            "Mürbeteig": {"amount": 150, "unit": "g"},
+            "Champignons": {"amount": 150, "unit": "g"},
+            "Eier": {"amount": 2, "unit": "Stück"},
+            "Sahne": {"amount": 100, "unit": "ml"},
+            "Käse": {"amount": 50, "unit": "g"}
           },
           "price": 4,
           "prepTime": 45,
@@ -1282,10 +1282,10 @@
           "id": "v030",
           "name": "Tomaten-Mozzarella-Tarte",
           "baseIngredients": {
-            "blätterteig": {"amount": 150, "unit": "g"},
-            "tomaten": {"amount": 250, "unit": "g"},
-            "mozzarella": {"amount": 125, "unit": "g"},
-            "pesto": {"amount": 30, "unit": "g"}
+            "Blätterteig": {"amount": 150, "unit": "g"},
+            "Tomaten": {"amount": 250, "unit": "g"},
+            "Mozzarella": {"amount": 125, "unit": "g"},
+            "Pesto": {"amount": 30, "unit": "g"}
           },
           "price": 4,
           "prepTime": 25,
@@ -1300,10 +1300,10 @@
           "id": "v031",
           "name": "Gemüse-Couscous",
           "baseIngredients": {
-            "couscous": {"amount": 125, "unit": "g"},
-            "gemüse": {"amount": 200, "unit": "g"},
-            "rosinen": {"amount": 30, "unit": "g"},
-            "minze": {"amount": 8, "unit": "Blätter"}
+            "Couscous": {"amount": 125, "unit": "g"},
+            "Gemüse": {"amount": 200, "unit": "g"},
+            "Rosinen": {"amount": 30, "unit": "g"},
+            "Minze": {"amount": 8, "unit": "Blätter"}
           },
           "price": 3,
           "prepTime": 20,
@@ -1318,10 +1318,10 @@
           "id": "v032",
           "name": "Kartoffel-Lauch-Gratin",
           "baseIngredients": {
-            "kartoffeln": {"amount": 300, "unit": "g"},
-            "lauch": {"amount": 100, "unit": "g"},
-            "sahne": {"amount": 125, "unit": "ml"},
-            "käse": {"amount": 60, "unit": "g", "variations": ["Gruyère", "Emmentaler"]}
+            "Kartoffeln": {"amount": 300, "unit": "g"},
+            "Lauch": {"amount": 100, "unit": "g"},
+            "Sahne": {"amount": 125, "unit": "ml"},
+            "Käse": {"amount": 60, "unit": "g", "variations": ["Gruyère", "Emmentaler"]}
           },
           "price": 3,
           "prepTime": 50,
@@ -1336,10 +1336,10 @@
           "id": "v033",
           "name": "Tagliatelle mit Zitronen-Butter",
           "baseIngredients": {
-            "pasta": {"type": "long", "amount": 150, "unit": "g", "variations": ["Tagliatelle", "Linguine", "Fettuccine"]},
-            "butter": {"amount": 40, "unit": "g"},
-            "zitrone": {"amount": 1, "unit": "Stück"},
-            "parmesan": {"amount": 40, "unit": "g"}
+            "Pasta": {"type": "long", "amount": 150, "unit": "g", "variations": ["Tagliatelle", "Linguine", "Fettuccine"]},
+            "Butter": {"amount": 40, "unit": "g"},
+            "Zitrone": {"amount": 1, "unit": "Stück"},
+            "Parmesan": {"amount": 40, "unit": "g"}
           },
           "price": 3,
           "prepTime": 15,
@@ -1354,10 +1354,10 @@
           "id": "v034",
           "name": "Auberginen-Parmigiana",
           "baseIngredients": {
-            "aubergine": {"amount": 1, "unit": "Stück"},
-            "tomatensauce": {"amount": 150, "unit": "ml"},
-            "mozzarella": {"amount": 100, "unit": "g"},
-            "parmesan": {"amount": 50, "unit": "g"}
+            "Aubergine": {"amount": 1, "unit": "Stück"},
+            "Tomatensauce": {"amount": 150, "unit": "ml"},
+            "Mozzarella": {"amount": 100, "unit": "g"},
+            "Parmesan": {"amount": 50, "unit": "g"}
           },
           "price": 4,
           "prepTime": 50,
@@ -1372,10 +1372,10 @@
           "id": "v035",
           "name": "Brokkoli-Käse-Suppe",
           "baseIngredients": {
-            "brokkoli": {"amount": 200, "unit": "g"},
-            "cheddar": {"amount": 75, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
-            "sahne": {"amount": 75, "unit": "ml"},
-            "brot": {"amount": 3, "unit": "Scheiben"}
+            "Brokkoli": {"amount": 200, "unit": "g"},
+            "Cheddar": {"amount": 75, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
+            "Sahne": {"amount": 75, "unit": "ml"},
+            "Brot": {"amount": 3, "unit": "Scheiben"}
           },
           "price": 3,
           "prepTime": 25,
@@ -1395,10 +1395,10 @@
           "id": "k001",
           "name": "Mini-Frikadellen",
           "baseIngredients": {
-            "hackfleisch": {"amount": 80, "unit": "g"},
-            "ei": {"amount": 0.5, "unit": "Stück"},
-            "semmelbrösel": {"amount": 2, "unit": "EL"},
-            "kartoffelbrei": {"amount": 150, "unit": "g"}
+            "Hackfleisch": {"amount": 80, "unit": "g"},
+            "Ei": {"amount": 0.5, "unit": "Stück"},
+            "Semmelbrösel": {"amount": 2, "unit": "EL"},
+            "Kartoffelbrei": {"amount": 150, "unit": "g"}
           },
           "price": 2,
           "prepTime": 25,
@@ -1413,10 +1413,10 @@
           "id": "k002",
           "name": "Pfannkuchen",
           "baseIngredients": {
-            "mehl": {"amount": 75, "unit": "g"},
-            "milch": {"amount": 150, "unit": "ml"},
-            "eier": {"amount": 1, "unit": "Stück"},
-            "apfelmus": {"amount": 100, "unit": "g", "variations": ["Nutella", "Marmelade", "Zimt-Zucker"]}
+            "Mehl": {"amount": 75, "unit": "g"},
+            "Milch": {"amount": 150, "unit": "ml"},
+            "Eier": {"amount": 1, "unit": "Stück"},
+            "Apfelmus": {"amount": 100, "unit": "g", "variations": ["Nutella", "Marmelade", "Zimt-Zucker"]}
           },
           "price": 1.5,
           "prepTime": 15,
@@ -1431,10 +1431,10 @@
           "id": "k003",
           "name": "Nudeln mit Butter",
           "baseIngredients": {
-            "nudeln": {"amount": 75, "unit": "g", "variations": ["Spaghetti", "Fusilli", "Farfalle"]},
-            "butter": {"amount": 20, "unit": "g"},
-            "parmesan": {"amount": 20, "unit": "g"},
-            "erbsen": {"amount": 50, "unit": "g"}
+            "Nudeln": {"amount": 75, "unit": "g", "variations": ["Spaghetti", "Fusilli", "Farfalle"]},
+            "Butter": {"amount": 20, "unit": "g"},
+            "Parmesan": {"amount": 20, "unit": "g"},
+            "Erbsen": {"amount": 50, "unit": "g"}
           },
           "price": 1.5,
           "prepTime": 10,
@@ -1449,10 +1449,10 @@
           "id": "k004",
           "name": "Pizza-Schnecken",
           "baseIngredients": {
-            "pizzateig": {"amount": 100, "unit": "g"},
-            "tomatensauce": {"amount": 50, "unit": "ml"},
-            "salami": {"amount": 5, "unit": "Scheiben", "variations": ["Schinken", "Champignons"]},
-            "käse": {"amount": 50, "unit": "g"}
+            "Pizzateig": {"amount": 100, "unit": "g"},
+            "Tomatensauce": {"amount": 50, "unit": "ml"},
+            "Salami": {"amount": 5, "unit": "Scheiben", "variations": ["Schinken", "Champignons"]},
+            "Käse": {"amount": 50, "unit": "g"}
           },
           "price": 2,
           "prepTime": 20,
@@ -1467,10 +1467,10 @@
           "id": "k005",
           "name": "Chicken Nuggets",
           "baseIngredients": {
-            "hähnchen": {"amount": 100, "unit": "g"},
-            "cornflakes": {"amount": 40, "unit": "g"},
-            "ei": {"amount": 0.5, "unit": "Stück"},
-            "pommes": {"amount": 125, "unit": "g"}
+            "Hähnchen": {"amount": 100, "unit": "g"},
+            "Cornflakes": {"amount": 40, "unit": "g"},
+            "Ei": {"amount": 0.5, "unit": "Stück"},
+            "Pommes": {"amount": 125, "unit": "g"}
           },
           "price": 2.5,
           "prepTime": 20,
@@ -1485,9 +1485,9 @@
           "id": "k006",
           "name": "Spaghetti mit Tomatensauce",
           "baseIngredients": {
-            "spaghetti": {"amount": 75, "unit": "g"},
-            "tomatensauce": {"amount": 100, "unit": "ml"},
-            "parmesan": {"amount": 20, "unit": "g"}
+            "Spaghetti": {"amount": 75, "unit": "g"},
+            "Tomatensauce": {"amount": 100, "unit": "ml"},
+            "Parmesan": {"amount": 20, "unit": "g"}
           },
           "price": 1.5,
           "prepTime": 12,
@@ -1502,9 +1502,9 @@
           "id": "k007",
           "name": "Fischstäbchen mit Püree",
           "baseIngredients": {
-            "fischstäbchen": {"amount": 3, "unit": "Stück"},
-            "kartoffelpüree": {"amount": 150, "unit": "g"},
-            "erbsen": {"amount": 50, "unit": "g"}
+            "Fischstäbchen": {"amount": 3, "unit": "Stück"},
+            "Kartoffelpüree": {"amount": 150, "unit": "g"},
+            "Erbsen": {"amount": 50, "unit": "g"}
           },
           "price": 2,
           "prepTime": 15,
@@ -1519,9 +1519,9 @@
           "id": "k008",
           "name": "Würstchen im Schlafrock",
           "baseIngredients": {
-            "wiener": {"amount": 2, "unit": "Stück"},
-            "blätterteig": {"amount": 75, "unit": "g"},
-            "ketchup": {"amount": 30, "unit": "ml"}
+            "Wiener": {"amount": 2, "unit": "Stück"},
+            "Blätterteig": {"amount": 75, "unit": "g"},
+            "Ketchup": {"amount": 30, "unit": "ml"}
           },
           "price": 2,
           "prepTime": 15,
@@ -1536,10 +1536,10 @@
           "id": "k009",
           "name": "Käse-Sandwich",
           "baseIngredients": {
-            "toast": {"amount": 2, "unit": "Scheiben"},
-            "käse": {"amount": 2, "unit": "Scheiben", "variations": ["Gouda", "Cheddar"]},
-            "butter": {"amount": 15, "unit": "g"},
-            "gurke": {"amount": 5, "unit": "Scheiben"}
+            "Toast": {"amount": 2, "unit": "Scheiben"},
+            "Käse": {"amount": 2, "unit": "Scheiben", "variations": ["Gouda", "Cheddar"]},
+            "Butter": {"amount": 15, "unit": "g"},
+            "Gurke": {"amount": 5, "unit": "Scheiben"}
           },
           "price": 1.5,
           "prepTime": 5,
@@ -1554,10 +1554,10 @@
           "id": "k010",
           "name": "Mini-Hamburger",
           "baseIngredients": {
-            "hackfleisch": {"amount": 80, "unit": "g"},
-            "mini_brötchen": {"amount": 1, "unit": "Stück"},
-            "käse": {"amount": 1, "unit": "Scheibe"},
-            "ketchup": {"amount": 20, "unit": "ml"}
+            "Hackfleisch": {"amount": 80, "unit": "g"},
+            "Mini Brötchen": {"amount": 1, "unit": "Stück"},
+            "Käse": {"amount": 1, "unit": "Scheibe"},
+            "Ketchup": {"amount": 20, "unit": "ml"}
           },
           "price": 2.5,
           "prepTime": 15,
@@ -1572,10 +1572,10 @@
           "id": "k011",
           "name": "Eierkuchen mit Marmelade",
           "baseIngredients": {
-            "mehl": {"amount": 75, "unit": "g"},
-            "milch": {"amount": 150, "unit": "ml"},
-            "ei": {"amount": 1, "unit": "Stück"},
-            "marmelade": {"amount": 50, "unit": "g", "variations": ["Erdbeere", "Aprikose", "Himbeere"]}
+            "Mehl": {"amount": 75, "unit": "g"},
+            "Milch": {"amount": 150, "unit": "ml"},
+            "Ei": {"amount": 1, "unit": "Stück"},
+            "Marmelade": {"amount": 50, "unit": "g", "variations": ["Erdbeere", "Aprikose", "Himbeere"]}
           },
           "price": 1.5,
           "prepTime": 15,
@@ -1590,9 +1590,9 @@
           "id": "k012",
           "name": "Kartoffelpuffer",
           "baseIngredients": {
-            "kartoffeln": {"amount": 200, "unit": "g"},
-            "ei": {"amount": 0.5, "unit": "Stück"},
-            "apfelmus": {"amount": 75, "unit": "g"}
+            "Kartoffeln": {"amount": 200, "unit": "g"},
+            "Ei": {"amount": 0.5, "unit": "Stück"},
+            "Apfelmus": {"amount": 75, "unit": "g"}
           },
           "price": 1.5,
           "prepTime": 20,
@@ -1607,10 +1607,10 @@
           "id": "k013",
           "name": "Milchreis",
           "baseIngredients": {
-            "milchreis": {"amount": 50, "unit": "g"},
-            "milch": {"amount": 200, "unit": "ml"},
-            "zucker": {"amount": 1, "unit": "TL"},
-            "zimt": {"amount": 1, "unit": "Prise"}
+            "Milchreis": {"amount": 50, "unit": "g"},
+            "Milch": {"amount": 200, "unit": "ml"},
+            "Zucker": {"amount": 1, "unit": "TL"},
+            "Zimt": {"amount": 1, "unit": "Prise"}
           },
           "price": 1.5,
           "prepTime": 25,
@@ -1625,10 +1625,10 @@
           "id": "k014",
           "name": "Gemüse-Sticks mit Dip",
           "baseIngredients": {
-            "möhren": {"amount": 75, "unit": "g"},
-            "gurke": {"amount": 75, "unit": "g"},
-            "paprika": {"amount": 75, "unit": "g"},
-            "frischkäse_dip": {"amount": 60, "unit": "g"}
+            "Möhren": {"amount": 75, "unit": "g"},
+            "Gurke": {"amount": 75, "unit": "g"},
+            "Paprika": {"amount": 75, "unit": "g"},
+            "Frischkäse Dip": {"amount": 60, "unit": "g"}
           },
           "price": 1.5,
           "prepTime": 10,
@@ -1643,10 +1643,10 @@
           "id": "k015",
           "name": "Nudelauflauf",
           "baseIngredients": {
-            "nudeln": {"amount": 75, "unit": "g"},
-            "schinken": {"amount": 3, "unit": "Scheiben"},
-            "käse": {"amount": 2, "unit": "Scheiben"},
-            "sahne": {"amount": 60, "unit": "ml"}
+            "Nudeln": {"amount": 75, "unit": "g"},
+            "Schinken": {"amount": 3, "unit": "Scheiben"},
+            "Käse": {"amount": 2, "unit": "Scheiben"},
+            "Sahne": {"amount": 60, "unit": "ml"}
           },
           "price": 2,
           "prepTime": 25,
@@ -1661,10 +1661,10 @@
           "id": "k016",
           "name": "French Toast",
           "baseIngredients": {
-            "toast": {"amount": 2, "unit": "Scheiben"},
-            "ei": {"amount": 1, "unit": "Stück"},
-            "milch": {"amount": 50, "unit": "ml"},
-            "ahornsirup": {"amount": 30, "unit": "ml", "variations": ["Puderzucker", "Zimt"]}
+            "Toast": {"amount": 2, "unit": "Scheiben"},
+            "Ei": {"amount": 1, "unit": "Stück"},
+            "Milch": {"amount": 50, "unit": "ml"},
+            "Ahornsirup": {"amount": 30, "unit": "ml", "variations": ["Puderzucker", "Zimt"]}
           },
           "price": 1.5,
           "prepTime": 10,
@@ -1679,9 +1679,9 @@
           "id": "k017",
           "name": "Tomatensuppe mit Reis",
           "baseIngredients": {
-            "tomatensuppe": {"amount": 200, "unit": "ml"},
-            "reis": {"amount": 40, "unit": "g"},
-            "croutons": {"amount": 30, "unit": "g"}
+            "Tomatensuppe": {"amount": 200, "unit": "ml"},
+            "Reis": {"amount": 40, "unit": "g"},
+            "Croutons": {"amount": 30, "unit": "g"}
           },
           "price": 1.5,
           "prepTime": 15,
@@ -1696,9 +1696,9 @@
           "id": "k018",
           "name": "Käsespieße",
           "baseIngredients": {
-            "käsewürfel": {"amount": 60, "unit": "g"},
-            "weintrauben": {"amount": 50, "unit": "g"},
-            "salzstangen": {"amount": 15, "unit": "Stück"}
+            "Käsewürfel": {"amount": 60, "unit": "g"},
+            "Weintrauben": {"amount": 50, "unit": "g"},
+            "Salzstangen": {"amount": 15, "unit": "Stück"}
           },
           "price": 2,
           "prepTime": 5,
@@ -1713,10 +1713,10 @@
           "id": "k019",
           "name": "Mini-Quiche",
           "baseIngredients": {
-            "mürbeteig": {"amount": 75, "unit": "g"},
-            "ei": {"amount": 1, "unit": "Stück"},
-            "schinken": {"amount": 2, "unit": "Scheiben"},
-            "käse": {"amount": 30, "unit": "g"}
+            "Mürbeteig": {"amount": 75, "unit": "g"},
+            "Ei": {"amount": 1, "unit": "Stück"},
+            "Schinken": {"amount": 2, "unit": "Scheiben"},
+            "Käse": {"amount": 30, "unit": "g"}
           },
           "price": 2,
           "prepTime": 25,
@@ -1731,10 +1731,10 @@
           "id": "k020",
           "name": "Grießbrei",
           "baseIngredients": {
-            "grieß": {"amount": 40, "unit": "g"},
-            "milch": {"amount": 200, "unit": "ml"},
-            "zucker": {"amount": 1, "unit": "TL"},
-            "beeren": {"amount": 50, "unit": "g", "variations": ["Erdbeeren", "Himbeeren", "Blaubeeren"]}
+            "Grieß": {"amount": 40, "unit": "g"},
+            "Milch": {"amount": 200, "unit": "ml"},
+            "Zucker": {"amount": 1, "unit": "TL"},
+            "Beeren": {"amount": 50, "unit": "g", "variations": ["Erdbeeren", "Himbeeren", "Blaubeeren"]}
           },
           "price": 1.5,
           "prepTime": 15,
@@ -1756,9 +1756,9 @@
       "special": ["Gnocchi", "Spätzle", "Lasagne", "Orzo"]
     },
     "proteinSubstitutes": {
-      "hähnchen": ["Pute", "Kalb", "Kaninchen"],
-      "rind": ["Lamm", "Wild", "Bison"],
-      "schwein": ["Hähnchen", "Pute", "Ente"]
+      "Hähnchen": ["Pute", "Kalb", "Kaninchen"],
+      "Rind": ["Lamm", "Wild", "Bison"],
+      "Schwein": ["Hähnchen", "Pute", "Ente"]
     },
     "vegetableSeasons": {
       "spring": ["Spargel", "Bärlauch", "Spinat", "Radieschen", "Erbsen", "Rhabarber"],
