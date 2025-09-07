@@ -1273,7 +1273,7 @@
             
             const result = await response.json();
             CloudSync.gistId = result.id;
-            sessionStorage.setItem('currentGistId', result.id);
+            localStorage.setItem('currentGistId', result.id);
         }
 
         // Aus Cloud laden
