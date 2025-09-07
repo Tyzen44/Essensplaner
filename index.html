@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍽️ Cloud Wochenplaner</title>
+    <title>Familien-Wochenplaner | Cloud Edition</title>
     <style>
         * {
             margin: 0;
@@ -16,10 +16,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            color: #333;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -30,6 +31,18 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .header h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
         }
 
         .cloud-status {
@@ -70,6 +83,67 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
+        /* Pizza-Wochenende Anzeige */
+        .pizza-indicator {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+            animation: pizzaPulse 2s infinite;
+        }
+
+        @keyframes pizzaPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: #f8f8f8;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            background: #e8e8e8;
+        }
+
+        /* Tab-Inhalte */
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         /* Hauptsteuerung */
         .main-controls {
             display: grid;
@@ -108,14 +182,11 @@
             border: 2px solid #764ba2;
         }
 
-        /* Wochenübersicht */
-        .week-container {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+        .btn-secondary:hover {
+            background: #f8f8f8;
         }
 
+        /* Wochenübersicht */
         .day-grid {
             display: grid;
             gap: 20px;
@@ -129,6 +200,11 @@
             border-left: 5px solid #764ba2;
             transition: all 0.3s;
             position: relative;
+        }
+
+        .day-card.pizza-day {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffeaa7 100%);
+            border-left: 5px solid #ff6b6b;
         }
 
         .day-card:hover {
@@ -148,9 +224,24 @@
             color: #764ba2;
         }
 
+        .price-tag {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
         .meal-name {
             font-weight: 600;
             margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .meal-details {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
         }
 
         .meal-variations {
@@ -178,6 +269,132 @@
         .variation-chip.active {
             background: #764ba2;
             color: white;
+        }
+
+        .swap-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .swap-btn:hover {
+            background: #764ba2;
+            transform: rotate(180deg);
+        }
+
+        /* Einkaufsliste */
+        .shopping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .shopping-category {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .shopping-category h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .shopping-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .shopping-item:last-child {
+            border-bottom: none;
+        }
+
+        .shopping-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        /* Einstellungen */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .setting-group {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .setting-group h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .setting-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .setting-group input[type="number"],
+        .setting-group select,
+        .setting-group input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .setting-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .filter-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .filter-group label {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        /* Statistiken */
+        .stats-box {
+            background: #e8f4f8;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .stats-box h3 {
+            color: #2196F3;
+            margin-bottom: 10px;
         }
 
         /* Loading Overlay */
@@ -271,53 +488,6 @@
             border-color: #764ba2;
         }
 
-        /* Shopping List */
-        .shopping-container {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .shopping-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .shopping-category {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .shopping-category h3 {
-            color: #764ba2;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .shopping-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .shopping-item:last-child {
-            border-bottom: none;
-        }
-
-        .shopping-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-            cursor: pointer;
-        }
-
         /* Toast Notifications */
         .toast {
             position: fixed;
@@ -344,6 +514,10 @@
             background: #f44336;
         }
 
+        .toast.info {
+            background: #2196F3;
+        }
+
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
@@ -355,6 +529,18 @@
             }
         }
 
+        /* Budget-Anzeige */
+        .budget-display {
+            font-size: 1.2em;
+            color: #4CAF50;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            background: #f0fff4;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
@@ -363,6 +549,10 @@
             
             .header {
                 padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
             }
             
             .cloud-status {
@@ -379,6 +569,14 @@
             .shopping-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-group {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -392,7 +590,7 @@
     <!-- Setup Modal -->
     <div class="setup-modal" id="setupModal">
         <div class="setup-content">
-            <h2>🔐 Cloud-Verbindung einrichten</h2>
+            <h2>Cloud-Verbindung einrichten</h2>
             <div class="form-group">
                 <label>GitHub Token:</label>
                 <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx">
@@ -413,7 +611,7 @@
                 <input type="number" id="childrenCount" value="2" min="0" max="6">
             </div>
             <button class="btn btn-primary" style="width: 100%;" onclick="connectToCloud()">
-                ☁️ Mit Cloud verbinden
+                Mit Cloud verbinden
             </button>
         </div>
     </div>
@@ -427,45 +625,180 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🍽️ Intelligenter Wochenplaner</h1>
-            <p>Cloud-basierte Essensplanung mit KI-Optimierung</p>
+            <h1>Familien-Wochenplaner</h1>
+            <p>Intelligente Essensplanung mit Cloud-Synchronisation</p>
             <p style="margin-top: 10px; color: #666;">
                 <span id="weekDate">Woche wird geladen...</span>
+            </p>
+            <div id="pizzaIndicator" style="display: none;">
+                <span class="pizza-indicator">Pizza-Wochenende!</span>
+            </div>
+        </div>
+
+        <!-- Statistiken -->
+        <div class="stats-box">
+            <h3>Rezept-Datenbank</h3>
+            <p><strong id="totalRecipes">0</strong> Rezepte verfügbar | 
+               <strong id="meatCount">0</strong> Fleisch | 
+               <strong id="vegCount">0</strong> Vegetarisch | 
+               <strong id="kidsCount">0</strong> Kinder</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                Nächstes Pizza-Wochenende in <strong id="pizzaCountdown">...</strong> Woche(n)
             </p>
         </div>
 
         <!-- Hauptsteuerung -->
         <div class="main-controls">
             <button class="btn btn-primary" onclick="generateSmartPlan()">
-                🎲 Neuer intelligenter Plan
+                Neuen Plan generieren
             </button>
             <button class="btn btn-secondary" onclick="optimizeCurrentPlan()">
-                🔄 Plan optimieren
+                Plan optimieren
             </button>
-            <button class="btn btn-secondary" onclick="showShoppingList()">
-                🛒 Einkaufsliste
+            <button class="btn btn-secondary" onclick="exportToPDF()">
+                Als PDF exportieren
             </button>
-            <button class="btn btn-secondary" onclick="showSettings()">
-                ⚙️ Einstellungen
+            <button class="btn btn-secondary" onclick="forceCloudSync()">
+                Cloud synchronisieren
             </button>
         </div>
 
-        <!-- Wochenübersicht -->
-        <div class="week-container">
-            <h2>📅 Wochenübersicht</h2>
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(event, 'overview')">Wochenübersicht</button>
+            <button class="tab" onclick="switchTab(event, 'shopping')">Einkaufsliste</button>
+            <button class="tab" onclick="switchTab(event, 'recipes')">Rezepte</button>
+            <button class="tab" onclick="switchTab(event, 'settings')">Einstellungen</button>
+        </div>
+
+        <!-- Tab: Wochenübersicht -->
+        <div id="overview" class="tab-content active">
             <div class="day-grid" id="weekGrid">
+                <!-- Wird dynamisch gefüllt -->
+            </div>
+            <div class="budget-display">
+                Gesamtkosten der Woche: <span id="totalCost">0</span> CHF
+            </div>
+        </div>
+
+        <!-- Tab: Einkaufsliste -->
+        <div id="shopping" class="tab-content">
+            <h2>Einkaufsliste</h2>
+            <div class="shopping-grid" id="shoppingGrid">
                 <!-- Wird dynamisch gefüllt -->
             </div>
         </div>
 
-        <!-- Einkaufsliste -->
-        <div class="shopping-container" id="shoppingContainer" style="display: none;">
-            <h2>🛒 Einkaufsliste</h2>
-            <button class="btn btn-secondary" onclick="hideShoppingList()" style="margin-bottom: 20px;">
-                ← Zurück zur Übersicht
-            </button>
-            <div class="shopping-grid" id="shoppingGrid">
+        <!-- Tab: Rezepte -->
+        <div id="recipes" class="tab-content">
+            <h2>Detaillierte Rezepte</h2>
+            <div id="recipesList">
                 <!-- Wird dynamisch gefüllt -->
+            </div>
+        </div>
+
+        <!-- Tab: Einstellungen -->
+        <div id="settings" class="tab-content">
+            <h2>Einstellungen</h2>
+            <div class="settings-grid">
+                <div class="setting-group">
+                    <h3>Familie</h3>
+                    <label>
+                        Anzahl Erwachsene:
+                        <input type="number" id="settingsAdults" value="2" min="1" max="6" onchange="updatePreferences()">
+                    </label>
+                    <label>
+                        Anzahl Kinder:
+                        <input type="number" id="settingsChildren" value="2" min="0" max="6" onchange="updatePreferences()">
+                    </label>
+                </div>
+                
+                <div class="setting-group">
+                    <h3>Budget</h3>
+                    <label>
+                        Tagesbudget (CHF):
+                        <input type="number" id="dailyBudget" value="25" min="10" max="50" onchange="updatePreferences()">
+                    </label>
+                    <label>
+                        Wochenbudget: <strong id="weeklyBudget">175 CHF</strong>
+                    </label>
+                </div>
+                
+                <div class="setting-group">
+                    <h3>Ernährung</h3>
+                    <label>
+                        Vegetarische Tage pro Woche:
+                        <input type="number" id="vegDays" value="3" min="0" max="7" onchange="updatePreferences()">
+                    </label>
+                    <label>
+                        Pizza-Wochenende alle:
+                        <select id="pizzaFrequency" onchange="updatePreferences()">
+                            <option value="2">2 Wochen</option>
+                            <option value="3" selected>2-3 Wochen (Zufall)</option>
+                            <option value="4">3-4 Wochen</option>
+                            <option value="0">Nie</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Ausschlüsse - Fleisch</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="noLamb" onchange="updatePreferences()"> Kein Lamm
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noPork" onchange="updatePreferences()"> Kein Schwein
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noBeef" onchange="updatePreferences()"> Kein Rind
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noDuck" onchange="updatePreferences()"> Keine Ente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Ausschlüsse - Milchprodukte</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="noGorgonzola" onchange="updatePreferences()"> Kein Gorgonzola
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noFeta" onchange="updatePreferences()"> Kein Feta
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Weitere Ausschlüsse</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="noFish" onchange="updatePreferences()"> Kein Fisch
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noMushrooms" onchange="updatePreferences()"> Keine Pilze
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noNuts" onchange="updatePreferences()"> Keine Nüsse
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noSpicy" onchange="updatePreferences()"> Nicht scharf
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>GitHub Token</h3>
+                    <label>
+                        Personal Access Token:
+                        <input type="password" id="settingsGithubToken" placeholder="ghp_xxxxxxxxxxxx" onchange="updatePreferences()">
+                    </label>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 5px;">
+                        Für Cloud-Synchronisation
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -484,7 +817,7 @@
             autoSaveTimeout: null
         };
 
-        // Globale App-Daten (NUR im Speicher, nie lokal!)
+        // Globale App-Daten
         let AppData = {
             weekPlan: [],
             recipes: null,
@@ -492,7 +825,21 @@
                 adults: 2,
                 children: 2,
                 weeksSincePizza: 0,
-                filters: {}
+                vegDays: 3,
+                dailyBudget: 25,
+                pizzaFrequency: "3",
+                filters: {
+                    noLamb: false,
+                    noPork: false,
+                    noBeef: false,
+                    noDuck: false,
+                    noGorgonzola: false,
+                    noFeta: false,
+                    noFish: false,
+                    noMushrooms: false,
+                    noNuts: false,
+                    noSpicy: false
+                }
             },
             currentWeekStart: null,
             shoppingList: {}
@@ -500,31 +847,92 @@
 
         // Intelligente Planungs-Engine
         const SmartPlanner = {
-            // Erstelle einen intelligenten Wochenplan
+            // Pizza-Logik
+            shouldHavePizzaWeekend: function() {
+                const freq = AppData.preferences.pizzaFrequency;
+                const weeksSince = AppData.preferences.weeksSincePizza;
+                
+                if (freq === "0") return false;
+                
+                if (freq === "3") {
+                    // 2-3 Wochen mit Zufall
+                    if (weeksSince >= 3) return true;
+                    if (weeksSince >= 2) return Math.random() > 0.5;
+                } else {
+                    // Feste Frequenz
+                    return weeksSince >= parseInt(freq);
+                }
+                return false;
+            },
+
+            // Filter Rezepte basierend auf Präferenzen
+            filterRecipes: function(recipes, category) {
+                const filters = AppData.preferences.filters;
+                return recipes.filter(recipe => {
+                    // Prüfe alle Zutaten
+                    const ingredients = JSON.stringify(recipe.baseIngredients).toLowerCase();
+                    const name = recipe.name.toLowerCase();
+                    
+                    if (filters.noLamb && (name.includes('lamm') || ingredients.includes('lamm'))) return false;
+                    if (filters.noPork && (name.includes('schwein') || ingredients.includes('schwein') || 
+                        name.includes('speck') || ingredients.includes('speck'))) return false;
+                    if (filters.noBeef && (name.includes('rind') || ingredients.includes('rind') || 
+                        name.includes('kalb') || ingredients.includes('kalb'))) return false;
+                    if (filters.noDuck && (name.includes('ente') || ingredients.includes('ente'))) return false;
+                    if (filters.noGorgonzola && ingredients.includes('gorgonzola')) return false;
+                    if (filters.noFeta && ingredients.includes('feta')) return false;
+                    if (filters.noFish && (name.includes('fisch') || ingredients.includes('fisch'))) return false;
+                    if (filters.noMushrooms && (ingredients.includes('pilz') || ingredients.includes('champignon'))) return false;
+                    if (filters.noNuts && (ingredients.includes('nuss') || ingredients.includes('nüsse') || 
+                        ingredients.includes('erdnuss'))) return false;
+                    if (filters.noSpicy && (recipe.tags && recipe.tags.includes('scharf'))) return false;
+                    
+                    return true;
+                });
+            },
+
+            // Erstelle intelligenten Wochenplan
             createPlan: function(recipes, preferences) {
                 const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
                 const plan = [];
                 const usedRecipes = new Set();
                 const usedMainIngredients = new Map();
                 
+                // Prüfe Pizza-Wochenende
+                const isPizzaWeekend = this.shouldHavePizzaWeekend();
+                if (isPizzaWeekend) {
+                    AppData.preferences.weeksSincePizza = 0;
+                    document.getElementById('pizzaIndicator').style.display = 'block';
+                } else {
+                    AppData.preferences.weeksSincePizza++;
+                    document.getElementById('pizzaIndicator').style.display = 'none';
+                }
+                
+                // Gefilterte Rezepte
+                const meatRecipes = this.filterRecipes(recipes.categories.meat.recipes);
+                const vegRecipes = this.filterRecipes(recipes.categories.vegetarian.recipes);
+                
+                // Verteile vegetarische Tage intelligent
+                const vegDayIndices = this.distributeVegDays(7, preferences.vegDays);
+                
                 days.forEach((day, index) => {
-                    // Wähle intelligentes Rezept basierend auf:
-                    // - Keine Wiederholungen
-                    // - Abwechslung bei Hauptzutaten
-                    // - Saisonalität
-                    // - Wochenend-Specials
+                    let recipe = null;
                     
-                    const isWeekend = index >= 5;
-                    const needsWorkFriendly = index < 4;
-                    
-                    // Finde passendes Rezept
-                    let recipe = this.selectSmartRecipe(
-                        recipes,
-                        usedRecipes,
-                        usedMainIngredients,
-                        isWeekend,
-                        needsWorkFriendly
-                    );
+                    // Pizza-Wochenende (Freitag und Samstag)
+                    if (isPizzaWeekend && (index === 4 || index === 5)) {
+                        recipe = this.createPizzaRecipe(index === 4 ? 'Freitag' : 'Samstag');
+                    } else {
+                        // Wähle zwischen Fleisch und Vegetarisch
+                        const isVegDay = vegDayIndices.includes(index);
+                        const availableRecipes = isVegDay ? vegRecipes : meatRecipes;
+                        
+                        recipe = this.selectSmartRecipe(
+                            availableRecipes,
+                            usedRecipes,
+                            usedMainIngredients,
+                            index
+                        );
+                    }
                     
                     // Füge Variationen hinzu
                     if (recipe && recipe.baseIngredients) {
@@ -538,7 +946,7 @@
                         variations: recipe.variations || []
                     });
                     
-                    if (recipe) {
+                    if (recipe && recipe.id) {
                         usedRecipes.add(recipe.id);
                         this.trackIngredients(recipe, usedMainIngredients, index);
                     }
@@ -546,93 +954,130 @@
                 
                 return plan;
             },
-            
-            selectSmartRecipe: function(recipes, usedRecipes, usedMainIngredients, isWeekend, needsWorkFriendly) {
-                // Filtere verfügbare Rezepte
-                const available = [];
+
+            // Pizza-Rezept erstellen
+            createPizzaRecipe: function(dayName) {
+                const isFriday = dayName === 'Freitag';
+                return {
+                    id: isFriday ? 'pizza-friday' : 'pizza-saturday',
+                    name: isFriday ? 'Pizza-Freitag (Selbstgemacht)' : 'Pizza-Samstag (Tag 2)',
+                    category: 'Pizza-Weekend',
+                    baseIngredients: isFriday ? {
+                        'Pizzamehl (für 2 Tage)': {amount: 300, unit: 'g'},
+                        'San Marzano Tomaten': {amount: 100, unit: 'g'},
+                        'Mozzarella': {amount: 125, unit: 'g', variations: ['Büffelmozzarella', 'Fior di Latte']},
+                        'Belag nach Wahl': {amount: 75, unit: 'g'},
+                        'Olivenöl': {amount: 1, unit: 'EL'},
+                        'Hefe': {amount: 0.25, unit: 'Würfel'}
+                    } : {
+                        'Teig vom Vortag': {amount: 0, unit: 'vorhanden'},
+                        'Restliche Sauce': {amount: 0, unit: 'vorhanden'},
+                        'Mozzarella': {amount: 125, unit: 'g'},
+                        'Andere Beläge': {amount: 75, unit: 'g'}
+                    },
+                    price: 4,
+                    tags: ['pizza', 'wochenende', 'familie'],
+                    special: 'pizza-weekend'
+                };
+            },
+
+            // Verteile vegetarische Tage
+            distributeVegDays: function(totalDays, vegCount) {
+                if (vegCount === 0) return [];
+                if (vegCount >= totalDays) return Array.from({length: totalDays}, (_, i) => i);
                 
-                ['meat', 'vegetarian'].forEach(category => {
-                    if (recipes.categories[category]) {
-                        recipes.categories[category].recipes.forEach(recipe => {
-                            if (!usedRecipes.has(recipe.id)) {
-                                // Prüfe Arbeitsfreundlichkeit
-                                if (needsWorkFriendly && recipe.workFriendly === false) {
-                                    return;
-                                }
-                                
-                                // Prüfe Wiederholungen von Hauptzutaten
-                                let tooSimilar = false;
-                                for (let [ingredient, lastDay] of usedMainIngredients) {
-                                    if (recipe.baseIngredients && recipe.baseIngredients[ingredient]) {
-                                        if (lastDay >= 0 && lastDay < 3) { // Zu nah
-                                            tooSimilar = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                
-                                if (!tooSimilar) {
-                                    available.push(recipe);
-                                }
-                            }
-                        });
+                const positions = [];
+                const spacing = Math.floor(totalDays / vegCount);
+                
+                for (let i = 0; i < vegCount; i++) {
+                    let pos = i * spacing + Math.floor(Math.random() * Math.max(1, spacing - 1));
+                    if (pos >= totalDays) pos = totalDays - 1;
+                    if (!positions.includes(pos)) {
+                        positions.push(pos);
                     }
-                });
-                
-                // Wähle zufällig aus verfügbaren
-                if (available.length > 0) {
-                    return available[Math.floor(Math.random() * available.length)];
                 }
                 
-                // Fallback: Irgendein Rezept
-                const allRecipes = [];
-                Object.values(recipes.categories).forEach(cat => {
-                    allRecipes.push(...cat.recipes);
-                });
-                return allRecipes[Math.floor(Math.random() * allRecipes.length)];
+                return positions;
             },
-            
+
+            // Wähle intelligentes Rezept
+            selectSmartRecipe: function(availableRecipes, usedRecipes, usedMainIngredients, dayIndex) {
+                const isWeekend = dayIndex >= 5;
+                const needsWorkFriendly = dayIndex < 4;
+                
+                // Filtere nach verschiedenen Kriterien
+                let candidates = availableRecipes.filter(recipe => {
+                    // Nicht bereits verwendet
+                    if (usedRecipes.has(recipe.id)) return false;
+                    
+                    // Arbeitstauglichkeit prüfen
+                    if (needsWorkFriendly && recipe.workFriendly === false) return false;
+                    
+                    // Prüfe Wiederholungen von Hauptzutaten (5 Tage Abstand)
+                    for (let [ingredient, lastDay] of usedMainIngredients) {
+                        if (recipe.baseIngredients && recipe.baseIngredients[ingredient]) {
+                            if (Math.abs(dayIndex - lastDay) < 5) {
+                                return false;
+                            }
+                        }
+                    }
+                    
+                    return true;
+                });
+                
+                // Fallback wenn keine Kandidaten
+                if (candidates.length === 0) {
+                    candidates = availableRecipes.filter(r => !usedRecipes.has(r.id));
+                }
+                
+                // Wähle zufällig
+                if (candidates.length > 0) {
+                    const selected = candidates[Math.floor(Math.random() * candidates.length)];
+                    return {...selected}; // Kopie erstellen
+                }
+                
+                // Letzter Fallback
+                return availableRecipes[Math.floor(Math.random() * availableRecipes.length)];
+            },
+
+            // Füge Variationen hinzu
             addVariations: function(recipe) {
                 const variations = [];
                 
-                // Pasta-Variationen
-                if (recipe.baseIngredients.pasta) {
-                    const pastaType = recipe.baseIngredients.pasta;
-                    if (pastaType.variations) {
-                        variations.push({
-                            type: 'pasta',
-                            options: pastaType.variations,
-                            selected: pastaType.variations[0]
-                        });
-                    }
+                if (recipe.baseIngredients) {
+                    Object.entries(recipe.baseIngredients).forEach(([key, value]) => {
+                        if (value.variations && value.variations.length > 0) {
+                            variations.push({
+                                type: key,
+                                options: value.variations,
+                                selected: value.variations[0]
+                            });
+                        }
+                    });
                 }
-                
-                // Andere Variationen
-                Object.entries(recipe.baseIngredients).forEach(([key, value]) => {
-                    if (value.variations && key !== 'pasta') {
-                        variations.push({
-                            type: key,
-                            options: value.variations,
-                            selected: value.variations[0]
-                        });
-                    }
-                });
                 
                 recipe.variations = variations;
                 return recipe;
             },
-            
+
+            // Tracke verwendete Zutaten
             trackIngredients: function(recipe, usedMainIngredients, dayIndex) {
                 if (!recipe.baseIngredients) return;
                 
-                // Tracke Hauptzutaten
-                ['pasta', 'fleisch', 'käse'].forEach(ingredient => {
-                    if (recipe.baseIngredients[ingredient]) {
-                        usedMainIngredients.set(ingredient, dayIndex);
-                    }
+                // Hauptzutaten tracken
+                const mainIngredients = ['pasta', 'reis', 'kartoffel', 'fleisch', 'käse', 'sahne'];
+                
+                Object.keys(recipe.baseIngredients).forEach(ingredient => {
+                    const lower = ingredient.toLowerCase();
+                    mainIngredients.forEach(main => {
+                        if (lower.includes(main)) {
+                            usedMainIngredients.set(main, dayIndex);
+                        }
+                    });
                 });
             },
-            
+
+            // Datum für Tag berechnen
             getDateForDay: function(dayIndex) {
                 const today = new Date();
                 const currentDay = today.getDay();
@@ -652,7 +1097,6 @@
 
         // Initialisierung
         window.addEventListener('DOMContentLoaded', async function() {
-            // Prüfe ob Token vorhanden
             const savedToken = sessionStorage.getItem('githubToken');
             const savedGistId = sessionStorage.getItem('currentGistId');
             
@@ -692,12 +1136,10 @@
             
             try {
                 if (gistId) {
-                    // Lade bestehenden Plan
                     CloudSync.gistId = gistId;
                     sessionStorage.setItem('currentGistId', gistId);
                     await loadFromCloud();
                 } else {
-                    // Erstelle neuen Plan
                     await createNewCloudPlan();
                 }
                 
@@ -715,23 +1157,19 @@
             showLoading('Lade Rezepte und synchronisiere...');
             
             try {
-                // Lade Rezepte (diese könnten auch aus der Cloud kommen)
                 await loadRecipes();
                 
-                // Lade aktuellen Plan aus Cloud
                 if (CloudSync.gistId) {
                     await loadFromCloud();
                 } else {
-                    // Erstelle neuen Plan
                     await generateSmartPlan();
                 }
                 
-                // Starte Auto-Sync
                 startAutoSync();
-                
-                // Update UI
                 updateCloudStatus('online');
                 displayWeekPlan();
+                updateStatistics();
+                updatePizzaCountdown();
                 hideLoading();
                 
             } catch (error) {
@@ -744,17 +1182,15 @@
         // Rezepte laden
         async function loadRecipes() {
             try {
-                // Lade die externe recipes.json Datei
                 const response = await fetch('recipes.json');
                 if (!response.ok) {
                     throw new Error('Fehler beim Laden der Rezepte');
                 }
                 AppData.recipes = await response.json();
-                console.log(`✓ ${countTotalRecipes()} Rezepte geladen`);
+                console.log(`${countTotalRecipes()} Rezepte geladen`);
             } catch (error) {
                 console.error('Fehler beim Laden der recipes.json:', error);
                 showToast('Fehler beim Laden der Rezepte!', 'error');
-                // Fallback auf leere Struktur
                 AppData.recipes = {
                     categories: {
                         meat: { recipes: [] },
@@ -764,7 +1200,7 @@
                 };
             }
         }
-        
+
         // Zähle alle Rezepte
         function countTotalRecipes() {
             let count = 0;
@@ -772,6 +1208,35 @@
                 count += cat.recipes.length;
             });
             return count;
+        }
+
+        // Statistiken aktualisieren
+        function updateStatistics() {
+            const total = countTotalRecipes();
+            const meat = AppData.recipes.categories.meat ? AppData.recipes.categories.meat.recipes.length : 0;
+            const veg = AppData.recipes.categories.vegetarian ? AppData.recipes.categories.vegetarian.recipes.length : 0;
+            const kids = AppData.recipes.categories.kids ? AppData.recipes.categories.kids.recipes.length : 0;
+            
+            document.getElementById('totalRecipes').textContent = total;
+            document.getElementById('meatCount').textContent = meat;
+            document.getElementById('vegCount').textContent = veg;
+            document.getElementById('kidsCount').textContent = kids;
+        }
+
+        // Pizza Countdown aktualisieren
+        function updatePizzaCountdown() {
+            const freq = AppData.preferences.pizzaFrequency;
+            const weeksSince = AppData.preferences.weeksSincePizza;
+            
+            if (freq === "0") {
+                document.getElementById('pizzaCountdown').textContent = 'deaktiviert';
+            } else if (freq === "3") {
+                const nextPizza = Math.max(1, 3 - weeksSince);
+                document.getElementById('pizzaCountdown').textContent = nextPizza;
+            } else {
+                const nextPizza = Math.max(1, parseInt(freq) - weeksSince);
+                document.getElementById('pizzaCountdown').textContent = nextPizza;
+            }
         }
 
         // Neuen Cloud-Plan erstellen
@@ -834,6 +1299,9 @@
             AppData.preferences = {...AppData.preferences, ...data.preferences};
             AppData.shoppingList = data.shoppingList || {};
             CloudSync.lastSync = new Date();
+            
+            // Update UI mit geladenen Einstellungen
+            loadPreferencesToUI();
         }
 
         // In Cloud speichern
@@ -867,13 +1335,11 @@
             if (response.ok) {
                 CloudSync.lastSync = new Date();
                 updateCloudStatus('online');
-                showToast('✓ Gespeichert', 'success');
             }
         }
 
         // Auto-Sync starten
         function startAutoSync() {
-            // Speichere bei jeder Änderung
             CloudSync.syncInterval = setInterval(async () => {
                 if (CloudSync.isOnline) {
                     await saveToCloud();
@@ -884,9 +1350,23 @@
         // Auto-Save bei Änderungen
         function triggerAutoSave() {
             clearTimeout(CloudSync.autoSaveTimeout);
-            CloudSync.autoSaveTimeout = setTimeout(() => {
-                saveToCloud();
-            }, 2000); // 2 Sekunden nach letzter Änderung
+            updateCloudStatus('syncing');
+            CloudSync.autoSaveTimeout = setTimeout(async () => {
+                await saveToCloud();
+                showToast('Gespeichert', 'success');
+            }, 2000);
+        }
+
+        // Manueller Cloud Sync
+        async function forceCloudSync() {
+            showLoading('Synchronisiere mit Cloud...');
+            try {
+                await saveToCloud();
+                showToast('Synchronisation erfolgreich', 'success');
+            } catch (error) {
+                showToast('Synchronisation fehlgeschlagen', 'error');
+            }
+            hideLoading();
         }
 
         // Intelligenten Plan generieren
@@ -897,31 +1377,28 @@
             
             showLoading('Erstelle intelligenten Wochenplan...');
             
-            // Erstelle Plan mit KI-Engine
             AppData.weekPlan = SmartPlanner.createPlan(AppData.recipes, AppData.preferences);
-            
-            // Erstelle Einkaufsliste
             generateShoppingList();
             
-            // Speichere in Cloud
             await saveToCloud();
             
-            // Update UI
             displayWeekPlan();
+            updatePizzaCountdown();
             hideLoading();
             
-            showToast('✓ Neuer Plan erstellt', 'success');
+            showToast('Neuer Plan erstellt', 'success');
         }
 
         // Plan optimieren
-        function optimizeCurrentPlan() {
-            showToast('🔄 Optimiere Plan...', 'info');
+        async function optimizeCurrentPlan() {
+            showLoading('Optimiere Plan...');
             
-            // Hier könnte eine echte Optimierung stattfinden
-            // z.B. Preisoptimierung, Nährstoffbalance, etc.
+            // Hier könnte echte Optimierung stattfinden
+            // z.B. Preisoptimierung, bessere Verteilung, etc.
             
             setTimeout(() => {
-                showToast('✓ Plan optimiert', 'success');
+                hideLoading();
+                showToast('Plan optimiert', 'success');
                 triggerAutoSave();
             }, 1000);
         }
@@ -930,10 +1407,20 @@
         function displayWeekPlan() {
             const grid = document.getElementById('weekGrid');
             grid.innerHTML = '';
+            let totalCost = 0;
             
             AppData.weekPlan.forEach((day, index) => {
+                if (!day.dinner) return;
+                
+                const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
+                const dayCost = day.dinner.price * portions;
+                totalCost += dayCost;
+                
                 const dayCard = document.createElement('div');
                 dayCard.className = 'day-card';
+                if (day.dinner.special === 'pizza-weekend') {
+                    dayCard.className += ' pizza-day';
+                }
                 
                 let variationsHtml = '';
                 if (day.variations && day.variations.length > 0) {
@@ -951,24 +1438,25 @@
                 }
                 
                 dayCard.innerHTML = `
+                    ${day.dinner.special !== 'pizza-weekend' ? 
+                        `<button class="swap-btn" onclick="changeMeal(${index})">↻</button>` : ''}
                     <div class="day-header">
                         <span class="day-name">${day.day} <small style="color: #999;">${day.date}</small></span>
-                        <span style="color: #4caf50; font-weight: bold;">
-                            ${day.dinner ? day.dinner.price + ' CHF' : ''}
-                        </span>
+                        <span class="price-tag">${dayCost.toFixed(2)} CHF</span>
                     </div>
                     <div class="meal-name">
-                        ${day.dinner ? day.dinner.name : 'Kein Rezept'}
+                        ${day.dinner.name}
+                    </div>
+                    <div class="meal-details">
+                        ${day.dinner.category || ''} • ${portions} Portionen
                     </div>
                     ${variationsHtml}
-                    <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px;" 
-                            onclick="changeMeal(${index})">
-                        🔄 Ändern
-                    </button>
                 `;
                 
                 grid.appendChild(dayCard);
             });
+            
+            document.getElementById('totalCost').textContent = totalCost.toFixed(2);
             
             // Update Wochendatum
             const weekStart = new Date();
@@ -987,6 +1475,7 @@
                 if (variation) {
                     variation.selected = option;
                     displayWeekPlan();
+                    generateShoppingList();
                     triggerAutoSave();
                 }
             }
@@ -994,25 +1483,28 @@
 
         // Mahlzeit ändern
         function changeMeal(dayIndex) {
-            // Wähle neues zufälliges Rezept
-            const allRecipes = [];
-            Object.values(AppData.recipes.categories).forEach(cat => {
-                allRecipes.push(...cat.recipes);
-            });
+            const day = AppData.weekPlan[dayIndex];
+            const isVeg = day.dinner.category === 'Vegetarisch';
             
-            const newRecipe = allRecipes[Math.floor(Math.random() * allRecipes.length)];
-            AppData.weekPlan[dayIndex].dinner = SmartPlanner.addVariations(newRecipe);
+            const availableRecipes = isVeg ? 
+                AppData.recipes.categories.vegetarian.recipes :
+                AppData.recipes.categories.meat.recipes;
+            
+            const filtered = SmartPlanner.filterRecipes(availableRecipes);
+            const newRecipe = filtered[Math.floor(Math.random() * filtered.length)];
+            
+            AppData.weekPlan[dayIndex].dinner = SmartPlanner.addVariations({...newRecipe});
+            AppData.weekPlan[dayIndex].variations = AppData.weekPlan[dayIndex].dinner.variations;
             
             displayWeekPlan();
             generateShoppingList();
             triggerAutoSave();
-            
-            showToast('✓ Rezept geändert', 'success');
         }
 
         // Einkaufsliste generieren
         function generateShoppingList() {
             AppData.shoppingList = {};
+            const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
             
             AppData.weekPlan.forEach(day => {
                 if (day.dinner && day.dinner.baseIngredients) {
@@ -1028,24 +1520,39 @@
                             };
                         }
                         
-                        const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
-                        AppData.shoppingList[ingredient].amount += value.amount * portions;
+                        if (value.amount > 0) {
+                            AppData.shoppingList[ingredient].amount += value.amount * portions;
+                        }
                     });
                 }
             });
         }
 
+        // Tab wechseln
+        function switchTab(event, tabName) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            
+            if (tabName === 'shopping') {
+                displayShoppingList();
+            } else if (tabName === 'recipes') {
+                displayRecipes();
+            }
+        }
+
         // Einkaufsliste anzeigen
-        function showShoppingList() {
-            generateShoppingList();
-            
-            document.querySelector('.week-container').style.display = 'none';
-            document.getElementById('shoppingContainer').style.display = 'block';
-            
+        function displayShoppingList() {
             const grid = document.getElementById('shoppingGrid');
             grid.innerHTML = '';
             
-            // Kategorisiere Zutaten
             const categories = {
                 'Fleisch & Fisch': [],
                 'Milchprodukte': [],
@@ -1058,17 +1565,17 @@
                 const lower = item.toLowerCase();
                 let category = 'Sonstiges';
                 
-                if (lower.includes('fleisch') || lower.includes('hähnchen') || 
-                    lower.includes('rind') || lower.includes('schwein')) {
+                if (lower.includes('fleisch') || lower.includes('hähnchen') || lower.includes('rind') || 
+                    lower.includes('schwein') || lower.includes('lamm') || lower.includes('fisch')) {
                     category = 'Fleisch & Fisch';
-                } else if (lower.includes('käse') || lower.includes('milch') || 
-                           lower.includes('sahne') || lower.includes('butter')) {
+                } else if (lower.includes('käse') || lower.includes('milch') || lower.includes('sahne') || 
+                           lower.includes('butter') || lower.includes('joghurt') || lower.includes('mozzarella')) {
                     category = 'Milchprodukte';
-                } else if (lower.includes('zwiebel') || lower.includes('paprika') || 
-                           lower.includes('zucchini') || lower.includes('tomate')) {
+                } else if (lower.includes('zwiebel') || lower.includes('paprika') || lower.includes('zucchini') || 
+                           lower.includes('tomate') || lower.includes('kartoffel') || lower.includes('salat')) {
                     category = 'Gemüse & Obst';
-                } else if (lower.includes('pasta') || lower.includes('reis') || 
-                           lower.includes('nudel') || lower.includes('spätzle')) {
+                } else if (lower.includes('pasta') || lower.includes('reis') || lower.includes('nudel') || 
+                           lower.includes('spätzle') || lower.includes('spaghetti') || lower.includes('penne')) {
                     category = 'Nudeln & Reis';
                 }
                 
@@ -1079,17 +1586,19 @@
                 });
             });
             
-            // Erstelle Kategorien
             Object.entries(categories).forEach(([category, items]) => {
                 if (items.length === 0) return;
                 
                 const catDiv = document.createElement('div');
                 catDiv.className = 'shopping-category';
+                
+                const icon = category === 'Fleisch & Fisch' ? '🥩' :
+                            category === 'Milchprodukte' ? '🧀' :
+                            category === 'Gemüse & Obst' ? '🥕' :
+                            category === 'Nudeln & Reis' ? '🍝' : '📦';
+                
                 catDiv.innerHTML = `
-                    <h3>${category === 'Fleisch & Fisch' ? '🥩' : 
-                         category === 'Milchprodukte' ? '🧀' :
-                         category === 'Gemüse & Obst' ? '🥕' :
-                         category === 'Nudeln & Reis' ? '🍝' : '📦'} ${category}</h3>
+                    <h3>${icon} ${category}</h3>
                     ${items.map(item => `
                         <div class="shopping-item">
                             <input type="checkbox">
@@ -1101,10 +1610,109 @@
             });
         }
 
-        // Einkaufsliste ausblenden
-        function hideShoppingList() {
-            document.getElementById('shoppingContainer').style.display = 'none';
-            document.querySelector('.week-container').style.display = 'block';
+        // Rezepte anzeigen
+        function displayRecipes() {
+            const container = document.getElementById('recipesList');
+            container.innerHTML = '';
+            
+            AppData.weekPlan.forEach(day => {
+                if (!day.dinner) return;
+                
+                const recipeDiv = document.createElement('div');
+                recipeDiv.style.cssText = 'background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 20px;';
+                
+                const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
+                
+                recipeDiv.innerHTML = `
+                    <h3 style="color: #764ba2; margin-bottom: 15px;">
+                        ${day.day} - ${day.dinner.name}
+                    </h3>
+                    <p style="color: #666; margin-bottom: 10px;">Für ${portions} Portionen</p>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4>Zutaten:</h4>
+                        <ul>
+                            ${day.dinner.baseIngredients ? Object.entries(day.dinner.baseIngredients).map(([ing, data]) => 
+                                `<li>${ing}: ${data.amount * portions} ${data.unit || ''}</li>`
+                            ).join('') : ''}
+                        </ul>
+                    </div>
+                    ${day.dinner.instructions ? `
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <h4>Zubereitung:</h4>
+                            <ol>
+                                ${day.dinner.instructions.map(step => `<li>${step}</li>`).join('')}
+                            </ol>
+                        </div>
+                    ` : ''}
+                `;
+                
+                container.appendChild(recipeDiv);
+            });
+        }
+
+        // Einstellungen aktualisieren
+        function updatePreferences() {
+            AppData.preferences.adults = parseInt(document.getElementById('settingsAdults').value);
+            AppData.preferences.children = parseInt(document.getElementById('settingsChildren').value);
+            AppData.preferences.vegDays = parseInt(document.getElementById('vegDays').value);
+            AppData.preferences.dailyBudget = parseInt(document.getElementById('dailyBudget').value);
+            AppData.preferences.pizzaFrequency = document.getElementById('pizzaFrequency').value;
+            
+            // Filter
+            AppData.preferences.filters.noLamb = document.getElementById('noLamb').checked;
+            AppData.preferences.filters.noPork = document.getElementById('noPork').checked;
+            AppData.preferences.filters.noBeef = document.getElementById('noBeef').checked;
+            AppData.preferences.filters.noDuck = document.getElementById('noDuck').checked;
+            AppData.preferences.filters.noGorgonzola = document.getElementById('noGorgonzola').checked;
+            AppData.preferences.filters.noFeta = document.getElementById('noFeta').checked;
+            AppData.preferences.filters.noFish = document.getElementById('noFish').checked;
+            AppData.preferences.filters.noMushrooms = document.getElementById('noMushrooms').checked;
+            AppData.preferences.filters.noNuts = document.getElementById('noNuts').checked;
+            AppData.preferences.filters.noSpicy = document.getElementById('noSpicy').checked;
+            
+            // Token
+            const token = document.getElementById('settingsGithubToken').value;
+            if (token) {
+                CloudSync.token = token;
+                sessionStorage.setItem('githubToken', token);
+            }
+            
+            // Update Budget-Anzeige
+            const weeklyBudget = AppData.preferences.dailyBudget * 7;
+            document.getElementById('weeklyBudget').textContent = `${weeklyBudget} CHF`;
+            
+            triggerAutoSave();
+        }
+
+        // Präferenzen in UI laden
+        function loadPreferencesToUI() {
+            document.getElementById('settingsAdults').value = AppData.preferences.adults;
+            document.getElementById('settingsChildren').value = AppData.preferences.children;
+            document.getElementById('vegDays').value = AppData.preferences.vegDays;
+            document.getElementById('dailyBudget').value = AppData.preferences.dailyBudget;
+            document.getElementById('pizzaFrequency').value = AppData.preferences.pizzaFrequency;
+            
+            // Filter
+            if (AppData.preferences.filters) {
+                document.getElementById('noLamb').checked = AppData.preferences.filters.noLamb || false;
+                document.getElementById('noPork').checked = AppData.preferences.filters.noPork || false;
+                document.getElementById('noBeef').checked = AppData.preferences.filters.noBeef || false;
+                document.getElementById('noDuck').checked = AppData.preferences.filters.noDuck || false;
+                document.getElementById('noGorgonzola').checked = AppData.preferences.filters.noGorgonzola || false;
+                document.getElementById('noFeta').checked = AppData.preferences.filters.noFeta || false;
+                document.getElementById('noFish').checked = AppData.preferences.filters.noFish || false;
+                document.getElementById('noMushrooms').checked = AppData.preferences.filters.noMushrooms || false;
+                document.getElementById('noNuts').checked = AppData.preferences.filters.noNuts || false;
+                document.getElementById('noSpicy').checked = AppData.preferences.filters.noSpicy || false;
+            }
+            
+            const weeklyBudget = AppData.preferences.dailyBudget * 7;
+            document.getElementById('weeklyBudget').textContent = `${weeklyBudget} CHF`;
+        }
+
+        // PDF Export
+        function exportToPDF() {
+            window.print();
         }
 
         // Cloud Status Update
@@ -1148,10 +1756,6 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
-        }
-
-        function showSettings() {
-            showToast('⚙️ Einstellungen kommen bald...', 'info');
         }
 
         // Online/Offline Detection
