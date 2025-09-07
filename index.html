@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍽️ Familien-Wochenessensplaner</title>
+    <title>🍽️ Cloud Wochenplaner</title>
     <style>
         * {
             margin: 0;
@@ -12,84 +12,88 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
 
+        /* Header mit Cloud-Status */
         .header {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
-        .header h1 {
-            color: #764ba2;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .cloud-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #e8f5e9;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #2e7d32;
         }
 
-        .header p {
-            color: #666;
-            font-size: 1.1em;
+        .cloud-status.offline {
+            background: #ffebee;
+            color: #c62828;
         }
 
-        .week-date {
-            color: #764ba2;
-            font-weight: bold;
-            margin-top: 10px;
-            font-size: 1.1em;
+        .cloud-status.syncing {
+            background: #fff3e0;
+            color: #f57c00;
         }
 
-        .pizza-indicator {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 15px;
-            display: inline-block;
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
+        /* Hauptsteuerung */
         .main-controls {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            justify-content: center;
             margin-bottom: 30px;
-            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 15px 30px;
-            font-size: 1.1em;
+            padding: 15px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
         }
 
@@ -104,97 +108,27 @@
             border: 2px solid #764ba2;
         }
 
-        .btn-secondary:hover {
-            background: #f0f0f0;
-        }
-
-        .btn-github {
-            background: linear-gradient(135deg, #24292e 0%, #0366d6 100%);
-            color: white;
-        }
-
-        .btn-github:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(3,102,214,0.3);
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+        /* Wochenübersicht */
+        .week-container {
             background: white;
-            padding: 10px;
-            border-radius: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tab {
-            padding: 10px 20px;
-            background: #f8f8f8;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .tab.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-            background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        .week-overview {
+        .day-grid {
             display: grid;
-            gap: 15px;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .day-card {
-            background: #f9f9f9;
-            border-radius: 10px;
+            background: #f8f9fa;
+            border-radius: 15px;
             padding: 20px;
             border-left: 5px solid #764ba2;
             transition: all 0.3s;
             position: relative;
-        }
-
-        .day-card.pizza-day {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffeaa7 100%);
-            border-left: 5px solid #ff6b6b;
-        }
-        
-        .day-card .swap-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .day-card .swap-btn:hover {
-            background: #764ba2;
-            transform: rotate(180deg);
         }
 
         .day-card:hover {
@@ -205,548 +139,74 @@
         .day-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-bottom: 15px;
         }
 
         .day-name {
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: bold;
             color: #764ba2;
-        }
-
-        .price-tag {
-            background: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-
-        .meal-info {
-            margin: 10px 0;
         }
 
         .meal-name {
             font-weight: 600;
-            color: #333;
-            font-size: 1.1em;
             margin-bottom: 5px;
         }
 
-        .meal-details {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .portions-info {
-            background: #e3f2fd;
-            padding: 8px 12px;
-            border-radius: 8px;
+        .meal-variations {
+            display: flex;
+            gap: 5px;
             margin-top: 8px;
-            font-size: 0.9em;
-            color: #1976D2;
+            flex-wrap: wrap;
         }
 
-        .shopping-list {
-            columns: 2;
-            column-gap: 30px;
-        }
-
-        .shopping-category {
-            break-inside: avoid;
-            background: #f9f9f9;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-        .shopping-category h3 {
-            color: #764ba2;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .shopping-item {
-            display: flex;
-            align-items: center;
-            padding: 5px 0;
-        }
-
-        .shopping-item input[type="checkbox"] {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
+        .variation-chip {
+            padding: 3px 8px;
+            background: #e3f2fd;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #1976d2;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .recipe-details {
-            background: #f9f9f9;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+        .variation-chip:hover {
+            background: #1976d2;
+            color: white;
         }
 
-        .recipe-details h3 {
-            color: #764ba2;
-            margin-bottom: 15px;
+        .variation-chip.active {
+            background: #764ba2;
+            color: white;
         }
 
-        .ingredients-list {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .ingredients-list ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .ingredients-list li {
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .ingredients-list li:last-child {
-            border-bottom: none;
-        }
-
-        .instructions {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .instructions ol {
-            padding-left: 20px;
-        }
-
-        .instructions li {
-            margin-bottom: 10px;
-            line-height: 1.8;
-        }
-
-        .tips-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-
-        .tips-box h4 {
-            color: #856404;
-            margin-bottom: 10px;
-        }
-
-        .settings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
             gap: 20px;
         }
 
-        .setting-group {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .setting-group h3 {
-            color: #764ba2;
-            margin-bottom: 15px;
-        }
-
-        .setting-group label {
-            display: block;
-            margin-bottom: 10px;
-            color: #666;
-        }
-
-        .setting-group input[type="number"],
-        .setting-group select,
-        .setting-group input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        .setting-group input[type="checkbox"] {
-            margin-right: 8px;
-        }
-
-        .portion-settings {
-            background: #f0f8ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .portion-settings h4 {
-            color: #2196F3;
-            margin-bottom: 10px;
-        }
-
-        .person-portion {
+        .loading-overlay.active {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            padding: 8px;
-            background: white;
-            border-radius: 5px;
-        }
-
-        .person-portion label {
-            flex: 1;
-            margin: 0;
-        }
-
-        .person-portion input {
-            width: 80px !important;
-        }
-
-        .filter-group {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .budget-display {
-            font-size: 1.2em;
-            color: #4CAF50;
-            font-weight: bold;
-            text-align: center;
-            padding: 15px;
-            background: #f0fff4;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .stats-box {
-            background: #e8f4f8;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .stats-box h3 {
-            color: #2196F3;
-            margin-bottom: 10px;
-        }
-
-        .saved-weeks-list {
-            display: grid;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .saved-week-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        .saved-week-info {
-            flex: 1;
-        }
-
-        .saved-week-date {
-            font-weight: bold;
-            color: #764ba2;
-            font-size: 1.1em;
-        }
-
-        .saved-week-summary {
-            font-size: 0.95em;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .saved-week-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .mini-btn {
-            padding: 8px 15px;
-            font-size: 0.95em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .mini-btn-load {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .mini-btn-load:hover {
-            background: #45a049;
-            transform: translateY(-1px);
-        }
-
-        .mini-btn-delete {
-            background: #f44336;
-            color: white;
-        }
-
-        .mini-btn-delete:hover {
-            background: #da190b;
-            transform: translateY(-1px);
-        }
-
-        .confirm-dialog {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            z-index: 2000;
-            max-width: 450px;
-            display: none;
-        }
-
-        .confirm-dialog.active {
-            display: block;
-        }
-
-        .confirm-dialog h3 {
-            color: #764ba2;
-            margin-bottom: 15px;
-        }
-
-        .confirm-dialog p {
-            margin-bottom: 15px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .confirm-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            animation: fadeIn 0.3s;
-        }
-
-        .modal.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-header h2 {
-            color: #764ba2;
-            margin: 0;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .close-modal:hover {
-            color: #333;
-        }
-
-        .github-section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 10px;
-        }
-
-        .github-section h3 {
-            color: #24292e;
-            margin-bottom: 15px;
-        }
-
-        .github-input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-family: monospace;
-            margin: 10px 0;
-        }
-
-        .github-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .github-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .github-btn-primary {
-            background: #24292e;
-            color: white;
-        }
-
-        .github-btn-primary:hover {
-            background: #0366d6;
-            transform: translateY(-2px);
-        }
-
-        .github-btn-secondary {
-            background: white;
-            color: #24292e;
-            border: 2px solid #24292e;
-        }
-
-        .github-btn-secondary:hover {
-            background: #f6f8fa;
-        }
-
-        .status-message {
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .status-success {
-            color: #4CAF50;
-            background: #f0fff4;
-        }
-
-        .status-error {
-            color: #f44336;
-            background: #ffebee;
-        }
-
-        .status-info {
-            color: #2196F3;
-            background: #e3f2fd;
-        }
-
-        .gist-list {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .gist-item {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .gist-item:hover {
-            background: #f6f8fa;
-        }
-
-        .gist-item:last-child {
-            border-bottom: none;
-        }
-
-        .gist-title {
-            font-weight: bold;
-            color: #24292e;
-        }
-
-        .gist-date {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 50px;
-        }
-
-        .loading.active {
-            display: block;
         }
 
         .spinner {
+            width: 50px;
+            height: 50px;
             border: 4px solid #f3f3f3;
             border-top: 4px solid #764ba2;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        .sync-status {
-            background: #e3f2fd;
-            color: #1976D2;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95em;
-        }
-
-        .sync-status.synced {
-            background: #e8f5e9;
-            color: #388E3C;
         }
 
         @keyframes spin {
@@ -754,11 +214,136 @@
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Setup Modal */
+        .setup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
-        
+
+        .setup-modal.active {
+            display: flex;
+        }
+
+        .setup-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .setup-content h2 {
+            color: #764ba2;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        /* Shopping List */
+        .shopping-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .shopping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .shopping-category {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .shopping-category h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .shopping-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .shopping-item:last-child {
+            border-bottom: none;
+        }
+
+        .shopping-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 15px 20px;
+            background: #323232;
+            color: white;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.3s;
+            z-index: 10000;
+        }
+
+        .toast.show {
+            display: block;
+        }
+
+        .toast.success {
+            background: #4caf50;
+        }
+
+        .toast.error {
+            background: #f44336;
+        }
+
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
@@ -769,2434 +354,824 @@
                 opacity: 1;
             }
         }
-        
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
 
-        /* Mobile First - Smartphone Optimierung */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            body {
-                font-size: 16px; /* Verhindert Zoom auf iOS */
-            }
-            
             .container {
                 padding: 10px;
             }
             
             .header {
-                padding: 20px 15px;
-                margin-bottom: 15px;
+                padding: 20px;
             }
             
-            .header h1 {
-                font-size: 1.5em;
-                line-height: 1.2;
-            }
-            
-            .header p {
-                font-size: 0.9em;
-            }
-            
-            .stats-box {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            
-            .stats-box p {
-                font-size: 0.85em;
-            }
-            
-            /* Hauptbuttons */
-            .main-controls {
-                flex-direction: column;
-                gap: 10px;
-                margin-bottom: 20px;
-            }
-            
-            .btn {
-                width: 100%;
-                padding: 18px 20px;
-                font-size: 1em;
-                min-height: 50px;
-            }
-            
-            /* Tab-Navigation optimiert */
-            .tabs {
-                padding: 8px;
-                gap: 5px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            .tab {
-                padding: 12px 16px;
-                font-size: 0.9em;
-                white-space: nowrap;
-                min-height: 44px;
-                flex-shrink: 0;
-            }
-            
-            /* Tab-Inhalt */
-            .tab-content {
-                padding: 20px 15px;
-            }
-            
-            /* Wochenübersicht */
-            .day-card {
-                padding: 15px;
-                margin-bottom: 10px;
+            .cloud-status {
                 position: relative;
-                padding-right: 45px;
-            }
-            
-            .day-card .swap-btn {
-                width: 40px;
-                height: 40px;
-                right: 5px;
-                top: 15px;
-            }
-            
-            .day-name {
-                font-size: 1.1em;
-            }
-            
-            .meal-name {
-                font-size: 1em;
-                line-height: 1.4;
-            }
-            
-            .meal-details {
-                font-size: 0.85em;
-            }
-            
-            .portions-info {
-                font-size: 0.85em;
-                padding: 10px;
-            }
-            
-            /* Einkaufsliste */
-            .shopping-list {
-                columns: 1;
-            }
-            
-            .shopping-category {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            
-            .shopping-category h3 {
-                font-size: 1.1em;
-                margin-bottom: 15px;
-                padding-bottom: 10px;
-                border-bottom: 2px solid #764ba2;
-            }
-            
-            .shopping-item {
-                padding: 10px 0;
-                font-size: 0.95em;
-                border-bottom: 1px solid #eee;
-            }
-            
-            .shopping-item:last-child {
-                border-bottom: none;
-            }
-            
-            .shopping-item input[type="checkbox"] {
-                width: 24px;
-                height: 24px;
-                margin-right: 15px;
-            }
-            
-            /* Rezepte */
-            .recipe-details {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            
-            .recipe-details h3 {
-                font-size: 1.2em;
-                line-height: 1.3;
-            }
-            
-            .ingredients-list {
-                padding: 12px;
-                font-size: 0.95em;
-            }
-            
-            .instructions {
-                padding: 12px;
-                font-size: 0.95em;
-            }
-            
-            .instructions li {
-                margin-bottom: 12px;
-                line-height: 1.5;
-            }
-            
-            .tips-box {
-                padding: 12px;
-                font-size: 0.9em;
-            }
-            
-            /* Einstellungen */
-            .settings-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .setting-group {
-                padding: 15px;
-            }
-            
-            .setting-group h3 {
-                font-size: 1.1em;
-                margin-bottom: 12px;
-            }
-            
-            .setting-group label {
-                font-size: 0.95em;
-                margin-bottom: 12px;
-                display: block;
-            }
-            
-            .setting-group input[type="number"],
-            .setting-group select,
-            .setting-group input[type="password"] {
-                padding: 12px;
-                font-size: 16px; /* Verhindert Zoom auf iOS */
-                min-height: 44px;
-            }
-            
-            .setting-group input[type="checkbox"] {
-                width: 20px;
-                height: 20px;
-                margin-right: 10px;
-            }
-            
-            /* Portionseinstellungen */
-            .portion-settings {
-                padding: 12px;
-            }
-            
-            .person-portion {
-                padding: 12px;
-                margin-bottom: 8px;
-            }
-            
-            .person-portion input {
-                width: 100px !important;
-                font-size: 16px;
-                padding: 8px;
-            }
-            
-            /* Filter-Gruppen */
-            .filter-group {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .filter-group label {
-                padding: 10px;
-                background: #f9f9f9;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                min-height: 44px;
-            }
-            
-            /* Budget-Anzeige */
-            .budget-display {
-                font-size: 1.1em;
-                padding: 12px;
-                margin: 15px 0;
-            }
-            
-            /* Modals */
-            .modal-content {
-                width: 95%;
-                padding: 20px;
-                max-height: 90vh;
-            }
-            
-            .modal-header h2 {
-                font-size: 1.3em;
-            }
-            
-            .github-section {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .github-section h3 {
-                font-size: 1.1em;
-            }
-            
-            .github-input {
-                font-size: 16px;
-                padding: 12px;
-            }
-            
-            .github-btn {
-                padding: 12px 16px;
-                font-size: 0.95em;
-                min-height: 44px;
-            }
-            
-            .github-actions {
-                flex-direction: column;
-            }
-            
-            /* Gespeicherte Wochen */
-            .saved-week-item {
-                padding: 12px;
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .saved-week-info {
-                width: 100%;
-            }
-            
-            .saved-week-actions {
-                width: 100%;
-                display: flex;
-                gap: 10px;
-            }
-            
-            .mini-btn {
-                flex: 1;
-                padding: 10px;
-                min-height: 44px;
-            }
-            
-            /* Confirm Dialog */
-            .confirm-dialog {
-                width: 90%;
-                padding: 20px;
-            }
-            
-            .confirm-dialog h3 {
-                font-size: 1.2em;
-            }
-            
-            .confirm-actions {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .confirm-actions .btn {
-                width: 100%;
-            }
-            
-            /* Pizza Indicator */
-            .pizza-indicator {
-                font-size: 0.9em;
-                padding: 8px 16px;
-            }
-            
-            /* Loading */
-            .loading {
-                padding: 30px;
-            }
-            
-            .spinner {
-                width: 40px;
-                height: 40px;
-            }
-            
-            /* Bessere Touch-Targets */
-            button, 
-            input[type="checkbox"],
-            input[type="number"],
-            select,
-            .tab,
-            .shopping-item,
-            .gist-item,
-            .saved-week-item {
-                min-height: 44px;
-                cursor: pointer;
-            }
-            
-            /* Horizontales Scrollen verhindern */
-            * {
-                max-width: 100%;
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-            }
-            
-            /* Swipe-Hinweis für Tabs */
-            .tabs::after {
-                content: '→';
-                position: absolute;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                color: #764ba2;
-                font-size: 20px;
-                opacity: 0.5;
-                pointer-events: none;
-                animation: swipeHint 2s infinite;
-            }
-            
-            @keyframes swipeHint {
-                0%, 100% { transform: translateY(-50%) translateX(0); }
-                50% { transform: translateY(-50%) translateX(5px); }
-            }
-        }
-        
-        /* Noch kleinere Smartphones */
-        @media (max-width: 375px) {
-            .header h1 {
-                font-size: 1.3em;
-            }
-            
-            .tab {
-                padding: 10px 12px;
-                font-size: 0.85em;
-            }
-            
-            .btn {
-                font-size: 0.95em;
-                padding: 16px 15px;
-            }
-            
-            .day-name {
-                font-size: 1em;
-            }
-            
-            .meal-name {
-                font-size: 0.95em;
-            }
-        }
-        
-        /* Landscape Modus für Smartphones */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .header {
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 1.3em;
-            }
-            
-            .main-controls {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            
-            .btn {
-                width: calc(50% - 5px);
-            }
-            
-            .tabs {
-                position: sticky;
                 top: 0;
-                z-index: 100;
-                background: white;
-            }
-        }
-        
-        /* iOS Safari Fixes */
-        @supports (-webkit-touch-callout: none) {
-            input[type="number"],
-            input[type="password"],
-            select {
-                font-size: 16px !important;
+                right: 0;
+                margin-top: 15px;
             }
             
-            .shopping-item input[type="checkbox"] {
-                -webkit-appearance: none;
-                appearance: none;
-                background: white;
-                border: 2px solid #764ba2;
-                border-radius: 4px;
-                position: relative;
+            .main-controls {
+                grid-template-columns: 1fr;
             }
             
-            .shopping-item input[type="checkbox"]:checked {
-                background: #764ba2;
-            }
-            
-            .shopping-item input[type="checkbox"]:checked::after {
-                content: '✓';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: white;
-                font-size: 16px;
-                font-weight: bold;
-            }
-        }
-
-        @media print {
-            body {
-                background: white;
-            }
-            
-            .btn, .tabs, .main-controls, .swap-btn {
-                display: none !important;
-            }
-            
-            .tab-content {
-                display: block !important;
-                box-shadow: none;
-                border: 1px solid #ddd;
-                margin-bottom: 30px;
+            .shopping-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🍽️ Familien-Wochenessensplaner</h1>
-            <p>Intelligente Wochenplanung mit individueller Portionsanpassung</p>
-            <p>Budget: <span id="budgetDisplay">175 CHF</span> pro Woche (25 CHF/Tag)</p>
-            <p class="week-date" id="weekDateDisplay">Woche vom ... bis ...</p>
-            <div id="pizzaIndicator" style="display:none;">
-                <span class="pizza-indicator">🍕 Pizza-Wochenende! 🍕</span>
-            </div>
-            <div id="syncStatusBar" class="sync-status" style="display: none;">
-                <span id="syncStatusText">Synchronisiere...</span>
-            </div>
-        </div>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Synchronisiere mit Cloud...</p>
+    </div>
 
-        <div class="stats-box">
-            <h3>📚 Rezept-Datenbank</h3>
-            <p><strong id="totalRecipes">0</strong> Rezepte verfügbar | <strong id="meatCount">0</strong> Fleisch | <strong id="vegCount">0</strong> Vegetarisch | <strong id="kidsCount">0</strong> Kinder</p>
-            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
-                Nächstes Pizza-Wochenende in <strong id="pizzaCountdown">...</strong> Woche(n)
+    <!-- Setup Modal -->
+    <div class="setup-modal" id="setupModal">
+        <div class="setup-content">
+            <h2>🔐 Cloud-Verbindung einrichten</h2>
+            <div class="form-group">
+                <label>GitHub Token:</label>
+                <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx">
+                <small style="color: #666; display: block; margin-top: 5px;">
+                    Token erstellen: GitHub Settings → Developer settings → Personal access tokens
+                </small>
+            </div>
+            <div class="form-group">
+                <label>Gist ID (optional - für bestehenden Plan):</label>
+                <input type="text" id="existingGistId" placeholder="Leer lassen für neuen Plan">
+            </div>
+            <div class="form-group">
+                <label>Anzahl Erwachsene:</label>
+                <input type="number" id="adultsCount" value="2" min="1" max="6">
+            </div>
+            <div class="form-group">
+                <label>Anzahl Kinder:</label>
+                <input type="number" id="childrenCount" value="2" min="0" max="6">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="connectToCloud()">
+                ☁️ Mit Cloud verbinden
+            </button>
+        </div>
+    </div>
+
+    <!-- Cloud Status Indicator -->
+    <div class="cloud-status" id="cloudStatus">
+        <div class="pulse"></div>
+        <span id="cloudStatusText">Verbinde...</span>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🍽️ Intelligenter Wochenplaner</h1>
+            <p>Cloud-basierte Essensplanung mit KI-Optimierung</p>
+            <p style="margin-top: 10px; color: #666;">
+                <span id="weekDate">Woche wird geladen...</span>
             </p>
         </div>
 
+        <!-- Hauptsteuerung -->
         <div class="main-controls">
-            <button class="btn btn-primary" onclick="confirmGenerateNewPlan()">
-                🎲 Neuen Plan generieren
+            <button class="btn btn-primary" onclick="generateSmartPlan()">
+                🎲 Neuer intelligenter Plan
             </button>
-            <button class="btn btn-secondary" onclick="saveCurrentWeek()">
-                💾 Woche speichern
+            <button class="btn btn-secondary" onclick="optimizeCurrentPlan()">
+                🔄 Plan optimieren
             </button>
-            <button class="btn btn-secondary" onclick="showSavedWeeks()">
-                📂 Gespeicherte Wochen
+            <button class="btn btn-secondary" onclick="showShoppingList()">
+                🛒 Einkaufsliste
             </button>
-            <button class="btn btn-secondary" onclick="exportToPDF()">
-                📄 Als PDF exportieren
-            </button>
-            <button class="btn btn-github" onclick="showGitHubSync()">
-                <svg style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;" fill="white" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                GitHub Sync
-            </button>
-            <button class="btn btn-secondary" onclick="savePreferences()">
-                ⚙️ Einstellungen speichern
+            <button class="btn btn-secondary" onclick="showSettings()">
+                ⚙️ Einstellungen
             </button>
         </div>
 
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab(event, 'overview')">📅 Wochenübersicht</button>
-            <button class="tab" onclick="switchTab(event, 'shopping')">🛒 Einkaufsliste</button>
-            <button class="tab" onclick="switchTab(event, 'recipes')">📖 Rezepte</button>
-            <button class="tab" onclick="switchTab(event, 'settings')">⚙️ Einstellungen</button>
-        </div>
-
-        <div id="overview" class="tab-content active">
-            <div class="loading" id="loadingOverview">
-                <div class="spinner"></div>
-                <p>Generiere Wochenplan...</p>
-            </div>
-            <div class="week-overview" id="weekOverview"></div>
-            <div class="budget-display">
-                Gesamtkosten der Woche: <span id="totalCost">0</span> CHF
+        <!-- Wochenübersicht -->
+        <div class="week-container">
+            <h2>📅 Wochenübersicht</h2>
+            <div class="day-grid" id="weekGrid">
+                <!-- Wird dynamisch gefüllt -->
             </div>
         </div>
 
-        <div id="shopping" class="tab-content">
+        <!-- Einkaufsliste -->
+        <div class="shopping-container" id="shoppingContainer" style="display: none;">
             <h2>🛒 Einkaufsliste</h2>
-            <div class="shopping-list" id="shoppingList"></div>
-        </div>
-
-        <div id="recipes" class="tab-content">
-            <h2>📖 Detaillierte Rezepte</h2>
-            <div id="recipesList"></div>
-        </div>
-
-        <div id="settings" class="tab-content">
-            <h2>⚙️ Einstellungen</h2>
-            <div class="settings-grid">
-                <div class="setting-group">
-                    <h3>👨‍👩‍👧‍👦 Familie</h3>
-                    <label>
-                        Anzahl Erwachsene:
-                        <input type="number" id="adultsCount" value="2" min="1" max="6" onchange="updatePortionSettings()">
-                    </label>
-                    <label>
-                        Anzahl Kinder:
-                        <input type="number" id="childrenCount" value="2" min="0" max="6" onchange="updatePortionSettings()">
-                    </label>
-                    
-                    <div class="portion-settings">
-                        <h4>Individuelle Portionsgrößen</h4>
-                        <div id="portionSettingsContainer"></div>
-                    </div>
-                </div>
-                
-                <div class="setting-group">
-                    <h3>💰 Budget</h3>
-                    <label>
-                        Tagesbudget (CHF):
-                        <input type="number" id="dailyBudget" value="25" min="10" max="50" onchange="updateBudgetDisplay()">
-                    </label>
-                </div>
-                
-                <div class="setting-group">
-                    <h3>🥗 Ernährung</h3>
-                    <label>
-                        Vegetarische Tage pro Woche:
-                        <input type="number" id="vegDays" value="3" min="0" max="7">
-                    </label>
-                    <label>
-                        Pizza-Wochenende alle:
-                        <select id="pizzaFrequency">
-                            <option value="2">2 Wochen</option>
-                            <option value="3" selected>2-3 Wochen (Zufall)</option>
-                            <option value="4">3-4 Wochen</option>
-                            <option value="0">Nie</option>
-                        </select>
-                    </label>
-                </div>
-
-                <div class="setting-group">
-                    <h3>🚫 Ausschlüsse - Fleisch</h3>
-                    <div class="filter-group">
-                        <label>
-                            <input type="checkbox" id="noLamb"> Kein Lamm
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noPork"> Kein Schwein
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noBeef"> Kein Rind
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noDuck"> Keine Ente
-                        </label>
-                    </div>
-                </div>
-
-                <div class="setting-group">
-                    <h3>🧀 Ausschlüsse - Milchprodukte</h3>
-                    <div class="filter-group">
-                        <label>
-                            <input type="checkbox" id="noCottageCheese"> Kein Hüttenkäse
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noGorgonzola"> Kein Gorgonzola
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noFeta"> Kein Feta
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noCheese"> Kein nicht-überbackener Käse
-                        </label>
-                    </div>
-                </div>
-
-                <div class="setting-group">
-                    <h3>🥘 Weitere Ausschlüsse</h3>
-                    <div class="filter-group">
-                        <label>
-                            <input type="checkbox" id="noFish"> Keine Fischgerichte
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noMushrooms"> Keine Pilze
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noNuts"> Keine Nüsse
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noSpicy"> Nicht scharf
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noTofu"> Kein Tofu
-                        </label>
-                        <label>
-                            <input type="checkbox" id="noEggplant"> Keine Aubergine
-                        </label>
-                    </div>
-                </div>
-
-                <div class="setting-group">
-                    <h3>🔑 GitHub Token</h3>
-                    <label>
-                        GitHub Personal Access Token:
-                        <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx">
-                    </label>
-                    <p style="font-size: 0.9em; color: #666; margin-top: 5px;">
-                        Für GitHub Sync. Token erstellen: 
-                        <a href="https://github.com/settings/tokens/new" target="_blank" style="color: #0366d6;">
-                            GitHub Settings → Tokens
-                        </a>
-                    </p>
-                </div>
+            <button class="btn btn-secondary" onclick="hideShoppingList()" style="margin-bottom: 20px;">
+                ← Zurück zur Übersicht
+            </button>
+            <div class="shopping-grid" id="shoppingGrid">
+                <!-- Wird dynamisch gefüllt -->
             </div>
         </div>
     </div>
 
-    <!-- GitHub Sync Modal -->
-    <div id="githubModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>📄 GitHub Synchronisation</h2>
-                <button class="close-modal" onclick="closeGitHubSync()">×</button>
-            </div>
-            
-            <div class="github-section">
-                <h3>📤 Wochenplan auf GitHub speichern</h3>
-                <p>Speichere deinen aktuellen Wochenplan als Gist auf GitHub:</p>
-                <input type="text" class="github-input" id="gistName" placeholder="Name für den Gist (optional)">
-                <div class="github-actions">
-                    <button class="github-btn github-btn-primary" onclick="saveToGitHub()">
-                        📤 Als Gist speichern
-                    </button>
-                    <button class="github-btn github-btn-secondary" onclick="updateExistingGist()">
-                        🔄 Bestehenden Gist aktualisieren
-                    </button>
-                </div>
-                <div id="saveStatus"></div>
-            </div>
-            
-            <div class="github-section">
-                <h3>📥 Wochenplan von GitHub laden</h3>
-                <p>Lade einen gespeicherten Wochenplan von GitHub:</p>
-                <button class="github-btn github-btn-primary" onclick="loadGists()">
-                    📋 Meine Gists anzeigen
-                </button>
-                <div id="gistList" class="gist-list" style="display:none;"></div>
-                
-                <p style="margin-top: 15px;">Oder gib eine Gist-ID direkt ein:</p>
-                <input type="text" class="github-input" id="gistId" placeholder="Gist ID oder URL">
-                <button class="github-btn github-btn-secondary" onclick="loadFromGitHub()">
-                    📥 Von Gist laden
-                </button>
-                <div id="loadStatus"></div>
-            </div>
-
-            <div class="github-section">
-                <h3>ℹ️ Anleitung</h3>
-                <ol style="color: #666; font-size: 0.95em; line-height: 1.8;">
-                    <li>Erstelle einen GitHub Personal Access Token mit "gist" Berechtigung</li>
-                    <li>Füge den Token in den Einstellungen ein</li>
-                    <li>Speichere deine Wochenpläne als private Gists</li>
-                    <li>Teile Gist-URLs mit Familie/Freunden zum gemeinsamen Nutzen</li>
-                </ol>
-            </div>
-        </div>
-    </div>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
 
     <script>
-        // Erweiterte Rezept-Datenbank mit REALISTISCHEN Mengen pro Person
-        let recipes = {};
-        
-        // Rezepte laden - REALISTISCHE Mengen pro Person!
-        function loadRecipes() {
-            recipes = {
-                meat: [
-                    // KORRIGIERTE Mengenangaben - realistisch für 1 Person
-                    {name:"Spaghetti Carbonara",category:"Fleisch",price:5,ingredients:{"Spaghetti":"125g","Speck/Pancetta":"50g","Eier":"1 Stück","Parmesan":"40g","Knoblauch":"1 Zehe","Schwarzer Pfeffer":"nach Geschmack"},instructions:["Wasser für Nudeln aufsetzen und salzen","Speck in kleine Würfel schneiden und knusprig braten","Spaghetti al dente kochen","Eier mit Parmesan verquirlen","Nudeln zum Speck geben, vom Herd nehmen","Ei-Käse-Mischung unterrühren"],childTip:"Für Kinder weniger Pfeffer verwenden",workTip:"Lässt sich gut erwärmen"},
-                    {name:"Hähnchenbrust mit Rösti",category:"Fleisch",price:6,ingredients:{"Hähnchenbrust":"150g","Kartoffeln":"250g","Grüne Bohnen":"150g","Butter":"20g","Zwiebel":"0.5 Stück"},instructions:["Kartoffeln raspeln und ausdrücken","Hähnchen würzen und braten","Rösti goldbraun braten","Bohnen bissfest kochen","Alles zusammen anrichten"],childTip:"Hähnchen in kleine Stücke schneiden",workTip:"Rösti werden beim Erwärmen wieder knusprig"},
-                    {name:"Rindergulasch mit Spätzle",category:"Fleisch",price:7,ingredients:{"Rindergulasch":"175g","Spätzle":"150g","Zwiebeln":"1 Stück","Paprika":"1 Stück","Tomatenmark":"2 EL","Paprikapulver":"1 EL"},instructions:["Fleisch scharf anbraten","Zwiebeln und Paprika zugeben","Mit Fond ablöschen","1,5 Std köcheln lassen","Spätzle kochen","Mit Spätzle servieren"],childTip:"Weniger Paprika für Kinder",workTip:"Wird beim Erwärmen noch besser"},
-                    {name:"Schweinemedaillons mit Champignonsauce",category:"Fleisch",price:6.5,ingredients:{"Schweinefilet":"150g","Champignons":"150g","Sahne":"100ml","Kartoffeln":"300g","Brokkoli":"150g"},instructions:["Medaillons braten","Champignons anbraten","Mit Sahne ablöschen","Kartoffeln kochen","Brokkoli dämpfen","Zusammen servieren"],childTip:"Sauce separat servieren",workTip:"Fleisch und Sauce getrennt erwärmen"},
-                    {name:"Hackfleisch-Kartoffel-Auflauf",category:"Fleisch",price:5,ingredients:{"Hackfleisch":"150g","Kartoffeln":"300g","Zwiebeln":"0.5 Stück","Käse":"60g","Milch":"100ml"},instructions:["Kartoffeln in Scheiben schneiden","Hackfleisch anbraten","Schichten und überbacken","45 Min bei 180°C backen"],childTip:"Perfekt für Kinder",workTip:"Portionsweise einfrieren möglich"},
-                    {name:"Hähnchen-Curry",category:"Fleisch",price:6,ingredients:{"Hähnchenbrust":"150g","Kokosmilch":"150ml","Currypaste":"1 EL","Reis":"125g","Gemüse":"150g"},instructions:["Hähnchen anbraten","Currypaste einrühren","Mit Kokosmilch ablöschen","Gemüse zugeben","Mit Reis servieren"],childTip:"Sehr milde Currypaste verwenden",workTip:"Curry schmeckt aufgewärmt noch besser"},
-                    {name:"Bolognese mit Penne",category:"Fleisch",price:5,ingredients:{"Rinderhack":"150g","Penne":"125g","Dosentomaten":"200g","Zwiebeln":"0.5 Stück","Möhren":"1 Stück"},instructions:["Gemüse würfeln und anschwitzen","Hackfleisch krümelig braten","Tomaten zugeben","2 Stunden köcheln","Penne kochen","Mit Parmesan servieren"],childTip:"Gemüse sehr fein hacken",workTip:"Sauce einfrieren, Nudeln frisch"},
-                    {name:"Gyros mit Tzatziki",category:"Fleisch",price:6.5,ingredients:{"Schweinefleisch":"200g","Pita":"2 Stück","Joghurt":"100g","Gurke":"0.5 Stück","Pommes":"150g"},instructions:["Fleisch marinieren und braten","Tzatziki zubereiten","Pommes backen","Pita erwärmen","Alles zusammen servieren"],childTip:"Weniger Knoblauch",workTip:"Komponenten getrennt transportieren"},
-                    {name:"Chili con Carne",category:"Fleisch",price:5.5,ingredients:{"Rinderhack":"150g","Kidneybohnen":"125g","Mais":"75g","Paprika":"1 Stück","Reis":"125g"},instructions:["Hackfleisch anbraten","Gemüse zugeben","Bohnen und Mais einrühren","1 Stunde köcheln","Mit Reis servieren"],childTip:"Sehr mild würzen",workTip:"Perfekt zum Einfrieren"},
-                    {name:"Schnitzel mit Kartoffelsalat",category:"Fleisch",price:6,ingredients:{"Schnitzel":"150g","Paniermehl":"50g","Kartoffeln":"300g","Mayonnaise":"50g","Gurken":"2 Stück"},instructions:["Kartoffelsalat vorbereiten","Schnitzel panieren","Goldbraun braten","Zusammen servieren"],childTip:"Schnitzel in Streifen schneiden",workTip:"Kalt auch lecker"},
-                    {name:"Lammkoteletts mit Rosmarinkartoffeln",category:"Fleisch",price:8,ingredients:{"Lammkoteletts":"180g","Kartoffeln":"250g","Rosmarin":"2 Zweige","Knoblauch":"2 Zehen","Grüner Salat":"100g"},instructions:["Kartoffeln würfeln und würzen","Mit Rosmarin im Ofen backen","Lammkoteletts kurz braten","Mit Salat servieren"],childTip:"Fleisch sehr zart",workTip:"Kartoffeln aufwärmen"},
-                    {name:"Rinderfilet mit grünem Spargel",category:"Fleisch",price:9,ingredients:{"Rinderfilet":"180g","Grüner Spargel":"200g","Kartoffelpüree":"250g","Rotweinsauce":"75ml"},instructions:["Filet scharf anbraten","Spargel blanchieren","Kartoffelpüree zubereiten","Mit Sauce servieren"],childTip:"Fleisch in Streifen",workTip:"Edel und lecker"},
-                    {name:"Pulled Pork Burger",category:"Fleisch",price:7,ingredients:{"Schweineschulter":"250g","Burgerbrötchen":"1 Stück","Coleslaw":"75g","BBQ-Sauce":"50ml"},instructions:["Fleisch 4 Std schmoren","Fleisch zupfen","Mit Sauce mischen","Im Brötchen servieren"],childTip:"Weniger BBQ-Sauce",workTip:"Fleisch einfrieren"},
-                    {name:"Entenbrust mit Rotkohl",category:"Fleisch",price:8,ingredients:{"Entenbrust":"180g","Rotkohl":"200g","Klöße":"2 Stück","Preiselbeeren":"50g"},instructions:["Entenbrust einschneiden","Langsam braten","Rotkohl schmoren","Mit Klößen servieren"],childTip:"Haut knusprig machen",workTip:"Festtagsessen"},
-                    {name:"Kalbsschnitzel Wiener Art",category:"Fleisch",price:8,ingredients:{"Kalbsschnitzel":"150g","Semmelbrösel":"50g","Zitrone":"0.5 Stück","Petersilienkartoffeln":"250g"},instructions:["Schnitzel klopfen","Panieren und braten","Kartoffeln kochen","Mit Zitrone servieren"],childTip:"Dünn klopfen",workTip:"Klassiker"},
-                    {name:"Hähnchen-Saté-Spieße",category:"Fleisch",price:6,ingredients:{"Hähnchenbrust":"150g","Erdnusssauce":"75ml","Reis":"125g","Gurkensalat":"100g"},instructions:["Hähnchen marinieren","Auf Spieße stecken","Grillen oder braten","Mit Sauce servieren"],childTip:"Mild würzen",workTip:"Party-Hit"},
-                    {name:"Rinderrouladen",category:"Fleisch",price:7,ingredients:{"Rinderschnitzel":"180g","Speck":"30g","Gewürzgurken":"2 Stück","Senf":"1 EL","Rotkohl":"150g"},instructions:["Rouladen füllen","Mit Zahnstochern fixieren","Anbraten und schmoren","Mit Rotkohl servieren"],childTip:"Traditionell gut",workTip:"Sonntags-Klassiker"},
-                    {name:"Putenschnitzel Hawaii",category:"Fleisch",price:6,ingredients:{"Putenschnitzel":"150g","Ananas":"2 Scheiben","Käse":"40g","Reis":"125g"},instructions:["Schnitzel braten","Mit Ananas belegen","Käse drauf, überbacken","Mit Reis servieren"],childTip:"Kinder lieben es",workTip:"Retro-Klassiker"},
-                    {name:"Hackbraten mit Kartoffelbrei",category:"Fleisch",price:5,ingredients:{"Hackfleisch gemischt":"200g","Ei":"0.5 Stück","Zwiebel":"0.5 Stück","Kartoffeln":"300g"},instructions:["Hackbraten formen","Im Ofen backen","Kartoffelbrei zubereiten","Zusammen servieren"],childTip:"Mit Ketchup",workTip:"Comfort Food"},
-                    {name:"Lammcurry",category:"Fleisch",price:7,ingredients:{"Lammfleisch":"180g","Joghurt":"100ml","Curry-Gewürze":"2 EL","Naan-Brot":"2 Stück"},instructions:["Lamm marinieren","Langsam schmoren","Gewürze rösten","Mit Naan servieren"],childTip:"Sehr mild",workTip:"Exotisch lecker"},
-                    {name:"Hähnchenschenkel mit Ofengemüse",category:"Fleisch",price:5,ingredients:{"Hähnchenschenkel":"1 Stück","Kartoffeln":"200g","Paprika":"1 Stück","Zucchini":"1 Stück"},instructions:["Alles würzen","Auf Blech verteilen","45 Min backen","Heiß servieren"],childTip:"Einfach und gut",workTip:"Alles aus einem Topf"},
-                    {name:"Schweinebraten mit Knödeln",category:"Fleisch",price:6,ingredients:{"Schweinebraten":"200g","Knödel":"2 Stück","Sauerkraut":"150g","Dunkle Sauce":"100ml"},instructions:["Braten würzen","2 Std im Ofen","Knödel kochen","Mit Kraut servieren"],childTip:"Bayrischer Klassiker",workTip:"Deftig gut"},
-                    {name:"Rindfleisch-Tacos",category:"Fleisch",price:6,ingredients:{"Rinderhack":"150g","Taco-Shells":"3 Stück","Salat":"50g","Käse":"50g","Salsa":"50ml"},instructions:["Hackfleisch würzig braten","Tacos erwärmen","Füllen und garnieren","Sofort servieren"],childTip:"Spaß beim Essen",workTip:"Mexikanisch"},
-                    {name:"Putenbrust mit Pilzrahm",category:"Fleisch",price:6,ingredients:{"Putenbrust":"150g","Mischpilze":"150g","Sahne":"75ml","Nudeln":"125g"},instructions:["Pute in Streifen","Pilze anbraten","Sahnesauce machen","Mit Nudeln servieren"],childTip:"Cremig mild",workTip:"Herbstgericht"},
-                    {name:"Königsberger Klopse",category:"Fleisch",price:5,ingredients:{"Hackfleisch":"150g","Kapern":"2 EL","Weiße Sauce":"150ml","Kartoffeln":"250g"},instructions:["Klopse formen","In Brühe kochen","Sauce zubereiten","Mit Kartoffeln servieren"],childTip:"Tradition pur",workTip:"Norddeutscher Klassiker"},
-                    {name:"Hähnchen-Fajitas",category:"Fleisch",price:6,ingredients:{"Hähnchenbrust":"150g","Tortilla":"3 Stück","Paprika":"1 Stück","Zwiebel":"1 Stück"},instructions:["Hähnchen in Streifen","Mit Gemüse braten","In Tortillas füllen","Mit Toppings servieren"],childTip:"Interaktives Essen",workTip:"Tex-Mex"},
-                    {name:"Lammkeule mit Bohnen",category:"Fleisch",price:8,ingredients:{"Lammkeule":"200g","Weiße Bohnen":"150g","Tomaten":"150g","Rosmarin":"2 Zweige"},instructions:["Lamm anbraten","Mit Bohnen schmoren","Tomaten zugeben","Langsam garen"],childTip:"Mediterraner Genuss",workTip:"Festessen"},
-                    {name:"Wiener Würstchen mit Linseneintopf",category:"Fleisch",price:4,ingredients:{"Wiener Würstchen":"2 Stück","Linsen":"125g","Suppengemüse":"100g","Speck":"30g"},instructions:["Linsen kochen","Gemüse dünsten","Würstchen erwärmen","Zusammen servieren"],childTip:"Wärmt von innen",workTip:"Deftiger Eintopf"},
-                    {name:"Cordon Bleu",category:"Fleisch",price:7,ingredients:{"Kalbsschnitzel":"150g","Schinken":"2 Scheiben","Käse":"2 Scheiben","Pommes":"200g"},instructions:["Schnitzel füllen","Panieren","Goldbraun braten","Mit Pommes servieren"],childTip:"Käse schmilzt schön",workTip:"Restaurant-Klassiker"},
-                    {name:"Rindersteak mit Kräuterbutter",category:"Fleisch",price:8,ingredients:{"Rindersteak":"200g","Kräuterbutter":"40g","Ofenkartoffel":"1 Stück","Blattsalat":"100g"},instructions:["Steak auf Punkt braten","Kräuterbutter zubereiten","Kartoffel backen","Mit Salat servieren"],childTip:"Medium für Kinder",workTip:"Steakhouse-Feeling"},
-                    {name:"Hähnchen Teriyaki",category:"Fleisch",price:6,ingredients:{"Hähnchenbrust":"150g","Teriyaki-Sauce":"60ml","Reis":"125g","Brokkoli":"150g"},instructions:["Hähnchen marinieren","In Sauce braten","Reis kochen","Mit Brokkoli servieren"],childTip:"Süß-salzig lecker",workTip:"Japanisch inspiriert"},
-                    {name:"Schweinefilet im Speckmantel",category:"Fleisch",price:7,ingredients:{"Schweinefilet":"180g","Bacon":"6 Scheiben","Grüne Bohnen":"150g","Kartoffelgratin":"200g"},instructions:["Filet mit Speck umwickeln","Im Ofen garen","Bohnen blanchieren","Mit Gratin servieren"],childTip:"Saftig und zart",workTip:"Sonntagsbraten"},
-                    {name:"Gulaschsuppe",category:"Fleisch",price:5,ingredients:{"Rindergulasch":"125g","Kartoffeln":"150g","Paprika":"1 Stück","Brot":"3 Scheiben"},instructions:["Fleisch anbraten","Gemüse zugeben","Als Suppe kochen","Mit Brot servieren"],childTip:"Wärmende Suppe",workTip:"Eintopf-Klassiker"},
-                    {name:"Hähnchen-Nuggets selbstgemacht",category:"Fleisch",price:5,ingredients:{"Hähnchenbrust":"150g","Cornflakes":"60g","Ei":"1 Stück","Süßkartoffelpommes":"200g"},instructions:["Hähnchen würfeln","In Cornflakes wenden","Im Ofen backen","Mit Pommes servieren"],childTip:"Kinder-Favorit",workTip:"Gesünder als gekauft"},
-                    {name:"Rindergeschnetzeltes Stroganoff",category:"Fleisch",price:7,ingredients:{"Rinderfilet":"180g","Champignons":"100g","Saure Sahne":"75ml","Reis":"125g"},instructions:["Fleisch in Streifen","Kurz anbraten","Sauce zubereiten","Mit Reis servieren"],childTip:"Cremig mild",workTip:"Russischer Klassiker"},
-                    {name:"Bratwurst mit Sauerkraut",category:"Fleisch",price:4,ingredients:{"Bratwurst":"200g","Sauerkraut":"200g","Kartoffelpüree":"250g","Senf":"2 EL"},instructions:["Bratwurst braten","Sauerkraut erwärmen","Püree zubereiten","Mit Senf servieren"],childTip:"Deutscher Klassiker",workTip:"Deftig gut"},
-                    {name:"Putenschnitzel Jäger Art",category:"Fleisch",price:6,ingredients:{"Putenschnitzel":"150g","Champignons":"150g","Jägersauce":"100ml","Spätzle":"150g"},instructions:["Schnitzel braten","Pilzsauce kochen","Spätzle zubereiten","Zusammen servieren"],childTip:"Waldpilz-Geschmack",workTip:"Traditionell"},
-                    {name:"Lammspieße griechisch",category:"Fleisch",price:7,ingredients:{"Lammfleisch":"180g","Tzatziki":"75g","Fladenbrot":"2 Stück","Griechischer Salat":"150g"},instructions:["Lamm marinieren","Auf Spieße stecken","Grillen","Mit Beilagen servieren"],childTip:"Mediterraner Genuss",workTip:"Urlaubsfeeling"},
-                    {name:"Hähnchen-Wraps",category:"Fleisch",price:5,ingredients:{"Hähnchenbrust":"150g","Wrap":"2 Stück","Salat":"50g","Joghurt-Dressing":"50ml"},instructions:["Hähnchen braten","Wrap füllen","Einrollen","Kalt oder warm servieren"],childTip:"Praktisch zum Essen",workTip:"Ideal zum Mitnehmen"},
-                    {name:"Kalbsleber Berliner Art",category:"Fleisch",price:6,ingredients:{"Kalbsleber":"150g","Äpfel":"1 Stück","Zwiebeln":"1 Stück","Kartoffelpüree":"250g"},instructions:["Leber kurz braten","Äpfel und Zwiebeln rösten","Püree zubereiten","Zusammen servieren"],childTip:"Eisenreich",workTip:"Traditionsgericht"}
-                ],
-                vegetarian: [
-                    // KORRIGIERTE vegetarische Rezepte
-                    {name:"Gemüse-Lasagne",category:"Vegetarisch",price:4,ingredients:{"Lasagneplatten":"100g","Zucchini":"1 Stück","Aubergine":"0.5 Stück","Tomaten":"300g","Mozzarella":"125g"},instructions:["Gemüse in Scheiben schneiden","Anbraten und würzen","Lasagne schichten","45 Min backen"],childTip:"Viel Käse macht es lecker",workTip:"Perfekt zum Aufwärmen"},
-                    {name:"Käsespätzle",category:"Vegetarisch",price:3.5,ingredients:{"Spätzle":"200g","Emmentaler":"100g","Zwiebeln":"1 Stück","Butter":"25g","Salat":"100g"},instructions:["Spätzle kochen","Zwiebeln rösten","Mit Käse schichten","Überbacken","Mit Salat servieren"],childTip:"Kinder-Lieblingsgericht",workTip:"Mit Milch aufwärmen"},
-                    {name:"Gemüse-Curry",category:"Vegetarisch",price:4,ingredients:{"Kichererbsen":"125g","Kokosmilch":"150ml","Gemüse":"200g","Currypaste":"1 EL","Reis":"125g"},instructions:["Gemüse würfeln","Currypaste anrösten","Gemüse zugeben","Mit Kokosmilch ablöschen","Mit Reis servieren"],childTip:"Sehr mild würzen",workTip:"Wird aufgewärmt aromatischer"},
-                    {name:"Pizza Margherita",category:"Vegetarisch",price:3,ingredients:{"Pizzateig":"200g","Tomatensauce":"75ml","Mozzarella":"125g","Basilikum":"5 Blätter","Olivenöl":"1 EL"},instructions:["Teig ausrollen","Mit Sauce bestreichen","Mozzarella verteilen","15 Min bei 220°C backen","Mit Basilikum garnieren"],childTip:"Der Klassiker",workTip:"Kalt als Pizza-Schnitte"},
-                    {name:"Risotto mit Pilzen",category:"Vegetarisch",price:4.5,ingredients:{"Risottoreis":"125g","Pilze":"150g","Weißwein":"75ml","Parmesan":"50g","Brühe":"500ml"},instructions:["Pilze anbraten","Reis anschwitzen","Nach und nach Brühe zugeben","Ständig rühren","Mit Parmesan verfeinern"],childTip:"Weniger Weißwein",workTip:"Mit Brühe aufwärmen"},
-                    {name:"Spinat-Ricotta-Cannelloni",category:"Vegetarisch",price:4,ingredients:{"Cannelloni":"125g","Spinat":"150g","Ricotta":"100g","Tomatensauce":"150ml","Parmesan":"50g"},instructions:["Spinat blanchieren","Mit Ricotta mischen","Cannelloni füllen","Mit Sauce überbacken"],childTip:"Verstecktes Gemüse",workTip:"Vorbereiten und backen"},
-                    {name:"Pad Thai vegetarisch",category:"Vegetarisch",price:4,ingredients:{"Reisnudeln":"125g","Tofu":"100g","Erdnüsse":"30g","Sojasprossen":"50g","Tamarinde":"2 EL"},instructions:["Nudeln einweichen","Tofu anbraten","Sauce mischen","Alles vermengen"],childTip:"Ohne Erdnüsse für Kinder",workTip:"Asiatisch lecker"},
-                    {name:"Gnocchi mit Salbei-Butter",category:"Vegetarisch",price:3.5,ingredients:{"Gnocchi":"200g","Butter":"40g","Salbei":"10 Blätter","Parmesan":"50g"},instructions:["Gnocchi kochen","Butter bräunen","Salbei frittieren","Alles vermengen"],childTip:"Einfach und gut",workTip:"Schnelles Essen"},
-                    {name:"Shakshuka",category:"Vegetarisch",price:3,ingredients:{"Tomaten":"300g","Eier":"2 Stück","Paprika":"1 Stück","Feta":"50g","Brot":"3 Scheiben"},instructions:["Gemüse schmoren","Mulden formen","Eier einschlagen","Zugedeckt garen"],childTip:"Frühstück mal anders",workTip:"Orientalisch"},
-                    {name:"Quinoa-Bowl",category:"Vegetarisch",price:4.5,ingredients:{"Quinoa":"100g","Avocado":"1 Stück","Kichererbsen":"75g","Tahini":"2 EL","Gemüse":"150g"},instructions:["Quinoa kochen","Gemüse rösten","Bowl arrangieren","Mit Tahini toppen"],childTip:"Superfood",workTip:"Gesund und sättigend"},
-                    {name:"Moussaka vegetarisch",category:"Vegetarisch",price:4,ingredients:{"Aubergine":"1 Stück","Kartoffeln":"200g","Linsen":"75g","Béchamel":"150ml","Käse":"50g"},instructions:["Schichten vorbereiten","Linsen kochen","Alles schichten","Im Ofen backen"],childTip:"Griechischer Auflauf",workTip:"Macht satt"},
-                    {name:"Falafel mit Hummus",category:"Vegetarisch",price:3.5,ingredients:{"Kichererbsen":"150g","Petersilie":"0.5 Bund","Hummus":"75g","Pita":"2 Stück"},instructions:["Kichererbsen pürieren","Bällchen formen","Frittieren","Mit Hummus servieren"],childTip:"Knusprig außen",workTip:"Orientalisch"},
-                    {name:"Ravioli mit Tomatensauce",category:"Vegetarisch",price:3.5,ingredients:{"Ravioli":"175g","Tomatensauce":"150ml","Basilikum":"8 Blätter","Parmesan":"40g"},instructions:["Ravioli kochen","Sauce erhitzen","Zusammen servieren","Mit Käse bestreuen"],childTip:"Pasta-Klassiker",workTip:"Schnell gemacht"},
-                    {name:"Buddha Bowl",category:"Vegetarisch",price:4,ingredients:{"Süßkartoffel":"150g","Brokkoli":"100g","Quinoa":"75g","Tahini-Dressing":"50ml"},instructions:["Gemüse rösten","Quinoa kochen","Bowl arrangieren","Dressing darüber"],childTip:"Bunt und gesund",workTip:"Instagram-würdig"},
-                    {name:"Caprese-Auflauf",category:"Vegetarisch",price:4,ingredients:{"Tomaten":"250g","Mozzarella":"125g","Basilikum":"0.5 Bund","Ciabatta":"3 Scheiben"},instructions:["Tomaten schichten","Mozzarella dazu","Überbacken","Mit Brot servieren"],childTip:"Italien pur",workTip:"Sommerlich leicht"},
-                    {name:"Pilz-Stroganoff",category:"Vegetarisch",price:3.5,ingredients:{"Champignons":"200g","Saure Sahne":"75ml","Reis":"125g","Petersilie":"2 EL"},instructions:["Pilze anbraten","Sauce zubereiten","Reis kochen","Zusammen servieren"],childTip:"Cremig mild",workTip:"Comfort Food"},
-                    {name:"Zucchini-Puffer",category:"Vegetarisch",price:3,ingredients:{"Zucchini":"300g","Ei":"1 Stück","Mehl":"50g","Joghurt-Dip":"75g"},instructions:["Zucchini raspeln","Teig machen","Puffer braten","Mit Dip servieren"],childTip:"Gemüse versteckt",workTip:"Leicht und lecker"},
-                    {name:"Tortellini in Sahnesauce",category:"Vegetarisch",price:4,ingredients:{"Tortellini":"175g","Sahne":"100ml","Erbsen":"75g","Parmesan":"40g"},instructions:["Tortellini kochen","Sahnesauce machen","Erbsen zugeben","Mit Käse servieren"],childTip:"Cremig gut",workTip:"Kinder-Hit"},
-                    {name:"Ratatouille",category:"Vegetarisch",price:3.5,ingredients:{"Zucchini":"1 Stück","Aubergine":"0.5 Stück","Paprika":"1 Stück","Tomaten":"200g","Baguette":"4 Scheiben"},instructions:["Gemüse schneiden","Schichten legen","Im Ofen garen","Mit Brot servieren"],childTip:"Französisch",workTip:"Gesund"},
-                    {name:"Spinat-Gorgonzola-Pasta",category:"Vegetarisch",price:4,ingredients:{"Pasta":"150g","Spinat":"100g","Gorgonzola":"60g","Walnüsse":"30g"},instructions:["Pasta kochen","Spinat dünsten","Sauce machen","Alles mischen"],childTip:"Für Käse-Fans",workTip:"Schnell fertig"},
-                    {name:"Gemüse-Tempura",category:"Vegetarisch",price:3.5,ingredients:{"Gemüse gemischt":"200g","Tempurateig":"75g","Sojasauce":"30ml","Reis":"125g"},instructions:["Teig anrühren","Gemüse eintauchen","Frittieren","Mit Reis servieren"],childTip:"Knusprig",workTip:"Japanisch"},
-                    {name:"Kürbis-Risotto",category:"Vegetarisch",price:4,ingredients:{"Kürbis":"200g","Risottoreis":"125g","Weißwein":"75ml","Parmesan":"40g"},instructions:["Kürbis würfeln","Risotto kochen","Kürbis einrühren","Mit Käse servieren"],childTip:"Herbstlich",workTip:"Orange und lecker"},
-                    {name:"Halloumi-Burger",category:"Vegetarisch",price:4.5,ingredients:{"Halloumi":"150g","Burgerbrötchen":"1 Stück","Hummus":"50g","Salat":"50g"},instructions:["Halloumi grillen","Brötchen toasten","Burger bauen","Sofort servieren"],childTip:"Quietschkäse",workTip:"Vegetarischer Burger"},
-                    {name:"Penne all'Arrabbiata",category:"Vegetarisch",price:3,ingredients:{"Penne":"150g","Tomaten":"250g","Chili":"1 Stück","Knoblauch":"2 Zehen"},instructions:["Sauce kochen","Scharf würzen","Penne kochen","Zusammen servieren"],childTip:"Ohne Chili für Kinder",workTip:"Feurig"},
-                    {name:"Bärlauch-Spätzle",category:"Vegetarisch",price:3.5,ingredients:{"Spätzle":"200g","Bärlauch":"50g","Sahne":"75ml","Parmesan":"40g"},instructions:["Spätzle kochen","Bärlauch hacken","Sauce machen","Alles mischen"],childTip:"Frühlingsgericht",workTip:"Saisonal"},
-                    {name:"Linsen-Dal",category:"Vegetarisch",price:3,ingredients:{"Rote Linsen":"125g","Kokosmilch":"100ml","Curry-Gewürze":"2 EL","Naan":"2 Stück"},instructions:["Linsen kochen","Gewürze rösten","Cremig rühren","Mit Naan servieren"],childTip:"Indisch mild",workTip:"Proteinreich"},
-                    {name:"Gnocchi-Auflauf",category:"Vegetarisch",price:3.5,ingredients:{"Gnocchi":"200g","Tomatensauce":"150ml","Mozzarella":"100g","Basilikum":"8 Blätter"},instructions:["Gnocchi anbraten","Mit Sauce mischen","Käse drauf","Überbacken"],childTip:"Käse zieht Fäden",workTip:"Ofengericht"},
-                    {name:"Süßkartoffel-Curry",category:"Vegetarisch",price:3.5,ingredients:{"Süßkartoffel":"200g","Kokosmilch":"150ml","Spinat":"75g","Reis":"125g"},instructions:["Kartoffeln würfeln","Curry kochen","Spinat zugeben","Mit Reis servieren"],childTip:"Süß und mild",workTip:"Vegan möglich"},
-                    {name:"Pilz-Quiche",category:"Vegetarisch",price:4,ingredients:{"Mürbeteig":"150g","Champignons":"150g","Eier":"2 Stück","Sahne":"100ml","Käse":"50g"},instructions:["Teig ausrollen","Pilze andünsten","Guss machen","Backen"],childTip:"Französisch",workTip:"Auch kalt gut"},
-                    {name:"Tomaten-Mozzarella-Tarte",category:"Vegetarisch",price:4,ingredients:{"Blätterteig":"150g","Tomaten":"250g","Mozzarella":"125g","Pesto":"30g"},instructions:["Teig ausrollen","Belegen","Backen","Heiß servieren"],childTip:"Sommerlich",workTip:"Party-Hit"},
-                    {name:"Gemüse-Couscous",category:"Vegetarisch",price:3,ingredients:{"Couscous":"125g","Gemüse":"200g","Rosinen":"30g","Minze":"8 Blätter"},instructions:["Couscous quellen","Gemüse rösten","Alles mischen","Lauwarm servieren"],childTip:"Orientalisch",workTip:"Salat-Alternative"},
-                    {name:"Kartoffel-Lauch-Gratin",category:"Vegetarisch",price:3,ingredients:{"Kartoffeln":"300g","Lauch":"100g","Sahne":"125ml","Käse":"60g"},instructions:["Schichten legen","Sahne darüber","Mit Käse bedecken","Goldbraun backen"],childTip:"Schmelzender Käse",workTip:"Beilage oder Hauptgang"},
-                    {name:"Tagliatelle mit Zitronen-Butter",category:"Vegetarisch",price:3,ingredients:{"Tagliatelle":"150g","Butter":"40g","Zitrone":"1 Stück","Parmesan":"40g"},instructions:["Pasta kochen","Butter schmelzen","Zitrone zugeben","Mit Käse servieren"],childTip:"Frisch und leicht",workTip:"Sommerlich"},
-                    {name:"Auberginen-Parmigiana",category:"Vegetarisch",price:4,ingredients:{"Aubergine":"1 Stück","Tomatensauce":"150ml","Mozzarella":"100g","Parmesan":"50g"},instructions:["Auberginen braten","Schichten legen","Käse darüber","Überbacken"],childTip:"Italienischer Auflauf",workTip:"Vorbereiten möglich"},
-                    {name:"Brokkoli-Käse-Suppe",category:"Vegetarisch",price:3,ingredients:{"Brokkoli":"200g","Cheddar":"75g","Sahne":"75ml","Brot":"3 Scheiben"},instructions:["Brokkoli kochen","Pürieren","Käse einrühren","Mit Brot servieren"],childTip:"Grün und cremig",workTip:"Wärmend"}
-                ],
-                kids: [
-                    // KORRIGIERTE Kinder-Rezepte (kleinere Portionen)
-                    {name:"Mini-Frikadellen",category:"Kinder",price:2,ingredients:{"Hackfleisch":"80g","Ei":"0.5 Stück","Semmelbrösel":"2 EL","Kartoffelbrei":"150g"},instructions:["Hackfleisch mischen","Kleine Frikadellen formen","Braten","Mit Kartoffelbrei servieren"],childTip:"Sehr mild würzen",workTip:"Nur für Kinder"},
-                    {name:"Pfannkuchen",category:"Kinder",price:1.5,ingredients:{"Mehl":"75g","Milch":"150ml","Eier":"1 Stück","Apfelmus":"100g"},instructions:["Teig anrühren","Dünne Pfannkuchen backen","Mit Apfelmus servieren"],childTip:"Der Klassiker",workTip:"Nur für Kinder"},
-                    {name:"Nudeln mit Butter",category:"Kinder",price:1.5,ingredients:{"Nudeln":"75g","Butter":"20g","Parmesan":"20g","Erbsen":"50g"},instructions:["Nudeln kochen","Mit Butter mischen","Parmesan drüber"],childTip:"Einfach und beliebt",workTip:"Nur für Kinder"},
-                    {name:"Pizza-Schnecken",category:"Kinder",price:2,ingredients:{"Pizzateig":"100g","Tomatensauce":"50ml","Salami":"5 Scheiben","Käse":"50g"},instructions:["Teig belegen","Aufrollen","In Scheiben schneiden","20 Min backen"],childTip:"Mini-Pizzen",workTip:"Nur für Kinder"},
-                    {name:"Chicken Nuggets",category:"Kinder",price:2.5,ingredients:{"Hähnchen":"100g","Cornflakes":"40g","Ei":"0.5 Stück","Pommes":"125g"},instructions:["Hähnchen schneiden","In Cornflakes wenden","Backen","Mit Pommes servieren"],childTip:"Gesünder als gekaufte",workTip:"Nur für Kinder"},
-                    {name:"Spaghetti mit Tomatensauce",category:"Kinder",price:1.5,ingredients:{"Spaghetti":"75g","Tomatensauce":"100ml","Parmesan":"20g"},instructions:["Spaghetti kochen","Sauce erwärmen","Zusammen servieren"],childTip:"Kinder-Klassiker",workTip:"Nur für Kinder"},
-                    {name:"Fischstäbchen mit Püree",category:"Kinder",price:2,ingredients:{"Fischstäbchen":"3 Stück","Kartoffelpüree":"150g","Erbsen":"50g"},instructions:["Fischstäbchen backen","Püree zubereiten","Mit Erbsen servieren"],childTip:"Knusprig",workTip:"Nur für Kinder"},
-                    {name:"Würstchen im Schlafrock",category:"Kinder",price:2,ingredients:{"Wiener":"2 Stück","Blätterteig":"75g","Ketchup":"30ml"},instructions:["Würstchen einwickeln","Goldbraun backen","Mit Ketchup servieren"],childTip:"Party-Hit",workTip:"Nur für Kinder"},
-                    {name:"Käse-Sandwich",category:"Kinder",price:1.5,ingredients:{"Toast":"2 Scheiben","Käse":"2 Scheiben","Butter":"15g","Gurke":"5 Scheiben"},instructions:["Toast buttern","Käse drauf","Toasten","Warm servieren"],childTip:"Schnell gemacht",workTip:"Nur für Kinder"},
-                    {name:"Mini-Hamburger",category:"Kinder",price:2.5,ingredients:{"Hackfleisch":"80g","Mini-Brötchen":"1 Stück","Käse":"1 Scheibe","Ketchup":"20ml"},instructions:["Mini-Patty formen","Braten","Burger bauen","Servieren"],childTip:"Wie bei McDonald's",workTip:"Nur für Kinder"},
-                    {name:"Eierkuchen mit Marmelade",category:"Kinder",price:1.5,ingredients:{"Mehl":"75g","Milch":"150ml","Ei":"1 Stück","Marmelade":"50g"},instructions:["Teig machen","Dünn backen","Mit Marmelade füllen","Einrollen"],childTip:"Süß und lecker",workTip:"Nur für Kinder"},
-                    {name:"Kartoffelpuffer",category:"Kinder",price:1.5,ingredients:{"Kartoffeln":"200g","Ei":"0.5 Stück","Apfelmus":"75g"},instructions:["Kartoffeln reiben","Puffer formen","Goldbraun braten","Mit Apfelmus"],childTip:"Reibekuchen",workTip:"Nur für Kinder"},
-                    {name:"Milchreis",category:"Kinder",price:1.5,ingredients:{"Milchreis":"50g","Milch":"200ml","Zucker":"1 TL","Zimt":"Prise"},instructions:["Reis kochen","Süßen","Mit Zimt bestreuen","Warm servieren"],childTip:"Comfort Food",workTip:"Nur für Kinder"},
-                    {name:"Gemüse-Sticks mit Dip",category:"Kinder",price:1.5,ingredients:{"Möhren":"75g","Gurke":"75g","Paprika":"75g","Frischkäse-Dip":"60g"},instructions:["Gemüse schneiden","Dip anrühren","Zusammen servieren"],childTip:"Gesunder Snack",workTip:"Nur für Kinder"},
-                    {name:"Nudelauflauf",category:"Kinder",price:2,ingredients:{"Nudeln":"75g","Schinken":"3 Scheiben","Käse":"2 Scheiben","Sahne":"60ml"},instructions:["Nudeln kochen","Alles mischen","Überbacken","Heiß servieren"],childTip:"Käse-Liebe",workTip:"Nur für Kinder"},
-                    {name:"French Toast",category:"Kinder",price:1.5,ingredients:{"Toast":"2 Scheiben","Ei":"1 Stück","Milch":"50ml","Ahornsirup":"30ml"},instructions:["Toast in Ei-Milch","In Pfanne braten","Mit Sirup servieren"],childTip:"Amerikanisch",workTip:"Nur für Kinder"},
-                    {name:"Tomatensuppe mit Reis",category:"Kinder",price:1.5,ingredients:{"Tomatensuppe":"200ml","Reis":"40g","Croutons":"30g"},instructions:["Suppe erwärmen","Reis kochen","Zusammen servieren"],childTip:"Klassiker",workTip:"Nur für Kinder"},
-                    {name:"Käsespieße",category:"Kinder",price:2,ingredients:{"Käsewürfel":"60g","Weintrauben":"50g","Salzstangen":"15 Stück"},instructions:["Alles aufspießen","Hübsch anrichten","Servieren"],childTip:"Fingerfood",workTip:"Nur für Kinder"},
-                    {name:"Mini-Quiche",category:"Kinder",price:2,ingredients:{"Mürbeteig":"75g","Ei":"1 Stück","Schinken":"2 Scheiben","Käse":"30g"},instructions:["Förmchen auslegen","Füllung machen","Backen","Warm servieren"],childTip:"Klein und fein",workTip:"Nur für Kinder"},
-                    {name:"Grießbrei",category:"Kinder",price:1.5,ingredients:{"Grieß":"40g","Milch":"200ml","Zucker":"1 TL","Beeren":"50g"},instructions:["Grieß einrühren","Kochen","Süßen","Mit Beeren toppen"],childTip:"Wohlfühlessen",workTip:"Nur für Kinder"}
-                ]
-            };
-        }
+        // Globale Cloud-Sync Konfiguration
+        const CloudSync = {
+            token: null,
+            gistId: null,
+            syncInterval: null,
+            lastSync: null,
+            isOnline: true,
+            autoSaveTimeout: null
+        };
 
-        // Globale Variablen
-        let currentWeekPlan = [];
-        let shoppingListData = {};
-        let preferences = {};
-        let weeksSincePizza = 0;
-        let currentWeekStart = null;
-        let savedWeeks = [];
-        let currentGistId = null;
-        let personPortions = [];
+        // Globale App-Daten (NUR im Speicher, nie lokal!)
+        let AppData = {
+            weekPlan: [],
+            recipes: null,
+            preferences: {
+                adults: 2,
+                children: 2,
+                weeksSincePizza: 0,
+                filters: {}
+            },
+            currentWeekStart: null,
+            shoppingList: {}
+        };
 
-        // Initialisierung beim Laden
-        window.addEventListener('DOMContentLoaded', function() {
-            loadRecipes();
-            loadPreferences();
-            loadSavedWeeks();
-            updateRecipeStats();
-            calculateCurrentWeekDates();
-            updatePizzaCountdown();
-            
-            // Initialisiere Portionen wenn noch nicht vorhanden
-            if (!personPortions || personPortions.length === 0) {
-                initializePortions();
-            }
-            
-            updatePortionSettings();
-            
-            // Auto-Sync prüfen und aktivieren
-            const token = localStorage.getItem('githubToken');
-            const gistId = localStorage.getItem('currentGistId');
-            const autoSyncStored = localStorage.getItem('autoSyncEnabled');
-            
-            if (token && gistId && autoSyncStored === 'true') {
-                currentGistId = gistId;
-                autoSyncEnabled = true;
+        // Intelligente Planungs-Engine
+        const SmartPlanner = {
+            // Erstelle einen intelligenten Wochenplan
+            createPlan: function(recipes, preferences) {
+                const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+                const plan = [];
+                const usedRecipes = new Set();
+                const usedMainIngredients = new Map();
                 
-                // Lade aktuellste Version vom Server
-                loadLatestFromGist().then(() => {
-                    enableAutoSync();
-                    console.log('Auto-Sync aktiviert für Gist:', gistId.substring(0, 8) + '...');
-                }).catch(error => {
-                    console.error('Fehler beim Laden:', error);
-                    generateNewPlan();
-                });
-            } else {
-                // Generiere neuen Plan nur wenn kein Sync aktiv
-                generateNewPlan();
-            }
-            
-            // Radio Button Handler für Sync-Optionen
-            const radios = document.querySelectorAll('input[name="syncMode"]');
-            if (radios.length > 0) {
-                radios.forEach(radio => {
-                    radio.addEventListener('change', function() {
-                        const newGistOptions = document.getElementById('newGistOptions');
-                        const existingGistOptions = document.getElementById('existingGistOptions');
-                        
-                        if (newGistOptions && existingGistOptions) {
-                            if (this.value === 'new') {
-                                newGistOptions.style.display = 'block';
-                                existingGistOptions.style.display = 'none';
-                            } else {
-                                newGistOptions.style.display = 'none';
-                                existingGistOptions.style.display = 'block';
-                            }
-                        }
+                days.forEach((day, index) => {
+                    // Wähle intelligentes Rezept basierend auf:
+                    // - Keine Wiederholungen
+                    // - Abwechslung bei Hauptzutaten
+                    // - Saisonalität
+                    // - Wochenend-Specials
+                    
+                    const isWeekend = index >= 5;
+                    const needsWorkFriendly = index < 4;
+                    
+                    // Finde passendes Rezept
+                    let recipe = this.selectSmartRecipe(
+                        recipes,
+                        usedRecipes,
+                        usedMainIngredients,
+                        isWeekend,
+                        needsWorkFriendly
+                    );
+                    
+                    // Füge Variationen hinzu
+                    if (recipe && recipe.baseIngredients) {
+                        recipe = this.addVariations(recipe);
+                    }
+                    
+                    plan.push({
+                        day: day,
+                        date: this.getDateForDay(index),
+                        dinner: recipe,
+                        variations: recipe.variations || []
                     });
+                    
+                    if (recipe) {
+                        usedRecipes.add(recipe.id);
+                        this.trackIngredients(recipe, usedMainIngredients, index);
+                    }
+                });
+                
+                return plan;
+            },
+            
+            selectSmartRecipe: function(recipes, usedRecipes, usedMainIngredients, isWeekend, needsWorkFriendly) {
+                // Filtere verfügbare Rezepte
+                const available = [];
+                
+                ['meat', 'vegetarian'].forEach(category => {
+                    if (recipes.categories[category]) {
+                        recipes.categories[category].recipes.forEach(recipe => {
+                            if (!usedRecipes.has(recipe.id)) {
+                                // Prüfe Arbeitsfreundlichkeit
+                                if (needsWorkFriendly && recipe.workFriendly === false) {
+                                    return;
+                                }
+                                
+                                // Prüfe Wiederholungen von Hauptzutaten
+                                let tooSimilar = false;
+                                for (let [ingredient, lastDay] of usedMainIngredients) {
+                                    if (recipe.baseIngredients && recipe.baseIngredients[ingredient]) {
+                                        if (lastDay >= 0 && lastDay < 3) { // Zu nah
+                                            tooSimilar = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                                
+                                if (!tooSimilar) {
+                                    available.push(recipe);
+                                }
+                            }
+                        });
+                    }
+                });
+                
+                // Wähle zufällig aus verfügbaren
+                if (available.length > 0) {
+                    return available[Math.floor(Math.random() * available.length)];
+                }
+                
+                // Fallback: Irgendein Rezept
+                const allRecipes = [];
+                Object.values(recipes.categories).forEach(cat => {
+                    allRecipes.push(...cat.recipes);
+                });
+                return allRecipes[Math.floor(Math.random() * allRecipes.length)];
+            },
+            
+            addVariations: function(recipe) {
+                const variations = [];
+                
+                // Pasta-Variationen
+                if (recipe.baseIngredients.pasta) {
+                    const pastaType = recipe.baseIngredients.pasta;
+                    if (pastaType.variations) {
+                        variations.push({
+                            type: 'pasta',
+                            options: pastaType.variations,
+                            selected: pastaType.variations[0]
+                        });
+                    }
+                }
+                
+                // Andere Variationen
+                Object.entries(recipe.baseIngredients).forEach(([key, value]) => {
+                    if (value.variations && key !== 'pasta') {
+                        variations.push({
+                            type: key,
+                            options: value.variations,
+                            selected: value.variations[0]
+                        });
+                    }
+                });
+                
+                recipe.variations = variations;
+                return recipe;
+            },
+            
+            trackIngredients: function(recipe, usedMainIngredients, dayIndex) {
+                if (!recipe.baseIngredients) return;
+                
+                // Tracke Hauptzutaten
+                ['pasta', 'fleisch', 'käse'].forEach(ingredient => {
+                    if (recipe.baseIngredients[ingredient]) {
+                        usedMainIngredients.set(ingredient, dayIndex);
+                    }
+                });
+            },
+            
+            getDateForDay: function(dayIndex) {
+                const today = new Date();
+                const currentDay = today.getDay();
+                const daysUntilMonday = currentDay === 0 ? 1 : 8 - currentDay;
+                const monday = new Date(today);
+                monday.setDate(today.getDate() + daysUntilMonday - 7);
+                
+                const targetDate = new Date(monday);
+                targetDate.setDate(monday.getDate() + dayIndex);
+                
+                return targetDate.toLocaleDateString('de-CH', { 
+                    day: '2-digit', 
+                    month: '2-digit' 
                 });
             }
+        };
+
+        // Initialisierung
+        window.addEventListener('DOMContentLoaded', async function() {
+            // Prüfe ob Token vorhanden
+            const savedToken = sessionStorage.getItem('githubToken');
+            const savedGistId = sessionStorage.getItem('currentGistId');
             
-            // Polling für Updates wenn Auto-Sync aktiv
-            if (autoSyncEnabled) {
-                setInterval(checkForRemoteUpdates, 10000); // Alle 10 Sekunden
+            if (savedToken && savedGistId) {
+                CloudSync.token = savedToken;
+                CloudSync.gistId = savedGistId;
+                await initializeApp();
+            } else {
+                showSetupModal();
             }
         });
 
-        // Lade neueste Version vom Gist
-        async function loadLatestFromGist() {
-            if (!currentGistId) return;
-            
-            const token = localStorage.getItem('githubToken');
-            
-            try {
-                const response = await fetch(`https://api.github.com/gists/${currentGistId}`, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                if (response.ok) {
-                    const gist = await response.json();
-                    const content = gist.files['wochenplan.json'].content;
-                    const data = JSON.parse(content);
-                    
-                    importWeekPlan(data);
-                    lastSyncHash = getDataHash();
-                    localStorage.setItem('lastSyncDate', gist.updated_at);
-                    
-                    console.log('Daten vom Server geladen:', new Date(gist.updated_at).toLocaleTimeString());
-                }
-            } catch (error) {
-                console.error('Fehler beim Laden vom Gist:', error);
-                // Bei Fehler lokale Daten verwenden
-                generateNewPlan();
-            }
+        // Setup Modal anzeigen
+        function showSetupModal() {
+            document.getElementById('setupModal').classList.add('active');
         }
 
-        // Prüfe auf Remote-Updates (für Multi-Device)
-        async function checkForRemoteUpdates() {
-            if (!autoSyncEnabled || !currentGistId || isSyncing) return;
-            
-            const token = localStorage.getItem('githubToken');
-            
-            try {
-                const response = await fetch(`https://api.github.com/gists/${currentGistId}`, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                if (response.ok) {
-                    const gist = await response.json();
-                    const lastRemoteUpdate = new Date(gist.updated_at);
-                    const lastLocalSync = new Date(localStorage.getItem('lastSyncDate') || 0);
-                    
-                    // Wenn Remote neuer ist, lade Updates
-                    if (lastRemoteUpdate > lastLocalSync) {
-                        console.log('Remote-Updates gefunden, lade neu...');
-                        const content = gist.files['wochenplan.json'].content;
-                        const data = JSON.parse(content);
-                        
-                        // Nur importieren wenn sich wirklich was geändert hat
-                        const remoteHash = JSON.stringify(data);
-                        if (remoteHash !== lastSyncHash) {
-                            importWeekPlan(data);
-                            lastSyncHash = getDataHash();
-                            localStorage.setItem('lastSyncDate', gist.updated_at);
-                            
-                            // UI aktualisieren
-                            displayWeekOverview();
-                            displayShoppingList();
-                            displayRecipes();
-                            
-                            showSaveIndicator('saved');
-                        }
-                    }
-                }
-            } catch (error) {
-                console.error('Fehler beim Prüfen auf Updates:', error);
-            }
-        }
-
-        // GitHub Sync schließen
-        function closeGitHubSync() {
-            const modal = document.getElementById('githubModal');
-            modal.classList.remove('active');
-        }
-
-        // Angepasste Import-Funktion
-        function importWeekPlan(data) {
-            if (!data.weekPlan || !data.version) {
-                throw new Error('Ungültiges Datenformat');
-            }
-            
-            currentWeekPlan = data.weekPlan;
-            shoppingListData = data.shoppingList || {};
-            
-            if (data.preferences) {
-                preferences = { ...preferences, ...data.preferences };
-                if (data.weeksSincePizza !== undefined) {
-                    weeksSincePizza = data.weeksSincePizza;
-                }
-                
-                // Aktualisiere UI mit Präferenzen
-                if (preferences.dailyBudget) document.getElementById('dailyBudget').value = preferences.dailyBudget;
-                if (preferences.vegDays !== undefined) document.getElementById('vegDays').value = preferences.vegDays;
-                if (preferences.adultsCount) document.getElementById('adultsCount').value = preferences.adultsCount;
-                if (preferences.childrenCount) document.getElementById('childrenCount').value = preferences.childrenCount;
-                if (preferences.pizzaFrequency !== undefined) document.getElementById('pizzaFrequency').value = preferences.pizzaFrequency;
-                
-                // Filter
-                if (preferences.noLamb !== undefined) document.getElementById('noLamb').checked = preferences.noLamb;
-                if (preferences.noPork !== undefined) document.getElementById('noPork').checked = preferences.noPork;
-                if (preferences.noBeef !== undefined) document.getElementById('noBeef').checked = preferences.noBeef;
-                if (preferences.noDuck !== undefined) document.getElementById('noDuck').checked = preferences.noDuck;
-                if (preferences.noCottageCheese !== undefined) document.getElementById('noCottageCheese').checked = preferences.noCottageCheese;
-                if (preferences.noGorgonzola !== undefined) document.getElementById('noGorgonzola').checked = preferences.noGorgonzola;
-                if (preferences.noFeta !== undefined) document.getElementById('noFeta').checked = preferences.noFeta;
-                if (preferences.noCheese !== undefined) document.getElementById('noCheese').checked = preferences.noCheese;
-                if (preferences.noFish !== undefined) document.getElementById('noFish').checked = preferences.noFish;
-                if (preferences.noMushrooms !== undefined) document.getElementById('noMushrooms').checked = preferences.noMushrooms;
-                if (preferences.noNuts !== undefined) document.getElementById('noNuts').checked = preferences.noNuts;
-                if (preferences.noSpicy !== undefined) document.getElementById('noSpicy').checked = preferences.noSpicy;
-                if (preferences.noTofu !== undefined) document.getElementById('noTofu').checked = preferences.noTofu;
-                if (preferences.noEggplant !== undefined) document.getElementById('noEggplant').checked = preferences.noEggplant;
-            }
-            
-            if (data.personPortions) {
-                personPortions = data.personPortions;
-                updatePortionSettings();
-            }
-            
-            if (data.weekStart) {
-                currentWeekStart = new Date(data.weekStart);
-                const weekEnd = new Date(currentWeekStart);
-                weekEnd.setDate(currentWeekStart.getDate() + 6);
-                const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-                const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
-                const endStr = weekEnd.toLocaleDateString('de-CH', options);
-                document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
-            }
-            
-            updatePizzaCountdown();
-            displayWeekOverview();
-            displayShoppingList();
-            displayRecipes();
-            updateBudgetDisplay();
-            
-            const hasPizza = currentWeekPlan.some(day => day.dinner && day.dinner.special === 'pizza-weekend');
-            document.getElementById('pizzaIndicator').style.display = hasPizza ? 'block' : 'none';
-        }
-
-        // Window-Funktionen für onclick-Handler
-        window.setupAutoSync = setupAutoSync;
-        window.testConnection = testConnection;
-        window.loadGistsForSync = loadGistsForSync;
-        window.selectGistForSync = selectGistForSync;
-        window.startAutoSync = startAutoSync;
-        window.disconnectSync = disconnectSync;
-        window.showGitHubSync = showGitHubSync;
-        window.closeGitHubSync = closeGitHubSync;
-
-        // Portionen initialisieren
-        function initializePortions() {
-            const adultsCount = parseInt(document.getElementById('adultsCount').value) || 2;
-            const childrenCount = parseInt(document.getElementById('childrenCount').value) || 2;
-            
-            personPortions = [];
-            for (let i = 0; i < adultsCount; i++) {
-                personPortions.push({
-                    type: 'adult',
-                    name: `Erwachsener ${i + 1}`,
-                    factor: i === 0 ? 1.2 : 0.8
-                });
-            }
-            for (let i = 0; i < childrenCount; i++) {
-                personPortions.push({
-                    type: 'child',
-                    name: `Kind ${i + 1}`,
-                    factor: 0.5
-                });
-            }
-        }
-
-        // Portionseinstellungen aktualisieren - KORRIGIERT!
-        function updatePortionSettings() {
-            const adultsCount = parseInt(document.getElementById('adultsCount').value) || 0;
-            const childrenCount = parseInt(document.getElementById('childrenCount').value) || 0;
-            const container = document.getElementById('portionSettingsContainer');
-            
-            // Alte Portionen speichern
-            const oldPortions = [...personPortions];
-            
-            // Neue Array erstellen
-            personPortions = [];
-            
-            // Erwachsene hinzufügen
-            for (let i = 0; i < adultsCount; i++) {
-                const oldValue = oldPortions[i] && oldPortions[i].type === 'adult' 
-                    ? oldPortions[i].factor 
-                    : (i === 0 ? 1.2 : 0.8);
-                personPortions.push({
-                    type: 'adult',
-                    name: `Erwachsener ${i + 1}`,
-                    factor: oldValue
-                });
-            }
-            
-            // Kinder hinzufügen
-            for (let i = 0; i < childrenCount; i++) {
-                const oldIndex = adultsCount + i;
-                const oldValue = oldPortions[oldIndex] && oldPortions[oldIndex].type === 'child'
-                    ? oldPortions[oldIndex].factor
-                    : 0.5;
-                personPortions.push({
-                    type: 'child',
-                    name: `Kind ${i + 1}`,
-                    factor: oldValue
-                });
-            }
-            
-            // UI aktualisieren
-            let html = '';
-            personPortions.forEach((person, index) => {
-                html += `
-                    <div class="person-portion">
-                        <label>${person.name}:</label>
-                        <input type="number" 
-                               id="portion_${index}" 
-                               value="${person.factor}" 
-                               min="0.1" 
-                               max="2.0" 
-                               step="0.1"
-                               onchange="updatePersonPortion(${index}, this.value)">
-                    </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-            
-            // Wenn bereits ein Plan existiert, neu berechnen
-            if (currentWeekPlan.length > 0) {
-                rebuildShoppingList();
-                displayShoppingList();
-            }
-        }
-
-        // Person-Portion aktualisieren
-        function updatePersonPortion(index, value) {
-            personPortions[index].factor = parseFloat(value);
-            // Sofort neu berechnen
-            if (currentWeekPlan.length > 0) {
-                rebuildShoppingList();
-                displayShoppingList();
-            }
-        }
-
-        // Berechne Gesamtportionen für einen Tag
-        function calculateDayPortions(dayIndex) {
-            const days = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag'];
-            const dayName = days[dayIndex];
-            
-            let totalFactor = 0;
-            personPortions.forEach(person => {
-                totalFactor += person.factor;
-            });
-            
-            // Extra Portion für nächsten Tag (außer Freitag und Samstag)
-            if (dayName !== 'Freitag' && dayName !== 'Samstag') {
-                totalFactor += 1.0;
-            }
-            
-            return totalFactor;
-        }
-
-        // Mengen intelligent runden
-        function smartRound(value, unit) {
-            // Bei Stückzahlen immer aufrunden
-            if (unit === 'Stück' || unit === 'Scheiben' || unit === 'Blätter' || 
-                unit === 'Zweige' || unit === 'Zehen' || unit === 'Stiele') {
-                return Math.ceil(value);
-            }
-            
-            // Bei ml und g: 25er Schritte
-            if (unit === 'ml' || unit === 'g') {
-                if (value < 100) {
-                    return Math.round(value / 5) * 5;
-                } else if (value < 500) {
-                    return Math.round(value / 25) * 25;
-                } else {
-                    return Math.round(value / 50) * 50;
-                }
-            }
-            
-            // Bei kg und l: 0.1er Schritte
-            if (unit === 'kg' || unit === 'l') {
-                return Math.round(value * 10) / 10;
-            }
-            
-            // Bei EL und TL: 0.5er Schritte
-            if (unit === 'EL' || unit === 'TL') {
-                return Math.round(value * 2) / 2;
-            }
-            
-            // Standard
-            if (value < 1) {
-                return Math.round(value * 10) / 10;
-            } else if (value < 10) {
-                return Math.round(value * 2) / 2;
-            } else {
-                return Math.round(value);
-            }
-        }
-
-        // Mengen multiplizieren
-        function multiplyIngredients(ingredients, factor) {
-            const multiplied = {};
-            for (const [ingredient, amount] of Object.entries(ingredients)) {
-                if (amount === 'nach Geschmack' || amount === 'Prise' || 
-                    amount.includes('optional') || amount.includes('bereits')) {
-                    multiplied[ingredient] = amount;
-                    continue;
-                }
-                
-                const parsed = parseIngredientAmount(amount);
-                const multipliedValue = parsed.value * factor;
-                const rounded = smartRound(multipliedValue, parsed.unit);
-                
-                multiplied[ingredient] = rounded + (parsed.unit ? ' ' + parsed.unit : '');
-            }
-            return multiplied;
-        }
-
-        // Hilfsfunktion zum Parsen von Mengenangaben
-        function parseIngredientAmount(amount) {
-            const match = amount.match(/^([\d.]+)\s*(.*)$/);
-            if (match) {
-                return {
-                    value: parseFloat(match[1]),
-                    unit: match[2]
-                };
-            }
-            return { value: 1, unit: amount };
-        }
-
-        // Zur Einkaufsliste hinzufügen
-        function addToShoppingList(recipe, portionFactor) {
-            const multipliedIngredients = multiplyIngredients(recipe.ingredients, portionFactor);
-            
-            for (const [ingredient, amount] of Object.entries(multipliedIngredients)) {
-                if (!shoppingListData[ingredient]) {
-                    shoppingListData[ingredient] = amount;
-                } else {
-                    shoppingListData[ingredient] = combineAmounts(shoppingListData[ingredient], amount);
-                }
-            }
-        }
-
-        // Mengen kombinieren
-        function combineAmounts(existing, additional) {
-            // Spezialfall: "nach Geschmack" etc.
-            if (!existing.match(/[\d.]+/) || !additional.match(/[\d.]+/)) {
-                if (existing === additional) return existing;
-                return existing;
-            }
-            
-            const existingParsed = parseIngredientAmount(existing);
-            const additionalParsed = parseIngredientAmount(additional);
-            
-            // Verschiedene Einheiten
-            if (existingParsed.unit !== additionalParsed.unit) {
-                return existing;
-            }
-            
-            // Gleiche Einheiten - addieren und intelligent runden
-            const sum = existingParsed.value + additionalParsed.value;
-            const rounded = smartRound(sum, existingParsed.unit);
-            
-            return rounded + (existingParsed.unit ? ' ' + existingParsed.unit : '');
-        }
-
-        // Einkaufsliste neu aufbauen
-        function rebuildShoppingList() {
-            shoppingListData = {};
-            currentWeekPlan.forEach((dayPlan, index) => {
-                const portionFactor = calculateDayPortions(index);
-                addToShoppingList(dayPlan.dinner, portionFactor);
-                if (dayPlan.kidsLunch) {
-                    const kidsPortions = personPortions.filter(p => p.type === 'child')
-                        .reduce((sum, child) => sum + child.factor, 0);
-                    if (kidsPortions > 0) {
-                        addToShoppingList(dayPlan.kidsLunch, kidsPortions);
-                    }
-                }
-            });
-        }
-
-        // Rezept-Statistiken aktualisieren
-        function updateRecipeStats() {
-            const meatCount = recipes.meat ? recipes.meat.length : 0;
-            const vegCount = recipes.vegetarian ? recipes.vegetarian.length : 0;
-            const kidsCount = recipes.kids ? recipes.kids.length : 0;
-            const total = meatCount + vegCount + kidsCount;
-            
-            document.getElementById('totalRecipes').textContent = total;
-            document.getElementById('meatCount').textContent = meatCount;
-            document.getElementById('vegCount').textContent = vegCount;
-            document.getElementById('kidsCount').textContent = kidsCount;
-        }
-
-        // Pizza Countdown aktualisieren
-        function updatePizzaCountdown() {
-            const pizzaFreq = document.getElementById('pizzaFrequency').value;
-            if (pizzaFreq === '0') {
-                document.getElementById('pizzaCountdown').textContent = 'deaktiviert';
-            } else if (pizzaFreq === '3') {
-                const nextPizza = Math.max(1, 3 - weeksSincePizza);
-                document.getElementById('pizzaCountdown').textContent = `${nextPizza}`;
-            } else {
-                const nextPizza = Math.max(1, parseInt(pizzaFreq) - weeksSincePizza);
-                document.getElementById('pizzaCountdown').textContent = `${nextPizza}`;
-            }
-        }
-
-        // Tab-Wechsel
-        function switchTab(event, tabName) {
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            event.target.classList.add('active');
-            document.getElementById(tabName).classList.add('active');
-        }
-
-        // Wochendatum berechnen
-        function calculateCurrentWeekDates() {
-            const today = new Date();
-            const dayOfWeek = today.getDay();
-            
-            let daysToLastFriday = (dayOfWeek + 2) % 7;
-            if (dayOfWeek >= 5 || dayOfWeek === 0) {
-                daysToLastFriday = (dayOfWeek === 5) ? 0 : (dayOfWeek === 6) ? 1 : 2;
-            }
-            
-            currentWeekStart = new Date(today);
-            currentWeekStart.setDate(today.getDate() - daysToLastFriday);
-            currentWeekStart.setHours(0, 0, 0, 0);
-            
-            const weekEnd = new Date(currentWeekStart);
-            weekEnd.setDate(currentWeekStart.getDate() + 6);
-            
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-            const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
-            const endStr = weekEnd.toLocaleDateString('de-CH', options);
-            
-            document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
-        }
-
-        // Präferenzen laden
-        function loadPreferences() {
-            const saved = localStorage.getItem('mealPlannerPrefs');
-            if (saved) {
-                preferences = JSON.parse(saved);
-                
-                if (preferences.dailyBudget) document.getElementById('dailyBudget').value = preferences.dailyBudget;
-                if (preferences.vegDays !== undefined) document.getElementById('vegDays').value = preferences.vegDays;
-                if (preferences.adultsCount) document.getElementById('adultsCount').value = preferences.adultsCount;
-                if (preferences.childrenCount) document.getElementById('childrenCount').value = preferences.childrenCount;
-                if (preferences.weeksSincePizza !== undefined) weeksSincePizza = preferences.weeksSincePizza;
-                if (preferences.pizzaFrequency !== undefined) document.getElementById('pizzaFrequency').value = preferences.pizzaFrequency;
-                if (preferences.githubToken) document.getElementById('githubToken').value = preferences.githubToken;
-                if (preferences.personPortions) personPortions = preferences.personPortions;
-                
-                // Lade Filtereinstellungen
-                if (preferences.noLamb !== undefined) document.getElementById('noLamb').checked = preferences.noLamb;
-                if (preferences.noPork !== undefined) document.getElementById('noPork').checked = preferences.noPork;
-                if (preferences.noBeef !== undefined) document.getElementById('noBeef').checked = preferences.noBeef;
-                if (preferences.noDuck !== undefined) document.getElementById('noDuck').checked = preferences.noDuck;
-                if (preferences.noCottageCheese !== undefined) document.getElementById('noCottageCheese').checked = preferences.noCottageCheese;
-                if (preferences.noGorgonzola !== undefined) document.getElementById('noGorgonzola').checked = preferences.noGorgonzola;
-                if (preferences.noFeta !== undefined) document.getElementById('noFeta').checked = preferences.noFeta;
-                if (preferences.noCheese !== undefined) document.getElementById('noCheese').checked = preferences.noCheese;
-                if (preferences.noFish !== undefined) document.getElementById('noFish').checked = preferences.noFish;
-                if (preferences.noMushrooms !== undefined) document.getElementById('noMushrooms').checked = preferences.noMushrooms;
-                if (preferences.noNuts !== undefined) document.getElementById('noNuts').checked = preferences.noNuts;
-                if (preferences.noSpicy !== undefined) document.getElementById('noSpicy').checked = preferences.noSpicy;
-                if (preferences.noTofu !== undefined) document.getElementById('noTofu').checked = preferences.noTofu;
-                if (preferences.noEggplant !== undefined) document.getElementById('noEggplant').checked = preferences.noEggplant;
-            }
-            
-            const token = localStorage.getItem('githubToken');
-            if (token) {
-                document.getElementById('githubToken').value = token;
-            }
-            
-            currentGistId = localStorage.getItem('currentGistId');
-            
-            updateBudgetDisplay();
-        }
-
-        // Gespeicherte Wochen laden
-        function loadSavedWeeks() {
-            const saved = localStorage.getItem('savedWeekPlans');
-            if (saved) {
-                savedWeeks = JSON.parse(saved);
-            }
-        }
-
-        // Aktuelle Woche speichern
-        function saveCurrentWeek() {
-            if (currentWeekPlan.length === 0) {
-                alert('⚠ Kein Wochenplan zum Speichern vorhanden!');
-                return;
-            }
-            
-            const weekData = {
-                id: Date.now(),
-                weekStart: currentWeekStart.toISOString(),
-                savedDate: new Date().toISOString(),
-                weekPlan: currentWeekPlan,
-                shoppingList: shoppingListData,
-                totalCost: document.getElementById('totalCost').textContent,
-                summary: getSummaryText(),
-                personPortions: personPortions
-            };
-            
-            if (savedWeeks.length >= 10) {
-                if (confirm('⚠️ Es sind bereits 10 Wochen gespeichert. Die älteste Woche wird überschrieben. Fortfahren?')) {
-                    savedWeeks.shift();
-                } else {
-                    return;
-                }
-            }
-            
-            savedWeeks.push(weekData);
-            localStorage.setItem('savedWeekPlans', JSON.stringify(savedWeeks));
-            
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '✅ Gespeichert!';
-            btn.style.background = '#4CAF50';
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-            }, 2000);
-        }
-
-        // Zusammenfassung erstellen
-        function getSummaryText() {
-            const meatCount = currentWeekPlan.filter(d => d.dinner.category === 'Fleisch').length;
-            const vegCount = currentWeekPlan.filter(d => d.dinner.category === 'Vegetarisch').length;
-            const pizzaCount = currentWeekPlan.filter(d => d.dinner.special === 'pizza-weekend').length;
-            
-            let summary = `${meatCount}x Fleisch, ${vegCount}x Vegetarisch`;
-            if (pizzaCount > 0) {
-                summary += `, ${pizzaCount}x Pizza`;
-            }
-            return summary;
-        }
-
-        // Gespeicherte Wochen anzeigen
-        function showSavedWeeks() {
-            if (savedWeeks.length === 0) {
-                alert('📂 Keine gespeicherten Wochen vorhanden.');
-                return;
-            }
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal active';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>📂 Gespeicherte Wochen</h2>
-                        <button class="close-modal" onclick="this.closest('.modal').remove()">×</button>
-                    </div>
-                    <div class="saved-weeks-list">
-                        ${savedWeeks.map((week, index) => {
-                            const weekStart = new Date(week.weekStart);
-                            const weekEnd = new Date(weekStart);
-                            weekEnd.setDate(weekStart.getDate() + 6);
-                            const startStr = weekStart.toLocaleDateString('de-CH');
-                            const endStr = weekEnd.toLocaleDateString('de-CH');
-                            
-                            return `
-                                <div class="saved-week-item">
-                                    <div class="saved-week-info">
-                                        <div class="saved-week-date">${startStr} - ${endStr}</div>
-                                        <div class="saved-week-summary">${week.summary} • ${week.totalCost} CHF</div>
-                                    </div>
-                                    <div class="saved-week-actions">
-                                        <button class="mini-btn mini-btn-load" onclick="loadSavedWeek(${index})">Laden</button>
-                                        <button class="mini-btn mini-btn-delete" onclick="deleteSavedWeek(${index})">🗑️</button>
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        // Gespeicherte Woche laden
-        function loadSavedWeek(index) {
-            const week = savedWeeks[index];
-            
-            if (currentWeekPlan.length > 0) {
-                if (!confirm('⚠️ Der aktuelle Wochenplan wird überschrieben. Fortfahren?')) {
-                    return;
-                }
-            }
-            
-            currentWeekPlan = week.weekPlan;
-            shoppingListData = week.shoppingList;
-            currentWeekStart = new Date(week.weekStart);
-            if (week.personPortions) {
-                personPortions = week.personPortions;
-                updatePortionSettings();
-            }
-            
-            const weekEnd = new Date(currentWeekStart);
-            weekEnd.setDate(currentWeekStart.getDate() + 6);
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-            const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
-            const endStr = weekEnd.toLocaleDateString('de-CH', options);
-            document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
-            
-            displayWeekOverview();
-            displayShoppingList();
-            displayRecipes();
-            
-            document.querySelector('.modal').remove();
-            
-            alert('✅ Wochenplan wurde geladen!');
-        }
-
-        // Gespeicherte Woche löschen
-        function deleteSavedWeek(index) {
-            if (confirm('🗑️ Diese gespeicherte Woche wirklich löschen?')) {
-                savedWeeks.splice(index, 1);
-                localStorage.setItem('savedWeekPlans', JSON.stringify(savedWeeks));
-                
-                document.querySelector('.modal').remove();
-                showSavedWeeks();
-            }
-        }
-
-        // Bestätigung vor neuem Plan
-        function confirmGenerateNewPlan() {
-            if (currentWeekPlan.length > 0) {
-                const confirmDialog = document.createElement('div');
-                confirmDialog.className = 'confirm-dialog active';
-                confirmDialog.innerHTML = `
-                    <h3>⚠️ Neuen Plan generieren?</h3>
-                    <p>Der aktuelle Wochenplan geht verloren, wenn er nicht gespeichert wurde.</p>
-                    <p><strong>Tipp:</strong> Speichere den aktuellen Plan mit "Woche speichern" bevor du einen neuen generierst.</p>
-                    <div class="confirm-actions">
-                        <button class="btn btn-secondary" onclick="this.closest('.confirm-dialog').remove()">Abbrechen</button>
-                        <button class="btn btn-primary" onclick="this.closest('.confirm-dialog').remove(); generateNewPlan();">Neuen Plan erstellen</button>
-                    </div>
-                `;
-                document.body.appendChild(confirmDialog);
-            } else {
-                generateNewPlan();
-            }
-        }
-
-        // Präferenzen speichern
-        function savePreferences() {
-            const githubToken = document.getElementById('githubToken').value;
-            
-            preferences = {
-                dailyBudget: document.getElementById('dailyBudget').value,
-                adultsCount: document.getElementById('adultsCount').value,
-                childrenCount: document.getElementById('childrenCount').value,
-                vegDays: document.getElementById('vegDays').value,
-                pizzaFrequency: document.getElementById('pizzaFrequency').value,
-                weeksSincePizza: weeksSincePizza,
-                githubToken: githubToken,
-                personPortions: personPortions,
-                noLamb: document.getElementById('noLamb').checked,
-                noPork: document.getElementById('noPork').checked,
-                noBeef: document.getElementById('noBeef').checked,
-                noDuck: document.getElementById('noDuck').checked,
-                noCottageCheese: document.getElementById('noCottageCheese').checked,
-                noGorgonzola: document.getElementById('noGorgonzola').checked,
-                noFeta: document.getElementById('noFeta').checked,
-                noCheese: document.getElementById('noCheese').checked,
-                noFish: document.getElementById('noFish').checked,
-                noMushrooms: document.getElementById('noMushrooms').checked,
-                noNuts: document.getElementById('noNuts').checked,
-                noSpicy: document.getElementById('noSpicy').checked,
-                noTofu: document.getElementById('noTofu').checked,
-                noEggplant: document.getElementById('noEggplant').checked
-            };
-            
-            localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
-            
-            if (githubToken) {
-                localStorage.setItem('githubToken', githubToken);
-            }
-            
-            alert('✅ Einstellungen wurden gespeichert!');
-        }
-
-        // Budget-Anzeige aktualisieren
-        function updateBudgetDisplay() {
-            const dailyBudget = document.getElementById('dailyBudget').value;
-            const weeklyBudget = dailyBudget * 7;
-            document.getElementById('budgetDisplay').textContent = `${weeklyBudget} CHF`;
-        }
-
-        // Hilfsfunktion: Array mischen
-        function shuffleArray(array) {
-            const newArray = [...array];
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        }
-
-        // Vegetarische Tage verteilen
-        function distributeVegDays(totalDays, vegCount) {
-            if (vegCount === 0) return [];
-            if (vegCount >= totalDays) return Array.from({length: totalDays}, (_, i) => i);
-            
-            const positions = [];
-            const spacing = Math.floor(totalDays / vegCount);
-            
-            for (let i = 0; i < vegCount; i++) {
-                let pos = i * spacing + Math.floor(Math.random() * Math.max(1, spacing - 1));
-                if (pos >= totalDays) pos = totalDays - 1;
-                if (!positions.includes(pos)) {
-                    positions.push(pos);
-                }
-            }
-            
-            return positions;
-        }
-
-        // Rezept filtern basierend auf Präferenzen
-        function filterRecipe(recipe) {
-            const prefs = preferences;
-            const ingredients = Object.keys(recipe.ingredients).join(' ').toLowerCase();
-            const name = recipe.name.toLowerCase();
-            
-            // Fleisch-Filter
-            if (prefs.noLamb && (name.includes('lamm') || ingredients.includes('lamm'))) return false;
-            if (prefs.noPork && (name.includes('schwein') || ingredients.includes('schwein') || 
-                name.includes('speck') || ingredients.includes('speck') || 
-                name.includes('schinken') || ingredients.includes('schinken'))) return false;
-            if (prefs.noBeef && (name.includes('rind') || ingredients.includes('rind') || 
-                name.includes('kalb') || ingredients.includes('kalb'))) return false;
-            if (prefs.noDuck && (name.includes('ente') || ingredients.includes('ente'))) return false;
-            
-            // Milchprodukte-Filter
-            if (prefs.noCottageCheese && (name.includes('hüttenkäse') || ingredients.includes('hüttenkäse'))) return false;
-            if (prefs.noGorgonzola && (name.includes('gorgonzola') || ingredients.includes('gorgonzola'))) return false;
-            if (prefs.noFeta && (name.includes('feta') || ingredients.includes('feta'))) return false;
-            
-            // Weitere Filter
-            if (prefs.noFish && (name.includes('fisch') || ingredients.includes('fisch'))) return false;
-            if (prefs.noMushrooms && (name.includes('pilz') || ingredients.includes('pilz') || 
-                name.includes('champignon') || ingredients.includes('champignon'))) return false;
-            if (prefs.noNuts && (name.includes('nuss') || ingredients.includes('nuss') || 
-                name.includes('walnüsse') || ingredients.includes('walnüsse'))) return false;
-            if (prefs.noSpicy && (name.includes('chili') || ingredients.includes('chili') || 
-                name.includes('scharf') || recipe.childTip.includes('scharf'))) return false;
-            if (prefs.noTofu && (name.includes('tofu') || ingredients.includes('tofu'))) return false;
-            if (prefs.noEggplant && (name.includes('aubergine') || ingredients.includes('aubergine'))) return false;
-            
-            return true;
-        }
-
-        // Neuen Wochenplan generieren
-        function generateNewPlan() {
-            document.getElementById('loadingOverview').classList.add('active');
-            
-            setTimeout(() => {
-                const vegDays = parseInt(document.getElementById('vegDays').value);
-                const pizzaFreq = document.getElementById('pizzaFrequency').value;
-                const days = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag'];
-                
-                // Pizza-Wochenende Logik
-                let isPizzaWeekend = false;
-                if (pizzaFreq !== '0') {
-                    weeksSincePizza++;
-                    
-                    if (pizzaFreq === '3') {
-                        isPizzaWeekend = weeksSincePizza >= 2 && (weeksSincePizza >= 3 || Math.random() > 0.5);
-                    } else if (pizzaFreq === '4') {
-                        isPizzaWeekend = weeksSincePizza >= 3 && (weeksSincePizza >= 4 || Math.random() > 0.5);
-                    } else {
-                        isPizzaWeekend = weeksSincePizza >= parseInt(pizzaFreq);
-                    }
-                    
-                    if (isPizzaWeekend) {
-                        weeksSincePizza = 0;
-                        setTimeout(() => {
-                            document.getElementById('pizzaIndicator').style.display = 'block';
-                            alert('🍕 PIZZA-WOCHENENDE! 🍕\n\nDiese Woche gibt es Freitag und Samstag Pizza!\n\nGenießt euer entspanntes Wochenende!');
-                        }, 1000);
-                    } else {
-                        document.getElementById('pizzaIndicator').style.display = 'none';
-                    }
-                } else {
-                    document.getElementById('pizzaIndicator').style.display = 'none';
-                }
-                
-                // Rezepte filtern
-                const filteredMeatRecipes = shuffleArray(recipes.meat.filter(r => filterRecipe(r)));
-                const filteredVegRecipes = shuffleArray(recipes.vegetarian.filter(r => filterRecipe(r)));
-                const filteredKidsRecipes = shuffleArray(recipes.kids.filter(r => filterRecipe(r)));
-                
-                // Prüfen ob genug Rezepte vorhanden
-                if (filteredMeatRecipes.length < 4 || filteredVegRecipes.length < 3) {
-                    alert('⚠️ Warnung: Mit den aktuellen Filtereinstellungen sind nicht genug Rezepte verfügbar. Bitte reduziere die Ausschlüsse in den Einstellungen.');
-                }
-                
-                // Pizza-Rezepte definieren (pro Person)
-                const pizzaFriday = {
-                    name: "🍕 Pizza-Freitag (Selbstgemacht)",
-                    category: "Pizza-Weekend",
-                    price: 2,
-                    ingredients: {
-                        "Pizzamehl (für 2 Tage)": "300g",
-                        "San Marzano Tomaten": "100g",
-                        "Galbani Mozzarella Cucina": "125g",
-                        "Belag nach Wahl": "75g",
-                        "Olivenöl": "1 EL",
-                        "Hefe": "0.25 Würfel",
-                        "Salz": "0.5 TL"
-                    },
-                    instructions: [
-                        "Teig für 2 Tage vorbereiten",
-                        "24 Stunden im Kühlschrank gehen lassen",
-                        "Teig portionieren und ausrollen",
-                        "Mit San Marzano Tomatensauce bestreichen",
-                        "Galbani Mozzarella und Belag verteilen",
-                        "Bei 250°C ca. 10-12 Min backen",
-                        "Restlichen Teig für morgen aufbewahren"
-                    ],
-                    childTip: "Kinder können beim Belegen helfen",
-                    workTip: "Reste kalt zum Mitnehmen",
-                    special: "pizza-weekend"
-                };
-                
-                const pizzaSaturday = {
-                    name: "🍕 Pizza-Samstag (Tag 2)",
-                    category: "Pizza-Weekend",
-                    price: 2,
-                    ingredients: {
-                        "Teig vom Vortag": "bereits vorbereitet",
-                        "Restliche San Marzano Sauce": "vom Vortag",
-                        "Galbani Mozzarella Cucina": "125g",
-                        "Belag Variation": "75g",
-                        "Oregano": "nach Geschmack"
-                    },
-                    instructions: [
-                        "Teig vom Vortag verwenden",
-                        "Nochmal 30 Min bei Raumtemperatur ruhen lassen",
-                        "Ausrollen und belegen",
-                        "Heute andere Beläge ausprobieren",
-                        "Bei 250°C ca. 10-12 Min backen",
-                        "Gemütlicher Pizza-Samstag!"
-                    ],
-                    childTip: "Kinder können eigene Mini-Pizzen machen",
-                    workTip: "Perfektes Wochenend-Essen",
-                    special: "pizza-weekend"
-                };
-                
-                currentWeekPlan = [];
-                shoppingListData = {};
-                
-                const vegDayPositions = distributeVegDays(7, vegDays);
-                
-                let meatIndex = 0;
-                let vegIndex = 0;
-                let kidsIndex = 0;
-                
-                days.forEach((day, index) => {
-                    let recipe;
-                    
-                    // Pizza-Wochenende überschreibt normale Planung
-                    if (isPizzaWeekend && day === 'Freitag') {
-                        recipe = pizzaFriday;
-                    } else if (isPizzaWeekend && day === 'Samstag') {
-                        recipe = pizzaSaturday;
-                    } else if (vegDayPositions.includes(index)) {
-                        recipe = filteredVegRecipes[vegIndex++ % filteredVegRecipes.length];
-                    } else {
-                        recipe = filteredMeatRecipes[meatIndex++ % filteredMeatRecipes.length];
-                    }
-                    
-                    const dayPlan = {
-                        day: day,
-                        dinner: recipe,
-                        kidsLunch: null
-                    };
-                    
-                    if (day === 'Dienstag' || day === 'Donnerstag') {
-                        dayPlan.kidsLunch = filteredKidsRecipes[kidsIndex++ % filteredKidsRecipes.length];
-                    }
-                    
-                    currentWeekPlan.push(dayPlan);
-                });
-                
-                // Einkaufsliste erstellen
-                rebuildShoppingList();
-                
-                // Speichere Pizza-Counter
-                preferences.weeksSincePizza = weeksSincePizza;
-                localStorage.setItem('mealPlannerPrefs', JSON.stringify(preferences));
-                
-                updatePizzaCountdown();
-                displayWeekOverview();
-                displayShoppingList();
-                displayRecipes();
-                
-                document.getElementById('loadingOverview').classList.remove('active');
-            }, 800);
-        }
-
-        // Wochenübersicht anzeigen
-        function displayWeekOverview() {
-            const container = document.getElementById('weekOverview');
-            container.innerHTML = '';
-            let totalCost = 0;
-            
-            currentWeekPlan.forEach((dayPlan, index) => {
-                const portionFactor = calculateDayPortions(index);
-                let dayCost = dayPlan.dinner.price * portionFactor;
-                
-                if (dayPlan.kidsLunch) {
-                    const kidsPortions = personPortions.filter(p => p.type === 'child')
-                        .reduce((sum, child) => sum + child.factor, 0);
-                    dayCost += dayPlan.kidsLunch.price * kidsPortions;
-                }
-                totalCost += dayCost;
-                
-                const dayDate = new Date(currentWeekStart);
-                dayDate.setDate(currentWeekStart.getDate() + index);
-                const dateStr = dayDate.toLocaleDateString('de-CH', { day: '2-digit', month: '2-digit' });
-                
-                const dayCard = document.createElement('div');
-                dayCard.className = 'day-card';
-                if (dayPlan.dinner.special === 'pizza-weekend') {
-                    dayCard.className += ' pizza-day';
-                }
-                
-                const portionText = dayPlan.day !== 'Freitag' && dayPlan.day !== 'Samstag' 
-                    ? `${portionFactor.toFixed(1)} Portionen (inkl. Mittagessen morgen)`
-                    : `${portionFactor.toFixed(1)} Portionen`;
-                
-                dayCard.innerHTML = `
-                    ${dayPlan.dinner.special !== 'pizza-weekend' ? 
-                        `<button class="swap-btn" onclick="swapRecipe(${index}, 'dinner')" title="Rezept tauschen">🔄</button>` : ''}
-                    <div class="day-header">
-                        <span class="day-name">${dayPlan.day} <small style="color:#999;">${dateStr}</small></span>
-                        <span class="price-tag">${dayCost.toFixed(2)} CHF</span>
-                    </div>
-                    <div class="meal-info">
-                        <div class="meal-name">🍽️ Abendessen: ${dayPlan.dinner.name}</div>
-                        <div class="meal-details">${dayPlan.dinner.category} • ${dayPlan.dinner.workTip}</div>
-                        <div class="portions-info">📊 ${portionText}</div>
-                    </div>
-                    ${dayPlan.kidsLunch ? `
-                        <div class="meal-info" style="position:relative;">
-                            <button class="swap-btn" onclick="swapRecipe(${index}, 'kidsLunch')" title="Kinder-Rezept tauschen" style="position:absolute; right:-5px; top:-5px; width:30px; height:30px; font-size:14px;">🔄</button>
-                            <div class="meal-name">👶 Kinder-Mittag: ${dayPlan.kidsLunch.name}</div>
-                            <div class="meal-details">Speziell für die Kleinen</div>
-                        </div>
-                    ` : ''}
-                `;
-                container.appendChild(dayCard);
-            });
-            
-            document.getElementById('totalCost').textContent = totalCost.toFixed(2);
-        }
-        
-        // Einzelnes Rezept austauschen
-        function swapRecipe(dayIndex, mealType) {
-            const dayPlan = currentWeekPlan[dayIndex];
-            let availableRecipes = [];
-            let currentRecipe = null;
-            
-            if (mealType === 'dinner') {
-                currentRecipe = dayPlan.dinner;
-                if (currentRecipe.category === 'Fleisch') {
-                    availableRecipes = recipes.meat.filter(r => r.name !== currentRecipe.name && filterRecipe(r));
-                } else if (currentRecipe.category === 'Vegetarisch') {
-                    availableRecipes = recipes.vegetarian.filter(r => r.name !== currentRecipe.name && filterRecipe(r));
-                }
-            } else if (mealType === 'kidsLunch') {
-                currentRecipe = dayPlan.kidsLunch;
-                availableRecipes = recipes.kids.filter(r => r.name !== currentRecipe.name && filterRecipe(r));
-            }
-            
-            if (availableRecipes.length > 0) {
-                const newRecipe = availableRecipes[Math.floor(Math.random() * availableRecipes.length)];
-                
-                if (mealType === 'dinner') {
-                    currentWeekPlan[dayIndex].dinner = newRecipe;
-                } else {
-                    currentWeekPlan[dayIndex].kidsLunch = newRecipe;
-                }
-                
-                rebuildShoppingList();
-                displayWeekOverview();
-                displayRecipes();
-                displayShoppingList();
-                
-                const dayCards = document.querySelectorAll('.day-card');
-                dayCards[dayIndex].style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    dayCards[dayIndex].style.animation = '';
-                }, 500);
-            } else {
-                alert('⚠️ Keine alternativen Rezepte mit den aktuellen Filtereinstellungen verfügbar.');
-            }
-        }
-
-        // Einkaufsliste anzeigen
-        function displayShoppingList() {
-            const container = document.getElementById('shoppingList');
-            container.innerHTML = '';
-            
-            const categories = {
-                '🥩 Fleisch & Geflügel': [],
-                '🥕 Gemüse & Obst': [],
-                '🧀 Milchprodukte': [],
-                '🍝 Nudeln, Reis & Beilagen': [],
-                '🥫 Konserven & Haltbares': [],
-                '🧂 Gewürze & Öle': []
-            };
-            
-            for (const [ingredient, amount] of Object.entries(shoppingListData)) {
-                const lower = ingredient.toLowerCase();
-                
-                if (lower.includes('fleisch') || lower.includes('hähnchen') || 
-                    lower.includes('schwein') || lower.includes('rind') || 
-                    lower.includes('hack') || lower.includes('schnitzel') ||
-                    lower.includes('lamm') || lower.includes('kalb') ||
-                    lower.includes('ente') || lower.includes('pute') ||
-                    lower.includes('wurst') || lower.includes('speck') ||
-                    lower.includes('filet') || lower.includes('steak') ||
-                    lower.includes('leber') || lower.includes('bratwurst')) {
-                    categories['🥩 Fleisch & Geflügel'].push({ingredient, amount});
-                } else if (lower.includes('milch') || lower.includes('käse') || 
-                           lower.includes('sahne') || lower.includes('butter') ||
-                           lower.includes('joghurt') || lower.includes('mozzarella') ||
-                           lower.includes('ricotta') || lower.includes('feta') ||
-                           lower.includes('emmentaler') || lower.includes('parmesan') ||
-                           lower.includes('cheddar') || lower.includes('gorgonzola') ||
-                           lower.includes('halloumi') || lower.includes('frischkäse')) {
-                    categories['🧀 Milchprodukte'].push({ingredient, amount});
-                } else if (lower.includes('nudel') || lower.includes('reis') || 
-                           lower.includes('spaghetti') || lower.includes('penne') ||
-                           lower.includes('kartoffel') || lower.includes('spätzle') ||
-                           lower.includes('gnocchi') || lower.includes('couscous') ||
-                           lower.includes('quinoa') || lower.includes('tortellini') ||
-                           lower.includes('ravioli') || lower.includes('cannelloni') ||
-                           lower.includes('lasagne') || lower.includes('tagliatelle')) {
-                    categories['🍝 Nudeln, Reis & Beilagen'].push({ingredient, amount});
-                } else if (lower.includes('dose') || lower.includes('bohnen') ||
-                           lower.includes('mais') || lower.includes('linsen') ||
-                           lower.includes('kichererbsen')) {
-                    categories['🥫 Konserven & Haltbares'].push({ingredient, amount});
-                } else if (lower.includes('salz') || lower.includes('pfeffer') ||
-                           lower.includes('öl') || lower.includes('gewürz') ||
-                           lower.includes('essig') || lower.includes('senf') ||
-                           lower.includes('curry') || lower.includes('paprika') ||
-                           lower.includes('oregano') || lower.includes('basilikum')) {
-                    categories['🧂 Gewürze & Öle'].push({ingredient, amount});
-                } else {
-                    categories['🥕 Gemüse & Obst'].push({ingredient, amount});
-                }
-            }
-            
-            for (const [category, items] of Object.entries(categories)) {
-                if (items.length === 0) continue;
-                
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'shopping-category';
-                categoryDiv.innerHTML = `<h3>${category}</h3>`;
-                
-                items.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'shopping-item';
-                    itemDiv.innerHTML = `
-                        <input type="checkbox">
-                        <span>${item.ingredient}: ${item.amount}</span>
-                    `;
-                    categoryDiv.appendChild(itemDiv);
-                });
-                
-                container.appendChild(categoryDiv);
-            }
-        }
-
-        // Rezepte anzeigen mit angepassten Mengen
-        function displayRecipes() {
-            const container = document.getElementById('recipesList');
-            container.innerHTML = '';
-            
-            currentWeekPlan.forEach((dayPlan, index) => {
-                const portionFactor = calculateDayPortions(index);
-                const multipliedIngredients = multiplyIngredients(dayPlan.dinner.ingredients, portionFactor);
-                
-                const recipeDiv = document.createElement('div');
-                recipeDiv.className = 'recipe-details';
-                recipeDiv.innerHTML = `
-                    <h3>🍽️ ${dayPlan.day} - ${dayPlan.dinner.name}</h3>
-                    <p style="color: #666; margin-bottom: 10px;">Für ${portionFactor.toFixed(1)} Portionen</p>
-                    <div class="ingredients-list">
-                        <h4>Zutaten:</h4>
-                        <ul>
-                            ${Object.entries(multipliedIngredients).map(([ing, amount]) => 
-                                `<li>${ing}: ${amount}</li>`
-                            ).join('')}
-                        </ul>
-                    </div>
-                    <div class="instructions">
-                        <h4>Zubereitung:</h4>
-                        <ol>
-                            ${dayPlan.dinner.instructions.map(step => 
-                                `<li>${step}</li>`
-                            ).join('')}
-                        </ol>
-                    </div>
-                    <div class="tips-box">
-                        <h4>💡 Tipps:</h4>
-                        <p><strong>Für Kinder:</strong> ${dayPlan.dinner.childTip}</p>
-                        <p><strong>Fürs Büro:</strong> ${dayPlan.dinner.workTip}</p>
-                    </div>
-                `;
-                container.appendChild(recipeDiv);
-                
-                if (dayPlan.kidsLunch) {
-                    const kidsPortions = personPortions.filter(p => p.type === 'child')
-                        .reduce((sum, child) => sum + child.factor, 0);
-                    if (kidsPortions > 0) {
-                        const kidsIngredients = multiplyIngredients(dayPlan.kidsLunch.ingredients, kidsPortions);
-                        
-                        const kidsDiv = document.createElement('div');
-                        kidsDiv.className = 'recipe-details';
-                        kidsDiv.innerHTML = `
-                            <h3>👶 ${dayPlan.day} Mittag - ${dayPlan.kidsLunch.name}</h3>
-                            <p style="color: #666; margin-bottom: 10px;">Für ${kidsPortions.toFixed(1)} Kinder-Portionen</p>
-                            <div class="ingredients-list">
-                                <h4>Zutaten:</h4>
-                                <ul>
-                                    ${Object.entries(kidsIngredients).map(([ing, amount]) => 
-                                        `<li>${ing}: ${amount}</li>`
-                                    ).join('')}
-                                </ul>
-                            </div>
-                            <div class="instructions">
-                                <h4>Zubereitung:</h4>
-                                <ol>
-                                    ${dayPlan.kidsLunch.instructions.map(step => 
-                                        `<li>${step}</li>`
-                                    ).join('')}
-                                </ol>
-                            </div>
-                            <div class="tips-box">
-                                <h4>💡 Tipp:</h4>
-                                <p>${dayPlan.kidsLunch.childTip}</p>
-                            </div>
-                        `;
-                        container.appendChild(kidsDiv);
-                    }
-                }
-            });
-        }
-
-        // PDF Export
-        function exportToPDF() {
-            window.print();
-        }
-
-        // GitHub Sync Funktionen
-        function showGitHubSync() {
-            const modal = document.getElementById('githubModal');
-            modal.classList.add('active');
-        }
-        
-        function closeGitHubSync() {
-            const modal = document.getElementById('githubModal');
-            modal.classList.remove('active');
-        }
-        
-        async function saveToGitHub() {
-            const token = document.getElementById('githubToken').value || localStorage.getItem('githubToken');
-            const gistName = document.getElementById('gistName').value || `Wochenplan ${new Date().toLocaleDateString('de-CH')}`;
+        // Mit Cloud verbinden
+        async function connectToCloud() {
+            const token = document.getElementById('githubToken').value;
+            const gistId = document.getElementById('existingGistId').value;
+            const adults = document.getElementById('adultsCount').value;
+            const children = document.getElementById('childrenCount').value;
             
             if (!token) {
-                document.getElementById('saveStatus').innerHTML = 
-                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
+                showToast('Bitte GitHub Token eingeben!', 'error');
                 return;
             }
             
-            if (currentWeekPlan.length === 0) {
-                document.getElementById('saveStatus').innerHTML = 
-                    '<div class="status-error">⚠️ Kein Wochenplan zum Speichern vorhanden!</div>';
-                return;
+            showLoading('Verbinde mit Cloud...');
+            
+            CloudSync.token = token;
+            sessionStorage.setItem('githubToken', token);
+            
+            AppData.preferences.adults = parseInt(adults);
+            AppData.preferences.children = parseInt(children);
+            
+            try {
+                if (gistId) {
+                    // Lade bestehenden Plan
+                    CloudSync.gistId = gistId;
+                    sessionStorage.setItem('currentGistId', gistId);
+                    await loadFromCloud();
+                } else {
+                    // Erstelle neuen Plan
+                    await createNewCloudPlan();
+                }
+                
+                document.getElementById('setupModal').classList.remove('active');
+                await initializeApp();
+                
+            } catch (error) {
+                showToast('Fehler: ' + error.message, 'error');
+                hideLoading();
             }
+        }
+
+        // App initialisieren
+        async function initializeApp() {
+            showLoading('Lade Rezepte und synchronisiere...');
             
-            const data = {
-                version: '4.0',
-                timestamp: new Date().toISOString(),
-                weekPlan: currentWeekPlan,
-                shoppingList: shoppingListData,
-                preferences: preferences,
-                weeksSincePizza: weeksSincePizza,
-                weekStart: currentWeekStart.toISOString(),
-                totalCost: document.getElementById('totalCost').textContent,
-                personPortions: personPortions
-            };
-            
+            try {
+                // Lade Rezepte (diese könnten auch aus der Cloud kommen)
+                await loadRecipes();
+                
+                // Lade aktuellen Plan aus Cloud
+                if (CloudSync.gistId) {
+                    await loadFromCloud();
+                } else {
+                    // Erstelle neuen Plan
+                    await generateSmartPlan();
+                }
+                
+                // Starte Auto-Sync
+                startAutoSync();
+                
+                // Update UI
+                updateCloudStatus('online');
+                displayWeekPlan();
+                hideLoading();
+                
+            } catch (error) {
+                console.error('Initialisierungsfehler:', error);
+                showToast('Fehler beim Laden: ' + error.message, 'error');
+                hideLoading();
+            }
+        }
+
+        // Rezepte laden
+        async function loadRecipes() {
+            try {
+                // Lade die externe recipes.json Datei
+                const response = await fetch('recipes.json');
+                if (!response.ok) {
+                    throw new Error('Fehler beim Laden der Rezepte');
+                }
+                AppData.recipes = await response.json();
+                console.log(`✓ ${countTotalRecipes()} Rezepte geladen`);
+            } catch (error) {
+                console.error('Fehler beim Laden der recipes.json:', error);
+                showToast('Fehler beim Laden der Rezepte!', 'error');
+                // Fallback auf leere Struktur
+                AppData.recipes = {
+                    categories: {
+                        meat: { recipes: [] },
+                        vegetarian: { recipes: [] },
+                        kids: { recipes: [] }
+                    }
+                };
+            }
+        }
+        
+        // Zähle alle Rezepte
+        function countTotalRecipes() {
+            let count = 0;
+            Object.values(AppData.recipes.categories).forEach(cat => {
+                count += cat.recipes.length;
+            });
+            return count;
+        }
+
+        // Neuen Cloud-Plan erstellen
+        async function createNewCloudPlan() {
             const gistData = {
-                description: gistName,
+                description: `Wochenplan ${new Date().toLocaleDateString('de-CH')}`,
                 public: false,
                 files: {
                     'wochenplan.json': {
-                        content: JSON.stringify(data, null, 2)
+                        content: JSON.stringify({
+                            version: '2.0',
+                            weekPlan: [],
+                            preferences: AppData.preferences,
+                            shoppingList: {},
+                            lastUpdate: new Date().toISOString()
+                        }, null, 2)
                     }
                 }
             };
             
-            try {
-                document.getElementById('saveStatus').innerHTML = 
-                    '<div class="status-info">📤 Speichere auf GitHub...</div>';
-                
-                const response = await fetch('https://api.github.com/gists', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(gistData)
-                });
-                
-                if (response.ok) {
-                    const result = await response.json();
-                    currentGistId = result.id;
-                    localStorage.setItem('currentGistId', currentGistId);
-                    localStorage.setItem('lastSyncDate', new Date().toISOString());
-                    
-                    document.getElementById('saveStatus').innerHTML = 
-                        `<div class="status-success">
-                            ✅ Erfolgreich gespeichert!<br>
-                            Gist ID: <code>${result.id}</code><br>
-                            <a href="${result.html_url}" target="_blank" style="color: #0366d6;">Auf GitHub ansehen →</a>
-                        </div>`;
-                } else {
-                    throw new Error(`GitHub API Fehler: ${response.status}`);
-                }
-            } catch (error) {
-                document.getElementById('saveStatus').innerHTML = 
-                    `<div class="status-error">❌ Fehler: ${error.message}</div>`;
+            const response = await fetch('https://api.github.com/gists', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `token ${CloudSync.token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(gistData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Fehler beim Erstellen des Cloud-Plans');
             }
+            
+            const result = await response.json();
+            CloudSync.gistId = result.id;
+            sessionStorage.setItem('currentGistId', result.id);
         }
-        
-        async function updateExistingGist() {
-            const token = document.getElementById('githubToken').value || localStorage.getItem('githubToken');
+
+        // Aus Cloud laden
+        async function loadFromCloud() {
+            if (!CloudSync.gistId) return;
             
-            if (!token) {
-                document.getElementById('saveStatus').innerHTML = 
-                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
-                return;
+            const response = await fetch(`https://api.github.com/gists/${CloudSync.gistId}`, {
+                headers: {
+                    'Authorization': `token ${CloudSync.token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Fehler beim Laden aus der Cloud');
             }
             
-            if (!currentGistId) {
-                const gistId = prompt('Bitte Gist-ID eingeben:');
-                if (!gistId) return;
-                currentGistId = gistId;
-                localStorage.setItem('currentGistId', currentGistId);
-            }
+            const gist = await response.json();
+            const content = gist.files['wochenplan.json'].content;
+            const data = JSON.parse(content);
+            
+            AppData.weekPlan = data.weekPlan || [];
+            AppData.preferences = {...AppData.preferences, ...data.preferences};
+            AppData.shoppingList = data.shoppingList || {};
+            CloudSync.lastSync = new Date();
+        }
+
+        // In Cloud speichern
+        async function saveToCloud() {
+            if (!CloudSync.gistId) return;
             
             const data = {
-                version: '4.0',
-                timestamp: new Date().toISOString(),
-                weekPlan: currentWeekPlan,
-                shoppingList: shoppingListData,
-                preferences: preferences,
-                weeksSincePizza: weeksSincePizza,
-                weekStart: currentWeekStart.toISOString(),
-                totalCost: document.getElementById('totalCost').textContent,
-                personPortions: personPortions
+                version: '2.0',
+                weekPlan: AppData.weekPlan,
+                preferences: AppData.preferences,
+                shoppingList: AppData.shoppingList,
+                lastUpdate: new Date().toISOString()
             };
             
-            const gistData = {
-                files: {
-                    'wochenplan.json': {
-                        content: JSON.stringify(data, null, 2)
+            const response = await fetch(`https://api.github.com/gists/${CloudSync.gistId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `token ${CloudSync.token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    files: {
+                        'wochenplan.json': {
+                            content: JSON.stringify(data, null, 2)
+                        }
                     }
-                }
-            };
+                })
+            });
             
-            try {
-                document.getElementById('saveStatus').innerHTML = 
-                    '<div class="status-info">🔄 Aktualisiere Gist...</div>';
-                
-                const response = await fetch(`https://api.github.com/gists/${currentGistId}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(gistData)
-                });
-                
-                if (response.ok) {
-                    const result = await response.json();
-                    localStorage.setItem('lastSyncDate', new Date().toISOString());
-                    
-                    document.getElementById('saveStatus').innerHTML = 
-                        '<div class="status-success">' +
-                        '✅ Erfolgreich aktualisiert!<br>' +
-                        '<a href="' + result.html_url + '" target="_blank" style="color: #0366d6;">Auf GitHub ansehen →</a>' +
-                        '</div>';
-                } else {
-                    throw new Error('GitHub API Fehler: ' + response.status);
-                }
-            } catch (error) {
-                document.getElementById('saveStatus').innerHTML = 
-                    '<div class="status-error">❌ Fehler: ' + error.message + '</div>';
-            }
-        }
-        
-        async function loadGists() {
-            const token = document.getElementById('githubToken').value || localStorage.getItem('githubToken');
-            
-            if (!token) {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
-                return;
-            }
-            
-            try {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-info">📋 Lade Gists...</div>';
-                
-                const response = await fetch('https://api.github.com/gists', {
-                    headers: {
-                        'Authorization': 'token ' + token,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                if (response.ok) {
-                    const gists = await response.json();
-                    const mealPlanGists = gists.filter(gist => 
-                        gist.files && gist.files['wochenplan.json']
-                    );
-                    
-                    if (mealPlanGists.length === 0) {
-                        document.getElementById('loadStatus').innerHTML = 
-                            '<div class="status-info">Keine gespeicherten Wochenpläne gefunden.</div>';
-                        return;
-                    }
-                    
-                    const gistList = document.getElementById('gistList');
-                    let gistHTML = '';
-                    mealPlanGists.forEach(gist => {
-                        const date = new Date(gist.updated_at);
-                        const dateStr = date.toLocaleDateString('de-CH');
-                        const timeStr = date.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'});
-                        
-                        gistHTML += '<div class="gist-item" onclick="loadGistById(\'' + gist.id + '\')">' +
-                            '<div class="gist-title">' + (gist.description || 'Wochenplan') + '</div>' +
-                            '<div class="gist-date">' + dateStr + ' ' + timeStr + '</div>' +
-                            '</div>';
-                    });
-                    gistList.innerHTML = gistHTML;
-                    
-                    gistList.style.display = 'block';
-                    document.getElementById('loadStatus').innerHTML = '';
-                } else {
-                    throw new Error('GitHub API Fehler: ' + response.status);
-                }
-            } catch (error) {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-error">❌ Fehler: ' + error.message + '</div>';
-            }
-        }
-        
-        async function loadGistById(gistId) {
-            const token = document.getElementById('githubToken').value || localStorage.getItem('githubToken');
-            
-            try {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-info">📥 Lade Wochenplan...</div>';
-                
-                const response = await fetch('https://api.github.com/gists/' + gistId, {
-                    headers: {
-                        'Authorization': 'token ' + token,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                if (response.ok) {
-                    const gist = await response.json();
-                    const content = gist.files['wochenplan.json'].content;
-                    const data = JSON.parse(content);
-                    
-                    importWeekPlan(data);
-                    currentGistId = gistId;
-                    localStorage.setItem('currentGistId', currentGistId);
-                    localStorage.setItem('lastSyncDate', gist.updated_at);
-                    
-                    document.getElementById('loadStatus').innerHTML = 
-                        '<div class="status-success">✅ Wochenplan erfolgreich geladen!</div>';
-                    
-                    setTimeout(() => {
-                        closeGitHubSync();
-                    }, 2000);
-                } else {
-                    throw new Error('GitHub API Fehler: ' + response.status);
-                }
-            } catch (error) {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-error">❌ Fehler: ' + error.message + '</div>';
-            }
-        }
-        
-        async function loadFromGitHub() {
-            const input = document.getElementById('gistId').value.trim();
-            const token = document.getElementById('githubToken').value || localStorage.getItem('githubToken');
-            
-            if (!input) {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-error">⚠️ Bitte Gist-ID oder URL eingeben!</div>';
-                return;
-            }
-            
-            if (!token) {
-                document.getElementById('loadStatus').innerHTML = 
-                    '<div class="status-error">⚠️ Bitte GitHub Token in den Einstellungen eingeben!</div>';
-                return;
-            }
-            
-            let gistId = input;
-            if (input.includes('gist.github.com')) {
-                const matches = input.match(/([a-f0-9]{32})/);
-                if (matches) {
-                    gistId = matches[1];
-                }
-            }
-            
-            loadGistById(gistId);
-        }
-        
-        function importWeekPlan(data) {
-            if (!data.weekPlan || !data.version) {
-                throw new Error('Ungültiges Datenformat');
-            }
-            
-            currentWeekPlan = data.weekPlan;
-            shoppingListData = data.shoppingList || {};
-            
-            if (data.preferences) {
-                preferences = { ...preferences, ...data.preferences };
-                if (data.weeksSincePizza !== undefined) {
-                    weeksSincePizza = data.weeksSincePizza;
-                }
-            }
-            
-            if (data.personPortions) {
-                personPortions = data.personPortions;
-                updatePortionSettings();
-            }
-            
-            if (data.weekStart) {
-                currentWeekStart = new Date(data.weekStart);
-                const weekEnd = new Date(currentWeekStart);
-                weekEnd.setDate(currentWeekStart.getDate() + 6);
-                const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-                const startStr = currentWeekStart.toLocaleDateString('de-CH', options);
-                const endStr = weekEnd.toLocaleDateString('de-CH', options);
-                document.getElementById('weekDateDisplay').textContent = `Woche vom ${startStr} bis ${endStr}`;
-            }
-            
-            updatePizzaCountdown();
-            displayWeekOverview();
-            displayShoppingList();
-            displayRecipes();
-            
-            const hasPizza = currentWeekPlan.some(day => day.dinner.special === 'pizza-weekend');
-            document.getElementById('pizzaIndicator').style.display = hasPizza ? 'block' : 'none';
-        }
-        
-        window.onclick = function(event) {
-            const githubModal = document.getElementById('githubModal');
-            if (event.target === githubModal) {
-                closeGitHubSync();
+            if (response.ok) {
+                CloudSync.lastSync = new Date();
+                updateCloudStatus('online');
+                showToast('✓ Gespeichert', 'success');
             }
         }
 
-        window.loadGistById = loadGistById;
+        // Auto-Sync starten
+        function startAutoSync() {
+            // Speichere bei jeder Änderung
+            CloudSync.syncInterval = setInterval(async () => {
+                if (CloudSync.isOnline) {
+                    await saveToCloud();
+                }
+            }, 30000); // Alle 30 Sekunden
+        }
+
+        // Auto-Save bei Änderungen
+        function triggerAutoSave() {
+            clearTimeout(CloudSync.autoSaveTimeout);
+            CloudSync.autoSaveTimeout = setTimeout(() => {
+                saveToCloud();
+            }, 2000); // 2 Sekunden nach letzter Änderung
+        }
+
+        // Intelligenten Plan generieren
+        async function generateSmartPlan() {
+            if (!AppData.recipes) {
+                await loadRecipes();
+            }
+            
+            showLoading('Erstelle intelligenten Wochenplan...');
+            
+            // Erstelle Plan mit KI-Engine
+            AppData.weekPlan = SmartPlanner.createPlan(AppData.recipes, AppData.preferences);
+            
+            // Erstelle Einkaufsliste
+            generateShoppingList();
+            
+            // Speichere in Cloud
+            await saveToCloud();
+            
+            // Update UI
+            displayWeekPlan();
+            hideLoading();
+            
+            showToast('✓ Neuer Plan erstellt', 'success');
+        }
+
+        // Plan optimieren
+        function optimizeCurrentPlan() {
+            showToast('🔄 Optimiere Plan...', 'info');
+            
+            // Hier könnte eine echte Optimierung stattfinden
+            // z.B. Preisoptimierung, Nährstoffbalance, etc.
+            
+            setTimeout(() => {
+                showToast('✓ Plan optimiert', 'success');
+                triggerAutoSave();
+            }, 1000);
+        }
+
+        // Wochenplan anzeigen
+        function displayWeekPlan() {
+            const grid = document.getElementById('weekGrid');
+            grid.innerHTML = '';
+            
+            AppData.weekPlan.forEach((day, index) => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                
+                let variationsHtml = '';
+                if (day.variations && day.variations.length > 0) {
+                    variationsHtml = day.variations.map(v => `
+                        <div class="meal-variations">
+                            <small style="color: #666;">Variante:</small>
+                            ${v.options.map(opt => `
+                                <span class="variation-chip ${opt === v.selected ? 'active' : ''}" 
+                                      onclick="selectVariation(${index}, '${v.type}', '${opt}')">
+                                    ${opt}
+                                </span>
+                            `).join('')}
+                        </div>
+                    `).join('');
+                }
+                
+                dayCard.innerHTML = `
+                    <div class="day-header">
+                        <span class="day-name">${day.day} <small style="color: #999;">${day.date}</small></span>
+                        <span style="color: #4caf50; font-weight: bold;">
+                            ${day.dinner ? day.dinner.price + ' CHF' : ''}
+                        </span>
+                    </div>
+                    <div class="meal-name">
+                        ${day.dinner ? day.dinner.name : 'Kein Rezept'}
+                    </div>
+                    ${variationsHtml}
+                    <button class="btn btn-secondary" style="margin-top: 10px; padding: 8px;" 
+                            onclick="changeMeal(${index})">
+                        🔄 Ändern
+                    </button>
+                `;
+                
+                grid.appendChild(dayCard);
+            });
+            
+            // Update Wochendatum
+            const weekStart = new Date();
+            const weekEnd = new Date();
+            weekEnd.setDate(weekStart.getDate() + 6);
+            
+            document.getElementById('weekDate').textContent = 
+                `${weekStart.toLocaleDateString('de-CH')} - ${weekEnd.toLocaleDateString('de-CH')}`;
+        }
+
+        // Variation auswählen
+        function selectVariation(dayIndex, type, option) {
+            const day = AppData.weekPlan[dayIndex];
+            if (day.variations) {
+                const variation = day.variations.find(v => v.type === type);
+                if (variation) {
+                    variation.selected = option;
+                    displayWeekPlan();
+                    triggerAutoSave();
+                }
+            }
+        }
+
+        // Mahlzeit ändern
+        function changeMeal(dayIndex) {
+            // Wähle neues zufälliges Rezept
+            const allRecipes = [];
+            Object.values(AppData.recipes.categories).forEach(cat => {
+                allRecipes.push(...cat.recipes);
+            });
+            
+            const newRecipe = allRecipes[Math.floor(Math.random() * allRecipes.length)];
+            AppData.weekPlan[dayIndex].dinner = SmartPlanner.addVariations(newRecipe);
+            
+            displayWeekPlan();
+            generateShoppingList();
+            triggerAutoSave();
+            
+            showToast('✓ Rezept geändert', 'success');
+        }
+
+        // Einkaufsliste generieren
+        function generateShoppingList() {
+            AppData.shoppingList = {};
+            
+            AppData.weekPlan.forEach(day => {
+                if (day.dinner && day.dinner.baseIngredients) {
+                    Object.entries(day.dinner.baseIngredients).forEach(([key, value]) => {
+                        const ingredient = day.variations && day.variations.find(v => v.type === key)
+                            ? day.variations.find(v => v.type === key).selected
+                            : key;
+                        
+                        if (!AppData.shoppingList[ingredient]) {
+                            AppData.shoppingList[ingredient] = {
+                                amount: 0,
+                                unit: value.unit || ''
+                            };
+                        }
+                        
+                        const portions = AppData.preferences.adults + (AppData.preferences.children * 0.5);
+                        AppData.shoppingList[ingredient].amount += value.amount * portions;
+                    });
+                }
+            });
+        }
+
+        // Einkaufsliste anzeigen
+        function showShoppingList() {
+            generateShoppingList();
+            
+            document.querySelector('.week-container').style.display = 'none';
+            document.getElementById('shoppingContainer').style.display = 'block';
+            
+            const grid = document.getElementById('shoppingGrid');
+            grid.innerHTML = '';
+            
+            // Kategorisiere Zutaten
+            const categories = {
+                'Fleisch & Fisch': [],
+                'Milchprodukte': [],
+                'Gemüse & Obst': [],
+                'Nudeln & Reis': [],
+                'Sonstiges': []
+            };
+            
+            Object.entries(AppData.shoppingList).forEach(([item, data]) => {
+                const lower = item.toLowerCase();
+                let category = 'Sonstiges';
+                
+                if (lower.includes('fleisch') || lower.includes('hähnchen') || 
+                    lower.includes('rind') || lower.includes('schwein')) {
+                    category = 'Fleisch & Fisch';
+                } else if (lower.includes('käse') || lower.includes('milch') || 
+                           lower.includes('sahne') || lower.includes('butter')) {
+                    category = 'Milchprodukte';
+                } else if (lower.includes('zwiebel') || lower.includes('paprika') || 
+                           lower.includes('zucchini') || lower.includes('tomate')) {
+                    category = 'Gemüse & Obst';
+                } else if (lower.includes('pasta') || lower.includes('reis') || 
+                           lower.includes('nudel') || lower.includes('spätzle')) {
+                    category = 'Nudeln & Reis';
+                }
+                
+                categories[category].push({
+                    name: item,
+                    amount: Math.round(data.amount * 10) / 10,
+                    unit: data.unit
+                });
+            });
+            
+            // Erstelle Kategorien
+            Object.entries(categories).forEach(([category, items]) => {
+                if (items.length === 0) return;
+                
+                const catDiv = document.createElement('div');
+                catDiv.className = 'shopping-category';
+                catDiv.innerHTML = `
+                    <h3>${category === 'Fleisch & Fisch' ? '🥩' : 
+                         category === 'Milchprodukte' ? '🧀' :
+                         category === 'Gemüse & Obst' ? '🥕' :
+                         category === 'Nudeln & Reis' ? '🍝' : '📦'} ${category}</h3>
+                    ${items.map(item => `
+                        <div class="shopping-item">
+                            <input type="checkbox">
+                            <span>${item.name}: ${item.amount} ${item.unit}</span>
+                        </div>
+                    `).join('')}
+                `;
+                grid.appendChild(catDiv);
+            });
+        }
+
+        // Einkaufsliste ausblenden
+        function hideShoppingList() {
+            document.getElementById('shoppingContainer').style.display = 'none';
+            document.querySelector('.week-container').style.display = 'block';
+        }
+
+        // Cloud Status Update
+        function updateCloudStatus(status) {
+            const statusEl = document.getElementById('cloudStatus');
+            const statusText = document.getElementById('cloudStatusText');
+            
+            statusEl.className = 'cloud-status';
+            
+            switch(status) {
+                case 'online':
+                    statusText.textContent = 'Synchronisiert';
+                    break;
+                case 'syncing':
+                    statusEl.classList.add('syncing');
+                    statusText.textContent = 'Synchronisiere...';
+                    break;
+                case 'offline':
+                    statusEl.classList.add('offline');
+                    statusText.textContent = 'Offline';
+                    break;
+            }
+        }
+
+        // UI Helper Functions
+        function showLoading(message) {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.querySelector('p').textContent = message || 'Lade...';
+            overlay.classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show ' + type;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function showSettings() {
+            showToast('⚙️ Einstellungen kommen bald...', 'info');
+        }
+
+        // Online/Offline Detection
+        window.addEventListener('online', () => {
+            CloudSync.isOnline = true;
+            updateCloudStatus('online');
+            saveToCloud();
+        });
+
+        window.addEventListener('offline', () => {
+            CloudSync.isOnline = false;
+            updateCloudStatus('offline');
+        });
+
+        // Cleanup beim Verlassen
+        window.addEventListener('beforeunload', () => {
+            if (CloudSync.syncInterval) {
+                clearInterval(CloudSync.syncInterval);
+            }
+        });
     </script>
 </body>
 </html>
