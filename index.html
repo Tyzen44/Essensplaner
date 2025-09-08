@@ -1347,25 +1347,52 @@
 
         // Rezepte laden
         async function loadRecipes() {
-            try {
-                const response = await fetch('recipes.json');
-                if (!response.ok) {
-                    throw new Error('Fehler beim Laden der Rezepte');
+    try {
+        // Paralleles Laden aller drei Dateien
+        const [meatResponse, vegResponse, kidsResponse] = await Promise.all([
+            fetch('recipes/meat.json'),
+            fetch('recipes/vegetarian.json'),
+            fetch('recipes/kids.json')
+        ]);
+
+        // Fehlerbehandlung für einzelne Dateien
+        const meatRecipes = meatResponse.ok ? await meatResponse.json() : { recipes: [] };
+        const vegRecipes = vegResponse.ok ? await vegResponse.json() : { recipes: [] };
+        const kidsRecipes = kidsResponse.ok ? await kidsResponse.json() : { recipes: [] };
+
+        // Zusammenführen in die erwartete Struktur
+        AppData.recipes = {
+            version: "3.0",
+            categories: {
+                meat: {
+                    name: "Fleischgerichte",
+                    recipes: meatRecipes.recipes || []
+                },
+                vegetarian: {
+                    name: "Vegetarische Gerichte",
+                    recipes: vegRecipes.recipes || []
+                },
+                kids: {
+                    name: "Kinderessen",
+                    recipes: kidsRecipes.recipes || []
                 }
-                AppData.recipes = await response.json();
-                console.log(`${countTotalRecipes()} Rezepte geladen`);
-            } catch (error) {
-                console.error('Fehler beim Laden der recipes.json:', error);
-                showToast('Fehler beim Laden der Rezepte!', 'error');
-                AppData.recipes = {
-                    categories: {
-                        meat: { recipes: [] },
-                        vegetarian: { recipes: [] },
-                        kids: { recipes: [] }
-                    }
-                };
             }
-        }
+        };
+
+        console.log(`${countTotalRecipes()} Rezepte geladen`);
+        
+    } catch (error) {
+        console.error('Fehler beim Laden der Rezepte:', error);
+        showToast('Fehler beim Laden der Rezepte!', 'error');
+        AppData.recipes = {
+            categories: {
+                meat: { recipes: [] },
+                vegetarian: { recipes: [] },
+                kids: { recipes: [] }
+            }
+        };
+    }
+}
 
         // Zähle alle Rezepte
         function countTotalRecipes() {
