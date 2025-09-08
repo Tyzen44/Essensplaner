@@ -1,5 +1,5 @@
 {
-  "category": "Kids",
+  "category": "kids",
   "name": "Kinderessen",
   "version": "1.0",
   "lastUpdated": "2024-01-15",
@@ -543,7 +543,7 @@
         "Optional: Klecks Sahne in die Mitte",
         "Mit Basilikum garnieren"
       ],
-      "childTip": "Tomatensuppse mit Reis - Klassiker",
+      "childTip": "Tomatensuppe mit Reis - Klassiker",
       "workTip": "Schnell und einfach"
     },
     {
