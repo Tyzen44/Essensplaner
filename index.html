@@ -1335,8 +1335,6 @@
                 const usedRecipes = new Set();
                 const usedMainIngredients = new Map();
                 
-                console.log('Starte Planerstellung mit', recipes.meat?.length || 0, 'Fleisch und', recipes.vegetarian?.length || 0, 'Veg Rezepten');
-                
                 // Prüfe Pizza-Wochenende
                 const isPizzaWeekend = this.shouldHavePizzaWeekend();
                 if (isPizzaWeekend) {
@@ -1352,26 +1350,36 @@
                 const vegRecipes = this.filterRecipes(recipes.vegetarian || []);
                 const kidsRecipes = recipes.kids || [];
                 
+                // Debug: Zeige verfügbare Rezepte
+                console.log(`Verfügbare Rezepte nach Filter: ${meatRecipes.length} Fleisch, ${vegRecipes.length} Vegetarisch`);
+                
+                // WARNUNG wenn zu wenige Rezepte
+                if (meatRecipes.length < 5 || vegRecipes.length < 3) {
+                    showToast('⚠️ Wenige Rezepte verfügbar - Filter prüfen!', 'error');
+                    console.warn(`WARNUNG: Nur ${meatRecipes.length} Fleisch und ${vegRecipes.length} Veg Rezepte nach Filtern!`);
+                }
+                
                 // Wähle Kindergerichte für Dienstag und Donnerstag
                 let kidsLunchTue = null;
                 let kidsLunchThu = null;
                 
                 if (kidsRecipes.length > 0) {
                     kidsLunchTue = kidsRecipes[Math.floor(Math.random() * kidsRecipes.length)];
-                    const remainingKids = kidsRecipes.filter(r => r.id !== kidsLunchTue.id);
-                    if (remainingKids.length > 0) {
-                        kidsLunchThu = remainingKids[Math.floor(Math.random() * remainingKids.length)];
+                    if (kidsRecipes.length > 1) {
+                        kidsLunchThu = kidsRecipes.filter(r => r.id !== kidsLunchTue.id)[
+                            Math.floor(Math.random() * (kidsRecipes.length - 1))
+                        ];
                     } else {
-                        kidsLunchThu = kidsLunchTue; // Notfall wenn nur ein Kindergericht
+                        kidsLunchThu = kidsLunchTue; // Wenn nur 1 Kindergericht vorhanden
                     }
+                    AppData.kidsLunchTueThu = { tuesday: kidsLunchTue, thursday: kidsLunchThu };
                 }
-                
-                AppData.kidsLunchTueThu = { tuesday: kidsLunchTue, thursday: kidsLunchThu };
                 
                 // Verteile vegetarische Tage intelligent
                 const vegDayIndices = this.distributeVegDays(7, preferences.vegDays);
                 console.log('Vegetarische Tage:', vegDayIndices);
                 
+                // Erstelle Plan für jeden Tag
                 days.forEach((day, index) => {
                     let recipe = null;
                     let kidsLunch = null;
@@ -1379,33 +1387,37 @@
                     // Pizza-Wochenende (Freitag und Samstag)
                     if (isPizzaWeekend && (index === 4 || index === 5)) {
                         recipe = this.createPizzaRecipe(index === 4 ? 'Freitag' : 'Samstag');
-                        console.log(`Tag ${index} (${day}): Pizza-Wochenende`);
                     } else {
                         const isVegDay = vegDayIndices.includes(index);
-                        const availableRecipes = isVegDay ? vegRecipes : meatRecipes;
+                        let availableRecipes = isVegDay ? [...vegRecipes] : [...meatRecipes];
                         
-                        console.log(`Tag ${index} (${day}): ${isVegDay ? 'Vegetarisch' : 'Fleisch'}, ${availableRecipes.length} Rezepte verfügbar`);
+                        // Mische die Rezepte für mehr Zufälligkeit
+                        availableRecipes = availableRecipes.sort(() => Math.random() - 0.5);
                         
-                        // WICHTIG: Stelle sicher dass wir noch unbenutzte Rezepte haben
-                        const unusedRecipes = availableRecipes.filter(r => !usedRecipes.has(r.id));
+                        recipe = this.selectSmartRecipe(
+                            availableRecipes,
+                            usedRecipes,
+                            usedMainIngredients,
+                            index
+                        );
                         
-                        if (unusedRecipes.length === 0) {
-                            console.error(`FEHLER: Keine unbenutzten ${isVegDay ? 'vegetarischen' : 'Fleisch'}-Rezepte mehr!`);
-                            // Notfall: Nehme irgendein Rezept aus der anderen Kategorie
-                            const alternativeRecipes = isVegDay ? meatRecipes : vegRecipes;
-                            recipe = this.selectSmartRecipe(
-                                alternativeRecipes,
-                                usedRecipes,
-                                usedMainIngredients,
-                                index
-                            );
-                        } else {
-                            recipe = this.selectSmartRecipe(
-                                availableRecipes,
-                                usedRecipes,
-                                usedMainIngredients,
-                                index
-                            );
+                        // KRITISCH: Wenn das gleiche Rezept schon verwendet wurde, suche Alternative
+                        let attempts = 0;
+                        while (usedRecipes.has(recipe.id) && attempts < 10) {
+                            console.warn(`Rezept "${recipe.name}" bereits verwendet, suche Alternative...`);
+                            availableRecipes = availableRecipes.filter(r => r.id !== recipe.id);
+                            if (availableRecipes.length > 0) {
+                                recipe = this.selectSmartRecipe(
+                                    availableRecipes,
+                                    usedRecipes,
+                                    usedMainIngredients,
+                                    index
+                                );
+                            } else {
+                                console.error('Keine Alternativen mehr verfügbar!');
+                                break;
+                            }
+                            attempts++;
                         }
                     }
                     
@@ -1429,15 +1441,12 @@
                         variations: recipe.variations || []
                     });
                     
-                    // WICHTIG: Tracke verwendete Rezepte und Zutaten
                     if (recipe && recipe.id) {
-                        console.log(`Füge ${recipe.name} (ID: ${recipe.id}) zu verwendeten Rezepten hinzu`);
                         usedRecipes.add(recipe.id);
                         this.trackIngredients(recipe, usedMainIngredients, index);
+                        console.log(`${day}: ${recipe.name} (${recipe.category || 'Unbekannt'})`);
                     }
                 });
-                
-                console.log('Plan erstellt. Verwendete Rezepte:', usedRecipes.size);
                 
                 return plan;
             },
