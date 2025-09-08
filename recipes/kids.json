@@ -1,5 +1,9 @@
 {
-  "kids_recipes": [
+  "category": "Kids",
+  "name": "Kinderessen",
+  "version": "1.0",
+  "lastUpdated": "2024-01-15",
+  "recipes": [
     {
       "id": "k001",
       "name": "Mini-Frikadellen",
