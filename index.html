@@ -923,6 +923,16 @@
             kidsLunchTueThu: null
         };
 
+        // ========== WICHTIGE HILFSFUNKTION: Array mischen (Fisher-Yates Shuffle) ==========
+        function shuffleArray(array) {
+            const shuffled = [...array]; // Erstelle eine Kopie
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
         // ========== NEUE OPTIMIERUNGS-ENGINE ==========
         const PlanOptimizer = {
             // Hauptoptimierungsfunktion
@@ -1067,7 +1077,9 @@
                             });
                         
                         if (filtered.length > 0) {
-                            newPlan[index].dinner = SmartPlanner.addVariations({...filtered[0]});
+                            // WICHTIG: Auch hier das gefilterte Array mischen!
+                            const shuffled = shuffleArray(filtered);
+                            newPlan[index].dinner = SmartPlanner.addVariations({...shuffled[0]});
                             newPlan[index].variations = newPlan[index].dinner.variations;
                             improved = true;
                         }
@@ -1111,8 +1123,8 @@
                             .filter(r => r.workFriendly === true);
                         
                         if (workFriendly.length > 0) {
-                            const randomIndex = Math.floor(Math.random() * workFriendly.length);
-                            newPlan[i].dinner = SmartPlanner.addVariations({...workFriendly[randomIndex]});
+                            const shuffled = shuffleArray(workFriendly);
+                            newPlan[i].dinner = SmartPlanner.addVariations({...shuffled[0]});
                             newPlan[i].variations = newPlan[i].dinner.variations;
                             improved = true;
                         }
@@ -1151,8 +1163,8 @@
                             .filter(r => this.getMainIngredient(r) !== currentMain);
                         
                         if (different.length > 0) {
-                            const randomIndex = Math.floor(Math.random() * different.length);
-                            newPlan[i + 1].dinner = SmartPlanner.addVariations({...different[randomIndex]});
+                            const shuffled = shuffleArray(different);
+                            newPlan[i + 1].dinner = SmartPlanner.addVariations({...shuffled[0]});
                             newPlan[i + 1].variations = newPlan[i + 1].dinner.variations;
                             improved = true;
                         }
@@ -1187,8 +1199,8 @@
                             .filter(r => (r.prepTime || 30) <= 30);
                         
                         if (quickRecipes.length > 0) {
-                            const randomIndex = Math.floor(Math.random() * quickRecipes.length);
-                            newPlan[i].dinner = SmartPlanner.addVariations({...quickRecipes[randomIndex]});
+                            const shuffled = shuffleArray(quickRecipes);
+                            newPlan[i].dinner = SmartPlanner.addVariations({...shuffled[0]});
                             newPlan[i].variations = newPlan[i].dinner.variations;
                             improved = true;
                         }
@@ -1264,7 +1276,7 @@
                 showToast(message, 'success');
             } else {
                 hideLoading();
-                showToast('Plan ist bereits optimal! 👍', 'info');
+                showToast('Plan ist bereits optimal! 💯', 'info');
             }
         }
 
@@ -1328,7 +1340,7 @@
                 });
             },
 
-            // Erstelle intelligenten Wochenplan - VERBESSERT
+            // Erstelle intelligenten Wochenplan - KORRIGIERT MIT SHUFFLE
             createPlan: function(recipes, preferences) {
                 const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
                 const plan = [];
@@ -1364,11 +1376,10 @@
                 let kidsLunchThu = null;
                 
                 if (kidsRecipes.length > 0) {
-                    kidsLunchTue = kidsRecipes[Math.floor(Math.random() * kidsRecipes.length)];
+                    const shuffledKids = shuffleArray(kidsRecipes);
+                    kidsLunchTue = shuffledKids[0];
                     if (kidsRecipes.length > 1) {
-                        kidsLunchThu = kidsRecipes.filter(r => r.id !== kidsLunchTue.id)[
-                            Math.floor(Math.random() * (kidsRecipes.length - 1))
-                        ];
+                        kidsLunchThu = shuffledKids[1];
                     } else {
                         kidsLunchThu = kidsLunchTue; // Wenn nur 1 Kindergericht vorhanden
                     }
@@ -1389,10 +1400,12 @@
                         recipe = this.createPizzaRecipe(index === 4 ? 'Freitag' : 'Samstag');
                     } else {
                         const isVegDay = vegDayIndices.includes(index);
+                        
+                        // KRITISCH: Hier ist die Korrektur - Arrays mischen!
                         let availableRecipes = isVegDay ? [...vegRecipes] : [...meatRecipes];
                         
-                        // Mische die Rezepte für mehr Zufälligkeit
-                        availableRecipes = availableRecipes.sort(() => Math.random() - 0.5);
+                        // WICHTIG: Mische die verfügbaren Rezepte für Zufälligkeit
+                        availableRecipes = shuffleArray(availableRecipes);
                         
                         recipe = this.selectSmartRecipe(
                             availableRecipes,
@@ -1401,7 +1414,7 @@
                             index
                         );
                         
-                        // KRITISCH: Wenn das gleiche Rezept schon verwendet wurde, suche Alternative
+                        // Sicherstellen, dass das gleiche Rezept nicht zweimal verwendet wird
                         let attempts = 0;
                         while (usedRecipes.has(recipe.id) && attempts < 10) {
                             console.warn(`Rezept "${recipe.name}" bereits verwendet, suche Alternative...`);
@@ -1497,7 +1510,7 @@
                 return positions;
             },
 
-            // Wähle intelligentes Rezept
+            // Wähle intelligentes Rezept - VERBESSERT
             selectSmartRecipe: function(availableRecipes, usedRecipes, usedMainIngredients, dayIndex) {
                 const isWeekend = dayIndex >= 5;
                 const needsWorkFriendly = dayIndex < 4;
@@ -1522,11 +1535,14 @@
                 }
                 
                 if (candidates.length > 0) {
-                    const selected = candidates[Math.floor(Math.random() * candidates.length)];
+                    // WICHTIG: Verwende zufällige Auswahl, Arrays sind bereits gemischt
+                    const randomIndex = Math.floor(Math.random() * Math.min(5, candidates.length));
+                    const selected = candidates[randomIndex];
                     return {...selected};
                 }
                 
-                return availableRecipes[Math.floor(Math.random() * availableRecipes.length)];
+                // Fallback: Nimm irgendein Rezept
+                return availableRecipes[0] ? {...availableRecipes[0]} : null;
             },
 
             // Füge Variationen hinzu
@@ -2163,7 +2179,7 @@
             }
         }
 
-        // Mahlzeit ändern
+        // Mahlzeit ändern - KORRIGIERT MIT SHUFFLE
         function changeMeal(dayIndex) {
             const day = AppData.weekPlan[dayIndex];
             const isVeg = day.dinner.category === 'Vegetarisch';
@@ -2172,8 +2188,14 @@
                 AppData.recipes.vegetarian :
                 AppData.recipes.meat;
             
+            // Filter und mische die Rezepte
             const filtered = SmartPlanner.filterRecipes(availableRecipes);
-            const newRecipe = filtered[Math.floor(Math.random() * filtered.length)];
+            const shuffled = shuffleArray(filtered);
+            
+            // Wähle ein zufälliges Rezept aus den ersten 10
+            const maxIndex = Math.min(10, shuffled.length);
+            const randomIndex = Math.floor(Math.random() * maxIndex);
+            const newRecipe = shuffled[randomIndex];
             
             AppData.weekPlan[dayIndex].dinner = SmartPlanner.addVariations({...newRecipe});
             AppData.weekPlan[dayIndex].variations = AppData.weekPlan[dayIndex].dinner.variations;
