@@ -153,8 +153,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
         }
 
         .btn-secondary {
@@ -2219,17 +2224,33 @@
                 const lower = item.toLowerCase();
                 let category = 'Sonstiges';
                 
+                // Erweiterte Fleisch-Erkennung
                 if (lower.includes('fleisch') || lower.includes('hähnchen') || lower.includes('rind') || 
-                    lower.includes('schwein') || lower.includes('lamm') || lower.includes('fisch')) {
+                    lower.includes('schwein') || lower.includes('lamm') || lower.includes('fisch') ||
+                    lower.includes('pute') || lower.includes('kalb') || lower.includes('ente') ||
+                    lower.includes('hack') || lower.includes('filet') || lower.includes('schnitzel') ||
+                    lower.includes('bratwurst') || lower.includes('wiener') || lower.includes('wurst') ||
+                    lower.includes('speck') || lower.includes('bacon') || lower.includes('schinken') ||
+                    lower.includes('steak') || lower.includes('braten') || lower.includes('gulasch') ||
+                    lower.includes('leber') || lower.includes('lachs') || lower.includes('forelle')) {
                     category = 'Fleisch & Fisch';
                 } else if (lower.includes('käse') || lower.includes('milch') || lower.includes('sahne') || 
-                           lower.includes('butter') || lower.includes('joghurt') || lower.includes('mozzarella')) {
+                           lower.includes('butter') || lower.includes('joghurt') || lower.includes('mozzarella') ||
+                           lower.includes('quark') || lower.includes('ricotta') || lower.includes('parmesan') ||
+                           lower.includes('gorgonzola') || lower.includes('feta') || lower.includes('frischkäse')) {
                     category = 'Milchprodukte';
                 } else if (lower.includes('zwiebel') || lower.includes('paprika') || lower.includes('zucchini') || 
-                           lower.includes('tomate') || lower.includes('kartoffel') || lower.includes('salat')) {
+                           lower.includes('tomate') || lower.includes('kartoffel') || lower.includes('salat') ||
+                           lower.includes('brokkoli') || lower.includes('blumenkohl') || lower.includes('möhre') ||
+                           lower.includes('karotte') || lower.includes('gurke') || lower.includes('spinat') ||
+                           lower.includes('aubergine') || lower.includes('kürbis') || lower.includes('lauch') ||
+                           lower.includes('pilz') || lower.includes('champignon') || lower.includes('bohne')) {
                     category = 'Gemüse & Obst';
                 } else if (lower.includes('pasta') || lower.includes('reis') || lower.includes('nudel') || 
-                           lower.includes('spätzle') || lower.includes('spaghetti') || lower.includes('penne')) {
+                           lower.includes('spätzle') || lower.includes('spaghetti') || lower.includes('penne') ||
+                           lower.includes('fusilli') || lower.includes('rigatoni') || lower.includes('lasagne') ||
+                           lower.includes('tagliatelle') || lower.includes('gnocchi') || lower.includes('quinoa') ||
+                           lower.includes('couscous') || lower.includes('bulgur')) {
                     category = 'Nudeln & Reis';
                 }
                 
@@ -2264,7 +2285,7 @@
             });
         }
 
-        // Rezepte anzeigen
+        // Rezepte anzeigen mit Kochanleitungen
         function displayRecipes() {
             const container = document.getElementById('recipesList');
             container.innerHTML = '';
@@ -2274,17 +2295,52 @@
                 
                 if (day.dinner) {
                     const recipeDiv = document.createElement('div');
+                    const recipeId = `recipe-${index}`;
+                    
+                    // Finde das vollständige Rezept mit Anleitungen
+                    let fullRecipe = null;
+                    if (day.dinner.category === 'Vegetarisch' && AppData.recipes.vegetarian) {
+                        fullRecipe = AppData.recipes.vegetarian.find(r => r.id === day.dinner.id);
+                    } else if (AppData.recipes.meat) {
+                        fullRecipe = AppData.recipes.meat.find(r => r.id === day.dinner.id);
+                    }
                     
                     recipeDiv.innerHTML = `
-                        <h3>${day.day} - Abend: ${day.dinner.name}</h3>
-                        <p style="color: #666; margin-bottom: 8px;">Für ${portions} Portionen</p>
-                        <div style="background: #f9f9f9; padding: 10px; border-radius: 6px; margin-bottom: 10px;">
-                            <h4>Zutaten:</h4>
-                            <ul>
-                                ${day.dinner.baseIngredients ? Object.entries(day.dinner.baseIngredients).map(([ing, data]) => 
-                                    `<li>${ing}: ${(data.amount * portions).toFixed(1)} ${data.unit || ''}</li>`
-                                ).join('') : ''}
-                            </ul>
+                        <h3 onclick="toggleRecipe('${recipeId}')" class="collapsed">
+                            ${day.day} - Abend: ${day.dinner.name}
+                        </h3>
+                        <div id="${recipeId}" class="recipe-details collapsed">
+                            <p style="color: #666; margin-bottom: 8px; font-size: 0.75em;">
+                                Für ${portions} Portionen | ${day.dinner.prepTime || 30} Min | ${day.dinner.price} CHF/Portion
+                            </p>
+                            <div style="background: #f9f9f9; padding: 10px; border-radius: 6px; margin-bottom: 10px;">
+                                <h4>Zutaten:</h4>
+                                <ul>
+                                    ${day.dinner.baseIngredients ? Object.entries(day.dinner.baseIngredients).map(([ing, data]) => 
+                                        `<li>${ing}: ${(data.amount * portions).toFixed(1)} ${data.unit || ''}</li>`
+                                    ).join('') : ''}
+                                </ul>
+                            </div>
+                            ${fullRecipe && fullRecipe.instructions ? `
+                                <div class="recipe-instructions">
+                                    <h4>Zubereitung:</h4>
+                                    <ol>
+                                        ${fullRecipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                                    </ol>
+                                </div>
+                            ` : ''}
+                            ${fullRecipe && fullRecipe.childTip ? `
+                                <div style="background: #e3f2fd; padding: 8px; border-radius: 6px; margin-top: 8px;">
+                                    <strong style="font-size: 0.75em;">👶 Kinder-Tipp:</strong>
+                                    <p style="font-size: 0.7em; margin: 3px 0;">${fullRecipe.childTip}</p>
+                                </div>
+                            ` : ''}
+                            ${fullRecipe && fullRecipe.workTip ? `
+                                <div style="background: #fff3e0; padding: 8px; border-radius: 6px; margin-top: 8px;">
+                                    <strong style="font-size: 0.75em;">💼 Arbeit-Tipp:</strong>
+                                    <p style="font-size: 0.7em; margin: 3px 0;">${fullRecipe.workTip}</p>
+                                </div>
+                            ` : ''}
                         </div>
                     `;
                     
@@ -2298,23 +2354,64 @@
                     
                     const kidsDiv = document.createElement('div');
                     kidsDiv.style.cssText = 'background: #fff3e0;';
+                    const kidsId = `kids-${index}`;
+                    
+                    // Finde das vollständige Kindergericht
+                    let fullKidsRecipe = null;
+                    if (AppData.recipes.kids) {
+                        fullKidsRecipe = AppData.recipes.kids.find(r => r.id === day.kidsLunch.id);
+                    }
                     
                     kidsDiv.innerHTML = `
-                        <h3>${day.day} - Mittag: ${day.kidsLunch.name}</h3>
-                        <p style="color: #666; margin-bottom: 8px;">Für ${kidsPortions} Kinder</p>
-                        <div style="background: white; padding: 10px; border-radius: 6px;">
-                            <h4>Zutaten:</h4>
-                            <ul>
-                                ${day.kidsLunch.baseIngredients ? Object.entries(day.kidsLunch.baseIngredients).map(([ing, data]) => 
-                                    `<li>${ing}: ${(data.amount * kidsPortions).toFixed(1)} ${data.unit || ''}</li>`
-                                ).join('') : ''}
-                            </ul>
+                        <h3 onclick="toggleRecipe('${kidsId}')" class="collapsed">
+                            ${day.day} - Mittag: ${day.kidsLunch.name}
+                        </h3>
+                        <div id="${kidsId}" class="recipe-details collapsed">
+                            <p style="color: #666; margin-bottom: 8px; font-size: 0.75em;">
+                                Für ${kidsPortions} Kinder | ${day.kidsLunch.prepTime || 20} Min
+                            </p>
+                            <div style="background: white; padding: 10px; border-radius: 6px;">
+                                <h4>Zutaten:</h4>
+                                <ul>
+                                    ${day.kidsLunch.baseIngredients ? Object.entries(day.kidsLunch.baseIngredients).map(([ing, data]) => 
+                                        `<li>${ing}: ${(data.amount * kidsPortions).toFixed(1)} ${data.unit || ''}</li>`
+                                    ).join('') : ''}
+                                </ul>
+                            </div>
+                            ${fullKidsRecipe && fullKidsRecipe.instructions ? `
+                                <div class="recipe-instructions">
+                                    <h4>Zubereitung:</h4>
+                                    <ol>
+                                        ${fullKidsRecipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                                    </ol>
+                                </div>
+                            ` : ''}
+                            ${fullKidsRecipe && fullKidsRecipe.childTip ? `
+                                <div style="background: #e3f2fd; padding: 8px; border-radius: 6px; margin-top: 8px;">
+                                    <strong style="font-size: 0.75em;">👶 Tipp:</strong>
+                                    <p style="font-size: 0.7em; margin: 3px 0;">${fullKidsRecipe.childTip}</p>
+                                </div>
+                            ` : ''}
                         </div>
                     `;
                     
                     container.appendChild(kidsDiv);
                 }
             });
+        }
+        
+        // Funktion zum Auf-/Zuklappen der Rezepte
+        function toggleRecipe(recipeId) {
+            const details = document.getElementById(recipeId);
+            const header = details.previousElementSibling;
+            
+            if (details.classList.contains('collapsed')) {
+                details.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+            } else {
+                details.classList.add('collapsed');
+                header.classList.add('collapsed');
+            }
         }
 
         // Personenliste anzeigen
