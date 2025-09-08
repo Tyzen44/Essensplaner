@@ -2144,24 +2144,71 @@
         function generateShoppingList() {
             AppData.shoppingList = {};
             
+            // Hilfsfunktion zum Normalisieren von Zutaten (Singular/Plural)
+            function normalizeIngredient(ingredient) {
+                // Entferne Mengenangaben am Anfang
+                let normalized = ingredient.trim();
+                
+                // Singular/Plural Normalisierung
+                const pluralMap = {
+                    'Eier': 'Ei',
+                    'Zwiebeln': 'Zwiebel',
+                    'Tomaten': 'Tomate',
+                    'Kartoffeln': 'Kartoffel',
+                    'Möhren': 'Möhre',
+                    'Paprikas': 'Paprika',
+                    'Zucchinis': 'Zucchini',
+                    'Gurken': 'Gurke',
+                    'Pilze': 'Pilz',
+                    'Äpfel': 'Apfel',
+                    'Birnen': 'Birne',
+                    'Bananen': 'Banane',
+                    'Orangen': 'Orange',
+                    'Zitronen': 'Zitrone',
+                    'Knoblauchzehen': 'Knoblauch',
+                    'Scheiben': 'Scheibe',
+                    'Dosen': 'Dose',
+                    'Beutel': 'Beutel',
+                    'Packungen': 'Packung'
+                };
+                
+                // Prüfe ob es eine Plural-Form ist
+                for (let [plural, singular] of Object.entries(pluralMap)) {
+                    if (normalized.includes(plural)) {
+                        normalized = normalized.replace(plural, singular);
+                    }
+                }
+                
+                // Spezialfall: "Ei" als Teil von "1 Stück" Angaben
+                if (normalized.toLowerCase().includes('ei') && !normalized.toLowerCase().includes('teig')) {
+                    return 'Ei';
+                }
+                
+                return normalized;
+            }
+            
             AppData.weekPlan.forEach((day, index) => {
                 const portions = SmartPlanner.calculatePortionsForDay(index);
                 
                 if (day.dinner && day.dinner.baseIngredients) {
                     Object.entries(day.dinner.baseIngredients).forEach(([key, value]) => {
+                        // Berücksichtige Variationen
                         const ingredient = day.variations && day.variations.find(v => v.type === key)
                             ? day.variations.find(v => v.type === key).selected
                             : key;
                         
-                        if (!AppData.shoppingList[ingredient]) {
-                            AppData.shoppingList[ingredient] = {
+                        // Normalisiere den Zutatennamen
+                        const normalizedIngredient = normalizeIngredient(ingredient);
+                        
+                        if (!AppData.shoppingList[normalizedIngredient]) {
+                            AppData.shoppingList[normalizedIngredient] = {
                                 amount: 0,
                                 unit: value.unit || ''
                             };
                         }
                         
                         if (value.amount > 0) {
-                            AppData.shoppingList[ingredient].amount += value.amount * portions;
+                            AppData.shoppingList[normalizedIngredient].amount += value.amount * portions;
                         }
                     });
                 }
@@ -2172,15 +2219,18 @@
                         .reduce((sum, p) => sum + p.portions, 0);
                     
                     Object.entries(day.kidsLunch.baseIngredients).forEach(([key, value]) => {
-                        if (!AppData.shoppingList[key]) {
-                            AppData.shoppingList[key] = {
+                        // Normalisiere den Zutatennamen
+                        const normalizedIngredient = normalizeIngredient(key);
+                        
+                        if (!AppData.shoppingList[normalizedIngredient]) {
+                            AppData.shoppingList[normalizedIngredient] = {
                                 amount: 0,
                                 unit: value.unit || ''
                             };
                         }
                         
                         if (value.amount > 0) {
-                            AppData.shoppingList[key].amount += value.amount * kidsPortions;
+                            AppData.shoppingList[normalizedIngredient].amount += value.amount * kidsPortions;
                         }
                     });
                 }
