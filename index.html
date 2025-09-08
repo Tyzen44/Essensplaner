@@ -1019,9 +1019,9 @@
                 }
                 
                 // Gefilterte Rezepte
-                const meatRecipes = this.filterRecipes(recipes.categories.meat.recipes);
-                const vegRecipes = this.filterRecipes(recipes.categories.vegetarian.recipes);
-                const kidsRecipes = recipes.categories.kids ? recipes.categories.kids.recipes : [];
+                const meatRecipes = this.filterRecipes(recipes.meat || []);
+                const vegRecipes = this.filterRecipes(recipes.vegetarian || []);
+                const kidsRecipes = recipes.kids || [];
                 
                 // Wähle Kindergerichte für Dienstag und Donnerstag
                 const kidsLunchTue = kidsRecipes[Math.floor(Math.random() * kidsRecipes.length)];
@@ -1345,70 +1345,106 @@
             }
         }
 
-        // Rezepte laden
+        // WICHTIGE ANPASSUNG: Rezepte laden mit korrekter Struktur
         async function loadRecipes() {
-    try {
-        // Paralleles Laden aller drei Dateien
-        const [meatResponse, vegResponse, kidsResponse] = await Promise.all([
-            fetch('recipes/meat.json'),
-            fetch('recipes/vegetarian.json'),
-            fetch('recipes/kids.json')
-        ]);
+            try {
+                console.log('Lade Rezepte aus dem recipes Ordner...');
+                
+                // Paralleles Laden aller drei Dateien aus dem recipes Ordner
+                const [meatResponse, vegResponse, kidsResponse] = await Promise.all([
+                    fetch('recipes/meat.json'),
+                    fetch('recipes/vegetarian.json'),
+                    fetch('recipes/kids.json')
+                ]);
 
-        // Fehlerbehandlung für einzelne Dateien
-        const meatRecipes = meatResponse.ok ? await meatResponse.json() : { recipes: [] };
-        const vegRecipes = vegResponse.ok ? await vegResponse.json() : { recipes: [] };
-        const kidsRecipes = kidsResponse.ok ? await kidsResponse.json() : { recipes: [] };
+                console.log('Meat Status:', meatResponse.status, meatResponse.ok);
+                console.log('Veg Status:', vegResponse.status, vegResponse.ok);
+                console.log('Kids Status:', kidsResponse.status, kidsResponse.ok);
 
-        // Zusammenführen in die erwartete Struktur
-        AppData.recipes = {
-            version: "3.0",
-            categories: {
-                meat: {
-                    name: "Fleischgerichte",
-                    recipes: meatRecipes.recipes || []
-                },
-                vegetarian: {
-                    name: "Vegetarische Gerichte",
-                    recipes: vegRecipes.recipes || []
-                },
-                kids: {
-                    name: "Kinderessen",
-                    recipes: kidsRecipes.recipes || []
+                // Parse die JSON Dateien
+                const meatData = meatResponse.ok ? await meatResponse.json() : null;
+                const vegData = vegResponse.ok ? await vegResponse.json() : null;
+                const kidsData = kidsResponse.ok ? await kidsResponse.json() : null;
+
+                // WICHTIG: Extrahiere die recipes Arrays aus der korrekten Struktur
+                const meatRecipes = [];
+                const vegRecipes = [];
+                const kidsRecipes = [];
+
+                // Meat recipes
+                if (meatData) {
+                    if (meatData.categories && meatData.categories.meat && meatData.categories.meat.recipes) {
+                        meatRecipes.push(...meatData.categories.meat.recipes);
+                    } else if (meatData.recipes) {
+                        meatRecipes.push(...meatData.recipes);
+                    }
                 }
-            }
-        };
 
-        console.log(`${countTotalRecipes()} Rezepte geladen`);
-        
-    } catch (error) {
-        console.error('Fehler beim Laden der Rezepte:', error);
-        showToast('Fehler beim Laden der Rezepte!', 'error');
-        AppData.recipes = {
-            categories: {
-                meat: { recipes: [] },
-                vegetarian: { recipes: [] },
-                kids: { recipes: [] }
+                // Vegetarian recipes
+                if (vegData) {
+                    if (vegData.recipes) {
+                        vegRecipes.push(...vegData.recipes);
+                    }
+                }
+
+                // Kids recipes
+                if (kidsData) {
+                    if (kidsData.kids_recipes) {
+                        kidsRecipes.push(...kidsData.kids_recipes);
+                    } else if (kidsData.recipes) {
+                        kidsRecipes.push(...kidsData.recipes);
+                    }
+                }
+
+                // Speichere in der vereinfachten Struktur
+                AppData.recipes = {
+                    meat: meatRecipes,
+                    vegetarian: vegRecipes,
+                    kids: kidsRecipes
+                };
+
+                console.log('Geladene Rezepte:', {
+                    meat: meatRecipes.length,
+                    vegetarian: vegRecipes.length,
+                    kids: kidsRecipes.length
+                });
+
+                if (meatRecipes.length === 0 && vegRecipes.length === 0 && kidsRecipes.length === 0) {
+                    throw new Error('Keine Rezepte gefunden!');
+                }
+
+                showToast(`${meatRecipes.length + vegRecipes.length + kidsRecipes.length} Rezepte geladen`, 'success');
+                
+            } catch (error) {
+                console.error('Fehler beim Laden der Rezepte:', error);
+                showToast('Fehler beim Laden der Rezepte: ' + error.message, 'error');
+                
+                // Fallback mit leeren Arrays
+                AppData.recipes = {
+                    meat: [],
+                    vegetarian: [],
+                    kids: []
+                };
             }
-        };
-    }
-}
+        }
 
         // Zähle alle Rezepte
         function countTotalRecipes() {
             let count = 0;
-            Object.values(AppData.recipes.categories).forEach(cat => {
-                count += cat.recipes.length;
-            });
+            if (AppData.recipes) {
+                count += (AppData.recipes.meat || []).length;
+                count += (AppData.recipes.vegetarian || []).length;
+                count += (AppData.recipes.kids || []).length;
+            }
             return count;
         }
 
         // Statistiken aktualisieren
         function updateStatistics() {
             const total = countTotalRecipes();
-            const meat = AppData.recipes.categories.meat ? AppData.recipes.categories.meat.recipes.length : 0;
-            const veg = AppData.recipes.categories.vegetarian ? AppData.recipes.categories.vegetarian.recipes.length : 0;
-            const kids = AppData.recipes.categories.kids ? AppData.recipes.categories.kids.recipes.length : 0;
+            const meat = AppData.recipes && AppData.recipes.meat ? AppData.recipes.meat.length : 0;
+            const veg = AppData.recipes && AppData.recipes.vegetarian ? AppData.recipes.vegetarian.length : 0;
+            const kids = AppData.recipes && AppData.recipes.kids ? AppData.recipes.kids.length : 0;
             
             document.getElementById('totalRecipes').textContent = total;
             document.getElementById('meatCount').textContent = meat;
@@ -1653,9 +1689,9 @@
             
             showLoading('Erstelle intelligenten Wochenplan...');
             
-            if (AppData.recipes.categories.kids && AppData.recipes.categories.kids.recipes.length > 0) {
-                console.log(`✅ ${AppData.recipes.categories.kids.recipes.length} Kindergerichte verfügbar`);
-                showToast(`Plan mit ${AppData.recipes.categories.kids.recipes.length} Kindergerichten erstellt`, 'info');
+            if (AppData.recipes.kids && AppData.recipes.kids.length > 0) {
+                console.log(`✅ ${AppData.recipes.kids.length} Kindergerichte verfügbar`);
+                showToast(`Plan mit ${AppData.recipes.kids.length} Kindergerichten erstellt`, 'info');
             } else {
                 console.warn('⚠️ KEINE Kindergerichte gefunden!');
                 showToast('Warnung: Keine Kindergerichte in der Datenbank!', 'error');
@@ -1805,8 +1841,8 @@
             const isVeg = day.dinner.category === 'Vegetarisch';
             
             const availableRecipes = isVeg ? 
-                AppData.recipes.categories.vegetarian.recipes :
-                AppData.recipes.categories.meat.recipes;
+                AppData.recipes.vegetarian :
+                AppData.recipes.meat;
             
             const filtered = SmartPlanner.filterRecipes(availableRecipes);
             const newRecipe = filtered[Math.floor(Math.random() * filtered.length)];
