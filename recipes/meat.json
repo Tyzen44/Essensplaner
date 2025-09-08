@@ -1,8 +1,8 @@
 {
-  "version": "3.0",
-  "categories": {
-    "meat": {
+    "categories":  "meat": {
       "name": "Fleischgerichte",
+      "version": "1.0",
+      "lastUpdated": "2024-01-15",
       "recipes": [
         {
           "id": "m001",
