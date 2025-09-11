@@ -1,7 +1,7 @@
 {
   "category": "meat",
   "name": "Fleischgerichte",
-  "version": "2.0",
+  "version": "1.1",
   "lastUpdated": "2024-01-15",
   "recipes": [
     {
@@ -321,282 +321,1383 @@
         "Mit Zitronenspalte und Kartoffelsalat servieren"
       ],
       "childTip": "Schnitzel in Streifen schneiden (Nuggets!), Kartoffelsalat ohne Gurken",
-      "workTip": "Schnitzel kalt als Schnitzelbröt chen, Kartoffelsalat hält 2 Tage"
+      "workTip": "Schnitzel kalt als Schnitzelbrötchen, Kartoffelsalat hält 2 Tage"
     },
     {
-      "id": "m041",
-      "name": "Puten-Geschnetzeltes Zürcher Art",
+      "id": "m011",
+      "name": "Lammkoteletts mit Rosmarinkartoffeln",
+      "baseIngredients": {
+        "Lammkoteletts": {"amount": 180, "unit": "g"},
+        "Kartoffeln": {"amount": 250, "unit": "g"},
+        "Rosmarin": {"amount": 2, "unit": "Zweige"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Grüner Salat": {"amount": 100, "unit": "g"}
+      },
+      "price": 8,
+      "prepTime": 35,
+      "tags": ["mediterran", "festlich"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Ofen auf 200°C vorheizen",
+        "Kartoffeln schälen, in 2cm große Würfel schneiden",
+        "In kochendem Salzwasser 5 Min vorkochen (ankochen), abgießen und ausdampfen lassen",
+        "Kartoffeln auf Backblech verteilen, mit 3 EL Olivenöl beträufeln",
+        "Rosmarin abzupfen und hacken, Knoblauch pressen, beides mit Salz und Pfeffer über Kartoffeln streuen",
+        "Gut durchmischen, im Ofen 25-30 Min backen, nach 15 Min einmal wenden",
+        "Lammkoteletts 30 Min vor Zubereitung aus dem Kühlschrank nehmen (Zimmertemperatur)",
+        "Trocken tupfen, mit Salz, Pfeffer und etwas Thymian würzen",
+        "Pfanne sehr heiß werden lassen, etwas Öl hineingeben",
+        "Koteletts 2-3 Min pro Seite für rosa (55°C Kerntemperatur) oder 4-5 Min für durch (65°C)",
+        "Aus der Pfanne nehmen, in Alufolie 5 Min ruhen lassen",
+        "Salat waschen, mit Vinaigrette (3 EL Öl, 1 EL Essig, 1 TL Senf) anmachen",
+        "Koteletts mit Kartoffeln und Salat anrichten, mit Rosmarinzweig garnieren"
+      ],
+      "childTip": "Lamm ist sehr zart und mild, Kinder mögen es oft gern",
+      "workTip": "Edles Gericht für besondere Anlässe"
+    },
+    {
+      "id": "m012",
+      "name": "Rinderfilet mit grünem Spargel",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 180, "unit": "g"},
+        "Grüner Spargel": {"amount": 200, "unit": "g", "variations": ["Weißer Spargel", "Brokkoli"]},
+        "Kartoffelpüree": {"amount": 250, "unit": "g"},
+        "Rotweinsauce": {"amount": 75, "unit": "ml"}
+      },
+      "price": 9,
+      "prepTime": 30,
+      "tags": ["edel", "festlich"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Filet 1 Stunde vor Zubereitung aus Kühlschrank nehmen",
+        "Kartoffeln schälen, würfeln, in Salzwasser 20 Min weich kochen",
+        "Spargel im unteren Drittel schälen, holzige Enden abschneiden",
+        "Filet trocken tupfen, rundum mit Salz und grobem Pfeffer würzen",
+        "Pfanne sehr heiß werden lassen, Öl mit hohem Rauchpunkt verwenden",
+        "Filet rundum je 2 Min scharf anbraten für schöne Kruste",
+        "Bei 130°C im Ofen ziehen lassen: 8-10 Min für medium-rare (55°C Kern)",
+        "Spargel in kochendem Salzwasser 4-5 Min blanchieren, in Eiswasser abschrecken",
+        "Für die Sauce: Schalotte würfeln, in Bratensatz anschwitzen",
+        "Mit 100ml Rotwein ablöschen, auf die Hälfte einkochen",
+        "200ml Rinderbrühe zugeben, wieder einkochen",
+        "Kalte Butterflocken einrühren für Bindung, mit Salz und Pfeffer würzen",
+        "Kartoffeln abgießen, mit heißer Milch und Butter zu Püree stampfen",
+        "Spargel in Butter schwenken",
+        "Filet in Scheiben schneiden, mit Püree, Spargel und Sauce anrichten"
+      ],
+      "childTip": "Fleisch durchgaren, Sauce separat servieren",
+      "workTip": "Luxusgericht für besondere Anlässe"
+    },
+    {
+      "id": "m013",
+      "name": "Pulled Pork Burger",
+      "baseIngredients": {
+        "Schweineschulter": {"amount": 250, "unit": "g"},
+        "Burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn", "Pretzel Bun"]},
+        "Coleslaw": {"amount": 75, "unit": "g"},
+        "BBQ Sauce": {"amount": 50, "unit": "ml"}
+      },
+      "price": 7,
+      "prepTime": 240,
+      "tags": ["amerikanisch", "bbq"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Schweineschulter mit Salz, Pfeffer, Paprika, braunem Zucker einreiben (Rub)",
+        "In Bräter legen, 200ml Apfelsaft und 100ml Apfelessig angießen",
+        "Mit Deckel bei 120°C für 4 Stunden in den Ofen",
+        "Alle Stunde prüfen und bei Bedarf Flüssigkeit nachgießen",
+        "Fleisch ist fertig wenn es auseinanderfällt (Kerntemperatur 90°C)",
+        "Coleslaw: Weißkohl und Möhre fein raspeln",
+        "Dressing: 3 EL Mayo, 1 EL Essig, 1 TL Zucker, Salz, Pfeffer mischen",
+        "Gemüse mit Dressing mischen, 30 Min ziehen lassen",
+        "Fleisch aus dem Ofen nehmen, 15 Min ruhen lassen",
+        "Mit 2 Gabeln in Fasern zupfen (daher 'pulled')",
+        "Bratensaft entfetten, einkochen und zum Fleisch geben",
+        "Mit BBQ-Sauce mischen (nicht zu viel, soll nicht schwimmen)",
+        "Burgerbrötchen halbieren, toasten",
+        "Untere Hälfte mit Pulled Pork belegen, Coleslaw darauf, Deckel drauf"
+      ],
+      "childTip": "BBQ-Sauce separat servieren zum selbst dosieren",
+      "workTip": "Fleisch lässt sich super einfrieren und portionsweise auftauen"
+    },
+    {
+      "id": "m014",
+      "name": "Entenbrust mit Rotkohl",
+      "baseIngredients": {
+        "Entenbrust": {"amount": 180, "unit": "g"},
+        "Rotkohl": {"amount": 200, "unit": "g"},
+        "Klöße": {"amount": 2, "unit": "Stück"},
+        "Preiselbeeren": {"amount": 50, "unit": "g"}
+      },
+      "price": 8,
+      "prepTime": 60,
+      "tags": ["festlich", "traditionell"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Entenbrust kreuzweise auf der Hautseite einschneiden (nur Haut, nicht ins Fleisch!)",
+        "Mit Salz und Pfeffer würzen, 30 Min ruhen lassen",
+        "Rotkohl in feine Streifen schneiden, Apfel würfeln",
+        "Zwiebel würfeln, in Topf mit Schmalz anschwitzen",
+        "Rotkohl und Apfel zugeben, mit Essig und Rotwein ablöschen",
+        "Lorbeerblatt, Nelken, Zucker zugeben, 45 Min schmoren",
+        "Gelegentlich umrühren, bei Bedarf Wasser nachgießen",
+        "Entenbrust in kalte Pfanne legen, Hautseite nach unten",
+        "Bei mittlerer Hitze 15-20 Min braten (Fett ausbraten!)",
+        "Umdrehen, 5-8 Min auf Fleischseite für rosa (65°C Kern)",
+        "Aus Pfanne nehmen, in Alufolie 10 Min ruhen lassen",
+        "Klöße nach Packungsanweisung zubereiten",
+        "Rotkohl mit Salz, Pfeffer und Preiselbeeren abschmecken",
+        "Entenbrust in Scheiben schneiden, mit Rotkohl und Klößen anrichten"
+      ],
+      "childTip": "Entenbrust durchgaren, Haut extra knusprig machen",
+      "workTip": "Klassisches Festtagsessen für Weihnachten"
+    },
+    {
+      "id": "m015",
+      "name": "Kalbsschnitzel Wiener Art",
+      "baseIngredients": {
+        "Kalbsschnitzel": {"amount": 150, "unit": "g"},
+        "Semmelbrösel": {"amount": 50, "unit": "g"},
+        "Zitrone": {"amount": 0.5, "unit": "Stück"},
+        "Petersilienkartoffeln": {"amount": 250, "unit": "g"}
+      },
+      "price": 8,
+      "prepTime": 25,
+      "tags": ["österreichisch", "klassiker"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln schälen, in gleich große Stücke schneiden",
+        "In Salzwasser aufsetzen und 15-20 Min kochen",
+        "Kalbsschnitzel zwischen Frischhaltefolie auf 3-4mm dünn klopfen",
+        "Mit Salz leicht würzen (Vorsicht: nicht zu viel!)",
+        "Panierstraße: Teller mit Mehl, verquirltem Ei, Semmelbrösel",
+        "Schnitzel durch Mehl ziehen, überschüssiges abklopfen",
+        "Durch Ei ziehen, abtropfen lassen",
+        "In Semmelbrösel wenden, leicht andrücken, nochmal wenden",
+        "Reichlich Butterschmalz in großer Pfanne erhitzen (170°C)",
+        "Schnitzel sollte schwimmen! Pfanne leicht schwenken für Wellen",
+        "2-3 Min goldbraun backen, wenden, nochmal 2 Min",
+        "Auf Küchenpapier abtropfen",
+        "Kartoffeln abgießen, mit Butter und gehackter Petersilie schwenken",
+        "Schnitzel mit Kartoffeln und Zitronenspalte servieren"
+      ],
+      "childTip": "Sehr dünn klopfen macht es extra zart",
+      "workTip": "Der österreichische Klassiker schlechthin"
+    },
+    {
+      "id": "m016",
+      "name": "Hähnchen-Saté-Spieße",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Erdnusssauce": {"amount": 75, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
+        "Gurkensalat": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 30,
+      "tags": ["asiatisch", "grillgericht"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hähnchen in 2cm große Würfel schneiden",
+        "Marinade: 2 EL Sojasauce, 1 EL Honig, 1 TL Ingwer gerieben, 1 Knoblauchzehe gepresst",
+        "Hähnchen 30 Min marinieren (länger = intensiver)",
+        "Holzspieße 20 Min in Wasser einweichen (verhindert Verbrennen)",
+        "Reis nach Packungsanweisung kochen",
+        "Für Erdnusssauce: 3 EL Erdnussbutter, 2 EL Sojasauce, 1 EL Limettensaft",
+        "1 TL Honig, 1 TL Sambal Oelek, mit warmem Wasser zur gewünschten Konsistenz verdünnen",
+        "Gurkensalat: Gurke in dünne Scheiben, mit Reisessig, Zucker, Salz, Chili marinieren",
+        "Hähnchen auf Spieße stecken (nicht zu eng!)",
+        "Grillpfanne oder Grill heiß werden lassen",
+        "Spieße von allen Seiten 3-4 Min grillen, dabei drehen",
+        "Mit Erdnusssauce bestreichen, kurz weitergrillen",
+        "Mit Reis und Gurkensalat servieren, mit Koriander und Limette garnieren"
+      ],
+      "childTip": "Erdnusssauce mild machen, ohne Chili",
+      "workTip": "Perfekt für Grillparty oder als Fingerfood"
+    },
+    {
+      "id": "m017",
+      "name": "Rinderrouladen",
+      "baseIngredients": {
+        "Rinderschnitzel": {"amount": 180, "unit": "g"},
+        "Speck": {"amount": 30, "unit": "g"},
+        "Gewürzgurken": {"amount": 2, "unit": "Stück"},
+        "Senf": {"amount": 1, "unit": "EL"},
+        "Rotkohl": {"amount": 150, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 120,
+      "tags": ["deutsch", "sonntagsessen"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Rinderschnitzel dünn klopfen (5mm), mit Salz und Pfeffer würzen",
+        "Dünn mit Senf bestreichen (nicht zu viel!)",
+        "Speck in Streifen schneiden, auf Schnitzel verteilen",
+        "Zwiebel in Streifen, Gurken längs vierteln, auf unteres Drittel legen",
+        "Von unten straff aufrollen, mit Zahnstochern oder Küchengarn fixieren",
+        "In heißem Öl rundherum scharf anbraten (wichtig für Geschmack!)",
+        "Rouladen herausnehmen, Tomatenmark im Bratensatz rösten",
+        "Mit Rotwein ablöschen, einkochen, mit Brühe auffüllen",
+        "Rouladen zurück in Topf, sollten knapp bedeckt sein",
+        "Bei kleiner Hitze 90 Min schmoren (Deckel leicht geöffnet)",
+        "Nach 45 Min wenden, Flüssigkeit prüfen",
+        "Rotkohl wie im Rezept für Entenbrust zubereiten",
+        "Sauce durch Sieb passieren, mit kalter Butter binden",
+        "Rouladen mit Sauce und Rotkohl servieren, klassisch mit Klößen"
+      ],
+      "childTip": "Sehr zart durch langes Schmoren",
+      "workTip": "Schmeckt aufgewärmt fast noch besser"
+    },
+    {
+      "id": "m018",
+      "name": "Putenschnitzel Hawaii",
+      "baseIngredients": {
+        "Putenschnitzel": {"amount": 150, "unit": "g"},
+        "Ananas": {"amount": 2, "unit": "Scheiben"},
+        "Käse": {"amount": 40, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["retro", "fruchtig"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Reis nach Packungsanweisung kochen",
+        "Putenschnitzel klopfen, mit Salz, Pfeffer und Paprika würzen",
+        "In Mehl wenden, überschüssiges abklopfen",
+        "In heißem Öl von beiden Seiten 3-4 Min braten",
+        "Auf Backblech legen",
+        "Ananasscheiben abtropfen lassen (frisch oder Dose)",
+        "Je eine Scheibe auf jedes Schnitzel legen",
+        "Optional: Schinken dazwischen legen",
+        "Käse darüber reiben oder Scheiben auflegen",
+        "Bei 180°C Oberhitze 5-7 Min überbacken bis Käse schmilzt",
+        "Mit Reis servieren, mit Petersilie garnieren",
+        "Klassisch mit Preiselbeeren als Garnitur"
+      ],
+      "childTip": "Kinder lieben die süß-herzhafte Kombi",
+      "workTip": "Retro-Klassiker aus den 70ern"
+    },
+    {
+      "id": "m019",
+      "name": "Hackbraten mit Kartoffelbrei",
+      "baseIngredients": {
+        "Hackfleisch gemischt": {"amount": 200, "unit": "g"},
+        "Ei": {"amount": 0.5, "unit": "Stück"},
+        "Zwiebel": {"amount": 0.5, "unit": "Stück"},
+        "Kartoffeln": {"amount": 300, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 60,
+      "tags": ["deutsch", "hausmannskost"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Ofen auf 180°C vorheizen",
+        "Zwiebel sehr fein würfeln, in etwas Butter glasig dünsten, abkühlen lassen",
+        "Hackfleisch mit Ei, abgekühlten Zwiebeln, 2 EL Semmelbrösel mischen",
+        "Mit Salz, Pfeffer, Paprika, Majoran würzen",
+        "Altes Brötchen in Milch einweichen, ausdrücken, unterkneten",
+        "Masse zu einem Laib formen, in gefettete Form legen",
+        "Mit Bacon belegen (optional)",
+        "45-50 Min backen, nach 30 Min mit Alufolie abdecken",
+        "Kartoffeln schälen, würfeln, in Salzwasser weich kochen",
+        "Abgießen, ausdampfen lassen",
+        "Mit heißer Milch und Butter stampfen, mit Muskat würzen",
+        "Hackbraten 10 Min ruhen lassen",
+        "In Scheiben schneiden, mit Kartoffelbrei servieren",
+        "Bratensaft als Sauce verwenden"
+      ],
+      "childTip": "Mit Ketchup-Gesicht auf dem Püree",
+      "workTip": "Hackbraten kalt als Brotbelag verwenden"
+    },
+    {
+      "id": "m020",
+      "name": "Lammcurry",
+      "baseIngredients": {
+        "Lammfleisch": {"amount": 180, "unit": "g"},
+        "Joghurt": {"amount": 100, "unit": "ml"},
+        "Curry Gewürze": {"amount": 2, "unit": "EL"},
+        "Naan Brot": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Fladenbrot"]}
+      },
+      "price": 7,
+      "prepTime": 90,
+      "tags": ["indisch", "würzig"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Lamm in 3cm Würfel schneiden, trocken tupfen",
+        "Marinade: Joghurt mit 1 TL Ingwer, 2 Knoblauchzehen (gerieben), 1 TL Garam Masala mischen",
+        "Fleisch mindestens 2 Stunden (besser über Nacht) marinieren",
+        "Gewürze trocken rösten: 1 TL Kreuzkümmel, 1 TL Koriander, 4 Kardamomkapseln",
+        "Zwiebel in Halbringe schneiden",
+        "Schweren Topf erhitzen, Fleisch aus Marinade nehmen (Marinade aufheben!)",
+        "Fleisch portionsweise scharf anbraten, herausnehmen",
+        "Zwiebeln im Bratfett 10 Min goldbraun braten",
+        "Gewürzpaste zugeben: 1 EL Ingwer-Knoblauch-Paste, 2 TL Currypulver",
+        "1 Min rösten, mit Tomaten aus der Dose ablöschen",
+        "Fleisch und Marinade zugeben, mit Wasser bedecken",
+        "Aufkochen, dann 60-75 Min sanft schmoren",
+        "Mit Salz, Zucker und Zitronensaft abschmecken",
+        "Mit frischem Koriander bestreuen",
+        "Mit Naan oder Reis servieren"
+      ],
+      "childTip": "Sehr mild würzen, Joghurt zum 'Löschen' reichen",
+      "workTip": "Schmeckt am nächsten Tag noch intensiver"
+    },
+    {
+      "id": "m021",
+      "name": "Hähnchenschenkel mit Ofengemüse",
+      "baseIngredients": {
+        "Hähnchenschenkel": {"amount": 1, "unit": "Stück"},
+        "Kartoffeln": {"amount": 200, "unit": "g"},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Zucchini": {"amount": 1, "unit": "Stück"}
+      },
+      "price": 5,
+      "prepTime": 45,
+      "tags": ["einfach", "eintopf"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Ofen auf 200°C vorheizen",
+        "Kartoffeln schälen, in Spalten schneiden",
+        "Paprika in breite Streifen, Zucchini in dicke Scheiben",
+        "Gemüse auf Backblech verteilen",
+        "Mit 3 EL Olivenöl, Salz, Pfeffer, Paprika, Thymian würzen",
+        "Gut durchmischen",
+        "Hähnchenschenkel trocken tupfen",
+        "Mit Salz, Pfeffer, Paprika einreiben",
+        "Haut mit Messer einritzen (wird knuspriger)",
+        "Auf das Gemüse legen, Hautseite nach oben",
+        "40-45 Min backen",
+        "Nach 20 Min Gemüse wenden",
+        "Schenkel sind fertig bei 75°C Kerntemperatur",
+        "5 Min ruhen lassen, mit Zitrone beträufeln"
+      ],
+      "childTip": "Haut extra knusprig - Kinderliebling!",
+      "workTip": "One-Pot-Gericht, wenig Abwasch"
+    },
+    {
+      "id": "m022",
+      "name": "Schweinebraten mit Knödeln",
+      "baseIngredients": {
+        "Schweinebraten": {"amount": 200, "unit": "g"},
+        "Knödel": {"amount": 2, "unit": "Stück"},
+        "Sauerkraut": {"amount": 150, "unit": "g"},
+        "Dunkle Sauce": {"amount": 100, "unit": "ml"}
+      },
+      "price": 6,
+      "prepTime": 120,
+      "tags": ["bayrisch", "deftig"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Schwarte kreuzweise einschneiden (für Kruste)",
+        "Mit grobem Salz einreiben, 30 Min ziehen lassen",
+        "Fleischseite mit Kümmel, Knoblauch, Pfeffer würzen",
+        "In Bräter legen, 200ml Bier angießen",
+        "Bei 180°C für 90 Min in den Ofen",
+        "Alle 20 Min mit Sud begießen",
+        "Nach 60 Min Zwiebeln und Möhren zugeben",
+        "Letzte 15 Min Oberhitze für knusprige Schwarte",
+        "Sauerkraut mit Speck, Lorbeer, Wacholder 30 Min köcheln",
+        "Knödel nach Packung zubereiten oder:",
+        "Alte Brötchen würfeln, mit heißer Milch übergießen",
+        "Ei, Petersilie, Salz zugeben, zu Knödeln formen",
+        "In Salzwasser 20 Min ziehen lassen (nicht kochen!)",
+        "Bratensaft entfetten, einkochen, als Sauce servieren"
+      ],
+      "childTip": "Schwarte ist super knusprig",
+      "workTip": "Bayrischer Sonntagsbraten"
+    },
+    {
+      "id": "m023",
+      "name": "Rindfleisch-Tacos",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Taco Shells": {"amount": 3, "unit": "Stück", "variations": ["Soft Tacos", "Hard Shell"]},
+        "Salat": {"amount": 50, "unit": "g"},
+        "Käse": {"amount": 50, "unit": "g"},
+        "Salsa": {"amount": 50, "unit": "ml"}
+      },
+      "price": 6,
+      "prepTime": 20,
+      "tags": ["mexikanisch", "fingerfood"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Taco Shells nach Packung im Ofen erwärmen (5 Min bei 150°C)",
+        "Zwiebel und Knoblauch fein würfeln",
+        "Hackfleisch in heißer Pfanne krümelig braten",
+        "Zwiebel und Knoblauch zugeben, 2 Min mitbraten",
+        "Gewürze: 1 TL Paprika, 1 TL Kreuzkümmel, 1/2 TL Chili, Salz",
+        "1 EL Tomatenmark einrühren, kurz rösten",
+        "Mit 100ml Brühe ablöschen, einkochen lassen bis dicklich",
+        "Salat in Streifen schneiden",
+        "Tomaten würfeln, Käse reiben",
+        "Sauerrahm mit Limettensaft mischen",
+        "Taco-Bar aufbauen: Alle Zutaten in Schälchen",
+        "Jeder befüllt seine Tacos selbst",
+        "Reihenfolge: Fleisch, Salat, Tomaten, Käse, Saucen"
+      ],
+      "childTip": "Kinder lieben das Selbst-Befüllen",
+      "workTip": "Perfekt für Parties"
+    },
+    {
+      "id": "m024",
+      "name": "Putenbrust mit Pilzrahm",
       "baseIngredients": {
         "Putenbrust": {"amount": 150, "unit": "g"},
-        "Champignons": {"amount": 100, "unit": "g"},
+        "Mischpilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Pfifferlinge"]},
         "Sahne": {"amount": 75, "unit": "ml"},
-        "Reis": {"amount": 125, "unit": "g", "variations": ["Rösti", "Nudeln"]}
+        "Nudeln": {"amount": 125, "unit": "g", "variations": ["Reis", "Spätzle"]}
       },
-      "price": 5.5,
+      "price": 6,
+      "prepTime": 30,
+      "tags": ["herbstlich", "cremig"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Nudeln nach Packungsanweisung kochen",
+        "Putenbrust in 2cm breite Streifen schneiden",
+        "Mit Salz und Pfeffer würzen",
+        "Pilze putzen (nicht waschen!), große vierteln",
+        "In heißer Pfanne Pute in 2 EL Öl anbraten",
+        "3-4 Min bis leicht gebräunt, herausnehmen",
+        "Pilze in derselben Pfanne bei hoher Hitze anbraten",
+        "Erst wenn sie Farbe haben, salzen (sonst wässrig!)",
+        "Schalotte würfeln, zu Pilzen geben",
+        "Mit Weißwein ablöschen, einkochen",
+        "Sahne zugeben, aufkochen",
+        "Pute wieder dazu, 2-3 Min ziehen lassen",
+        "Mit Thymian, Petersilie, Salz, Pfeffer abschmecken",
+        "Mit Nudeln servieren"
+      ],
+      "childTip": "Cremige Sauce ist mild und lecker",
+      "workTip": "Herbstgericht zum Wohlfühlen"
+    },
+    {
+      "id": "m025",
+      "name": "Königsberger Klopse",
+      "baseIngredients": {
+        "Hackfleisch": {"amount": 150, "unit": "g"},
+        "Kapern": {"amount": 2, "unit": "EL"},
+        "Weiße Sauce": {"amount": 150, "unit": "ml"},
+        "Kartoffeln": {"amount": 250, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 40,
+      "tags": ["norddeutsch", "traditionell"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Kartoffeln schälen, kochen",
+        "Für Klopse: Hackfleisch mit 1 Ei, eingeweichtem Brötchen mischen",
+        "Zwiebel sehr fein würfeln, zugeben",
+        "1 Sardelle hacken (oder 1 TL Sardellenpaste), unterkneten",
+        "Mit Salz, Pfeffer, Zitronenabrieb würzen",
+        "Zu walnussgroßen Klopsen formen",
+        "In 1L Salzwasser mit Lorbeer 15 Min ziehen lassen",
+        "Für Sauce: 3 EL Butter schmelzen",
+        "3 EL Mehl einrühren, anschwitzen (Mehlschwitze)",
+        "Mit 400ml Klopswasser ablöschen, glatt rühren",
+        "10 Min köcheln, dabei rühren",
+        "1 Eigelb mit 2 EL Sahne verquirlen",
+        "Topf von Hitze nehmen, Eigelb einrühren",
+        "Kapern und Zitronensaft zugeben",
+        "Klopse in Sauce legen, mit Kartoffeln servieren"
+      ],
+      "childTip": "Sardellen weglassen, Kapern separat",
+      "workTip": "Norddeutscher Klassiker"
+    },
+    {
+      "id": "m026",
+      "name": "Hähnchen-Fajitas",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Tortilla": {"amount": 3, "unit": "Stück", "variations": ["Weizen", "Mais", "Vollkorn"]},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"}
+      },
+      "price": 6,
       "prepTime": 25,
-      "tags": ["schweizer", "schnell"],
+      "tags": ["texmex", "wraps"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hähnchen in dünne Streifen schneiden",
+        "Mit Limettensaft, Kreuzkümmel, Paprika, Chili marinieren",
+        "Paprika in Streifen, Zwiebel in Spalten schneiden",
+        "Tortillas in Alufolie wickeln, im Ofen warmhalten",
+        "Große Pfanne oder Wok sehr heiß werden lassen",
+        "Hähnchen scharf anbraten, 3-4 Min",
+        "Herausnehmen, warm halten",
+        "Gemüse im selben Wok 4-5 Min braten (bissfest!)",
+        "Hähnchen zurück in Pfanne",
+        "Mit Salz, Pfeffer, Limette abschmecken",
+        "Guacamole: Avocado zerdrücken, Limette, Salz",
+        "Salsa: Tomaten, Zwiebel, Koriander, Chili würfeln",
+        "Alles auf den Tisch: Jeder baut seine Fajita",
+        "Tortilla belegen, einrollen, genießen"
+      ],
+      "childTip": "Weniger scharf würzen, mehr Käse",
+      "workTip": "Interaktives Essen für die Familie"
+    },
+    {
+      "id": "m027",
+      "name": "Lammkeule mit Bohnen",
+      "baseIngredients": {
+        "Lammkeule": {"amount": 200, "unit": "g"},
+        "Weiße Bohnen": {"amount": 150, "unit": "g"},
+        "Tomaten": {"amount": 150, "unit": "g"},
+        "Rosmarin": {"amount": 2, "unit": "Zweige"}
+      },
+      "price": 8,
+      "prepTime": 90,
+      "tags": ["mediterran", "festlich"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Bohnen über Nacht einweichen (oder aus der Dose)",
+        "Lammkeule parieren, mit Knoblauch spicken",
+        "Mit Salz, Pfeffer, Rosmarin einreiben",
+        "In heißem Bräter rundherum anbraten",
+        "Bei 160°C in den Ofen",
+        "Nach 30 Min Bohnen und Tomaten um das Fleisch verteilen",
+        "Rotwein und Brühe angießen",
+        "Weitere 45-60 Min schmoren",
+        "Fleisch sollte 65°C Kerntemperatur haben",
+        "Alle 20 Min begießen",
+        "Fleisch herausnehmen, in Folie ruhen lassen",
+        "Sauce einkochen, mit Butter binden",
+        "Fleisch aufschneiden, mit Bohnen und Sauce servieren"
+      ],
+      "childTip": "Lamm ist sehr zart",
+      "workTip": "Festessen für Gäste"
+    },
+    {
+      "id": "m028",
+      "name": "Wiener Würstchen mit Linseneintopf",
+      "baseIngredients": {
+        "Wiener Würstchen": {"amount": 2, "unit": "Stück"},
+        "Linsen": {"amount": 125, "unit": "g"},
+        "Suppengemüse": {"amount": 100, "unit": "g"},
+        "Speck": {"amount": 30, "unit": "g"}
+      },
+      "price": 4,
+      "prepTime": 40,
+      "tags": ["eintopf", "deftig"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Linsen in kaltem Wasser aufsetzen (ohne Salz!)",
+        "Aufkochen, Schaum abschöpfen",
+        "Suppengemüse (Möhre, Sellerie, Lauch) würfeln",
+        "Speck würfeln, in Topf auslassen",
+        "Gemüse im Speckfett anschwitzen",
+        "Zu den Linsen geben",
+        "Lorbeer und Thymian zugeben",
+        "30-35 Min köcheln lassen",
+        "Mit Essig, Salz, Pfeffer, Zucker abschmecken",
+        "Würstchen in Scheiben schneiden",
+        "In den letzten 5 Min miterwärmen (nicht kochen!)",
+        "Mit Senf und Brot servieren"
+      ],
+      "childTip": "Würstchen separat erwärmen",
+      "workTip": "Deftiger Wintereintopf"
+    },
+    {
+      "id": "m029",
+      "name": "Cordon Bleu",
+      "baseIngredients": {
+        "Kalbsschnitzel": {"amount": 150, "unit": "g", "variations": ["Schwein", "Pute"]},
+        "Schinken": {"amount": 2, "unit": "Scheiben"},
+        "Käse": {"amount": 2, "unit": "Scheiben"},
+        "Pommes": {"amount": 200, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 30,
+      "tags": ["schweizer", "gefüllt"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Schnitzel fast durchschneiden (Schmetterlingsschnitt)",
+        "Aufklappen, dünn klopfen",
+        "Eine Hälfte mit Schinken und Käse belegen",
+        "Zuklappen, Ränder festdrücken",
+        "Mit Zahnstochern fixieren",
+        "Panierstraße: Mehl, Ei, Paniermehl",
+        "Sorgfältig panieren, Ränder gut verschließen",
+        "Pommes in den Ofen (nach Packung)",
+        "Reichlich Öl auf 170°C erhitzen",
+        "Cordon Bleu 3-4 Min pro Seite goldbraun backen",
+        "Auf Küchenpapier abtropfen",
+        "Zahnstocher entfernen",
+        "Mit Pommes und Preiselbeeren servieren"
+      ],
+      "childTip": "Käse schmilzt schön heraus",
+      "workTip": "Restaurant-Klassiker zuhause"
+    },
+    {
+      "id": "m030",
+      "name": "Rindersteak mit Kräuterbutter",
+      "baseIngredients": {
+        "Rindersteak": {"amount": 200, "unit": "g"},
+        "Kräuterbutter": {"amount": 40, "unit": "g"},
+        "Ofenkartoffel": {"amount": 1, "unit": "Stück"},
+        "Blattsalat": {"amount": 100, "unit": "g"}
+      },
+      "price": 8,
+      "prepTime": 25,
+      "tags": ["steakhouse", "grill"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffel waschen, mehrmals einstechen",
+        "In Alufolie wickeln, 45 Min bei 200°C backen",
+        "Kräuterbutter: Weiche Butter mit Petersilie, Schnittlauch, Knoblauch, Salz mischen",
+        "In Frischhaltefolie zur Rolle formen, kühlen",
+        "Steak 1 Std vor Zubereitung aus Kühlschrank",
+        "Trocken tupfen, erst kurz vor dem Braten salzen",
+        "Pfanne ohne Öl sehr heiß werden lassen (Rauchpunkt!)",
+        "Steak einlegen, 3-4 Min nicht bewegen",
+        "Wenden, andere Seite 3-4 Min",
+        "Für medium-rare: 55°C Kerntemperatur",
+        "Aus Pfanne nehmen, in Alufolie 5 Min ruhen",
+        "Salat mit Vinaigrette anmachen",
+        "Kartoffel aufschneiden, mit Sauerrahm füllen",
+        "Steak mit Kräuterbutter-Scheibe servieren"
+      ],
+      "childTip": "Steak durchbraten für Kinder",
+      "workTip": "Steakhouse-Feeling zuhause"
+    },
+    {
+      "id": "m031",
+      "name": "Hähnchen Teriyaki",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Teriyaki Sauce": {"amount": 60, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Quinoa"]},
+        "Brokkoli": {"amount": 150, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["japanisch", "süßsauer"],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
         "Reis nach Packungsanweisung kochen",
-        "Putenbrust in dünne Streifen schneiden",
-        "Mit Salz und Pfeffer würzen",
-        "Champignons in Scheiben schneiden",
-        "In heißer Pfanne Pute in 2 EL Öl anbraten (2-3 Min), herausnehmen",
-        "Champignons in derselben Pfanne 3 Min braten",
-        "Mit 50ml Weißwein ablöschen",
-        "Sahne zugeben, aufkochen",
-        "Pute wieder dazu, 2 Min ziehen lassen",
-        "Mit Worcestersauce und Zitrone abschmecken",
-        "Mit Reis servieren"
+        "Teriyaki selbst: 4 EL Sojasauce, 2 EL Mirin, 2 EL Zucker, 1 TL Ingwer aufkochen",
+        "Hähnchen in mundgerechte Stücke schneiden",
+        "In der Hälfte der Sauce 30 Min marinieren",
+        "Brokkoli in Röschen teilen, blanchieren",
+        "Wok oder Pfanne heiß werden lassen",
+        "Hähnchen bei hoher Hitze 2-3 Min anbraten",
+        "Brokkoli zugeben, 2 Min mitbraten",
+        "Restliche Sauce zugießen",
+        "2-3 Min einkochen lassen bis glänzend",
+        "Mit Sesam bestreuen",
+        "Auf Reis servieren",
+        "Mit Frühlingszwiebeln garnieren"
       ],
-      "childTip": "Mild und cremig",
-      "workTip": "Schnelles Feierabend-Gericht"
+      "childTip": "Süß-salzige Sauce lieben Kinder",
+      "workTip": "Schnelles Asia-Gericht"
     },
     {
-      "id": "m042",
-      "name": "Asia-Hackfleischpfanne",
+      "id": "m032",
+      "name": "Schweinefilet im Speckmantel",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 180, "unit": "g"},
+        "Bacon": {"amount": 6, "unit": "Scheiben"},
+        "Grüne Bohnen": {"amount": 150, "unit": "g"},
+        "Kartoffelgratin": {"amount": 200, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 40,
+      "tags": ["festlich", "bacon"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffelgratin vorbereiten (Kartoffeln hobeln, schichten, Sahne-Milch-Mix, 180°C 45 Min)",
+        "Schweinefilet von Sehnen befreien, trocken tupfen",
+        "Mit Salz, Pfeffer, Thymian würzen",
+        "Bacon leicht überlappend auslegen",
+        "Filet darauf legen, einwickeln",
+        "Mit Küchengarn fixieren oder Zahnstocher",
+        "In heißer Pfanne rundherum anbraten",
+        "Bei 180°C für 20-25 Min in den Ofen",
+        "Kerntemperatur 63°C für rosa, 68°C für durch",
+        "Bohnen in Salzwasser 6 Min kochen",
+        "In Eiswasser abschrecken",
+        "Filet aus Ofen nehmen, 10 Min ruhen lassen",
+        "Bohnen in Butter schwenken",
+        "Filet in Scheiben schneiden, anrichten"
+      ],
+      "childTip": "Bacon macht es besonders saftig",
+      "workTip": "Sonntagsbraten"
+    },
+    {
+      "id": "m033",
+      "name": "Gulaschsuppe",
+      "baseIngredients": {
+        "Rindergulasch": {"amount": 125, "unit": "g"},
+        "Kartoffeln": {"amount": 150, "unit": "g"},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Brot": {"amount": 3, "unit": "Scheiben"}
+      },
+      "price": 5,
+      "prepTime": 90,
+      "tags": ["suppe", "ungarisch"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Fleisch würfeln, in Topf scharf anbraten",
+        "Zwiebeln würfeln, zugeben, mitbraten",
+        "Paprikapulver einrühren (nicht anbrennen lassen!)",
+        "Tomatenmark zugeben, kurz rösten",
+        "Mit Brühe ablöschen (Fleisch bedeckt)",
+        "45 Min köcheln lassen",
+        "Kartoffeln und Paprika würfeln",
+        "Zugeben, weitere 20 Min kochen",
+        "Mit Kümmel, Majoran würzen",
+        "Mit Salz, Pfeffer, Essig abschmecken",
+        "5 Min ziehen lassen",
+        "Mit Sauerrahm und Brot servieren"
+      ],
+      "childTip": "Wärmende Suppe für kalte Tage",
+      "workTip": "Noch besser am nächsten Tag"
+    },
+    {
+      "id": "m034",
+      "name": "Hähnchen-Nuggets selbstgemacht",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Cornflakes": {"amount": 60, "unit": "g"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Süßkartoffelpommes": {"amount": 200, "unit": "g", "variations": ["Normale Pommes", "Wedges"]}
+      },
+      "price": 5,
+      "prepTime": 25,
+      "tags": ["kinder", "fingerfood"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Ofen auf 200°C vorheizen",
+        "Hähnchen in nugget-große Stücke schneiden",
+        "Mit Salz und Paprika würzen",
+        "Cornflakes in Gefrierbeutel, zerkleinern (nicht zu fein!)",
+        "3 Schalen: Mehl, verquirltes Ei, Cornflakes",
+        "Hähnchen durch Mehl, Ei, Cornflakes wenden",
+        "Auf Backblech mit Backpapier legen",
+        "Mit Öl besprühen oder bepinseln",
+        "15-18 Min backen, einmal wenden",
+        "Süßkartoffelpommes nach Packung zubereiten",
+        "Mit Ketchup, Mayo oder Honig-Senf-Sauce servieren"
+      ],
+      "childTip": "Viel gesünder als gekaufte",
+      "workTip": "Kinder helfen gern beim Panieren"
+    },
+    {
+      "id": "m035",
+      "name": "Rindergeschnetzeltes Stroganoff",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 180, "unit": "g"},
+        "Champignons": {"amount": 100, "unit": "g"},
+        "Saure Sahne": {"amount": 75, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]}
+      },
+      "price": 7,
+      "prepTime": 25,
+      "tags": ["russisch", "cremig"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Rinderfilet in dünne Streifen schneiden (gegen die Faser!)",
+        "Mit Salz und Pfeffer würzen",
+        "Champignons in Scheiben schneiden",
+        "Zwiebel fein würfeln",
+        "Pfanne sehr heiß werden lassen",
+        "Fleisch portionsweise (!) 1-2 Min scharf anbraten",
+        "Herausnehmen, warm halten",
+        "Pilze in derselben Pfanne anbraten",
+        "Zwiebeln zugeben, glasig dünsten",
+        "Mit Cognac ablöschen (optional)",
+        "Saure Sahne einrühren, nicht mehr kochen!",
+        "Fleisch zurück in Pfanne, nur erwärmen",
+        "Mit Paprika, Salz, Pfeffer abschmecken",
+        "Mit Reis und Gewürzgurken servieren"
+      ],
+      "childTip": "Cremig-mild, nicht zu sauer",
+      "workTip": "Russischer Klassiker"
+    },
+    {
+      "id": "m036",
+      "name": "Bratwurst mit Sauerkraut",
+      "baseIngredients": {
+        "Bratwurst": {"amount": 200, "unit": "g"},
+        "Sauerkraut": {"amount": 200, "unit": "g"},
+        "Kartoffelpüree": {"amount": 250, "unit": "g"},
+        "Senf": {"amount": 2, "unit": "EL"}
+      },
+      "price": 4,
+      "prepTime": 20,
+      "tags": ["deutsch", "deftig"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln schälen, kochen, zu Püree verarbeiten",
+        "Sauerkraut mit Zwiebel, Lorbeer, Wacholder 20 Min köcheln",
+        "Optional: Apfel reinreiben (milder)",
+        "Bratwurst einstechen (platzt sonst)",
+        "In Pfanne bei mittlerer Hitze braten",
+        "Regelmäßig wenden, 12-15 Min",
+        "Sauerkraut mit Speck verfeinern (optional)",
+        "Mit Salz, Pfeffer, Zucker abschmecken",
+        "Alles zusammen anrichten",
+        "Mit verschiedenen Senfsorten servieren"
+      ],
+      "childTip": "Ketchup statt Senf für Kinder",
+      "workTip": "Deutscher Klassiker"
+    },
+    {
+      "id": "m037",
+      "name": "Putenschnitzel Jäger Art",
+      "baseIngredients": {
+        "Putenschnitzel": {"amount": 150, "unit": "g"},
+        "Champignons": {"amount": 150, "unit": "g"},
+        "Jägersauce": {"amount": 100, "unit": "ml"},
+        "Spätzle": {"amount": 150, "unit": "g", "variations": ["Nudeln", "Reis"]}
+      },
+      "price": 6,
+      "prepTime": 30,
+      "tags": ["deutsch", "pilze"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Spätzle nach Packung kochen oder selbst machen",
+        "Putenschnitzel klopfen, würzen",
+        "In Mehl wenden, überschüssiges abklopfen",
+        "In heißem Öl 3-4 Min pro Seite braten",
+        "Warm halten",
+        "Pilze in Scheiben schneiden",
+        "In Bratfett anbraten",
+        "Zwiebel und Speck würfeln, zugeben",
+        "Mit Weißwein ablöschen",
+        "Sahne und Brühe zugeben",
+        "5 Min köcheln, eindicken lassen",
+        "Mit Petersilie, Salz, Pfeffer abschmecken",
+        "Schnitzel mit Sauce übergießen",
+        "Mit Spätzle servieren"
+      ],
+      "childTip": "Pilzsauce ist mild und cremig",
+      "workTip": "Hausmannskost"
+    },
+    {
+      "id": "m038",
+      "name": "Lammspieße griechisch",
+      "baseIngredients": {
+        "Lammfleisch": {"amount": 180, "unit": "g"},
+        "Tzatziki": {"amount": 75, "unit": "g"},
+        "Fladenbrot": {"amount": 2, "unit": "Stück"},
+        "Griechischer Salat": {"amount": 150, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 30,
+      "tags": ["griechisch", "grill"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Lamm in 3cm Würfel schneiden",
+        "Marinade: Olivenöl, Zitrone, Oregano, Knoblauch, Salz",
+        "Mindestens 2 Std marinieren",
+        "Holzspieße wässern",
+        "Fleisch aufspießen, Zwiebeln dazwischen",
+        "Tzatziki wie bei Gyros zubereiten",
+        "Griechischer Salat: Tomaten, Gurken, Feta, Oliven, Zwiebeln",
+        "Mit Olivenöl und Oregano anmachen",
+        "Spieße grillen oder in Grillpfanne",
+        "3-4 Min pro Seite",
+        "Fladenbrot erwärmen",
+        "Alles zusammen servieren"
+      ],
+      "childTip": "Lamm ist sehr mild",
+      "workTip": "Urlaubsfeeling"
+    },
+    {
+      "id": "m039",
+      "name": "Hähnchen-Wraps",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Wrap": {"amount": 2, "unit": "Stück", "variations": ["Weizen", "Vollkorn", "Spinat"]},
+        "Salat": {"amount": 50, "unit": "g"},
+        "Joghurt Dressing": {"amount": 50, "unit": "ml"}
+      },
+      "price": 5,
+      "prepTime": 20,
+      "tags": ["wraps", "togo"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hähnchen in Streifen schneiden",
+        "Mit Paprika, Salz, Pfeffer würzen",
+        "In heißer Pfanne 5-6 Min braten",
+        "Joghurt-Dressing: Joghurt, Mayo, Zitrone, Kräuter",
+        "Salat waschen, Tomaten würfeln, Gurke in Streifen",
+        "Wraps kurz in Pfanne oder Mikrowelle erwärmen",
+        "Mit Dressing bestreichen",
+        "Hähnchen in die Mitte",
+        "Gemüse darauf verteilen",
+        "Unten einschlagen, von der Seite aufrollen",
+        "In Papier wickeln zum Mitnehmen",
+        "Kalt oder warm genießen"
+      ],
+      "childTip": "Kinder können selbst belegen",
+      "workTip": "Perfekt für unterwegs"
+    },
+    {
+      "id": "m040",
+      "name": "Kalbsleber Berliner Art",
+      "baseIngredients": {
+        "Kalbsleber": {"amount": 150, "unit": "g"},
+        "Äpfel": {"amount": 1, "unit": "Stück"},
+        "Zwiebeln": {"amount": 1, "unit": "Stück"},
+        "Kartoffelpüree": {"amount": 250, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["berliner", "innereien"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffelpüree vorbereiten",
+        "Leber in dünne Scheiben schneiden",
+        "Häutchen entfernen, trocken tupfen",
+        "Äpfel in Ringe schneiden (Kerngehäuse entfernen)",
+        "Zwiebeln in Ringe schneiden",
+        "In Pfanne Butter erhitzen",
+        "Zwiebeln goldbraun braten, herausnehmen",
+        "Apfelringe 2 Min pro Seite braten, herausnehmen",
+        "Leber in Mehl wenden",
+        "Bei hoher Hitze 1-2 Min pro Seite (nicht zu lange!)",
+        "Sollte innen noch rosa sein",
+        "Mit Salz und Pfeffer würzen",
+        "Mit Zwiebeln und Äpfeln anrichten",
+        "Bratensatz mit Butter ablöschen, über Leber gießen"
+      ],
+      "childTip": "Sehr eisenreich, aber gewöhnungsbedürftig",
+      "workTip": "Berliner Traditionsküche"
+    },
+    {
+      "id": "m041",
+      "name": "Asiatische Hackfleischpfanne",
       "baseIngredients": {
         "Hackfleisch": {"amount": 150, "unit": "g"},
-        "Glasnudeln": {"amount": 75, "unit": "g"},
-        "Chinakohl": {"amount": 150, "unit": "g"},
-        "Sojasauce": {"amount": 3, "unit": "EL"},
-        "Ingwer": {"amount": 1, "unit": "cm"}
+        "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Glasnudeln"]},
+        "Pak Choi": {"amount": 150, "unit": "g", "variations": ["Chinakohl", "Spinat"]},
+        "Sojasauce": {"amount": 2, "unit": "EL"},
+        "Ingwer": {"amount": 1, "unit": "TL"}
       },
-      "price": 4.5,
+      "price": 5,
       "prepTime": 20,
       "tags": ["asiatisch", "schnell"],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
-        "Glasnudeln in heißem Wasser 5 Min einweichen",
-        "Hackfleisch in Wok krümelig anbraten",
-        "Ingwer und Knoblauch zugeben",
-        "Chinakohl in Streifen schneiden, zugeben",
-        "2 Min mitbraten",
-        "Glasnudeln abgießen, untermischen",
-        "Mit Sojasauce und Sesamöl würzen",
-        "Mit Frühlingszwiebeln garnieren"
+        "Reis nach Packungsanweisung kochen",
+        "Hackfleisch in heißem Wok krümelig anbraten",
+        "Ingwer und Knoblauch frisch reiben, zugeben",
+        "Pak Choi in Streifen schneiden",
+        "Zum Hackfleisch geben, 2-3 Min mitbraten",
+        "Mit Sojasauce und 1 TL Zucker würzen",
+        "Optional: 1 TL Sesamöl für Aroma",
+        "Mit geröstetem Sesam bestreuen",
+        "Auf Reis servieren"
       ],
-      "childTip": "Nicht zu scharf würzen",
-      "workTip": "In 20 Minuten fertig"
+      "childTip": "Mild und schnell gemacht",
+      "workTip": "15-Minuten-Gericht für eilige Tage"
     },
     {
-      "id": "m043",
-      "name": "Hähnchen-Paprika-Pfanne",
+      "id": "m042",
+      "name": "Putensteak mit Ofenkartoffeln",
       "baseIngredients": {
-        "Hähnchenbrust": {"amount": 150, "unit": "g"},
-        "Paprika": {"amount": 2, "unit": "Stück"},
-        "Reis": {"amount": 125, "unit": "g"},
-        "Schmand": {"amount": 50, "unit": "g"}
+        "Putensteak": {"amount": 150, "unit": "g"},
+        "Kartoffeln": {"amount": 250, "unit": "g"},
+        "Kräuterquark": {"amount": 75, "unit": "g"},
+        "Gemischter Salat": {"amount": 100, "unit": "g"}
       },
       "price": 5,
-      "prepTime": 30,
-      "tags": ["ungarisch", "paprika"],
-      "childFriendly": true,
-      "workFriendly": true,
-      "instructions": [
-        "Reis kochen",
-        "Hähnchen in Streifen schneiden",
-        "Paprika in Streifen schneiden",
-        "Hähnchen in Öl anbraten, herausnehmen",
-        "Paprika 5 Min braten",
-        "Mit Paprikapulver bestäuben",
-        "Hähnchen wieder dazu",
-        "Schmand einrühren",
-        "Mit Salz und Pfeffer würzen",
-        "Mit Reis servieren"
-      ],
-      "childTip": "Bunte Paprika verwenden",
-      "workTip": "Einfaches Pfannengericht"
-    },
-    {
-      "id": "m044",
-      "name": "Hackbällchen in Tomatensauce",
-      "baseIngredients": {
-        "Hackfleisch": {"amount": 150, "unit": "g"},
-        "Passierte Tomaten": {"amount": 200, "unit": "ml"},
-        "Spaghetti": {"amount": 125, "unit": "g"},
-        "Parmesan": {"amount": 30, "unit": "g"}
-      },
-      "price": 4.5,
       "prepTime": 35,
-      "tags": ["italienisch", "kinder"],
-      "childFriendly": true,
-      "workFriendly": true,
-      "instructions": [
-        "Hackfleisch mit Ei, Semmelbröseln, Salz, Pfeffer mischen",
-        "Kleine Bällchen formen",
-        "In Pfanne rundherum anbraten",
-        "Tomatensauce zugießen",
-        "15 Min köcheln lassen",
-        "Spaghetti kochen",
-        "Hackbällchen mit Sauce über Spaghetti",
-        "Mit Parmesan servieren"
-      ],
-      "childTip": "Kinder lieben kleine Hackbällchen",
-      "workTip": "Bällchen vorformen und später garen"
-    },
-    {
-      "id": "m045",
-      "name": "Putenbrust-Involtini",
-      "baseIngredients": {
-        "Putenschnitzel": {"amount": 150, "unit": "g"},
-        "Schinken": {"amount": 2, "unit": "Scheiben"},
-        "Salbei": {"amount": 4, "unit": "Blätter"},
-        "Gnocchi": {"amount": 200, "unit": "g"}
-      },
-      "price": 6,
-      "prepTime": 25,
-      "tags": ["italienisch", "rouladen"],
+      "tags": ["leicht", "gesund"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Putenschnitzel dünn klopfen",
-        "Mit Schinken und Salbei belegen",
-        "Aufrollen, mit Zahnstocher fixieren",
-        "In Butter von allen Seiten anbraten",
-        "Mit Weißwein ablöschen",
-        "10 Min bei kleiner Hitze garen",
-        "Gnocchi in Salzwasser kochen",
-        "In Salbeibutter schwenken",
-        "Involtini in Scheiben schneiden",
-        "Mit Gnocchi servieren"
+        "Ofen auf 200°C vorheizen",
+        "Kartoffeln in Spalten schneiden",
+        "Mit Olivenöl, Salz, Paprika mischen",
+        "Auf Backblech 25-30 Min backen",
+        "Putensteak würzen",
+        "In heißer Pfanne 4-5 Min pro Seite braten",
+        "Quark mit Kräutern, Salz, Pfeffer mischen",
+        "Salat waschen und anmachen",
+        "Alles zusammen servieren"
       ],
-      "childTip": "Ohne Salbei für Kinder",
-      "workTip": "Elegant aber einfach"
+      "childTip": "Mageres Fleisch, gesund und lecker",
+      "workTip": "Leichte Mahlzeit für abends"
     },
     {
-      "id": "m046",
-      "name": "Hähnchen-Reis-Pfanne",
+      "id": "m043",
+      "name": "Hähnchen-Gemüse-Wok",
       "baseIngredients": {
         "Hähnchenbrust": {"amount": 150, "unit": "g"},
-        "Reis": {"amount": 125, "unit": "g"},
-        "Erbsen": {"amount": 75, "unit": "g"},
-        "Möhren": {"amount": 1, "unit": "Stück"}
-      },
-      "price": 4.5,
-      "prepTime": 30,
-      "tags": ["eintopf", "reis"],
-      "childFriendly": true,
-      "workFriendly": true,
-      "instructions": [
-        "Hähnchen würfeln und anbraten",
-        "Möhren würfeln, zugeben",
-        "Reis zugeben, kurz mitbraten",
-        "Mit Brühe ablöschen",
-        "15 Min köcheln lassen",
-        "Erbsen in den letzten 5 Min zugeben",
-        "Mit Sojasauce abschmecken"
-      ],
-      "childTip": "Alles in einem Topf",
-      "workTip": "One-Pot-Gericht"
-    },
-    {
-      "id": "m047",
-      "name": "Schweinefilet-Pfanne",
-      "baseIngredients": {
-        "Schweinefilet": {"amount": 150, "unit": "g"},
-        "Zucchini": {"amount": 1, "unit": "Stück"},
-        "Kirschtomaten": {"amount": 100, "unit": "g"},
-        "Feta": {"amount": 50, "unit": "g"}
-      },
-      "price": 5.5,
-      "prepTime": 25,
-      "tags": ["mediterran", "leicht"],
-      "childFriendly": true,
-      "workFriendly": true,
-      "instructions": [
-        "Schweinefilet in Medaillons schneiden",
-        "Scharf anbraten, herausnehmen",
-        "Zucchini in Scheiben schneiden",
-        "Mit Tomaten anbraten",
-        "Fleisch wieder dazu",
-        "Mit Thymian würzen",
-        "Feta darüber bröckeln",
-        "2 Min ziehen lassen"
-      ],
-      "childTip": "Feta separat servieren",
-      "workTip": "Leicht und schnell"
-    },
-    {
-      "id": "m048",
-      "name": "Rindfleisch-Gemüse-Wok",
-      "baseIngredients": {
-        "Rindfleisch": {"amount": 150, "unit": "g"},
-        "Brokkoli": {"amount": 100, "unit": "g"},
-        "Paprika": {"amount": 1, "unit": "Stück"},
-        "Nudeln": {"amount": 125, "unit": "g", "variations": ["Reis", "Mie-Nudeln"]}
+        "Wok-Gemüse": {"amount": 200, "unit": "g"},
+        "Cashewnüsse": {"amount": 30, "unit": "g"},
+        "Teriyaki-Sauce": {"amount": 50, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g"}
       },
       "price": 6,
       "prepTime": 25,
       "tags": ["asiatisch", "wok"],
-      "childFriendly": true,
+      "childFriendly": false,
       "workFriendly": true,
       "instructions": [
-        "Nudeln kochen",
-        "Rindfleisch in Streifen schneiden",
-        "Scharf im Wok anbraten, herausnehmen",
-        "Gemüse im Wok 3-4 Min braten",
-        "Fleisch wieder dazu",
-        "Mit Sojasauce und Austersauce würzen",
-        "Nudeln untermischen",
-        "Mit Sesam bestreuen"
+        "Reis kochen",
+        "Hähnchen in Streifen schneiden",
+        "Cashews in trockener Pfanne rösten",
+        "Hähnchen im Wok scharf anbraten",
+        "Gemüse zugeben, 3-4 Min mitbraten",
+        "Mit Teriyaki-Sauce ablöschen",
+        "Cashews unterheben",
+        "Auf Reis servieren"
       ],
-      "childTip": "Nicht zu scharf",
+      "childTip": "Ohne Nüsse für Allergiker",
       "workTip": "Schnelles Wok-Gericht"
     },
     {
-      "id": "m049",
-      "name": "Hähnchen-Gemüse-Spieße",
+      "id": "m044",
+      "name": "Schweinefilet-Medaillons mit Spargel",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Spargel": {"amount": 200, "unit": "g", "variations": ["Grün", "Weiß"]},
+        "Sauce Hollandaise": {"amount": 75, "unit": "ml"},
+        "Neue Kartoffeln": {"amount": 200, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 30,
+      "tags": ["frühling", "edel"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln kochen",
+        "Spargel schälen, in Salzwasser 8-10 Min garen",
+        "Schweinefilet in Medaillons schneiden",
+        "Würzen und in Pfanne 3-4 Min pro Seite braten",
+        "Hollandaise erwärmen (nicht kochen!)",
+        "Alles anrichten und servieren"
+      ],
+      "childTip": "Spargel ist mild und gesund",
+      "workTip": "Saisonales Frühlingsgericht"
+    },
+    {
+      "id": "m045",
+      "name": "Rinderhack-Gemüse-Pfanne",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Zucchini": {"amount": 1, "unit": "Stück"},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Feta": {"amount": 50, "unit": "g"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 25,
+      "tags": ["mediterran", "pfanne"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Hackfleisch anbraten, würzen",
+        "Gemüse würfeln, zugeben",
+        "5-6 Min mitbraten",
+        "Mit Oregano und Thymian würzen",
+        "Feta darüber bröckeln",
+        "Mit Reis servieren"
+      ],
+      "childTip": "Buntes Gemüse macht Spaß",
+      "workTip": "One-Pan-Gericht"
+    },
+    {
+      "id": "m046",
+      "name": "Hähnchen-Cashew",
       "baseIngredients": {
         "Hähnchenbrust": {"amount": 150, "unit": "g"},
-        "Paprika": {"amount": 1, "unit": "Stück"},
-        "Zucchini": {"amount": 0.5, "unit": "Stück"},
-        "Couscous": {"amount": 125, "unit": "g"}
+        "Cashewnüsse": {"amount": 50, "unit": "g"},
+        "Frühlingszwiebeln": {"amount": 3, "unit": "Stück"},
+        "Hoisin-Sauce": {"amount": 2, "unit": "EL"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 20,
+      "tags": ["chinesisch", "nüsse"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Hähnchen würfeln, in Speisestärke wenden",
+        "In heißem Öl knusprig braten",
+        "Cashews und Frühlingszwiebeln zugeben",
+        "Mit Hoisin-Sauce ablöschen",
+        "2 Min köcheln, servieren"
+      ],
+      "childTip": "Achtung: Nüsse!",
+      "workTip": "Chinesischer Klassiker"
+    },
+    {
+      "id": "m047",
+      "name": "Schweinegeschnetzeltes Züricher Art",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Champignons": {"amount": 100, "unit": "g"},
+        "Sahne": {"amount": 100, "unit": "ml"},
+        "Rösti": {"amount": 200, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["schweizer", "cremig"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Rösti nach Packung zubereiten",
+        "Schweinefilet in Streifen schneiden",
+        "Scharf anbraten, herausnehmen",
+        "Pilze anbraten",
+        "Mit Weißwein ablöschen",
+        "Sahne zugeben, einkochen",
+        "Fleisch wieder dazu",
+        "Mit Rösti servieren"
+      ],
+      "childTip": "Cremige Sauce mögen alle",
+      "workTip": "Schweizer Klassiker"
+    },
+    {
+      "id": "m048",
+      "name": "Rindfleisch-Brokkoli-Pfanne",
+      "baseIngredients": {
+        "Rinderstreifen": {"amount": 150, "unit": "g"},
+        "Brokkoli": {"amount": 200, "unit": "g"},
+        "Austernsauce": {"amount": 2, "unit": "EL"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 20,
+      "tags": ["asiatisch", "gemüse"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Rindfleisch in Streifen, scharf anbraten",
+        "Brokkoli blanchieren",
+        "Zum Fleisch geben",
+        "Mit Austernsauce würzen",
+        "2-3 Min durchschwenken",
+        "Auf Reis servieren"
+      ],
+      "childTip": "Brokkoli mit leckerer Sauce",
+      "workTip": "Schnell und gesund"
+    },
+    {
+      "id": "m049",
+      "name": "Putenröllchen mit Spinat",
+      "baseIngredients": {
+        "Putenschnitzel": {"amount": 150, "unit": "g"},
+        "Spinat": {"amount": 75, "unit": "g"},
+        "Frischkäse": {"amount": 50, "unit": "g"},
+        "Kartoffeln": {"amount": 250, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 35,
+      "tags": ["gefüllt", "röllchen"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln kochen",
+        "Putenschnitzel dünn klopfen",
+        "Spinat mit Frischkäse mischen, würzen",
+        "Auf Schnitzel verteilen, aufrollen",
+        "Mit Zahnstochern fixieren",
+        "In Pfanne rundherum anbraten",
+        "Im Ofen 15 Min bei 180°C fertig garen",
+        "Mit Kartoffeln servieren"
+      ],
+      "childTip": "Spinat ist gut versteckt",
+      "workTip": "Hübsch anzusehen"
+    },
+    {
+      "id": "m050",
+      "name": "Hackfleisch-Reis-Pfanne",
+      "baseIngredients": {
+        "Hackfleisch": {"amount": 150, "unit": "g"},
+        "Reis": {"amount": 100, "unit": "g"},
+        "Erbsen": {"amount": 75, "unit": "g"},
+        "Mais": {"amount": 75, "unit": "g"}
+      },
+      "price": 4,
+      "prepTime": 25,
+      "tags": ["eintopf", "pfanne"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hackfleisch anbraten",
+        "Reis zugeben, kurz mitbraten",
+        "Mit Brühe ablöschen (doppelte Menge vom Reis)",
+        "15 Min köcheln lassen",
+        "Erbsen und Mais zugeben",
+        "Weitere 5 Min garen",
+        "Mit Käse bestreuen, servieren"
+      ],
+      "childTip": "Alles in einem Topf",
+      "workTip": "Schnelles Familiengericht"
+    },
+    {
+      "id": "m051",
+      "name": "Lammfilet mit Minz-Joghurt",
+      "baseIngredients": {
+        "Lammfilet": {"amount": 150, "unit": "g"},
+        "Joghurt": {"amount": 75, "unit": "g"},
+        "Minze": {"amount": 10, "unit": "Blätter"},
+        "Couscous": {"amount": 100, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 25,
+      "tags": ["orientalisch", "lamm"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Couscous nach Packung quellen lassen",
+        "Lammfilet würzen",
+        "In heißer Pfanne 3-4 Min pro Seite braten",
+        "5 Min ruhen lassen",
+        "Joghurt mit gehackter Minze mischen",
+        "Lamm aufschneiden",
+        "Mit Couscous und Minz-Joghurt servieren"
+      ],
+      "childTip": "Lamm ist sehr zart",
+      "workTip": "Orientalisches Flair"
+    },
+    {
+      "id": "m052",
+      "name": "Hähnchen-Paprika-Gulasch",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Paprika": {"amount": 2, "unit": "Stück"},
+        "Saure Sahne": {"amount": 75, "unit": "ml"},
+        "Spätzle": {"amount": 150, "unit": "g"}
       },
       "price": 5,
       "prepTime": 30,
+      "tags": ["ungarisch", "gulasch"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hähnchen würfeln, anbraten",
+        "Paprika in Streifen, zugeben",
+        "Mit Paprikapulver würzen",
+        "Mit Brühe ablöschen",
+        "15 Min köcheln",
+        "Saure Sahne einrühren",
+        "Spätzle kochen",
+        "Zusammen servieren"
+      ],
+      "childTip": "Mild und cremig",
+      "workTip": "Ungarische Hausmannskost"
+    },
+    {
+      "id": "m053",
+      "name": "Schweinefilet-Spieße",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "BBQ-Sauce": {"amount": 50, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
       "tags": ["grill", "spieße"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Hähnchen und Gemüse würfeln",
-        "Abwechselnd aufspießen",
-        "Mit Öl und Kräutern marinieren",
-        "In Grillpfanne oder Ofen 15 Min garen",
-        "Dabei mehrmals wenden",
-        "Couscous nach Packung zubereiten",
-        "Spieße auf Couscous servieren"
+        "Reis kochen",
+        "Schweinefilet würfeln",
+        "Mit Paprika und Zwiebel auf Spieße stecken",
+        "Mit BBQ-Sauce bepinseln",
+        "In Grillpfanne oder Ofen 15-20 Min garen",
+        "Dabei mehrmals wenden und bestreichen",
+        "Mit Reis servieren"
       ],
-      "childTip": "Bunte Spieße",
-      "workTip": "Auch kalt lecker"
+      "childTip": "Spieße machen Spaß",
+      "workTip": "Perfekt für Grillabende"
     },
     {
-      "id": "m050",
-      "name": "Puten-Rahm-Geschnetzeltes",
+      "id": "m054",
+      "name": "Rinderhack-Tortilla-Pizza",
       "baseIngredients": {
-        "Putenbrust": {"amount": 150, "unit": "g"},
-        "Sahne": {"amount": 100, "unit": "ml"},
-        "Spätzle": {"amount": 150, "unit": "g"},
-        "Erbsen": {"amount": 50, "unit": "g"}
+        "Tortilla": {"amount": 2, "unit": "Stück"},
+        "Rinderhack": {"amount": 100, "unit": "g"},
+        "Tomatensauce": {"amount": 50, "unit": "ml"},
+        "Käse": {"amount": 75, "unit": "g"},
+        "Mais": {"amount": 50, "unit": "g"}
+      },
+      "price": 4,
+      "prepTime": 15,
+      "tags": ["mexikanisch", "schnell"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hackfleisch krümelig anbraten, würzen",
+        "Tortilla mit Tomatensauce bestreichen",
+        "Hackfleisch darauf verteilen",
+        "Mais und Käse darüber",
+        "Bei 200°C im Ofen 8-10 Min backen",
+        "In Stücke schneiden, servieren"
+      ],
+      "childTip": "Mini-Pizza zum selbst belegen",
+      "workTip": "Blitzschnelles Abendessen"
+    },
+    {
+      "id": "m055",
+      "name": "Hähnchen-Kokos-Suppe",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 100, "unit": "g"},
+        "Kokosmilch": {"amount": 200, "unit": "ml"},
+        "Zitronengras": {"amount": 1, "unit": "Stange"},
+        "Pilze": {"amount": 75, "unit": "g"},
+        "Reisnudeln": {"amount": 75, "unit": "g"}
       },
       "price": 5,
       "prepTime": 20,
-      "tags": ["deutsch", "cremig"],
-      "childFriendly": true,
+      "tags": ["thailändisch", "suppe"],
+      "childFriendly": false,
       "workFriendly": true,
       "instructions": [
-        "Spätzle kochen",
-        "Pute in Streifen schneiden",
-        "In Butter anbraten",
-        "Erbsen zugeben",
-        "Mit Sahne ablöschen",
-        "3 Min köcheln",
-        "Mit Spätzle servieren"
+        "Hähnchen in dünne Streifen schneiden",
+        "Kokosmilch mit Brühe aufkochen",
+        "Zitronengras andrücken, zugeben",
+        "Hähnchen und Pilze 5 Min köcheln",
+        "Reisnudeln nach Packung garen",
+        "Mit Limettensaft und Fischsauce abschmecken",
+        "Mit Koriander garnieren"
       ],
-      "childTip": "Mild und cremig",
-      "workTip": "Schnelles Alltags-Gericht"
+      "childTip": "Zu exotisch für die meisten Kinder",
+      "workTip": "Tom Kha Gai - thailändischer Klassiker"
     }
   ]
 }
