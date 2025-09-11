@@ -2673,6 +2673,1582 @@
       ],
       "childTip": "Hackfleisch versteckt unter Püree",
       "workTip": "Britischer Klassiker"
+    },
+    {
+      "id": "m091",
+      "name": "Hähnchen-Zitronen-Piccata",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Kapern": {"amount": 2, "unit": "EL"},
+        "Weißwein": {"amount": 100, "unit": "ml"},
+        "Linguine": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["italienisch", "zitrone"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Linguine kochen",
+        "Hähnchen dünn klopfen, in Mehl wenden",
+        "In Butter goldbraun braten, herausnehmen",
+        "Mit Weißwein ablöschen",
+        "Zitronensaft und Kapern zugeben",
+        "Sauce einkochen, Butter einrühren",
+        "Hähnchen in Sauce legen",
+        "Mit Pasta servieren"
+      ],
+      "childTip": "Kapern sind gewöhnungsbedürftig",
+      "workTip": "Elegantes Zitronengericht"
+    },
+    {
+      "id": "m092",
+      "name": "Schweinefilet-Orange",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Orange": {"amount": 1, "unit": "Stück"},
+        "Ingwer": {"amount": 1, "unit": "TL"},
+        "Wildreis": {"amount": 100, "unit": "g"}
+      },
+      "price": 6.5,
+      "prepTime": 30,
+      "tags": ["fruchtig", "exotisch"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Wildreis kochen (dauert etwas länger)",
+        "Schweinefilet in Medaillons schneiden",
+        "Mit Salz und Pfeffer würzen, anbraten",
+        "Orangensaft und -schale zugeben",
+        "Ingwer reiben, einrühren",
+        "Sauce einkochen lassen",
+        "Mit Wildreis servieren"
+      ],
+      "childTip": "Fruchtig-süße Kombination",
+      "workTip": "Besonderes Geschmackserlebnis"
+    },
+    {
+      "id": "m093",
+      "name": "Rinderhack-Enchiladas Express",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Weizentortillas": {"amount": 3, "unit": "Stück"},
+        "Enchilada-Sauce": {"amount": 200, "unit": "ml"},
+        "Käse": {"amount": 100, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["mexikanisch", "überbacken"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hackfleisch mit Zwiebeln anbraten, würzen",
+        "Tortillas mit Hackfleisch füllen",
+        "Aufrollen, in Auflaufform legen",
+        "Mit Enchilada-Sauce übergießen",
+        "Mit Käse bestreuen",
+        "Bei 180°C 15 Min überbacken",
+        "Mit Sauerrahm servieren"
+      ],
+      "childTip": "Milder machen mit weniger Sauce",
+      "workTip": "Mexikanischer Auflauf"
+    },
+    {
+      "id": "m094",
+      "name": "Hähnchen-Koriander-Limette",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Koriander": {"amount": 30, "unit": "g"},
+        "Limette": {"amount": 2, "unit": "Stück"},
+        "Quinoa": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["frisch", "zitrus"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Quinoa kochen",
+        "Hähnchen mit Limettensaft marinieren",
+        "In heißer Pfanne braten",
+        "Koriander hacken",
+        "Mit Limettenschale mischen",
+        "Über Hähnchen streuen",
+        "Mit Quinoa servieren"
+      ],
+      "childTip": "Koriander ist sehr speziell",
+      "workTip": "Leichtes Sommergericht"
+    },
+    {
+      "id": "m095",
+      "name": "Schweinekoteletts Dijon",
+      "baseIngredients": {
+        "Schweinekoteletts": {"amount": 180, "unit": "g"},
+        "Dijonsenf": {"amount": 3, "unit": "EL"},
+        "Thymian": {"amount": 2, "unit": "Zweige"},
+        "Kartoffelspalten": {"amount": 250, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 30,
+      "tags": ["französisch", "senf"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffelspalten im Ofen rösten",
+        "Koteletts mit Senf bestreichen",
+        "Mit Thymian bestreuen",
+        "In Pfanne 4-5 Min pro Seite braten",
+        "Mit Weißwein ablöschen",
+        "Sauce einkochen",
+        "Mit Kartoffelspalten servieren"
+      ],
+      "childTip": "Senf macht es würzig",
+      "workTip": "Französische Bistroküche"
+    },
+    {
+      "id": "m096",
+      "name": "Rinder-Tataki",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 150, "unit": "g"},
+        "Sesam": {"amount": 3, "unit": "EL"},
+        "Ponzu-Sauce": {"amount": 50, "unit": "ml"},
+        "Wasabi": {"amount": 1, "unit": "TL"},
+        "Reis": {"amount": 100, "unit": "g"}
+      },
+      "price": 8,
+      "prepTime": 15,
+      "tags": ["japanisch", "roh"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Reis kochen",
+        "Rinderfilet in Sesam wälzen",
+        "In sehr heißer Pfanne 30 Sek pro Seite",
+        "In Eiswasser abschrecken",
+        "In dünne Scheiben schneiden",
+        "Mit Ponzu und Wasabi servieren"
+      ],
+      "childTip": "Zu roh für Kinder",
+      "workTip": "Japanische Delikatesse"
+    },
+    {
+      "id": "m097",
+      "name": "Hähnchen-Spinat-Rolle",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Blattspinat": {"amount": 100, "unit": "g"},
+        "Feta": {"amount": 50, "unit": "g"},
+        "Süßkartoffeln": {"amount": 200, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 35,
+      "tags": ["gefüllt", "spinat"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Süßkartoffeln in Spalten schneiden, rösten",
+        "Hähnchen flach klopfen",
+        "Spinat blanchieren, mit Feta mischen",
+        "Auf Hähnchen verteilen, aufrollen",
+        "Mit Zahnstochern fixieren",
+        "Rundherum anbraten",
+        "Im Ofen 15 Min bei 180°C",
+        "Mit Süßkartoffeln servieren"
+      ],
+      "childTip": "Spinat mit Käse gemischt",
+      "workTip": "Hübsch und lecker"
+    },
+    {
+      "id": "m098",
+      "name": "Schweine-Kimchi-Pfanne",
+      "baseIngredients": {
+        "Schweinenacken": {"amount": 150, "unit": "g"},
+        "Kimchi": {"amount": 100, "unit": "g"},
+        "Gochujang": {"amount": 1, "unit": "EL"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 20,
+      "tags": ["koreanisch", "fermentiert"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Schweinefleisch in Streifen schneiden",
+        "Scharf anbraten",
+        "Kimchi zugeben, mitbraten",
+        "Mit Gochujang würzen",
+        "2-3 Min durchschwenken",
+        "Auf Reis servieren"
+      ],
+      "childTip": "Zu scharf und sauer",
+      "workTip": "Koreanisches Soulfood"
+    },
+    {
+      "id": "m099",
+      "name": "Rinderfilet-Balsamico",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 180, "unit": "g"},
+        "Balsamico": {"amount": 50, "unit": "ml"},
+        "Honig": {"amount": 1, "unit": "EL"},
+        "Rucola": {"amount": 100, "unit": "g"},
+        "Focaccia": {"amount": 2, "unit": "Scheiben"}
+      },
+      "price": 8,
+      "prepTime": 20,
+      "tags": ["italienisch", "balsamico"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Rinderfilet würzen",
+        "In heißer Pfanne 3-4 Min pro Seite",
+        "Herausnehmen, ruhen lassen",
+        "Balsamico mit Honig einkochen",
+        "Filet aufschneiden",
+        "Auf Rucola anrichten",
+        "Mit Reduktion beträufeln",
+        "Focaccia dazu servieren"
+      ],
+      "childTip": "Rucola ist oft zu bitter",
+      "workTip": "Edles Sommergericht"
+    },
+    {
+      "id": "m100",
+      "name": "Hähnchen-Bulgur-Bowl",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Bulgur": {"amount": 100, "unit": "g"},
+        "Hummus": {"amount": 50, "unit": "g"},
+        "Granatapfel": {"amount": 50, "unit": "g"},
+        "Minze": {"amount": 10, "unit": "Blätter"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["orientalisch", "bowl"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Bulgur nach Packung quellen lassen",
+        "Hähnchen würzen, in Streifen braten",
+        "Bulgur in Bowl anrichten",
+        "Hähnchen darauf legen",
+        "Hummus dazu geben",
+        "Mit Granatapfel und Minze toppen"
+      ],
+      "childTip": "Bunte Bowl zum Probieren",
+      "workTip": "Gesunde Mittagsbowl"
+    },
+    {
+      "id": "m101",
+      "name": "Schweinefilet-Marsala",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Marsala": {"amount": 100, "unit": "ml"},
+        "Pilze": {"amount": 100, "unit": "g"},
+        "Tagliatelle": {"amount": 125, "unit": "g"}
+      },
+      "price": 6.5,
+      "prepTime": 25,
+      "tags": ["italienisch", "marsala"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Tagliatelle kochen",
+        "Schweinefilet in Medaillons schneiden",
+        "In Butter anbraten, herausnehmen",
+        "Pilze im Bratfett anbraten",
+        "Mit Marsala ablöschen",
+        "Einkochen, Sahne zugeben",
+        "Fleisch wieder einlegen",
+        "Mit Pasta servieren"
+      ],
+      "childTip": "Alkoholische Sauce",
+      "workTip": "Italienischer Klassiker"
+    },
+    {
+      "id": "m102",
+      "name": "Rinderhack-Sloppy-Joe",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Hamburgerbrötchen": {"amount": 2, "unit": "Stück"},
+        "Ketchup": {"amount": 50, "unit": "ml"},
+        "Worcestersauce": {"amount": 1, "unit": "EL"},
+        "Coleslaw": {"amount": 100, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 15,
+      "tags": ["amerikanisch", "sandwich"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hackfleisch mit Zwiebeln anbraten",
+        "Ketchup, Worcester, Senf mischen",
+        "Zum Hackfleisch geben",
+        "5 Min köcheln lassen",
+        "Brötchen toasten",
+        "Mit Hackfleischmischung füllen",
+        "Coleslaw als Beilage"
+      ],
+      "childTip": "Messy but fun!",
+      "workTip": "Amerikanischer Klassiker"
+    },
+    {
+      "id": "m103",
+      "name": "Hähnchen-Garam-Masala",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Garam Masala": {"amount": 2, "unit": "TL"},
+        "Tomaten": {"amount": 200, "unit": "g"},
+        "Naan": {"amount": 2, "unit": "Stück"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["indisch", "gewürze"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Hähnchen würfeln, mit Garam Masala einreiben",
+        "In Öl anbraten",
+        "Tomaten gewürfelt zugeben",
+        "10 Min köcheln lassen",
+        "Mit Joghurt verfeinern",
+        "Naan erwärmen",
+        "Zusammen servieren"
+      ],
+      "childTip": "Sehr würzig",
+      "workTip": "Indisches Aromengericht"
+    },
+    {
+      "id": "m104",
+      "name": "Schweine-Char-Siu",
+      "baseIngredients": {
+        "Schweinenacken": {"amount": 180, "unit": "g"},
+        "Hoisin-Sauce": {"amount": 3, "unit": "EL"},
+        "Honig": {"amount": 2, "unit": "EL"},
+        "Reis": {"amount": 125, "unit": "g"},
+        "Pak Choi": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 35,
+      "tags": ["chinesisch", "bbq"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Reis kochen",
+        "Schweinefleisch mit Hoisin und Honig marinieren",
+        "In heißer Pfanne anbraten",
+        "Im Ofen bei 200°C 15 Min garen",
+        "Dabei mehrmals mit Marinade bestreichen",
+        "Pak Choi kurz anbraten",
+        "Fleisch aufschneiden, servieren"
+      ],
+      "childTip": "Süß-würzige Glasur",
+      "workTip": "Chinesisches BBQ"
+    },
+    {
+      "id": "m105",
+      "name": "Rinderstreifen-Chimichurri",
+      "baseIngredients": {
+        "Rinderstreifen": {"amount": 150, "unit": "g"},
+        "Petersilie": {"amount": 50, "unit": "g"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Olivenöl": {"amount": 50, "unit": "ml"},
+        "Kartoffeln": {"amount": 250, "unit": "g"}
+      },
+      "price": 6.5,
+      "prepTime": 25,
+      "tags": ["argentinisch", "kräuter"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln in Spalten rösten",
+        "Chimichurri: Petersilie, Knoblauch, Öl, Essig mixen",
+        "Rinderstreifen sehr heiß anbraten",
+        "2-3 Min für medium",
+        "Mit Chimichurri beträufeln",
+        "Mit Kartoffelspalten servieren"
+      ],
+      "childTip": "Knoblauch sehr intensiv",
+      "workTip": "Argentinisches Grillgericht"
+    },
+    {
+      "id": "m106",
+      "name": "Hähnchen-Erdnuss-Nudeln",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Reisnudeln": {"amount": 100, "unit": "g"},
+        "Erdnussbutter": {"amount": 3, "unit": "EL"},
+        "Möhren": {"amount": 100, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 20,
+      "tags": ["asiatisch", "erdnuss"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reisnudeln einweichen",
+        "Hähnchen in Streifen braten",
+        "Möhren julienne schneiden",
+        "Erdnussbutter mit Sojasauce mischen",
+        "Alles zusammen in Wok schwenken",
+        "Mit Limette servieren"
+      ],
+      "childTip": "Cremige Erdnusssauce",
+      "workTip": "Schnelles Nudelgericht"
+    },
+    {
+      "id": "m107",
+      "name": "Schweinebauch-Bao",
+      "baseIngredients": {
+        "Schweinebauch": {"amount": 150, "unit": "g"},
+        "Bao-Brötchen": {"amount": 4, "unit": "Stück"},
+        "Hoisin": {"amount": 2, "unit": "EL"},
+        "Gurke": {"amount": 0.5, "unit": "Stück"},
+        "Koriander": {"amount": 20, "unit": "g"}
+      },
+      "price": 6.5,
+      "prepTime": 30,
+      "tags": ["taiwanesisch", "streetfood"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Schweinebauch in Scheiben schneiden",
+        "Mit Sojasauce und Zucker karamellisieren",
+        "Bao-Brötchen dämpfen",
+        "Gurke in Streifen schneiden",
+        "Brötchen mit Hoisin bestreichen",
+        "Fleisch, Gurke, Koriander einlegen"
+      ],
+      "childTip": "Lustige Klappbrötchen",
+      "workTip": "Asiatisches Streetfood"
+    },
+    {
+      "id": "m108",
+      "name": "Rinder-Pho Express",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 100, "unit": "g"},
+        "Pho-Nudeln": {"amount": 100, "unit": "g"},
+        "Rinderbrühe": {"amount": 500, "unit": "ml"},
+        "Sternanis": {"amount": 2, "unit": "Stück"},
+        "Koriander": {"amount": 20, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 20,
+      "tags": ["vietnamesisch", "suppe"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Brühe mit Sternanis aufkochen",
+        "Pho-Nudeln nach Packung garen",
+        "Rindfleisch in hauchdünne Scheiben",
+        "Nudeln in Schale, heiße Brühe drüber",
+        "Rohes Fleisch gart in der Brühe",
+        "Mit Koriander und Limette servieren"
+      ],
+      "childTip": "Zu viele Kräuter",
+      "workTip": "Vietnamesische Nudelsuppe"
+    },
+    {
+      "id": "m109",
+      "name": "Hähnchen-Parmesan Express",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Tomatensauce": {"amount": 150, "unit": "ml"},
+        "Mozzarella": {"amount": 100, "unit": "g"},
+        "Parmesan": {"amount": 50, "unit": "g"},
+        "Spaghetti": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 30,
+      "tags": ["italienisch", "überbacken"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Spaghetti kochen",
+        "Hähnchen klopfen, panieren",
+        "In Öl goldbraun braten",
+        "In Auflaufform legen",
+        "Mit Tomatensauce bedecken",
+        "Käse darüber, 10 Min bei 200°C",
+        "Mit Spaghetti servieren"
+      ],
+      "childTip": "Pizza-Hähnchen",
+      "workTip": "Italo-Amerikanischer Klassiker"
+    },
+    {
+      "id": "m110",
+      "name": "Schweine-Tonkatsu",
+      "baseIngredients": {
+        "Schweineschnitzel": {"amount": 150, "unit": "g"},
+        "Panko": {"amount": 50, "unit": "g"},
+        "Tonkatsu-Sauce": {"amount": 50, "unit": "ml"},
+        "Weißkohl": {"amount": 100, "unit": "g"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["japanisch", "paniert"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Reis kochen",
+        "Weißkohl in feine Streifen schneiden",
+        "Schnitzel mit Panko panieren",
+        "In heißem Öl knusprig ausbacken",
+        "In Streifen schneiden",
+        "Mit Tonkatsu-Sauce beträufeln",
+        "Mit Reis und Krautsalat servieren"
+      ],
+      "childTip": "Knuspriges Schnitzel",
+      "workTip": "Japanisches Schnitzel"
+    },
+    {
+      "id": "m111",
+      "name": "Rindfleisch-Poke-Bowl",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 100, "unit": "g"},
+        "Sushireis": {"amount": 125, "unit": "g"},
+        "Edamame": {"amount": 50, "unit": "g"},
+        "Avocado": {"amount": 0.5, "unit": "Stück"},
+        "Sojasauce": {"amount": 3, "unit": "EL"}
+      },
+      "price": 7,
+      "prepTime": 25,
+      "tags": ["hawaiianisch", "bowl"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Sushireis kochen und abkühlen",
+        "Rindfleisch kurz anbraten, in Würfel",
+        "Mit Sojasauce und Sesam marinieren",
+        "Reis in Bowl, Komponenten anrichten",
+        "Mit Sriracha-Mayo toppen"
+      ],
+      "childTip": "Zu roh für die meisten",
+      "workTip": "Hawaiianische Bowl"
+    },
+    {
+      "id": "m112",
+      "name": "Hähnchen-Ranch-Wrap",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Tortilla": {"amount": 2, "unit": "Stück"},
+        "Ranch-Dressing": {"amount": 50, "unit": "ml"},
+        "Bacon": {"amount": 2, "unit": "Scheiben"},
+        "Salat": {"amount": 50, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 20,
+      "tags": ["amerikanisch", "wrap"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hähnchen in Streifen braten",
+        "Bacon knusprig braten",
+        "Tortilla erwärmen",
+        "Mit Ranch bestreichen",
+        "Hähnchen, Bacon, Salat einrollen",
+        "In Hälften schneiden"
+      ],
+      "childTip": "Beliebte Wrap-Kombi",
+      "workTip": "Perfekt to go"
+    },
+    {
+      "id": "m113",
+      "name": "Schweinefilet-Feige",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Feigen": {"amount": 2, "unit": "Stück"},
+        "Rotwein": {"amount": 100, "unit": "ml"},
+        "Kartoffelstampf": {"amount": 250, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 30,
+      "tags": ["herbstlich", "fruchtig"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffelstampf vorbereiten",
+        "Schweinefilet in Medaillons",
+        "Anbraten, warm halten",
+        "Feigen vierteln, kurz anbraten",
+        "Mit Rotwein ablöschen",
+        "Sauce einkochen",
+        "Fleisch mit Feigensauce servieren"
+      ],
+      "childTip": "Feigen sind speziell",
+      "workTip": "Herbstliche Delikatesse"
+    },
+    {
+      "id": "m114",
+      "name": "Rinderhack-Banh-Mi",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Baguette": {"amount": 1, "unit": "Stück"},
+        "Möhren": {"amount": 50, "unit": "g"},
+        "Daikon": {"amount": 50, "unit": "g"},
+        "Koriander": {"amount": 20, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 20,
+      "tags": ["vietnamesisch", "sandwich"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Möhren und Daikon einlegen (Essig, Zucker)",
+        "Hackfleisch mit Sojasauce anbraten",
+        "Baguette aufschneiden, toasten",
+        "Mit Mayo bestreichen",
+        "Hackfleisch, eingelegtes Gemüse, Koriander"
+      ],
+      "childTip": "Zu viele fremde Aromen",
+      "workTip": "Vietnamesisches Sandwich"
+    },
+    {
+      "id": "m115",
+      "name": "Hähnchen-Alfredo Express",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Fettuccine": {"amount": 125, "unit": "g"},
+        "Sahne": {"amount": 150, "unit": "ml"},
+        "Parmesan": {"amount": 60, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 20,
+      "tags": ["italienisch", "cremig"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Fettuccine kochen",
+        "Hähnchen würfeln, anbraten",
+        "Sahne zugeben, einkochen",
+        "Parmesan einrühren",
+        "Pasta unterheben",
+        "Mit Pfeffer würzen"
+      ],
+      "childTip": "Cremige Lieblingspasta",
+      "workTip": "Schnelle Alfredo"
+    },
+    {
+      "id": "m116",
+      "name": "Schweinefilet-Aprikose",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Aprikosen": {"amount": 4, "unit": "Stück"},
+        "Curry": {"amount": 1, "unit": "TL"},
+        "Couscous": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["orientalisch", "fruchtig"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Couscous quellen lassen",
+        "Schweinefilet in Medaillons",
+        "Mit Curry würzen, anbraten",
+        "Aprikosen halbieren, mitbraten",
+        "Mit etwas Brühe ablöschen",
+        "Kurz schmoren",
+        "Mit Couscous servieren"
+      ],
+      "childTip": "Süß und mild",
+      "workTip": "Orientalische Küche"
+    },
+    {
+      "id": "m117",
+      "name": "Rinder-Beef-Bowl",
+      "baseIngredients": {
+        "Rinderstreifen": {"amount": 150, "unit": "g"},
+        "Reis": {"amount": 125, "unit": "g"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Dashi": {"amount": 100, "unit": "ml"}
+      },
+      "price": 6,
+      "prepTime": 20,
+      "tags": ["japanisch", "donburi"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Zwiebeln in Streifen schneiden",
+        "Mit Rindfleisch in Dashi schmoren",
+        "Mit Sojasauce und Mirin würzen",
+        "Auf Reis anrichten",
+        "Optional: Rohes Ei darüber"
+      ],
+      "childTip": "Ohne rohes Ei servieren",
+      "workTip": "Gyudon - japanische Bowl"
+    },
+    {
+      "id": "m118",
+      "name": "Hähnchen-Buffalo-Wings",
+      "baseIngredients": {
+        "Hähnchenflügel": {"amount": 200, "unit": "g"},
+        "Buffalo-Sauce": {"amount": 75, "unit": "ml"},
+        "Sellerie": {"amount": 3, "unit": "Stangen"},
+        "Blue-Cheese-Dip": {"amount": 50, "unit": "ml"}
+      },
+      "price": 5.5,
+      "prepTime": 35,
+      "tags": ["amerikanisch", "scharf"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Flügel im Ofen bei 200°C 25 Min backen",
+        "In Buffalo-Sauce wenden",
+        "Nochmal 5 Min backen",
+        "Selleriestangen schneiden",
+        "Mit Blue-Cheese-Dip servieren"
+      ],
+      "childTip": "Zu scharf",
+      "workTip": "Party-Snack"
+    },
+    {
+      "id": "m119",
+      "name": "Schweine-Piccata-Milanese",
+      "baseIngredients": {
+        "Schweineschnitzel": {"amount": 150, "unit": "g"},
+        "Spaghetti": {"amount": 125, "unit": "g"},
+        "Tomatensauce": {"amount": 150, "unit": "ml"},
+        "Rucola": {"amount": 50, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["italienisch", "schnitzel"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Spaghetti kochen",
+        "Schnitzel dünn klopfen",
+        "In Ei und Parmesan-Brösel wenden",
+        "Goldbraun braten",
+        "Spaghetti mit Tomatensauce",
+        "Schnitzel darauf, Rucola drüber"
+      ],
+      "childTip": "Schnitzel auf Spaghetti",
+      "workTip": "Mailänder Art"
+    },
+    {
+      "id": "m120",
+      "name": "Rindfleisch-Sukiyaki Express",
+      "baseIngredients": {
+        "Rinderstreifen": {"amount": 150, "unit": "g"},
+        "Tofu": {"amount": 100, "unit": "g"},
+        "Glasnudeln": {"amount": 75, "unit": "g"},
+        "Chinakohl": {"amount": 100, "unit": "g"},
+        "Sukiyaki-Sauce": {"amount": 100, "unit": "ml"}
+      },
+      "price": 6.5,
+      "prepTime": 20,
+      "tags": ["japanisch", "eintopf"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Glasnudeln einweichen",
+        "Alle Zutaten in Pfanne schichten",
+        "Sukiyaki-Sauce angießen",
+        "Deckel drauf, 10 Min schmoren",
+        "Umrühren, servieren"
+      ],
+      "childTip": "Süß-salzige Sauce",
+      "workTip": "Japanischer Eintopf"
+    },
+    {
+      "id": "m121",
+      "name": "Hähnchen-Tikka Express",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Tikka-Paste": {"amount": 2, "unit": "EL"},
+        "Joghurt": {"amount": 100, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 30,
+      "tags": ["indisch", "joghurt"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Hähnchen mit Tikka-Paste und Joghurt marinieren",
+        "In heißer Pfanne 8-10 Min braten",
+        "Mit Koriander garnieren",
+        "Mit Reis und Naan servieren"
+      ],
+      "childTip": "Zu würzig",
+      "workTip": "Indischer Klassiker"
+    },
+    {
+      "id": "m122",
+      "name": "Schweinefilet-Rosmarin-Zitrone",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Rosmarin": {"amount": 2, "unit": "Zweige"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Gnocchi": {"amount": 200, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["mediterran", "zitrus"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Gnocchi in Salzwasser kochen",
+        "Schweinefilet mit Rosmarin und Zitronenschale einreiben",
+        "In Olivenöl braten",
+        "Mit Zitronensaft ablöschen",
+        "Gnocchi in Butter schwenken",
+        "Zusammen anrichten"
+      ],
+      "childTip": "Zitrone macht es frisch",
+      "workTip": "Mediterranes Aroma"
+    },
+    {
+      "id": "m123",
+      "name": "Rinderhack-Stuffed-Peppers",
+      "baseIngredients": {
+        "Paprika": {"amount": 2, "unit": "Stück"},
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Reis": {"amount": 75, "unit": "g"},
+        "Tomatensauce": {"amount": 100, "unit": "ml"},
+        "Käse": {"amount": 50, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 35,
+      "tags": ["gefüllt", "paprika"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Paprika halbieren, entkernen",
+        "Reis kochen",
+        "Hackfleisch anbraten",
+        "Mit Reis und Tomatensauce mischen",
+        "Paprika füllen",
+        "Mit Käse bestreuen",
+        "Bei 180°C 20 Min backen"
+      ],
+      "childTip": "Bunte gefüllte Paprika",
+      "workTip": "Klassiker neu interpretiert"
+    },
+    {
+      "id": "m124",
+      "name": "Hähnchen-Mole Express",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Mole-Paste": {"amount": 2, "unit": "EL"},
+        "Schokolade": {"amount": 10, "unit": "g"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["mexikanisch", "schokolade"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Hähnchen in Stücke schneiden, anbraten",
+        "Mole-Paste mit Brühe verdünnen",
+        "Schokolade einrühren",
+        "Hähnchen in Sauce schmoren",
+        "Mit Reis servieren"
+      ],
+      "childTip": "Sehr komplexe Aromen",
+      "workTip": "Mexikanische Spezialität"
+    },
+    {
+      "id": "m125",
+      "name": "Schweinefilet-Cranberry",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Cranberries": {"amount": 50, "unit": "g"},
+        "Portwein": {"amount": 50, "unit": "ml"},
+        "Süßkartoffelpüree": {"amount": 250, "unit": "g"}
+      },
+      "price": 6.5,
+      "prepTime": 30,
+      "tags": ["festlich", "beeren"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Süßkartoffelpüree vorbereiten",
+        "Schweinefilet in Medaillons",
+        "In Butter braten",
+        "Mit Portwein ablöschen",
+        "Cranberries zugeben, einkochen",
+        "Mit Püree servieren"
+      ],
+      "childTip": "Süß-saure Beeren",
+      "workTip": "Weihnachtliches Gericht"
+    },
+    {
+      "id": "m126",
+      "name": "Rinder-Carpaccio Express",
+      "baseIngredients": {
+        "Rinderfilet": {"amount": 100, "unit": "g"},
+        "Rucola": {"amount": 50, "unit": "g"},
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Ciabatta": {"amount": 2, "unit": "Scheiben"}
+      },
+      "price": 7,
+      "prepTime": 10,
+      "tags": ["italienisch", "roh"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Rinderfilet tiefkühlen",
+        "Hauchdünn aufschneiden",
+        "Auf Teller arrangieren",
+        "Mit Olivenöl und Zitrone beträufeln",
+        "Rucola und Parmesanhobel darüber",
+        "Mit geröstetem Ciabatta"
+      ],
+      "childTip": "Rohes Fleisch",
+      "workTip": "Elegante Vorspeise"
+    },
+    {
+      "id": "m127",
+      "name": "Hähnchen-Jerk",
+      "baseIngredients": {
+        "Hähnchenschenkel": {"amount": 180, "unit": "g"},
+        "Jerk-Gewürz": {"amount": 2, "unit": "EL"},
+        "Reis": {"amount": 125, "unit": "g"},
+        "Ananas": {"amount": 100, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 35,
+      "tags": ["jamaikanisch", "scharf"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Hähnchen mit Jerk-Gewürz einreiben",
+        "In Pfanne von allen Seiten anbraten",
+        "Im Ofen bei 200°C 20 Min garen",
+        "Ananas grillen",
+        "Zusammen servieren"
+      ],
+      "childTip": "Sehr scharf",
+      "workTip": "Karibisches Gericht"
+    },
+    {
+      "id": "m128",
+      "name": "Schweinefilet-Gorgonzola-Birne",
+      "baseIngredients": {
+        "Schweinefilet": {"amount": 150, "unit": "g"},
+        "Gorgonzola": {"amount": 50, "unit": "g"},
+        "Birne": {"amount": 1, "unit": "Stück"},
+        "Tagliatelle": {"amount": 125, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 25,
+      "tags": ["italienisch", "käse-frucht"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Tagliatelle kochen",
+        "Schweinefilet in Medaillons braten",
+        "Birne in Spalten schneiden, mitbraten",
+        "Gorgonzola in Sahne schmelzen",
+        "Alles kombinieren",
+        "Mit Pasta servieren"
+      ],
+      "childTip": "Blauschimmelkäse ist intensiv",
+      "workTip": "Raffinierte Kombination"
+    },
+    {
+      "id": "m129",
+      "name": "Rinderhack-Lasagne-Suppe",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Lasagneblätter": {"amount": 4, "unit": "Stück"},
+        "Ricotta": {"amount": 50, "unit": "g"},
+        "Tomatensauce": {"amount": 300, "unit": "ml"}
+      },
+      "price": 5,
+      "prepTime": 25,
+      "tags": ["italienisch", "suppe"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hackfleisch anbraten",
+        "Mit Tomatensauce und Brühe auffüllen",
+        "Lasagneblätter brechen, zugeben",
+        "10 Min köcheln",
+        "Mit Ricotta-Klecksen servieren"
+      ],
+      "childTip": "Lasagne als Suppe",
+      "workTip": "Comfort Food"
+    },
+    {
+      "id": "m130",
+      "name": "Hähnchen-Souvlaki Express",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Pita": {"amount": 2, "unit": "Stück"},
+        "Tzatziki": {"amount": 75, "unit": "ml"},
+        "Tomaten": {"amount": 1, "unit": "Stück"},
+        "Pommes": {"amount": 150, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["griechisch", "spieße"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Pommes im Ofen zubereiten",
+        "Hähnchen würfeln, mit Oregano und Zitrone marinieren",
+        "Auf Spieße stecken",
+        "In Grillpfanne 8-10 Min grillen",
+        "Pita erwärmen",
+        "Mit Tzatziki, Tomaten und Pommes servieren"
+      ],
+      "childTip": "Griechische Spieße",
+      "workTip": "Taverna-Feeling"
+    },
+    {
+      "id": "m131",
+      "name": "Italienische Saltimbocca alla Romana",
+      "baseIngredients": {
+        "Kalbsschnitzel": {"amount": 150, "unit": "g"},
+        "Parmaschinken": {"amount": 3, "unit": "Scheiben"},
+        "Salbei": {"amount": 6, "unit": "Blätter"},
+        "Weißwein": {"amount": 100, "unit": "ml"},
+        "Risotto": {"amount": 150, "unit": "g"}
+      },
+      "price": 7.5,
+      "prepTime": 25,
+      "tags": ["italienisch", "römisch"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Risotto nach Grundrezept zubereiten",
+        "Kalbsschnitzel dünn klopfen",
+        "Mit Parmaschinken und Salbei belegen",
+        "Mit Zahnstochern fixieren",
+        "In Butter 2-3 Min pro Seite braten",
+        "Mit Weißwein ablöschen, einkochen",
+        "Mit Risotto servieren"
+      ],
+      "childTip": "Salbei mild dosieren",
+      "workTip": "Römischer Klassiker"
+    },
+    {
+      "id": "m132",
+      "name": "Türkische Köfte mit Joghurt",
+      "baseIngredients": {
+        "Lammhack": {"amount": 150, "unit": "g"},
+        "Petersilie": {"amount": 30, "unit": "g"},
+        "Joghurt": {"amount": 100, "unit": "g"},
+        "Fladenbrot": {"amount": 2, "unit": "Stück"},
+        "Reis": {"amount": 100, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 30,
+      "tags": ["türkisch", "hackfleisch"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Lammhack mit gehackter Petersilie, Zwiebel mischen",
+        "Mit Kreuzkümmel und Paprika würzen",
+        "Zu länglichen Köfte formen",
+        "In Pfanne oder Grill 8-10 Min braten",
+        "Joghurt mit Knoblauch und Minze mischen",
+        "Mit Fladenbrot und Reis servieren"
+      ],
+      "childTip": "Mild gewürzt kinderfreundlich",
+      "workTip": "Türkischer Grillklassiker"
+    },
+    {
+      "id": "m133",
+      "name": "Arabisches Hähnchen Shawarma",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Shawarma-Gewürz": {"amount": 2, "unit": "EL"},
+        "Tahini": {"amount": 50, "unit": "ml"},
+        "Pita": {"amount": 2, "unit": "Stück"},
+        "Salat": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["arabisch", "gewürze"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hähnchen in Streifen schneiden",
+        "Mit Shawarma-Gewürz und Joghurt marinieren",
+        "In heißer Pfanne 6-8 Min braten",
+        "Tahini mit Zitrone und Wasser verdünnen",
+        "Pita erwärmen",
+        "Mit Hähnchen, Salat und Tahini füllen"
+      ],
+      "childTip": "Mild gewürzte Version",
+      "workTip": "Arabisches Streetfood"
+    },
+    {
+      "id": "m134",
+      "name": "Osso Buco Express",
+      "baseIngredients": {
+        "Kalbshaxe": {"amount": 200, "unit": "g"},
+        "Tomaten": {"amount": 200, "unit": "g"},
+        "Weißwein": {"amount": 100, "unit": "ml"},
+        "Gremolata": {"amount": 30, "unit": "g"},
+        "Polenta": {"amount": 100, "unit": "g"}
+      },
+      "price": 8,
+      "prepTime": 45,
+      "tags": ["italienisch", "mailändisch"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kalbshaxe in Mehl wenden, anbraten",
+        "Gemüse (Zwiebel, Möhre, Sellerie) anschwitzen",
+        "Mit Weißwein ablöschen",
+        "Tomaten und Brühe zugeben",
+        "30 Min schmoren lassen",
+        "Polenta zubereiten",
+        "Gremolata: Zitronenschale, Knoblauch, Petersilie",
+        "Mit Polenta und Gremolata servieren"
+      ],
+      "childTip": "Sehr zartes Fleisch",
+      "workTip": "Mailänder Spezialität"
+    },
+    {
+      "id": "m135",
+      "name": "Türkisches Iskender Kebab",
+      "baseIngredients": {
+        "Lammfleisch": {"amount": 150, "unit": "g"},
+        "Tomatensauce": {"amount": 100, "unit": "ml"},
+        "Joghurt": {"amount": 100, "unit": "g"},
+        "Fladenbrot": {"amount": 2, "unit": "Stück"},
+        "Butter": {"amount": 30, "unit": "g"}
+      },
+      "price": 6.5,
+      "prepTime": 30,
+      "tags": ["türkisch", "kebab"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Lammfleisch in dünne Scheiben schneiden",
+        "Mit türkischen Gewürzen marinieren",
+        "In heißer Pfanne braten",
+        "Fladenbrot in Stücke schneiden, rösten",
+        "Brot auf Teller, Fleisch darauf",
+        "Mit heißer Tomatensauce übergießen",
+        "Joghurt darüber, geschmolzene Butter drauf"
+      ],
+      "childTip": "Beliebtes türkisches Gericht",
+      "workTip": "Iskender-Spezialität"
+    },
+    {
+      "id": "m136",
+      "name": "Arabische Kofta bi Tahini",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Tahini": {"amount": 75, "unit": "ml"},
+        "Pinienkerne": {"amount": 30, "unit": "g"},
+        "Petersilie": {"amount": 30, "unit": "g"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 35,
+      "tags": ["arabisch", "tahini"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Hackfleisch mit Petersilie und Gewürzen mischen",
+        "Kleine Kofta formen",
+        "In Pfanne rundherum anbraten",
+        "Tahini mit Zitrone und Wasser zur Sauce mischen",
+        "Kofta in Auflaufform, Sauce drüber",
+        "15 Min bei 180°C backen",
+        "Mit gerösteten Pinienkernen bestreuen"
+      ],
+      "childTip": "Nussige milde Sauce",
+      "workTip": "Levantinische Küche"
+    },
+    {
+      "id": "m137",
+      "name": "Italienisches Spezzatino",
+      "baseIngredients": {
+        "Rindergulasch": {"amount": 150, "unit": "g"},
+        "Rotwein": {"amount": 100, "unit": "ml"},
+        "Erbsen": {"amount": 100, "unit": "g"},
+        "Kartoffeln": {"amount": 200, "unit": "g"},
+        "Rosmarin": {"amount": 2, "unit": "Zweige"}
+      },
+      "price": 6.5,
+      "prepTime": 45,
+      "tags": ["italienisch", "eintopf"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Rindfleisch anbraten",
+        "Mit Rotwein ablöschen",
+        "Kartoffeln würfeln, zugeben",
+        "Mit Brühe auffüllen",
+        "Rosmarin zugeben, 30 Min köcheln",
+        "Erbsen in den letzten 10 Min",
+        "Mit Salz und Pfeffer abschmecken"
+      ],
+      "childTip": "Italienischer Eintopf",
+      "workTip": "Toskanisches Schmorgericht"
+    },
+    {
+      "id": "m138",
+      "name": "Türkische Adana Spieße",
+      "baseIngredients": {
+        "Lammhack": {"amount": 180, "unit": "g"},
+        "Paprikapaste": {"amount": 1, "unit": "EL"},
+        "Sumach": {"amount": 1, "unit": "TL"},
+        "Lavash": {"amount": 2, "unit": "Stück"},
+        "Zwiebelsalat": {"amount": 100, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["türkisch", "grill"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Lammhack mit Paprikapaste und Gewürzen mischen",
+        "Um flache Spieße formen",
+        "In Grillpfanne 6-8 Min grillen",
+        "Zwiebelsalat: Zwiebeln mit Sumach und Petersilie",
+        "Lavash erwärmen",
+        "Spieße mit Zwiebelsalat in Lavash wickeln"
+      ],
+      "childTip": "Würzige Hackfleischspieße",
+      "workTip": "Adana-Kebab Spezialität"
+    },
+    {
+      "id": "m139",
+      "name": "Arabisches Hähnchen Musakhan",
+      "baseIngredients": {
+        "Hähnchenschenkel": {"amount": 180, "unit": "g"},
+        "Zwiebeln": {"amount": 2, "unit": "Stück"},
+        "Sumach": {"amount": 2, "unit": "EL"},
+        "Pinienkerne": {"amount": 30, "unit": "g"},
+        "Fladenbrot": {"amount": 1, "unit": "Stück"}
+      },
+      "price": 6,
+      "prepTime": 40,
+      "tags": ["palästinensisch", "sumach"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hähnchen mit Sumach und Olivenöl einreiben",
+        "Bei 200°C 25 Min im Ofen",
+        "Zwiebeln in viel Olivenöl weich schmoren",
+        "Mit Sumach würzen",
+        "Fladenbrot mit Zwiebelmischung belegen",
+        "Hähnchen darauf, Pinienkerne drüber",
+        "Nochmal 10 Min in den Ofen"
+      ],
+      "childTip": "Säuerlich-würzig durch Sumach",
+      "workTip": "Palästinensisches Nationalgericht"
+    },
+    {
+      "id": "m140",
+      "name": "Involtini di Vitello",
+      "baseIngredients": {
+        "Kalbsschnitzel": {"amount": 150, "unit": "g"},
+        "Mortadella": {"amount": 50, "unit": "g"},
+        "Fontina": {"amount": 40, "unit": "g"},
+        "Marsala": {"amount": 50, "unit": "ml"},
+        "Tagliatelle": {"amount": 125, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 30,
+      "tags": ["italienisch", "gefüllt"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Tagliatelle kochen",
+        "Kalbsschnitzel dünn klopfen",
+        "Mit Mortadella und Fontina belegen",
+        "Aufrollen, mit Zahnstochern fixieren",
+        "In Butter anbraten",
+        "Mit Marsala ablöschen",
+        "8-10 Min schmoren",
+        "Mit Pasta servieren"
+      ],
+      "childTip": "Käse schmilzt innen",
+      "workTip": "Italienische Rouladen"
+    },
+    {
+      "id": "m141",
+      "name": "Türkisches Hünkar Beğendi",
+      "baseIngredients": {
+        "Lammwürfel": {"amount": 150, "unit": "g"},
+        "Aubergine": {"amount": 2, "unit": "Stück"},
+        "Käse": {"amount": 50, "unit": "g"},
+        "Butter": {"amount": 30, "unit": "g"},
+        "Tomaten": {"amount": 150, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 45,
+      "tags": ["türkisch", "osmanisch"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Lammfleisch anbraten",
+        "Mit Tomaten schmoren lassen",
+        "Auberginen über Flamme rösten bis schwarz",
+        "Schälen, Fruchtfleisch pürieren",
+        "Mit Butter und Mehl eine Bechamel machen",
+        "Auberginenpüree einrühren, Käse dazu",
+        "Püree auf Teller, Lamm darauf"
+      ],
+      "childTip": "Cremiges Auberginenpüree",
+      "workTip": "Sultan's Delight - osmanische Küche"
+    },
+    {
+      "id": "m142",
+      "name": "Arabisches Lamm Ouzi",
+      "baseIngredients": {
+        "Lammschulter": {"amount": 200, "unit": "g"},
+        "Reis": {"amount": 125, "unit": "g"},
+        "Mandeln": {"amount": 30, "unit": "g"},
+        "Rosinen": {"amount": 30, "unit": "g"},
+        "Baharat": {"amount": 1, "unit": "EL"}
+      },
+      "price": 7.5,
+      "prepTime": 45,
+      "tags": ["arabisch", "festlich"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Lamm mit Baharat-Gewürz einreiben",
+        "In Pfanne scharf anbraten",
+        "Mit Brühe ablöschen, 30 Min schmoren",
+        "Reis mit gerösteten Mandeln und Rosinen kochen",
+        "Fleisch in Stücke schneiden",
+        "Auf gewürztem Reis anrichten",
+        "Mit Joghurt servieren"
+      ],
+      "childTip": "Süß-herzhafte Kombination",
+      "workTip": "Festliches arabisches Gericht"
+    },
+    {
+      "id": "m143",
+      "name": "Scaloppine al Limone",
+      "baseIngredients": {
+        "Kalbsschnitzel": {"amount": 150, "unit": "g"},
+        "Zitrone": {"amount": 2, "unit": "Stück"},
+        "Butter": {"amount": 40, "unit": "g"},
+        "Kapern": {"amount": 1, "unit": "EL"},
+        "Risotto": {"amount": 150, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 20,
+      "tags": ["italienisch", "zitrone"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Risotto vorbereiten",
+        "Kalbsschnitzel dünn klopfen",
+        "In Mehl wenden",
+        "In Butter 2 Min pro Seite braten",
+        "Mit Zitronensaft ablöschen",
+        "Kapern zugeben",
+        "Butter einwirbeln",
+        "Mit Risotto servieren"
+      ],
+      "childTip": "Zitronig-frisch",
+      "workTip": "Italienischer Klassiker"
+    },
+    {
+      "id": "m144",
+      "name": "Türkische Tandir Köfte",
+      "baseIngredients": {
+        "Lammhack": {"amount": 150, "unit": "g"},
+        "Bulgur": {"amount": 50, "unit": "g"},
+        "Joghurt": {"amount": 100, "unit": "g"},
+        "Fladenbrot": {"amount": 2, "unit": "Stück"},
+        "Butter": {"amount": 30, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 35,
+      "tags": ["türkisch", "ofen"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Bulgur einweichen, ausdrücken",
+        "Mit Lammhack und Gewürzen mischen",
+        "Flache Köfte formen",
+        "In Auflaufform legen",
+        "Bei 180°C 20 Min backen",
+        "Mit geschmolzener Butter beträufeln",
+        "Mit Joghurt und Fladenbrot servieren"
+      ],
+      "childTip": "Saftige Hackfleischklöße",
+      "workTip": "Anatolische Spezialität"
+    },
+    {
+      "id": "m145",
+      "name": "Arabisches Hähnchen Fatteh",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Pita": {"amount": 2, "unit": "Stück"},
+        "Kichererbsen": {"amount": 100, "unit": "g"},
+        "Joghurt": {"amount": 150, "unit": "ml"},
+        "Pinienkerne": {"amount": 30, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 30,
+      "tags": ["arabisch", "schichten"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hähnchen kochen und zupfen",
+        "Pita in Stücke brechen, rösten",
+        "Kichererbsen erwärmen",
+        "Schichten: Pita, Kichererbsen, Hähnchen",
+        "Joghurt mit Tahini mischen, drüber",
+        "Mit gerösteten Pinienkernen bestreuen"
+      ],
+      "childTip": "Geschichtetes Comfort Food",
+      "workTip": "Levantinischer Auflauf"
+    },
+    {
+      "id": "m146",
+      "name": "Polpette al Sugo",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Parmesan": {"amount": 30, "unit": "g"},
+        "Tomatensauce": {"amount": 200, "unit": "ml"},
+        "Spaghetti": {"amount": 125, "unit": "g"},
+        "Basilikum": {"amount": 10, "unit": "Blätter"}
+      },
+      "price": 5,
+      "prepTime": 30,
+      "tags": ["italienisch", "fleischbällchen"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hackfleisch mit Parmesan, Ei, Brot mischen",
+        "Kleine Polpette formen",
+        "In Olivenöl rundherum anbraten",
+        "Mit Tomatensauce ablöschen",
+        "15 Min köcheln lassen",
+        "Spaghetti kochen",
+        "Mit Polpette und Sauce servieren",
+        "Mit Basilikum garnieren"
+      ],
+      "childTip": "Italienische Fleischbällchen",
+      "workTip": "Klassiker der Nonna"
+    },
+    {
+      "id": "m147",
+      "name": "Türkisches Güveç",
+      "baseIngredients": {
+        "Lammfleisch": {"amount": 150, "unit": "g"},
+        "Aubergine": {"amount": 1, "unit": "Stück"},
+        "Tomaten": {"amount": 150, "unit": "g"},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Reis": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 40,
+      "tags": ["türkisch", "tontopf"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Lamm würfeln, anbraten",
+        "Gemüse in Stücke schneiden",
+        "Alles in Auflaufform schichten",
+        "Mit Tomatenmark und Brühe angießen",
+        "Bei 180°C 30 Min schmoren",
+        "Reis separat kochen",
+        "Zusammen servieren"
+      ],
+      "childTip": "Bunter Gemüse-Fleisch-Topf",
+      "workTip": "Türkischer Schmortopf"
+    },
+    {
+      "id": "m148",
+      "name": "Arabisches Rindfleisch Kafta",
+      "baseIngredients": {
+        "Rinderhack": {"amount": 150, "unit": "g"},
+        "Petersilie": {"amount": 50, "unit": "g"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Pita": {"amount": 2, "unit": "Stück"},
+        "Hummus": {"amount": 100, "unit": "g"}
+      },
+      "price": 5.5,
+      "prepTime": 25,
+      "tags": ["arabisch", "grill"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hackfleisch mit fein gehackter Petersilie mischen",
+        "Zwiebel sehr fein würfeln, zugeben",
+        "Mit Zimt und Piment würzen",
+        "Um Spieße formen oder als Frikadellen",
+        "In Grillpfanne 8-10 Min braten",
+        "Pita erwärmen",
+        "Mit Hummus bestreichen, Kafta einlegen"
+      ],
+      "childTip": "Milde Gewürze",
+      "workTip": "Arabische Hackfleischspieße"
+    },
+    {
+      "id": "m149",
+      "name": "Pollo alla Cacciatora",
+      "baseIngredients": {
+        "Hähnchenschenkel": {"amount": 180, "unit": "g"},
+        "Tomaten": {"amount": 200, "unit": "g"},
+        "Oliven": {"amount": 50, "unit": "g"},
+        "Rotwein": {"amount": 100, "unit": "ml"},
+        "Polenta": {"amount": 100, "unit": "g"}
+      },
+      "price": 6,
+      "prepTime": 40,
+      "tags": ["italienisch", "jägerart"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Hähnchen anbraten, herausnehmen",
+        "Zwiebeln und Knoblauch anschwitzen",
+        "Mit Rotwein ablöschen",
+        "Tomaten und Oliven zugeben",
+        "Hähnchen wieder einlegen",
+        "25 Min schmoren",
+        "Polenta zubereiten",
+        "Zusammen servieren"
+      ],
+      "childTip": "Tomatig-würzig",
+      "workTip": "Jäger-Hähnchen"
+    },
+    {
+      "id": "m150",
+      "name": "Türkisches Şiş Tavuk",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Joghurt": {"amount": 100, "unit": "ml"},
+        "Paprikapulver": {"amount": 1, "unit": "EL"},
+        "Reis": {"amount": 125, "unit": "g"},
+        "Grilltomate": {"amount": 1, "unit": "Stück"}
+      },
+      "price": 5.5,
+      "prepTime": 30,
+      "tags": ["türkisch", "spieße"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hähnchen würfeln",
+        "Mit Joghurt und Paprika marinieren",
+        "Auf Spieße stecken",
+        "Reis kochen",
+        "Spieße in Grillpfanne 10-12 Min",
+        "Tomaten halbieren, mitgrillen",
+        "Mit Reis und gegrillten Tomaten servieren"
+      ],
+      "childTip": "Joghurt macht es zart",
+      "workTip": "Türkische Hähnchenspieße"
     }
   ]
 }
