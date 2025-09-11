@@ -47,7 +47,7 @@
         .header p {
             color: #666;
             font-size: 0.75em;
-            display: none; /* Auf Mobile ausblenden */
+            display: none;
         }
 
         .cloud-status {
@@ -325,6 +325,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        /* Recipe Toggle CSS - FEHLTE! */
+        .recipe-details {
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        
+        .recipe-details.collapsed {
+            display: none;
+        }
+        
+        #recipesList h3 {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        #recipesList h3:hover {
+            background: #f0f0f0;
+            border-radius: 5px;
+            padding-left: 5px;
         }
 
         /* Budget Anzeige kompakt */
@@ -673,7 +694,7 @@
             }
             
             input, select, textarea {
-                font-size: 16px; /* Verhindert Zoom beim Fokus */
+                font-size: 16px;
             }
         }
     </style>
@@ -923,9 +944,9 @@
             kidsLunchTueThu: null
         };
 
-        // ========== WICHTIGE HILFSFUNKTION: Array mischen (Fisher-Yates Shuffle) ==========
+        // WICHTIGE HILFSFUNKTION: Array mischen (Fisher-Yates Shuffle)
         function shuffleArray(array) {
-            const shuffled = [...array]; // Erstelle eine Kopie
+            const shuffled = [...array];
             for (let i = shuffled.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -933,44 +954,38 @@
             return shuffled;
         }
 
-        // ========== NEUE OPTIMIERUNGS-ENGINE ==========
+        // OPTIMIERUNGS-ENGINE
         const PlanOptimizer = {
-            // Hauptoptimierungsfunktion
             optimize: function(currentPlan, recipes, preferences) {
                 showLoading('Analysiere aktuellen Plan...');
                 
                 let optimizedPlan = [...currentPlan];
                 let improvements = [];
                 
-                // 1. Preis-Optimierung
                 const budgetResult = this.optimizeBudget(optimizedPlan, recipes, preferences);
                 if (budgetResult.improved) {
                     optimizedPlan = budgetResult.plan;
                     improvements.push(`💰 ${budgetResult.savings.toFixed(2)} CHF gespart`);
                 }
                 
-                // 2. Zutaten-Optimierung (gemeinsame Zutaten)
                 const ingredientResult = this.optimizeIngredients(optimizedPlan, recipes);
                 if (ingredientResult.improved) {
                     optimizedPlan = ingredientResult.plan;
                     improvements.push(`🛒 Einkauf optimiert`);
                 }
                 
-                // 3. Arbeitsfreundlichkeit
                 const workResult = this.optimizeForWork(optimizedPlan, recipes);
                 if (workResult.improved) {
                     optimizedPlan = workResult.plan;
                     improvements.push(`💼 Arbeitsgerichte verbessert`);
                 }
                 
-                // 4. Abwechslung
                 const varietyResult = this.optimizeVariety(optimizedPlan, recipes);
                 if (varietyResult.improved) {
                     optimizedPlan = varietyResult.plan;
                     improvements.push(`🎯 Mehr Abwechslung`);
                 }
                 
-                // 5. Vorbereitungszeit
                 const timeResult = this.optimizePrepTime(optimizedPlan, recipes);
                 if (timeResult.improved) {
                     optimizedPlan = timeResult.plan;
@@ -984,7 +999,6 @@
                 };
             },
             
-            // Budget-Optimierung
             optimizeBudget: function(plan, recipes, preferences) {
                 let improved = false;
                 let newPlan = [...plan];
@@ -998,13 +1012,13 @@
                     const currentCost = day.dinner.price * portions;
                     
                     if (currentCost > dailyBudget) {
-                        const isVeg = day.dinner.category === 'Vegetarisch';
+                        const isVeg = day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch';
                         const availableRecipes = isVeg ? 
                             recipes.vegetarian : recipes.meat;
                         
                         const filtered = SmartPlanner.filterRecipes(availableRecipes)
                             .filter(r => r.price * portions <= dailyBudget)
-                            .sort((a, b) => b.price - a.price); // Teuerste zuerst (aber unter Budget)
+                            .sort((a, b) => b.price - a.price);
                         
                         if (filtered.length > 0) {
                             const newRecipe = filtered[0];
@@ -1026,12 +1040,10 @@
                 };
             },
             
-            // Zutaten-Optimierung
             optimizeIngredients: function(plan, recipes) {
                 let improved = false;
                 let newPlan = [...plan];
                 
-                // Sammle häufige Zutaten
                 const ingredientCount = new Map();
                 plan.forEach(day => {
                     if (day.dinner && day.dinner.baseIngredients) {
@@ -1042,7 +1054,6 @@
                     }
                 });
                 
-                // Finde Tage mit seltenen Zutaten
                 plan.forEach((day, index) => {
                     if (!day.dinner || day.dinner.special === 'pizza-weekend') return;
                     
@@ -1056,13 +1067,11 @@
                         });
                     }
                     
-                    // Wenn mehr als 3 seltene Zutaten, ersetze
                     if (rareIngredients > 3) {
-                        const isVeg = day.dinner.category === 'Vegetarisch';
+                        const isVeg = day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch';
                         const availableRecipes = isVeg ? 
                             recipes.vegetarian : recipes.meat;
                         
-                        // Suche Rezept mit häufigen Zutaten
                         const filtered = SmartPlanner.filterRecipes(availableRecipes)
                             .filter(r => {
                                 if (!r.baseIngredients) return false;
@@ -1077,7 +1086,6 @@
                             });
                         
                         if (filtered.length > 0) {
-                            // WICHTIG: Auch hier das gefilterte Array mischen!
                             const shuffled = shuffleArray(filtered);
                             newPlan[index].dinner = SmartPlanner.addVariations({...shuffled[0]});
                             newPlan[index].variations = newPlan[index].dinner.variations;
@@ -1092,17 +1100,14 @@
                 };
             },
             
-            // Arbeitsfreundlichkeit optimieren
             optimizeForWork: function(plan, recipes) {
                 let improved = false;
                 let newPlan = [...plan];
                 
-                // Montag bis Donnerstag sollten aufwärmbar sein
                 for (let i = 0; i <= 3; i++) {
                     const day = plan[i];
                     if (!day.dinner || day.dinner.special === 'pizza-weekend') continue;
                     
-                    // Prüfe ob aufwärmfreundlich
                     const tags = day.dinner.tags || [];
                     const name = day.dinner.name.toLowerCase();
                     
@@ -1115,7 +1120,7 @@
                         name.includes('bolognese');
                     
                     if (!isGoodForWork) {
-                        const isVeg = day.dinner.category === 'Vegetarisch';
+                        const isVeg = day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch';
                         const availableRecipes = isVeg ? 
                             recipes.vegetarian : recipes.meat;
                         
@@ -1137,25 +1142,21 @@
                 };
             },
             
-            // Abwechslung optimieren
             optimizeVariety: function(plan, recipes) {
                 let improved = false;
                 let newPlan = [...plan];
                 
-                // Prüfe auf Wiederholungen
                 for (let i = 0; i < plan.length - 1; i++) {
                     const current = plan[i].dinner;
                     const next = plan[i + 1].dinner;
                     
                     if (!current || !next || current.special === 'pizza-weekend') continue;
                     
-                    // Prüfe Hauptzutaten
                     const currentMain = this.getMainIngredient(current);
                     const nextMain = this.getMainIngredient(next);
                     
                     if (currentMain === nextMain && currentMain !== '') {
-                        // Ersetze das zweite Gericht
-                        const isVeg = next.category === 'Vegetarisch';
+                        const isVeg = next.category === 'vegetarian' || next.category === 'Vegetarisch';
                         const availableRecipes = isVeg ? 
                             recipes.vegetarian : recipes.meat;
                         
@@ -1177,21 +1178,18 @@
                 };
             },
             
-            // Vorbereitungszeit optimieren
             optimizePrepTime: function(plan, recipes) {
                 let improved = false;
                 let newPlan = [...plan];
                 
-                // Wochentage sollten schnelle Gerichte haben
                 for (let i = 0; i <= 4; i++) {
                     const day = plan[i];
                     if (!day.dinner || day.dinner.special === 'pizza-weekend') continue;
                     
                     const prepTime = day.dinner.prepTime || 30;
                     
-                    // Wenn länger als 35 Minuten an Wochentagen
                     if (prepTime > 35) {
-                        const isVeg = day.dinner.category === 'Vegetarisch';
+                        const isVeg = day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch';
                         const availableRecipes = isVeg ? 
                             recipes.vegetarian : recipes.meat;
                         
@@ -1213,7 +1211,6 @@
                 };
             },
             
-            // Hilfsfunktion: Hauptzutat ermitteln
             getMainIngredient: function(recipe) {
                 if (!recipe.baseIngredients) return '';
                 
@@ -1228,7 +1225,6 @@
                     }
                 }
                 
-                // Prüfe auf Fleischsorten
                 const meats = ['hähnchen', 'rind', 'schwein', 'lamm', 'pute'];
                 for (let meat of meats) {
                     for (let ing of ingredients) {
@@ -1242,7 +1238,6 @@
             }
         };
 
-        // Aktualisierte optimizeCurrentPlan Funktion
         async function optimizeCurrentPlan() {
             if (!AppData.weekPlan || AppData.weekPlan.length === 0) {
                 showToast('Kein Plan zum Optimieren vorhanden', 'error');
@@ -1251,7 +1246,6 @@
             
             showLoading('Optimiere Wochenplan...');
             
-            // Führe Optimierung durch
             const result = PlanOptimizer.optimize(
                 AppData.weekPlan,
                 AppData.recipes,
@@ -1261,15 +1255,12 @@
             if (result.optimized) {
                 AppData.weekPlan = result.plan;
                 
-                // Zeige Verbesserungen
                 let message = 'Optimiert: ' + result.improvements.join(', ');
                 
-                // Aktualisiere Anzeige
                 displayWeekPlan();
                 generateShoppingList();
                 displayShoppingList();
                 
-                // Speichere
                 await saveToCloud();
                 
                 hideLoading();
@@ -1280,18 +1271,14 @@
             }
         }
 
-        // Rest des Original-Codes (SmartPlanner, etc.)
         const SmartPlanner = {
-            // Berechne Portionen für einen Tag
             calculatePortionsForDay: function(dayIndex) {
                 let totalPortions = 0;
                 
-                // Basis-Portionen aller Personen
                 AppData.preferences.persons.forEach(person => {
                     totalPortions += person.portions;
                 });
                 
-                // Sonntag bis Donnerstag: +1 Portion für nächsten Tag (Arbeit)
                 if (dayIndex >= 0 && dayIndex <= 3 || dayIndex === 6) {
                     totalPortions += 1;
                 }
@@ -1299,7 +1286,6 @@
                 return totalPortions;
             },
 
-            // Pizza-Logik
             shouldHavePizzaWeekend: function() {
                 const freq = AppData.preferences.pizzaFrequency;
                 const weeksSince = AppData.preferences.weeksSincePizza;
@@ -1315,7 +1301,6 @@
                 return false;
             },
 
-            // Filter Rezepte basierend auf Präferenzen
             filterRecipes: function(recipes) {
                 const filters = AppData.preferences.filters;
                 return recipes.filter(recipe => {
@@ -1324,30 +1309,32 @@
                     
                     if (filters.noLamb && (name.includes('lamm') || ingredients.includes('lamm'))) return false;
                     if (filters.noPork && (name.includes('schwein') || ingredients.includes('schwein') || 
-                        name.includes('speck') || ingredients.includes('speck'))) return false;
+                        name.includes('speck') || ingredients.includes('speck') ||
+                        name.includes('bacon') || ingredients.includes('bacon') ||
+                        name.includes('schinken') || ingredients.includes('schinken'))) return false;
                     if (filters.noBeef && (name.includes('rind') || ingredients.includes('rind') || 
                         name.includes('kalb') || ingredients.includes('kalb'))) return false;
                     if (filters.noDuck && (name.includes('ente') || ingredients.includes('ente'))) return false;
                     if (filters.noGorgonzola && ingredients.includes('gorgonzola')) return false;
                     if (filters.noFeta && ingredients.includes('feta')) return false;
-                    if (filters.noFish && (name.includes('fisch') || ingredients.includes('fisch'))) return false;
+                    if (filters.noFish && (name.includes('fisch') || ingredients.includes('fisch') ||
+                        name.includes('lachs') || ingredients.includes('lachs'))) return false;
                     if (filters.noMushrooms && (ingredients.includes('pilz') || ingredients.includes('champignon'))) return false;
                     if (filters.noNuts && (ingredients.includes('nuss') || ingredients.includes('nüsse') || 
-                        ingredients.includes('erdnuss'))) return false;
+                        ingredients.includes('erdnuss') || ingredients.includes('walnuss') ||
+                        ingredients.includes('cashew') || ingredients.includes('mandel'))) return false;
                     if (filters.noSpicy && (recipe.tags && recipe.tags.includes('scharf'))) return false;
                     
                     return true;
                 });
             },
 
-            // Erstelle intelligenten Wochenplan - KORRIGIERT MIT SHUFFLE
             createPlan: function(recipes, preferences) {
                 const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
                 const plan = [];
                 const usedRecipes = new Set();
                 const usedMainIngredients = new Map();
                 
-                // Prüfe Pizza-Wochenende
                 const isPizzaWeekend = this.shouldHavePizzaWeekend();
                 if (isPizzaWeekend) {
                     AppData.preferences.weeksSincePizza = 0;
@@ -1357,21 +1344,17 @@
                     document.getElementById('pizzaIndicator').style.display = 'none';
                 }
                 
-                // Gefilterte Rezepte
                 const meatRecipes = this.filterRecipes(recipes.meat || []);
                 const vegRecipes = this.filterRecipes(recipes.vegetarian || []);
                 const kidsRecipes = recipes.kids || [];
                 
-                // Debug: Zeige verfügbare Rezepte
                 console.log(`Verfügbare Rezepte nach Filter: ${meatRecipes.length} Fleisch, ${vegRecipes.length} Vegetarisch`);
                 
-                // WARNUNG wenn zu wenige Rezepte
                 if (meatRecipes.length < 5 || vegRecipes.length < 3) {
                     showToast('⚠️ Wenige Rezepte verfügbar - Filter prüfen!', 'error');
                     console.warn(`WARNUNG: Nur ${meatRecipes.length} Fleisch und ${vegRecipes.length} Veg Rezepte nach Filtern!`);
                 }
                 
-                // Wähle Kindergerichte für Dienstag und Donnerstag
                 let kidsLunchTue = null;
                 let kidsLunchThu = null;
                 
@@ -1381,30 +1364,24 @@
                     if (kidsRecipes.length > 1) {
                         kidsLunchThu = shuffledKids[1];
                     } else {
-                        kidsLunchThu = kidsLunchTue; // Wenn nur 1 Kindergericht vorhanden
+                        kidsLunchThu = kidsLunchTue;
                     }
                     AppData.kidsLunchTueThu = { tuesday: kidsLunchTue, thursday: kidsLunchThu };
                 }
                 
-                // Verteile vegetarische Tage intelligent
                 const vegDayIndices = this.distributeVegDays(7, preferences.vegDays);
-                console.log('Vegetarische Tage:', vegDayIndices);
+                console.log('Vegetarische Tage an Indizes:', vegDayIndices);
                 
-                // Erstelle Plan für jeden Tag
                 days.forEach((day, index) => {
                     let recipe = null;
                     let kidsLunch = null;
                     
-                    // Pizza-Wochenende (Freitag und Samstag)
                     if (isPizzaWeekend && (index === 4 || index === 5)) {
                         recipe = this.createPizzaRecipe(index === 4 ? 'Freitag' : 'Samstag');
                     } else {
                         const isVegDay = vegDayIndices.includes(index);
                         
-                        // KRITISCH: Hier ist die Korrektur - Arrays mischen!
                         let availableRecipes = isVegDay ? [...vegRecipes] : [...meatRecipes];
-                        
-                        // WICHTIG: Mische die verfügbaren Rezepte für Zufälligkeit
                         availableRecipes = shuffleArray(availableRecipes);
                         
                         recipe = this.selectSmartRecipe(
@@ -1414,7 +1391,6 @@
                             index
                         );
                         
-                        // Sicherstellen, dass das gleiche Rezept nicht zweimal verwendet wird
                         let attempts = 0;
                         while (usedRecipes.has(recipe.id) && attempts < 10) {
                             console.warn(`Rezept "${recipe.name}" bereits verwendet, suche Alternative...`);
@@ -1432,17 +1408,20 @@
                             }
                             attempts++;
                         }
+                        
+                        // Setze die korrekte Kategorie für die Anzeige
+                        if (recipe) {
+                            recipe.category = isVegDay ? 'vegetarian' : 'meat';
+                        }
                     }
                     
-                    // Füge Variationen hinzu
                     if (recipe && recipe.baseIngredients) {
                         recipe = this.addVariations(recipe);
                     }
                     
-                    // Kindergerichte für Dienstag und Donnerstag
-                    if (index === 1) { // Dienstag
+                    if (index === 1) {
                         kidsLunch = kidsLunchTue;
-                    } else if (index === 3) { // Donnerstag
+                    } else if (index === 3) {
                         kidsLunch = kidsLunchThu;
                     }
                     
@@ -1464,7 +1443,6 @@
                 return plan;
             },
 
-            // Pizza-Rezept erstellen
             createPizzaRecipe: function(dayName) {
                 const isFriday = dayName === 'Freitag';
                 return {
@@ -1491,7 +1469,6 @@
                 };
             },
 
-            // Verteile vegetarische Tage
             distributeVegDays: function(totalDays, vegCount) {
                 if (vegCount === 0) return [];
                 if (vegCount >= totalDays) return Array.from({length: totalDays}, (_, i) => i);
@@ -1502,15 +1479,15 @@
                 for (let i = 0; i < vegCount; i++) {
                     let pos = i * spacing + Math.floor(Math.random() * Math.max(1, spacing - 1));
                     if (pos >= totalDays) pos = totalDays - 1;
-                    if (!positions.includes(pos)) {
-                        positions.push(pos);
+                    while (positions.includes(pos)) {
+                        pos = (pos + 1) % totalDays;
                     }
+                    positions.push(pos);
                 }
                 
-                return positions;
+                return positions.sort((a, b) => a - b);
             },
 
-            // Wähle intelligentes Rezept - VERBESSERT
             selectSmartRecipe: function(availableRecipes, usedRecipes, usedMainIngredients, dayIndex) {
                 const isWeekend = dayIndex >= 5;
                 const needsWorkFriendly = dayIndex < 4;
@@ -1535,17 +1512,14 @@
                 }
                 
                 if (candidates.length > 0) {
-                    // WICHTIG: Verwende zufällige Auswahl, Arrays sind bereits gemischt
                     const randomIndex = Math.floor(Math.random() * Math.min(5, candidates.length));
                     const selected = candidates[randomIndex];
                     return {...selected};
                 }
                 
-                // Fallback: Nimm irgendein Rezept
                 return availableRecipes[0] ? {...availableRecipes[0]} : null;
             },
 
-            // Füge Variationen hinzu
             addVariations: function(recipe) {
                 const variations = [];
                 
@@ -1565,7 +1539,6 @@
                 return recipe;
             },
 
-            // Tracke verwendete Zutaten
             trackIngredients: function(recipe, usedMainIngredients, dayIndex) {
                 if (!recipe.baseIngredients) return;
                 
@@ -1581,13 +1554,12 @@
                 });
             },
 
-            // Datum für Tag berechnen
             getDateForDay: function(dayIndex) {
                 const today = new Date();
                 const currentDay = today.getDay();
-                const daysUntilMonday = currentDay === 0 ? 1 : 8 - currentDay;
+                const daysFromMonday = (currentDay === 0 ? 6 : currentDay - 1);
                 const monday = new Date(today);
-                monday.setDate(today.getDate() + daysUntilMonday - 7);
+                monday.setDate(today.getDate() - daysFromMonday);
                 
                 const targetDate = new Date(monday);
                 targetDate.setDate(monday.getDate() + dayIndex);
@@ -1599,9 +1571,7 @@
             }
         };
 
-        // ========== CLOUD SYNC FUNKTIONEN ==========
-        
-        // Suche nach existierenden Wochenplan-Gists
+        // Cloud Sync Funktionen
         async function findExistingGists() {
             try {
                 const response = await fetch('https://api.github.com/gists', {
@@ -1617,13 +1587,11 @@
                 
                 const gists = await response.json();
                 
-                // Suche nach Wochenplan-Gists
                 const wochenplanGists = gists.filter(gist => {
                     return gist.description && gist.description.includes('Wochenplan');
                 });
                 
                 if (wochenplanGists.length > 0) {
-                    // Sortiere nach Änderungsdatum (neuester zuerst)
                     wochenplanGists.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
                     
                     console.log(`Found ${wochenplanGists.length} Wochenplan Gists, using newest one`);
@@ -1637,7 +1605,6 @@
             }
         }
 
-        // Initialisierung
         window.addEventListener('DOMContentLoaded', async function() {
             const savedToken = localStorage.getItem('githubToken');
             
@@ -1650,12 +1617,10 @@
             }
         });
 
-        // Setup Modal anzeigen
         function showSetupModal() {
             document.getElementById('setupModal').classList.add('active');
         }
 
-        // Mit Cloud verbinden
         async function connectToCloud() {
             const token = document.getElementById('githubToken').value;
             
@@ -1670,7 +1635,6 @@
             localStorage.setItem('githubToken', token);
             
             try {
-                // Suche nach existierenden Gists
                 const existingGistId = await findExistingGists();
                 
                 if (existingGistId) {
@@ -1678,7 +1642,6 @@
                     localStorage.setItem('currentGistId', existingGistId);
                     showToast('Plan gefunden!', 'success');
                 } else {
-                    // Erstelle neuen Gist
                     await createNewCloudPlan();
                     showToast('Neuer Plan erstellt!', 'success');
                 }
@@ -1692,14 +1655,12 @@
             }
         }
 
-        // App initialisieren
         async function initializeApp() {
             showLoading('Lade Rezepte...');
             
             try {
                 await loadRecipes();
                 
-                // Versuche existierende Gists zu finden, falls noch keine ID vorhanden
                 if (!CloudSync.gistId) {
                     const existingGistId = await findExistingGists();
                     if (existingGistId) {
@@ -1732,44 +1693,36 @@
             }
         }
 
-        // Rezepte laden
         async function loadRecipes() {
             try {
                 console.log('Lade Rezepte aus dem recipes Ordner...');
                 
-                // Paralleles Laden aller drei Dateien
                 const [meatResponse, vegResponse, kidsResponse] = await Promise.all([
                     fetch('recipes/meat.json'),
                     fetch('recipes/vegetarian.json'),
                     fetch('recipes/kids.json')
                 ]);
 
-                // Parse die JSON Dateien
                 const meatData = meatResponse.ok ? await meatResponse.json() : null;
                 const vegData = vegResponse.ok ? await vegResponse.json() : null;
                 const kidsData = kidsResponse.ok ? await kidsResponse.json() : null;
 
-                // Extrahiere die recipes Arrays
                 const meatRecipes = [];
                 const vegRecipes = [];
                 const kidsRecipes = [];
 
-                // Meat recipes
                 if (meatData && meatData.recipes) {
                     meatRecipes.push(...meatData.recipes);
                 }
 
-                // Vegetarian recipes
                 if (vegData && vegData.recipes) {
                     vegRecipes.push(...vegData.recipes);
                 }
 
-                // Kids recipes
                 if (kidsData && kidsData.recipes) {
                     kidsRecipes.push(...kidsData.recipes);
                 }
 
-                // Speichere in der vereinfachten Struktur
                 AppData.recipes = {
                     meat: meatRecipes,
                     vegetarian: vegRecipes,
@@ -1792,7 +1745,6 @@
                 console.error('Fehler beim Laden der Rezepte:', error);
                 showToast('Fehler beim Laden: ' + error.message, 'error');
                 
-                // Fallback mit leeren Arrays
                 AppData.recipes = {
                     meat: [],
                     vegetarian: [],
@@ -1801,7 +1753,6 @@
             }
         }
 
-        // Statistiken aktualisieren
         function updateStatistics() {
             const total = countTotalRecipes();
             const meat = AppData.recipes && AppData.recipes.meat ? AppData.recipes.meat.length : 0;
@@ -1814,7 +1765,6 @@
             document.getElementById('kidsCount').textContent = kids;
         }
 
-        // Zähle alle Rezepte
         function countTotalRecipes() {
             let count = 0;
             if (AppData.recipes) {
@@ -1825,7 +1775,6 @@
             return count;
         }
 
-        // Pizza Countdown aktualisieren
         function updatePizzaCountdown() {
             const freq = AppData.preferences.pizzaFrequency;
             const weeksSince = AppData.preferences.weeksSincePizza;
@@ -1841,7 +1790,6 @@
             }
         }
 
-        // Neuen Cloud-Plan erstellen
         async function createNewCloudPlan() {
             const gistData = {
                 description: `Wochenplan ${new Date().toLocaleDateString('de-CH')}`,
@@ -1880,7 +1828,6 @@
             updateSyncInfo();
         }
 
-        // Aus Cloud laden
         async function loadFromCloud() {
             if (!CloudSync.gistId) return;
             
@@ -1911,7 +1858,6 @@
             updateSyncInfo();
         }
 
-        // In Cloud speichern
         async function saveToCloud() {
             if (!CloudSync.gistId) return;
             
@@ -1948,16 +1894,14 @@
             }
         }
 
-        // Auto-Sync starten
         function startAutoSync() {
             CloudSync.syncInterval = setInterval(async () => {
                 if (CloudSync.isOnline) {
                     await saveToCloud();
                 }
-            }, 10000); // 10 Sekunden
+            }, 10000);
         }
 
-        // Polling für Änderungen
         function startSyncPolling() {
             CloudSync.syncPollInterval = setInterval(async () => {
                 if (CloudSync.isOnline && CloudSync.gistId) {
@@ -1974,7 +1918,6 @@
                             const content = gist.files['wochenplan.json'].content;
                             const data = JSON.parse(content);
                             
-                            // Prüfe ob es neuere Änderungen gibt
                             if (data.lastUpdate && CloudSync.lastUpdateTime && 
                                 new Date(data.lastUpdate) > new Date(CloudSync.lastUpdateTime)) {
                                 
@@ -1999,20 +1942,18 @@
                         console.error('Polling-Fehler:', error);
                     }
                 }
-            }, 5000); // Alle 5 Sekunden
+            }, 5000);
         }
 
-        // Auto-Save bei Änderungen
         function triggerAutoSave() {
             clearTimeout(CloudSync.autoSaveTimeout);
             updateCloudStatus('syncing');
             CloudSync.autoSaveTimeout = setTimeout(async () => {
                 await saveToCloud();
                 showToast('Gespeichert', 'success');
-            }, 500);
+            }, 2000); // Erhöht auf 2 Sekunden
         }
 
-        // Manueller Cloud Sync
         async function forceCloudSync() {
             showLoading('Synchronisiere...');
             try {
@@ -2028,20 +1969,21 @@
             hideLoading();
         }
 
-        // Update Token
         function updateToken() {
+            // Memory Leak Fix
+            if (CloudSync.syncInterval) clearInterval(CloudSync.syncInterval);
+            if (CloudSync.syncPollInterval) clearInterval(CloudSync.syncPollInterval);
+            
             const token = document.getElementById('settingsGithubToken').value;
             if (token) {
                 CloudSync.token = token;
                 localStorage.setItem('githubToken', token);
                 showToast('Token aktualisiert', 'success');
                 
-                // Neuinitialisierung mit neuem Token
                 initializeApp();
             }
         }
 
-        // Sync Info aktualisieren
         function updateSyncInfo() {
             document.getElementById('syncStatus').textContent = CloudSync.isOnline ? 'Online' : 'Offline';
             document.getElementById('currentGistId').textContent = CloudSync.gistId ? 
@@ -2050,7 +1992,6 @@
                 CloudSync.lastSync.toLocaleTimeString('de-CH', {hour: '2-digit', minute: '2-digit'}) : '-';
         }
 
-        // Intelligenten Plan generieren
         async function generateSmartPlan() {
             if (!AppData.recipes) {
                 await loadRecipes();
@@ -2078,7 +2019,6 @@
             showToast('Neuer Plan erstellt', 'success');
         }
 
-        // Wochenplan anzeigen
         function displayWeekPlan() {
             const grid = document.getElementById('weekGrid');
             grid.innerHTML = '';
@@ -2139,6 +2079,10 @@
                     portionInfo += ' (+1 Arbeit)';
                 }
                 
+                const categoryDisplay = day.dinner.category === 'vegetarian' ? 'Vegetarisch' : 
+                                       day.dinner.category === 'meat' ? 'Fleisch' : 
+                                       day.dinner.category || '';
+                
                 dayCard.innerHTML = `
                     ${day.dinner.special !== 'pizza-weekend' ? 
                         `<button class="swap-btn" onclick="changeMeal(${index})">↻</button>` : ''}
@@ -2153,7 +2097,7 @@
                             ${day.dinner.name}
                         </div>
                         <div class="meal-details">
-                            ${day.dinner.category || ''} • ${portionInfo}
+                            ${categoryDisplay} • ${portionInfo}
                         </div>
                         ${variationsHtml}
                     </div>
@@ -2165,7 +2109,6 @@
             document.getElementById('totalCost').textContent = totalCost.toFixed(2);
         }
 
-        // Variation auswählen
         function selectVariation(dayIndex, type, option) {
             const day = AppData.weekPlan[dayIndex];
             if (day.variations) {
@@ -2179,25 +2122,23 @@
             }
         }
 
-        // Mahlzeit ändern - KORRIGIERT MIT SHUFFLE
         function changeMeal(dayIndex) {
             const day = AppData.weekPlan[dayIndex];
-            const isVeg = day.dinner.category === 'Vegetarisch';
+            const isVeg = day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch';
             
             const availableRecipes = isVeg ? 
                 AppData.recipes.vegetarian :
                 AppData.recipes.meat;
             
-            // Filter und mische die Rezepte
             const filtered = SmartPlanner.filterRecipes(availableRecipes);
             const shuffled = shuffleArray(filtered);
             
-            // Wähle ein zufälliges Rezept aus den ersten 10
             const maxIndex = Math.min(10, shuffled.length);
             const randomIndex = Math.floor(Math.random() * maxIndex);
             const newRecipe = shuffled[randomIndex];
             
             AppData.weekPlan[dayIndex].dinner = SmartPlanner.addVariations({...newRecipe});
+            AppData.weekPlan[dayIndex].dinner.category = isVeg ? 'vegetarian' : 'meat';
             AppData.weekPlan[dayIndex].variations = AppData.weekPlan[dayIndex].dinner.variations;
             
             displayWeekPlan();
@@ -2205,16 +2146,15 @@
             triggerAutoSave();
         }
 
-        // Einkaufsliste generieren
+        // KORRIGIERTE EINKAUFSLISTE
         function generateShoppingList() {
             AppData.shoppingList = {};
             
-            // Hilfsfunktion zum Normalisieren von Zutaten (Singular/Plural)
+            // Verbesserte Normalisierung
             function normalizeIngredient(ingredient) {
-                // Entferne Mengenangaben am Anfang
                 let normalized = ingredient.trim();
                 
-                // Singular/Plural Normalisierung
+                // Komplette Plural-Map
                 const pluralMap = {
                     'Eier': 'Ei',
                     'Zwiebeln': 'Zwiebel',
@@ -2234,18 +2174,33 @@
                     'Scheiben': 'Scheibe',
                     'Dosen': 'Dose',
                     'Beutel': 'Beutel',
-                    'Packungen': 'Packung'
+                    'Packungen': 'Packung',
+                    'Lasagneplatten': 'Lasagneplatte',
+                    'Cannelloni': 'Cannelloni',
+                    'Tortellini': 'Tortellini',
+                    'Ravioli': 'Ravioli',
+                    'Gnocchi': 'Gnocchi',
+                    'Spätzle': 'Spätzle',
+                    'Knödel': 'Knödel',
+                    'Klöße': 'Kloß',
+                    'Würstchen': 'Würstchen',
+                    'Fischstäbchen': 'Fischstäbchen',
+                    'Nudeln': 'Nudeln',
+                    'Spaghetti': 'Spaghetti',
+                    'Penne': 'Penne',
+                    'Fusilli': 'Fusilli'
                 };
                 
-                // Prüfe ob es eine Plural-Form ist
+                // Prüfe Plural-Formen
                 for (let [plural, singular] of Object.entries(pluralMap)) {
-                    if (normalized.includes(plural)) {
-                        normalized = normalized.replace(plural, singular);
+                    if (normalized === plural) {
+                        normalized = singular;
                     }
                 }
                 
-                // Spezialfall: "Ei" als Teil von "1 Stück" Angaben
-                if (normalized.toLowerCase().includes('ei') && !normalized.toLowerCase().includes('teig')) {
+                // KORRIGIERTER EI-CHECK - Nur exakte Übereinstimmung!
+                if (normalized.toLowerCase() === 'ei' || 
+                    normalized.toLowerCase() === 'eier') {
                     return 'Ei';
                 }
                 
@@ -2257,12 +2212,10 @@
                 
                 if (day.dinner && day.dinner.baseIngredients) {
                     Object.entries(day.dinner.baseIngredients).forEach(([key, value]) => {
-                        // Berücksichtige Variationen
                         const ingredient = day.variations && day.variations.find(v => v.type === key)
                             ? day.variations.find(v => v.type === key).selected
                             : key;
                         
-                        // Normalisiere den Zutatennamen
                         const normalizedIngredient = normalizeIngredient(ingredient);
                         
                         if (!AppData.shoppingList[normalizedIngredient]) {
@@ -2284,7 +2237,6 @@
                         .reduce((sum, p) => sum + p.portions, 0);
                     
                     Object.entries(day.kidsLunch.baseIngredients).forEach(([key, value]) => {
-                        // Normalisiere den Zutatennamen
                         const normalizedIngredient = normalizeIngredient(key);
                         
                         if (!AppData.shoppingList[normalizedIngredient]) {
@@ -2302,7 +2254,6 @@
             });
         }
 
-        // Tab wechseln
         function switchTab(event, tabName) {
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
@@ -2322,7 +2273,7 @@
             }
         }
 
-        // Einkaufsliste anzeigen
+        // VERBESSERTE KATEGORISIERUNG
         function displayShoppingList() {
             const grid = document.getElementById('shoppingGrid');
             grid.innerHTML = '';
@@ -2339,33 +2290,44 @@
                 const lower = item.toLowerCase();
                 let category = 'Sonstiges';
                 
-                // Erweiterte Fleisch-Erkennung
+                // Erweiterte Kategorisierung
                 if (lower.includes('fleisch') || lower.includes('hähnchen') || lower.includes('rind') || 
                     lower.includes('schwein') || lower.includes('lamm') || lower.includes('fisch') ||
                     lower.includes('pute') || lower.includes('kalb') || lower.includes('ente') ||
                     lower.includes('hack') || lower.includes('filet') || lower.includes('schnitzel') ||
                     lower.includes('bratwurst') || lower.includes('wiener') || lower.includes('wurst') ||
-                    lower.includes('speck') || lower.includes('bacon') || lower.includes('schinken') ||
-                    lower.includes('steak') || lower.includes('braten') || lower.includes('gulasch') ||
-                    lower.includes('leber') || lower.includes('lachs') || lower.includes('forelle')) {
+                    lower.includes('würstchen') || lower.includes('speck') || lower.includes('bacon') || 
+                    lower.includes('schinken') || lower.includes('steak') || lower.includes('braten') || 
+                    lower.includes('gulasch') || lower.includes('leber') || lower.includes('lachs') || 
+                    lower.includes('forelle') || lower.includes('frikadelle') || lower.includes('medaillon') ||
+                    lower.includes('kotelett') || lower.includes('geschnetzelt')) {
                     category = 'Fleisch & Fisch';
                 } else if (lower.includes('käse') || lower.includes('milch') || lower.includes('sahne') || 
                            lower.includes('butter') || lower.includes('joghurt') || lower.includes('mozzarella') ||
                            lower.includes('quark') || lower.includes('ricotta') || lower.includes('parmesan') ||
-                           lower.includes('gorgonzola') || lower.includes('feta') || lower.includes('frischkäse')) {
+                           lower.includes('gorgonzola') || lower.includes('feta') || lower.includes('frischkäse') ||
+                           lower.includes('cheddar') || lower.includes('gouda') || lower.includes('emmentaler') ||
+                           lower.includes('halloumi') || lower.includes('mascarpone')) {
                     category = 'Milchprodukte';
                 } else if (lower.includes('zwiebel') || lower.includes('paprika') || lower.includes('zucchini') || 
                            lower.includes('tomate') || lower.includes('kartoffel') || lower.includes('salat') ||
                            lower.includes('brokkoli') || lower.includes('blumenkohl') || lower.includes('möhre') ||
                            lower.includes('karotte') || lower.includes('gurke') || lower.includes('spinat') ||
                            lower.includes('aubergine') || lower.includes('kürbis') || lower.includes('lauch') ||
-                           lower.includes('pilz') || lower.includes('champignon') || lower.includes('bohne')) {
+                           lower.includes('pilz') || lower.includes('champignon') || lower.includes('bohne') ||
+                           lower.includes('erbse') || lower.includes('mais') || lower.includes('spargel') ||
+                           lower.includes('sellerie') || lower.includes('fenchel') || lower.includes('radieschen') ||
+                           lower.includes('kohl') || lower.includes('apfel') || lower.includes('birne') ||
+                           lower.includes('banane') || lower.includes('orange') || lower.includes('zitrone') ||
+                           lower.includes('beere') || lower.includes('traube') || lower.includes('avocado')) {
                     category = 'Gemüse & Obst';
                 } else if (lower.includes('pasta') || lower.includes('reis') || lower.includes('nudel') || 
                            lower.includes('spätzle') || lower.includes('spaghetti') || lower.includes('penne') ||
                            lower.includes('fusilli') || lower.includes('rigatoni') || lower.includes('lasagne') ||
                            lower.includes('tagliatelle') || lower.includes('gnocchi') || lower.includes('quinoa') ||
-                           lower.includes('couscous') || lower.includes('bulgur')) {
+                           lower.includes('couscous') || lower.includes('bulgur') || lower.includes('tortellini') ||
+                           lower.includes('ravioli') || lower.includes('cannelloni') || lower.includes('farfalle') ||
+                           lower.includes('linguine') || lower.includes('fettuccine')) {
                     category = 'Nudeln & Reis';
                 }
                 
@@ -2400,7 +2362,7 @@
             });
         }
 
-        // Rezepte anzeigen mit Kochanleitungen
+        // KORRIGIERTE REZEPTE-ANZEIGE
         function displayRecipes() {
             const container = document.getElementById('recipesList');
             container.innerHTML = '';
@@ -2412,16 +2374,19 @@
                     const recipeDiv = document.createElement('div');
                     const recipeId = `recipe-${index}`;
                     
-                    // Finde das vollständige Rezept mit Anleitungen
+                    // Korrigierte Kategorieprüfung
                     let fullRecipe = null;
-                    if (day.dinner.category === 'Vegetarisch' && AppData.recipes.vegetarian) {
+                    if (day.dinner.special === 'pizza-weekend') {
+                        fullRecipe = day.dinner;
+                    } else if ((day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch') 
+                               && AppData.recipes.vegetarian) {
                         fullRecipe = AppData.recipes.vegetarian.find(r => r.id === day.dinner.id);
                     } else if (AppData.recipes.meat) {
                         fullRecipe = AppData.recipes.meat.find(r => r.id === day.dinner.id);
                     }
                     
                     recipeDiv.innerHTML = `
-                        <h3 onclick="toggleRecipe('${recipeId}')" class="collapsed">
+                        <h3 onclick="toggleRecipe('${recipeId}')">
                             ${day.day} - Abend: ${day.dinner.name}
                         </h3>
                         <div id="${recipeId}" class="recipe-details collapsed">
@@ -2471,14 +2436,13 @@
                     kidsDiv.style.cssText = 'background: #fff3e0;';
                     const kidsId = `kids-${index}`;
                     
-                    // Finde das vollständige Kindergericht
                     let fullKidsRecipe = null;
                     if (AppData.recipes.kids) {
                         fullKidsRecipe = AppData.recipes.kids.find(r => r.id === day.kidsLunch.id);
                     }
                     
                     kidsDiv.innerHTML = `
-                        <h3 onclick="toggleRecipe('${kidsId}')" class="collapsed">
+                        <h3 onclick="toggleRecipe('${kidsId}')">
                             ${day.day} - Mittag: ${day.kidsLunch.name}
                         </h3>
                         <div id="${kidsId}" class="recipe-details collapsed">
@@ -2515,7 +2479,6 @@
             });
         }
         
-        // Funktion zum Auf-/Zuklappen der Rezepte
         function toggleRecipe(recipeId) {
             const details = document.getElementById(recipeId);
             const header = details.previousElementSibling;
@@ -2529,7 +2492,6 @@
             }
         }
 
-        // Personenliste anzeigen
         function displayPersonsList() {
             const container = document.getElementById('personsList');
             container.innerHTML = '';
@@ -2549,7 +2511,6 @@
             });
         }
 
-        // Person hinzufügen
         function addPerson() {
             const newPerson = {
                 name: `Person ${AppData.preferences.persons.length + 1}`,
@@ -2560,7 +2521,6 @@
             triggerAutoSave();
         }
 
-        // Person entfernen
         function removePerson(index) {
             if (AppData.preferences.persons.length > 1) {
                 AppData.preferences.persons.splice(index, 1);
@@ -2573,13 +2533,11 @@
             }
         }
 
-        // Person Name aktualisieren
         function updatePersonName(index, name) {
             AppData.preferences.persons[index].name = name;
             triggerAutoSave();
         }
 
-        // Person Portionen aktualisieren
         function updatePersonPortions(index, portions) {
             AppData.preferences.persons[index].portions = parseFloat(portions);
             displayWeekPlan();
@@ -2587,7 +2545,6 @@
             triggerAutoSave();
         }
 
-        // Einstellungen aktualisieren
         function updatePreferences() {
             AppData.preferences.vegDays = parseInt(document.getElementById('vegDays').value);
             AppData.preferences.dailyBudget = parseInt(document.getElementById('dailyBudget').value);
@@ -2610,7 +2567,6 @@
             triggerAutoSave();
         }
 
-        // Präferenzen in UI laden
         function loadPreferencesToUI() {
             document.getElementById('vegDays').value = AppData.preferences.vegDays;
             document.getElementById('dailyBudget').value = AppData.preferences.dailyBudget;
@@ -2633,12 +2589,10 @@
             document.getElementById('weeklyBudget').textContent = `${weeklyBudget} CHF`;
         }
 
-        // PDF Export
         function exportToPDF() {
             window.print();
         }
 
-        // Cloud Status Update
         function updateCloudStatus(status) {
             const statusEl = document.getElementById('cloudStatus');
             const statusText = document.getElementById('cloudStatusText');
@@ -2660,7 +2614,6 @@
             }
         }
 
-        // UI Helper Functions
         function showLoading(message) {
             const overlay = document.getElementById('loadingOverlay');
             overlay.querySelector('p').textContent = message || 'Lade...';
@@ -2681,7 +2634,6 @@
             }, 3000);
         }
 
-        // Online/Offline Detection
         window.addEventListener('online', () => {
             CloudSync.isOnline = true;
             updateCloudStatus('online');
@@ -2693,7 +2645,6 @@
             updateCloudStatus('offline');
         });
 
-        // Cleanup beim Verlassen
         window.addEventListener('beforeunload', () => {
             if (CloudSync.syncInterval) {
                 clearInterval(CloudSync.syncInterval);
