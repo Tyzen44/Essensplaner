@@ -28,7 +28,6 @@
             padding: 0;
         }
 
-        /* Header kompakt */
         .header {
             background: white;
             padding: 12px 15px;
@@ -86,7 +85,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Pizza Indikator kompakt */
         .pizza-indicator {
             background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
             color: white;
@@ -98,7 +96,6 @@
             margin-top: 5px;
         }
 
-        /* Sync Info kompakter */
         .sync-info {
             background: #f0f8ff;
             padding: 8px 12px;
@@ -108,7 +105,44 @@
             border-radius: 8px;
         }
 
-        /* Statistiken Box kompakter */
+        .week-navigation {
+            background: white;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .week-nav-btn {
+            padding: 8px 12px;
+            background: white;
+            color: #764ba2;
+            border: 1.5px solid #764ba2;
+            border-radius: 8px;
+            font-size: 0.75em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .week-info {
+            text-align: center;
+        }
+
+        .week-info .week-label {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 0.9em;
+        }
+
+        .week-info .week-dates {
+            font-size: 0.7em;
+            color: #666;
+            margin-top: 2px;
+        }
+
         .stats-box {
             background: white;
             border-radius: 10px;
@@ -128,7 +162,6 @@
             margin: 3px 0;
         }
 
-        /* Hauptsteuerung - kompaktere Buttons */
         .main-controls {
             padding: 8px;
             display: grid;
@@ -168,7 +201,6 @@
             border: 1.5px solid #764ba2;
         }
 
-        /* Tabs - Horizontal scrollbar für Mobile */
         .tabs-container {
             background: white;
             margin: 8px;
@@ -204,7 +236,6 @@
             color: white;
         }
 
-        /* Tab Content */
         .tab-content {
             display: none;
             padding: 8px;
@@ -215,7 +246,6 @@
             display: block;
         }
 
-        /* Wochenübersicht - kompaktere Karten */
         .day-grid {
             display: flex;
             flex-direction: column;
@@ -327,7 +357,6 @@
             justify-content: center;
         }
 
-        /* Recipe Toggle CSS - FEHLTE! */
         .recipe-details {
             transition: all 0.3s;
             overflow: hidden;
@@ -348,7 +377,6 @@
             padding-left: 5px;
         }
 
-        /* Budget Anzeige kompakt */
         .budget-display {
             font-size: 0.9em;
             color: #4CAF50;
@@ -361,7 +389,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        /* Einkaufsliste */
         .shopping-grid {
             display: flex;
             flex-direction: column;
@@ -399,7 +426,6 @@
             margin-right: 10px;
         }
 
-        /* Einstellungen */
         .settings-grid {
             display: flex;
             flex-direction: column;
@@ -457,7 +483,6 @@
             height: 16px;
         }
 
-        /* Personen Einstellungen kompakt */
         .person-settings {
             display: flex;
             flex-direction: column;
@@ -512,7 +537,6 @@
             font-size: 0.8em;
         }
 
-        /* Loading Overlay */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -546,7 +570,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Setup Modal */
         .setup-modal {
             position: fixed;
             top: 0;
@@ -599,7 +622,6 @@
             font-size: 0.9em;
         }
 
-        /* Toast kompakt */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -643,7 +665,6 @@
             }
         }
 
-        /* Rezepte Ansicht kompakt */
         #recipesList > div {
             background: white;
             border-radius: 10px;
@@ -672,7 +693,6 @@
             margin-bottom: 3px;
         }
 
-        /* Optimierung für sehr kleine Bildschirme */
         @media (max-width: 375px) {
             .header h1 {
                 font-size: 1.1em;
@@ -687,7 +707,6 @@
             }
         }
 
-        /* iOS spezifische Optimierungen */
         @supports (-webkit-touch-callout: none) {
             body {
                 -webkit-text-size-adjust: 100%;
@@ -700,13 +719,11 @@
     </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
         <p style="font-size: 0.85em;">Synchronisiere...</p>
     </div>
 
-    <!-- Setup Modal -->
     <div class="setup-modal" id="setupModal">
         <div class="setup-content">
             <h2>Cloud-Verbindung</h2>
@@ -724,7 +741,6 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <h1>Familien-Wochenplaner</h1>
             <div class="cloud-status" id="cloudStatus">
@@ -736,14 +752,22 @@
             </div>
         </div>
 
-        <!-- Sync Info -->
         <div class="sync-info">
             <strong>Status:</strong> <span id="syncStatus">Init...</span> | 
             <strong>ID:</strong> <span id="currentGistId" style="font-family: monospace;">-</span> | 
             <strong>Sync:</strong> <span id="lastSyncTime">-</span>
         </div>
 
-        <!-- Statistiken -->
+        <!-- NEUE WOCHEN-NAVIGATION -->
+        <div class="week-navigation">
+            <button class="week-nav-btn" onclick="previousWeek()">← Vorherige</button>
+            <div class="week-info">
+                <div class="week-label" id="currentWeekDisplay">Aktuelle Woche</div>
+                <div class="week-dates" id="weekDateRange">-</div>
+            </div>
+            <button class="week-nav-btn" onclick="nextWeek()">Nächste →</button>
+        </div>
+
         <div class="stats-box">
             <h3>Rezept-Datenbank</h3>
             <p><strong id="totalRecipes">0</strong> Rezepte | 
@@ -753,7 +777,6 @@
             <p>Pizza in <strong id="pizzaCountdown">...</strong> Woche(n)</p>
         </div>
 
-        <!-- Hauptsteuerung -->
         <div class="main-controls">
             <button class="btn btn-primary" onclick="generateSmartPlan()">
                 📅 Neuer Plan
@@ -769,7 +792,6 @@
             </button>
         </div>
 
-        <!-- Tabs -->
         <div class="tabs-container">
             <div class="tabs">
                 <button class="tab active" onclick="switchTab(event, 'overview')">Woche</button>
@@ -779,38 +801,26 @@
             </div>
         </div>
 
-        <!-- Tab: Wochenübersicht -->
         <div id="overview" class="tab-content active">
-            <div class="day-grid" id="weekGrid">
-                <!-- Wird dynamisch gefüllt -->
-            </div>
+            <div class="day-grid" id="weekGrid"></div>
             <div class="budget-display">
                 Woche: <span id="totalCost">0</span> CHF
             </div>
         </div>
 
-        <!-- Tab: Einkaufsliste -->
         <div id="shopping" class="tab-content">
-            <div class="shopping-grid" id="shoppingGrid">
-                <!-- Wird dynamisch gefüllt -->
-            </div>
+            <div class="shopping-grid" id="shoppingGrid"></div>
         </div>
 
-        <!-- Tab: Rezepte -->
         <div id="recipes" class="tab-content">
-            <div id="recipesList">
-                <!-- Wird dynamisch gefüllt -->
-            </div>
+            <div id="recipesList"></div>
         </div>
 
-        <!-- Tab: Einstellungen -->
         <div id="settings" class="tab-content">
             <div class="settings-grid">
                 <div class="setting-group">
                     <h3>Familie & Portionen</h3>
-                    <div id="personsList" class="person-settings">
-                        <!-- Wird dynamisch gefüllt -->
-                    </div>
+                    <div id="personsList" class="person-settings"></div>
                     <button class="add-person-btn" onclick="addPerson()">+ Person</button>
                 </div>
                 
@@ -895,11 +905,10 @@
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script>
-        // Globale Cloud-Sync Konfiguration
+        // Cloud-Sync Konfiguration
         const CloudSync = {
             token: null,
             gistId: null,
@@ -911,9 +920,10 @@
             lastUpdateTime: null
         };
 
-        // Globale App-Daten
+        // Globale App-Daten mit MULTI-WEEK Support
         let AppData = {
-            weekPlan: [],
+            weekPlans: {}, // Mehrere Wochen: { '2025-01-13': [...], '2025-01-20': [...] }
+            currentWeekKey: null, // Aktuelle angezeigte Woche
             recipes: null,
             preferences: {
                 persons: [
@@ -939,12 +949,100 @@
                     noSpicy: false
                 }
             },
-            currentWeekStart: null,
-            shoppingList: {},
-            kidsLunchTueThu: null
+            shoppingLists: {}, // Einkaufslisten pro Woche
+            kidsLunchPlans: {} // Kindergerichte pro Woche
         };
 
-        // WICHTIGE HILFSFUNKTION: Array mischen (Fisher-Yates Shuffle)
+        // ========== WOCHEN-MANAGEMENT FUNKTIONEN ==========
+        function getWeekKey(date) {
+            const d = new Date(date);
+            const day = d.getDay();
+            const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+            const monday = new Date(d.setDate(diff));
+            return monday.toISOString().split('T')[0];
+        }
+
+        function getCurrentWeekKey() {
+            return getWeekKey(new Date());
+        }
+
+        function getWeekPlan() {
+            if (!AppData.currentWeekKey) {
+                AppData.currentWeekKey = getCurrentWeekKey();
+            }
+            return AppData.weekPlans[AppData.currentWeekKey] || [];
+        }
+
+        function setWeekPlan(plan) {
+            if (!AppData.currentWeekKey) {
+                AppData.currentWeekKey = getCurrentWeekKey();
+            }
+            AppData.weekPlans[AppData.currentWeekKey] = plan;
+        }
+
+        function getShoppingList() {
+            return AppData.shoppingLists[AppData.currentWeekKey] || {};
+        }
+
+        function setShoppingList(list) {
+            AppData.shoppingLists[AppData.currentWeekKey] = list;
+        }
+
+        function getKidsLunch() {
+            return AppData.kidsLunchPlans[AppData.currentWeekKey] || null;
+        }
+
+        function setKidsLunch(lunch) {
+            AppData.kidsLunchPlans[AppData.currentWeekKey] = lunch;
+        }
+
+        // Navigation zwischen Wochen
+        function previousWeek() {
+            const current = new Date(AppData.currentWeekKey);
+            current.setDate(current.getDate() - 7);
+            AppData.currentWeekKey = getWeekKey(current);
+            updateWeekDisplay();
+            displayWeekPlan();
+            generateShoppingList();
+        }
+
+        function nextWeek() {
+            const current = new Date(AppData.currentWeekKey);
+            current.setDate(current.getDate() + 7);
+            AppData.currentWeekKey = getWeekKey(current);
+            updateWeekDisplay();
+            displayWeekPlan();
+            generateShoppingList();
+        }
+
+        function updateWeekDisplay() {
+            const monday = new Date(AppData.currentWeekKey);
+            const sunday = new Date(monday);
+            sunday.setDate(sunday.getDate() + 6);
+            
+            const today = new Date();
+            const currentWeek = getWeekKey(today);
+            const nextWeek = new Date(currentWeek);
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            const nextWeekKey = getWeekKey(nextWeek);
+            
+            let weekLabel = 'Woche';
+            if (AppData.currentWeekKey === currentWeek) {
+                weekLabel = 'Aktuelle Woche';
+            } else if (AppData.currentWeekKey === nextWeekKey) {
+                weekLabel = 'Nächste Woche';
+            } else if (AppData.currentWeekKey < currentWeek) {
+                weekLabel = 'Vergangene Woche';
+            } else {
+                weekLabel = 'Zukünftige Woche';
+            }
+            
+            document.getElementById('currentWeekDisplay').textContent = weekLabel;
+            document.getElementById('weekDateRange').textContent = 
+                `${monday.toLocaleDateString('de-CH')} - ${sunday.toLocaleDateString('de-CH')}`;
+        }
+
+        // Array mischen (Fisher-Yates Shuffle)
         function shuffleArray(array) {
             const shuffled = [...array];
             for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1239,7 +1337,8 @@
         };
 
         async function optimizeCurrentPlan() {
-            if (!AppData.weekPlan || AppData.weekPlan.length === 0) {
+            const weekPlan = getWeekPlan();
+            if (!weekPlan || weekPlan.length === 0) {
                 showToast('Kein Plan zum Optimieren vorhanden', 'error');
                 return;
             }
@@ -1247,13 +1346,13 @@
             showLoading('Optimiere Wochenplan...');
             
             const result = PlanOptimizer.optimize(
-                AppData.weekPlan,
+                weekPlan,
                 AppData.recipes,
                 AppData.preferences
             );
             
             if (result.optimized) {
-                AppData.weekPlan = result.plan;
+                setWeekPlan(result.plan);
                 
                 let message = 'Optimiert: ' + result.improvements.join(', ');
                 
@@ -1366,7 +1465,7 @@
                     } else {
                         kidsLunchThu = kidsLunchTue;
                     }
-                    AppData.kidsLunchTueThu = { tuesday: kidsLunchTue, thursday: kidsLunchThu };
+                    setKidsLunch({ tuesday: kidsLunchTue, thursday: kidsLunchThu });
                 }
                 
                 const vegDayIndices = this.distributeVegDays(7, preferences.vegDays);
@@ -1409,7 +1508,6 @@
                             attempts++;
                         }
                         
-                        // Setze die korrekte Kategorie für die Anzeige
                         if (recipe) {
                             recipe.category = isVegDay ? 'vegetarian' : 'meat';
                         }
@@ -1555,12 +1653,7 @@
             },
 
             getDateForDay: function(dayIndex) {
-                const today = new Date();
-                const currentDay = today.getDay();
-                const daysFromMonday = (currentDay === 0 ? 6 : currentDay - 1);
-                const monday = new Date(today);
-                monday.setDate(today.getDate() - daysFromMonday);
-                
+                const monday = new Date(AppData.currentWeekKey);
                 const targetDate = new Date(monday);
                 targetDate.setDate(monday.getDate() + dayIndex);
                 
@@ -1674,8 +1767,13 @@
                     updateSyncInfo();
                 } else {
                     await createNewCloudPlan();
-                    await generateSmartPlan();
+                    if (getWeekPlan().length === 0) {
+                        await generateSmartPlan();
+                    }
                 }
+                
+                AppData.currentWeekKey = getCurrentWeekKey();
+                updateWeekDisplay();
                 
                 startAutoSync();
                 startSyncPolling();
@@ -1797,11 +1895,11 @@
                 files: {
                     'wochenplan.json': {
                         content: JSON.stringify({
-                            version: '3.0',
-                            weekPlan: [],
+                            version: '4.0',
+                            weekPlans: AppData.weekPlans,
                             preferences: AppData.preferences,
-                            shoppingList: {},
-                            kidsLunchTueThu: null,
+                            shoppingLists: AppData.shoppingLists,
+                            kidsLunchPlans: AppData.kidsLunchPlans,
                             lastUpdate: new Date().toISOString()
                         }, null, 2)
                     }
@@ -1846,10 +1944,19 @@
             const content = gist.files['wochenplan.json'].content;
             const data = JSON.parse(content);
             
-            AppData.weekPlan = data.weekPlan || [];
+            // Migration von altem Format zu neuem
+            if (data.weekPlan && !data.weekPlans) {
+                const currentWeek = getCurrentWeekKey();
+                AppData.weekPlans = { [currentWeek]: data.weekPlan };
+                AppData.shoppingLists = { [currentWeek]: data.shoppingList || {} };
+                AppData.kidsLunchPlans = { [currentWeek]: data.kidsLunchTueThu || null };
+            } else {
+                AppData.weekPlans = data.weekPlans || {};
+                AppData.shoppingLists = data.shoppingLists || {};
+                AppData.kidsLunchPlans = data.kidsLunchPlans || {};
+            }
+            
             AppData.preferences = {...AppData.preferences, ...data.preferences};
-            AppData.shoppingList = data.shoppingList || {};
-            AppData.kidsLunchTueThu = data.kidsLunchTueThu || null;
             CloudSync.lastSync = new Date();
             CloudSync.lastUpdateTime = data.lastUpdate;
             
@@ -1862,11 +1969,11 @@
             if (!CloudSync.gistId) return;
             
             const data = {
-                version: '3.0',
-                weekPlan: AppData.weekPlan,
+                version: '4.0',
+                weekPlans: AppData.weekPlans,
                 preferences: AppData.preferences,
-                shoppingList: AppData.shoppingList,
-                kidsLunchTueThu: AppData.kidsLunchTueThu,
+                shoppingLists: AppData.shoppingLists,
+                kidsLunchPlans: AppData.kidsLunchPlans,
                 lastUpdate: new Date().toISOString()
             };
             
@@ -1922,10 +2029,19 @@
                                 new Date(data.lastUpdate) > new Date(CloudSync.lastUpdateTime)) {
                                 
                                 console.log('Neuere Version gefunden, lade...');
-                                AppData.weekPlan = data.weekPlan || [];
+                                
+                                if (data.weekPlan && !data.weekPlans) {
+                                    const currentWeek = getCurrentWeekKey();
+                                    AppData.weekPlans = { [currentWeek]: data.weekPlan };
+                                    AppData.shoppingLists = { [currentWeek]: data.shoppingList || {} };
+                                    AppData.kidsLunchPlans = { [currentWeek]: data.kidsLunchTueThu || null };
+                                } else {
+                                    AppData.weekPlans = data.weekPlans || {};
+                                    AppData.shoppingLists = data.shoppingLists || {};
+                                    AppData.kidsLunchPlans = data.kidsLunchPlans || {};
+                                }
+                                
                                 AppData.preferences = {...AppData.preferences, ...data.preferences};
-                                AppData.shoppingList = data.shoppingList || {};
-                                AppData.kidsLunchTueThu = data.kidsLunchTueThu || null;
                                 CloudSync.lastUpdateTime = data.lastUpdate;
                                 
                                 displayWeekPlan();
@@ -1951,7 +2067,7 @@
             CloudSync.autoSaveTimeout = setTimeout(async () => {
                 await saveToCloud();
                 showToast('Gespeichert', 'success');
-            }, 2000); // Erhöht auf 2 Sekunden
+            }, 2000);
         }
 
         async function forceCloudSync() {
@@ -1970,7 +2086,6 @@
         }
 
         function updateToken() {
-            // Memory Leak Fix
             if (CloudSync.syncInterval) clearInterval(CloudSync.syncInterval);
             if (CloudSync.syncPollInterval) clearInterval(CloudSync.syncPollInterval);
             
@@ -2006,7 +2121,8 @@
                 showToast('Warnung: Keine Kindergerichte!', 'error');
             }
             
-            AppData.weekPlan = SmartPlanner.createPlan(AppData.recipes, AppData.preferences);
+            const newPlan = SmartPlanner.createPlan(AppData.recipes, AppData.preferences);
+            setWeekPlan(newPlan);
             
             generateShoppingList();
             
@@ -2024,7 +2140,15 @@
             grid.innerHTML = '';
             let totalCost = 0;
             
-            AppData.weekPlan.forEach((day, index) => {
+            const weekPlan = getWeekPlan();
+            
+            if (weekPlan.length === 0) {
+                grid.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">Noch kein Plan für diese Woche. Klicke auf "Neuer Plan"!</div>';
+                document.getElementById('totalCost').textContent = '0.00';
+                return;
+            }
+            
+            weekPlan.forEach((day, index) => {
                 if (!day.dinner) return;
                 
                 const portions = SmartPlanner.calculatePortionsForDay(index);
@@ -2110,11 +2234,13 @@
         }
 
         function selectVariation(dayIndex, type, option) {
-            const day = AppData.weekPlan[dayIndex];
+            const weekPlan = getWeekPlan();
+            const day = weekPlan[dayIndex];
             if (day.variations) {
                 const variation = day.variations.find(v => v.type === type);
                 if (variation) {
                     variation.selected = option;
+                    setWeekPlan(weekPlan);
                     displayWeekPlan();
                     generateShoppingList();
                     triggerAutoSave();
@@ -2123,7 +2249,8 @@
         }
 
         function changeMeal(dayIndex) {
-            const day = AppData.weekPlan[dayIndex];
+            const weekPlan = getWeekPlan();
+            const day = weekPlan[dayIndex];
             const isVeg = day.dinner.category === 'vegetarian' || day.dinner.category === 'Vegetarisch';
             
             const availableRecipes = isVeg ? 
@@ -2137,24 +2264,22 @@
             const randomIndex = Math.floor(Math.random() * maxIndex);
             const newRecipe = shuffled[randomIndex];
             
-            AppData.weekPlan[dayIndex].dinner = SmartPlanner.addVariations({...newRecipe});
-            AppData.weekPlan[dayIndex].dinner.category = isVeg ? 'vegetarian' : 'meat';
-            AppData.weekPlan[dayIndex].variations = AppData.weekPlan[dayIndex].dinner.variations;
+            weekPlan[dayIndex].dinner = SmartPlanner.addVariations({...newRecipe});
+            weekPlan[dayIndex].dinner.category = isVeg ? 'vegetarian' : 'meat';
+            weekPlan[dayIndex].variations = weekPlan[dayIndex].dinner.variations;
             
+            setWeekPlan(weekPlan);
             displayWeekPlan();
             generateShoppingList();
             triggerAutoSave();
         }
 
-        // KORRIGIERTE EINKAUFSLISTE
         function generateShoppingList() {
-            AppData.shoppingList = {};
+            const shoppingList = {};
             
-            // Verbesserte Normalisierung
             function normalizeIngredient(ingredient) {
                 let normalized = ingredient.trim();
                 
-                // Komplette Plural-Map
                 const pluralMap = {
                     'Eier': 'Ei',
                     'Zwiebeln': 'Zwiebel',
@@ -2191,14 +2316,12 @@
                     'Fusilli': 'Fusilli'
                 };
                 
-                // Prüfe Plural-Formen
                 for (let [plural, singular] of Object.entries(pluralMap)) {
                     if (normalized === plural) {
                         normalized = singular;
                     }
                 }
                 
-                // KORRIGIERTER EI-CHECK - Nur exakte Übereinstimmung!
                 if (normalized.toLowerCase() === 'ei' || 
                     normalized.toLowerCase() === 'eier') {
                     return 'Ei';
@@ -2207,7 +2330,9 @@
                 return normalized;
             }
             
-            AppData.weekPlan.forEach((day, index) => {
+            const weekPlan = getWeekPlan();
+            
+            weekPlan.forEach((day, index) => {
                 const portions = SmartPlanner.calculatePortionsForDay(index);
                 
                 if (day.dinner && day.dinner.baseIngredients) {
@@ -2218,15 +2343,15 @@
                         
                         const normalizedIngredient = normalizeIngredient(ingredient);
                         
-                        if (!AppData.shoppingList[normalizedIngredient]) {
-                            AppData.shoppingList[normalizedIngredient] = {
+                        if (!shoppingList[normalizedIngredient]) {
+                            shoppingList[normalizedIngredient] = {
                                 amount: 0,
                                 unit: value.unit || ''
                             };
                         }
                         
                         if (value.amount > 0) {
-                            AppData.shoppingList[normalizedIngredient].amount += value.amount * portions;
+                            shoppingList[normalizedIngredient].amount += value.amount * portions;
                         }
                     });
                 }
@@ -2239,19 +2364,21 @@
                     Object.entries(day.kidsLunch.baseIngredients).forEach(([key, value]) => {
                         const normalizedIngredient = normalizeIngredient(key);
                         
-                        if (!AppData.shoppingList[normalizedIngredient]) {
-                            AppData.shoppingList[normalizedIngredient] = {
+                        if (!shoppingList[normalizedIngredient]) {
+                            shoppingList[normalizedIngredient] = {
                                 amount: 0,
                                 unit: value.unit || ''
                             };
                         }
                         
                         if (value.amount > 0) {
-                            AppData.shoppingList[normalizedIngredient].amount += value.amount * kidsPortions;
+                            shoppingList[normalizedIngredient].amount += value.amount * kidsPortions;
                         }
                     });
                 }
             });
+            
+            setShoppingList(shoppingList);
         }
 
         function switchTab(event, tabName) {
@@ -2273,10 +2400,11 @@
             }
         }
 
-        // VERBESSERTE KATEGORISIERUNG
         function displayShoppingList() {
             const grid = document.getElementById('shoppingGrid');
             grid.innerHTML = '';
+            
+            const shoppingList = getShoppingList();
             
             const categories = {
                 'Fleisch & Fisch': [],
@@ -2286,11 +2414,10 @@
                 'Sonstiges': []
             };
             
-            Object.entries(AppData.shoppingList).forEach(([item, data]) => {
+            Object.entries(shoppingList).forEach(([item, data]) => {
                 const lower = item.toLowerCase();
                 let category = 'Sonstiges';
                 
-                // Erweiterte Kategorisierung
                 if (lower.includes('fleisch') || lower.includes('hähnchen') || lower.includes('rind') || 
                     lower.includes('schwein') || lower.includes('lamm') || lower.includes('fisch') ||
                     lower.includes('pute') || lower.includes('kalb') || lower.includes('ente') ||
@@ -2362,19 +2489,19 @@
             });
         }
 
-        // KORRIGIERTE REZEPTE-ANZEIGE
         function displayRecipes() {
             const container = document.getElementById('recipesList');
             container.innerHTML = '';
             
-            AppData.weekPlan.forEach((day, index) => {
+            const weekPlan = getWeekPlan();
+            
+            weekPlan.forEach((day, index) => {
                 const portions = SmartPlanner.calculatePortionsForDay(index);
                 
                 if (day.dinner) {
                     const recipeDiv = document.createElement('div');
                     const recipeId = `recipe-${index}`;
                     
-                    // Korrigierte Kategorieprüfung
                     let fullRecipe = null;
                     if (day.dinner.special === 'pizza-weekend') {
                         fullRecipe = day.dinner;
