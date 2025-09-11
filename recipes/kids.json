@@ -2,7 +2,7 @@
   "category": "kids",
   "name": "Kinderessen",
   "version": "2.0",
-  "lastUpdated": "2024-01-15",
+  "lastUpdated": "2025-01-11",
   "recipes": [
     {
       "id": "k001",
@@ -315,245 +315,768 @@
       "workTip": "Kinder lieben Mini-Burger"
     },
     {
-      "id": "k021",
-      "name": "Nudel-Schinken-Gratin",
+      "id": "k011",
+      "name": "Eierkuchen mit Marmelade",
       "baseIngredients": {
-        "Nudeln": {"amount": 100, "unit": "g"},
+        "Mehl": {"amount": 75, "unit": "g"},
+        "Milch": {"amount": 150, "unit": "ml"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Marmelade": {"amount": 50, "unit": "g", "variations": ["Erdbeere", "Aprikose", "Himbeere"]}
+      },
+      "price": 1.5,
+      "prepTime": 15,
+      "tags": ["süß", "pfannkuchen"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Mehl in eine Schüssel sieben",
+        "Eine Prise Salz und 1 TL Zucker zugeben",
+        "In der Mitte eine Mulde machen",
+        "Ei hineinschlagen",
+        "Milch nach und nach zugießen",
+        "Von innen nach außen zu glattem Teig rühren",
+        "10 Minuten ruhen lassen (Klümpchen lösen sich auf)",
+        "Beschichtete Pfanne erhitzen",
+        "Ganz wenig Butter hinein",
+        "Eine kleine Kelle Teig in die Pfanne",
+        "Durch Schwenken verteilen",
+        "Bei mittlerer Hitze backen bis Oberseite fest",
+        "Wenden (Kinder lieben es wenn man sie wirft!)",
+        "Kurz von der anderen Seite backen",
+        "Mit Marmelade bestreichen",
+        "Aufrollen oder zusammenklappen",
+        "Mit Puderzucker bestäuben"
+      ],
+      "childTip": "DER Klassiker - alle Kinder lieben Eierkuchen",
+      "workTip": "Schnelles süßes Mittagessen"
+    },
+    {
+      "id": "k012",
+      "name": "Kartoffelpuffer",
+      "baseIngredients": {
+        "Kartoffeln": {"amount": 200, "unit": "g"},
+        "Ei": {"amount": 0.5, "unit": "Stück"},
+        "Apfelmus": {"amount": 75, "unit": "g"}
+      },
+      "price": 1.5,
+      "prepTime": 20,
+      "tags": ["puffer", "kartoffel"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln schälen und grob reiben",
+        "In ein sauberes Küchentuch geben",
+        "Sehr kräftig auswringen (wichtig für knusprige Puffer!)",
+        "Ausgedrückte Kartoffeln in eine Schüssel",
+        "Halbes Ei dazu (Rest für andere Verwendung)",
+        "1 EL Mehl zugeben für Bindung",
+        "Mit Salz würzen, gut mischen",
+        "5 Minuten stehen lassen",
+        "Reichlich Öl in Pfanne erhitzen (sollte blubbern)",
+        "Mit Löffel kleine Häufchen in die Pfanne setzen",
+        "Mit Löffelrücken flach drücken",
+        "Bei mittlerer Hitze 3-4 Min goldbraun braten",
+        "Wenden, andere Seite auch goldbraun",
+        "Auf Küchenpapier abtropfen lassen",
+        "Heiß mit Apfelmus servieren",
+        "Oder herzhaft mit Kräuterquark"
+      ],
+      "childTip": "Knusprig und mit süßem Apfelmus - perfekt!",
+      "workTip": "Traditionelle Reibekuchen"
+    },
+    {
+      "id": "k013",
+      "name": "Milchreis",
+      "baseIngredients": {
+        "Milchreis": {"amount": 50, "unit": "g"},
+        "Milch": {"amount": 200, "unit": "ml"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Zimt": {"amount": 1, "unit": "Prise"}
+      },
+      "price": 1.5,
+      "prepTime": 25,
+      "tags": ["süß", "reis"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Milch in einem Topf erhitzen (nicht kochen!)",
+        "Milchreis einrühren",
+        "Prise Salz zugeben",
+        "Bei kleinster Hitze 20-25 Min köcheln",
+        "Dabei regelmäßig umrühren (brennt sonst an!)",
+        "Nach 15 Min Zucker zugeben",
+        "Optional: Vanillezucker oder echte Vanille",
+        "Wenn Reis weich und cremig ist, vom Herd nehmen",
+        "5 Min ruhen lassen (dickt noch nach)",
+        "In Schälchen füllen",
+        "Mit Zimt und Zucker bestreuen",
+        "Klassisch mit Kirschen aus dem Glas",
+        "Oder mit frischen Beeren",
+        "Auch lecker: Apfelmus dazu"
+      ],
+      "childTip": "Cremig süß - Kindheitserinnerung",
+      "workTip": "Wohlfühlessen für Kinder"
+    },
+    {
+      "id": "k014",
+      "name": "Gemüse-Sticks mit Dip",
+      "baseIngredients": {
+        "Möhren": {"amount": 75, "unit": "g"},
+        "Gurke": {"amount": 75, "unit": "g"},
+        "Paprika": {"amount": 75, "unit": "g"},
+        "Frischkäse Dip": {"amount": 60, "unit": "g"}
+      },
+      "price": 1.5,
+      "prepTime": 10,
+      "tags": ["gesund", "gemüse"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Möhren schälen, in Stifte schneiden",
+        "Gurke waschen, längs vierteln, in Sticks",
+        "Paprika entkernen, in Streifen schneiden",
+        "Alles sollte etwa gleich groß sein",
+        "Für den Dip: Frischkäse mit 2 EL Milch cremig rühren",
+        "Nach Geschmack würzen:",
+        "- Kräuter: Schnittlauch, Petersilie",
+        "- Mild: nur Salz",
+        "- Tomatig: 1 TL Ketchup unterrühren",
+        "In kleine Schale füllen",
+        "Gemüsesticks drum herum arrangieren",
+        "Kinder dippen gerne selbst!",
+        "Variante: Hummus oder Tzatziki als Dip"
+      ],
+      "childTip": "Rohkost wird durch Dip interessant",
+      "workTip": "Gesunder Snack"
+    },
+    {
+      "id": "k015",
+      "name": "Nudelauflauf",
+      "baseIngredients": {
+        "Nudeln": {"amount": 75, "unit": "g"},
         "Schinken": {"amount": 3, "unit": "Scheiben"},
-        "Käse": {"amount": 50, "unit": "g"},
-        "Sahne": {"amount": 75, "unit": "ml"}
+        "Käse": {"amount": 2, "unit": "Scheiben"},
+        "Sahne": {"amount": 60, "unit": "ml"}
       },
       "price": 2,
       "prepTime": 25,
-      "tags": ["gratin", "käse"],
+      "tags": ["auflauf", "pasta"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Nudeln kochen",
-        "Schinken würfeln",
-        "Nudeln mit Schinken in Auflaufform",
-        "Sahne mit Ei verquirlen",
-        "Darüber gießen",
-        "Mit Käse bestreuen",
-        "Bei 180°C 15 Min überbacken"
+        "Ofen auf 180°C vorheizen",
+        "Nudeln nach Packung kochen (besser al dente)",
+        "Kleine Auflaufform einfetten",
+        "Schinken in Streifen schneiden",
+        "Käse würfeln oder reiben",
+        "Gekochte Nudeln abgießen",
+        "Mit Schinken und der Hälfte vom Käse mischen",
+        "In die Auflaufform geben",
+        "Sahne mit 1 Ei verquirlen",
+        "Mit Salz und wenig Pfeffer würzen",
+        "Über die Nudeln gießen",
+        "Restlichen Käse darüber streuen",
+        "20 Min backen bis goldbraun",
+        "5 Min abkühlen lassen",
+        "In Stücke schneiden und servieren"
       ],
-      "childTip": "Käse-Nudeln aus dem Ofen",
+      "childTip": "Käse-Nudeln aus dem Ofen - immer beliebt",
       "workTip": "Einfacher Kinder-Auflauf"
     },
     {
-      "id": "k022",
-      "name": "Hähnchen-Wraps Kids",
-      "baseIngredients": {
-        "Hähnchenbrust": {"amount": 75, "unit": "g"},
-        "Wrap": {"amount": 1, "unit": "Stück"},
-        "Salat": {"amount": 20, "unit": "g"},
-        "Mayo": {"amount": 20, "unit": "ml"}
-      },
-      "price": 2,
-      "prepTime": 15,
-      "tags": ["wrap", "fingerfood"],
-      "childFriendly": true,
-      "workFriendly": false,
-      "instructions": [
-        "Hähnchen in Streifen schneiden",
-        "In Pfanne anbraten",
-        "Wrap erwärmen",
-        "Mit Mayo bestreichen",
-        "Hähnchen und Salat darauf",
-        "Aufrollen",
-        "In Hälften schneiden"
-      ],
-      "childTip": "Handlich zum Essen",
-      "workTip": "Schneller Snack"
-    },
-    {
-      "id": "k023",
-      "name": "Kartoffel-Smileys",
-      "baseIngredients": {
-        "Kartoffeln": {"amount": 200, "unit": "g"},
-        "Mehl": {"amount": 30, "unit": "g"},
-        "Ei": {"amount": 0.5, "unit": "Stück"}
-      },
-      "price": 1.5,
-      "prepTime": 30,
-      "tags": ["kartoffel", "lustig"],
-      "childFriendly": true,
-      "workFriendly": false,
-      "instructions": [
-        "Kartoffeln kochen und stampfen",
-        "Mit Mehl und Ei mischen",
-        "Teig ausrollen",
-        "Smileys ausstechen",
-        "In Öl goldbraun braten",
-        "Mit Ketchup servieren"
-      ],
-      "childTip": "Lustige Gesichter",
-      "workTip": "Kinder lieben Smileys"
-    },
-    {
-      "id": "k024",
-      "name": "Nudel-Gemüse-Suppe",
-      "baseIngredients": {
-        "Suppennudeln": {"amount": 50, "unit": "g"},
-        "Möhren": {"amount": 1, "unit": "Stück"},
-        "Brühe": {"amount": 300, "unit": "ml"}
-      },
-      "price": 1.5,
-      "prepTime": 15,
-      "tags": ["suppe", "gesund"],
-      "childFriendly": true,
-      "workFriendly": false,
-      "instructions": [
-        "Möhren würfeln",
-        "In Brühe kochen",
-        "Nudeln zugeben",
-        "8 Min köcheln",
-        "Mit Petersilie garnieren"
-      ],
-      "childTip": "Buchstaben-Nudeln verwenden",
-      "workTip": "Gesunde Suppe"
-    },
-    {
-      "id": "k025",
-      "name": "Toast Hawaii",
+      "id": "k016",
+      "name": "French Toast",
       "baseIngredients": {
         "Toast": {"amount": 2, "unit": "Scheiben"},
-        "Schinken": {"amount": 2, "unit": "Scheiben"},
-        "Ananas": {"amount": 2, "unit": "Scheiben"},
-        "Käse": {"amount": 2, "unit": "Scheiben"}
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Milch": {"amount": 50, "unit": "ml"},
+        "Ahornsirup": {"amount": 30, "unit": "ml", "variations": ["Puderzucker", "Zimt"]}
       },
-      "price": 2,
+      "price": 1.5,
       "prepTime": 10,
-      "tags": ["toast", "retro"],
+      "tags": ["süß", "frühstück"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Toast toasten",
-        "Mit Schinken belegen",
-        "Ananas drauf",
-        "Käse obendrauf",
-        "Im Ofen 5 Min überbacken",
-        "Mit Kirsche garnieren"
+        "Ei mit Milch in flacher Schale verquirlen",
+        "Prise Salz und 1 TL Zucker zugeben",
+        "Optional: Prise Zimt für Geschmack",
+        "Toastscheiben von beiden Seiten in Eimischung tunken",
+        "Kurz einziehen lassen (10 Sekunden)",
+        "Pfanne mit Butter erhitzen (mittlere Hitze)",
+        "Toast von beiden Seiten je 2-3 Min goldbraun braten",
+        "Sollte außen knusprig, innen weich sein",
+        "Auf Teller legen",
+        "Mit Ahornsirup beträufeln",
+        "Oder mit Puderzucker bestäuben",
+        "Mit frischen Beeren garnieren",
+        "Warm servieren"
       ],
-      "childTip": "Süß und herzhaft",
-      "workTip": "Retro-Klassiker"
+      "childTip": "Amerikanisches Frühstück - süß und lecker",
+      "workTip": "Schnelles süßes Mittagessen"
     },
     {
-      "id": "k026",
-      "name": "Reis mit Gemüse-Bolognese",
+      "id": "k017",
+      "name": "Tomatensuppe mit Reis",
       "baseIngredients": {
-        "Reis": {"amount": 75, "unit": "g"},
-        "Hackfleisch": {"amount": 60, "unit": "g"},
-        "Tomatensauce": {"amount": 100, "unit": "ml"},
-        "Erbsen": {"amount": 50, "unit": "g"}
+        "Tomatensuppe": {"amount": 200, "unit": "ml"},
+        "Reis": {"amount": 40, "unit": "g"},
+        "Croutons": {"amount": 30, "unit": "g"}
+      },
+      "price": 1.5,
+      "prepTime": 15,
+      "tags": ["suppe", "warm"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Reis in Salzwasser kochen (ca. 12 Min)",
+        "Für selbstgemachte Suppe: 1 Dose Tomaten pürieren",
+        "Mit 200ml Brühe mischen",
+        "1 TL Zucker zugeben (nimmt Säure)",
+        "Mit Salz und Oregano würzen",
+        "5 Min köcheln lassen",
+        "Oder: Fertige Tomatensuppe erwärmen",
+        "Gekochten Reis abgießen",
+        "Reis in Suppenteller geben",
+        "Heiße Suppe darüber gießen",
+        "Mit Croutons bestreuen",
+        "Optional: Klecks Sahne in die Mitte",
+        "Mit Basilikum garnieren"
+      ],
+      "childTip": "Tomatensuppe mit Reis - Klassiker",
+      "workTip": "Schnell und einfach"
+    },
+    {
+      "id": "k018",
+      "name": "Käsespieße",
+      "baseIngredients": {
+        "Käsewürfel": {"amount": 60, "unit": "g"},
+        "Weintrauben": {"amount": 50, "unit": "g"},
+        "Salzstangen": {"amount": 15, "unit": "Stück"}
       },
       "price": 2,
-      "prepTime": 20,
-      "tags": ["reis", "bolognese"],
+      "prepTime": 5,
+      "tags": ["fingerfood", "kalt"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Reis kochen",
-        "Hackfleisch anbraten",
-        "Erbsen zugeben",
-        "Tomatensauce dazu",
-        "5 Min köcheln",
-        "Über Reis servieren"
+        "Käse in 1cm große Würfel schneiden",
+        "Verschiedene Sorten verwenden (Gouda, Emmentaler)",
+        "Weintrauben waschen und abtropfen",
+        "Zahnstocher oder kleine Spieße bereitlegen",
+        "Abwechselnd Käse und Traube aufspießen",
+        "Salzstangen als essbare Spieße:",
+        "Vorsichtig Käse und weiche Sachen aufspießen",
+        "Auf Teller hübsch arrangieren",
+        "Sternförmig oder als Igel",
+        "Dazu Mini-Tomaten oder Gurken",
+        "Kinder können selbst spießen"
       ],
-      "childTip": "Alles zusammen",
-      "workTip": "One-Pot-Gericht"
+      "childTip": "Fingerfood zum selbst machen",
+      "workTip": "Party-Snack für Kinder"
     },
     {
-      "id": "k027",
-      "name": "Knusprige Hähnchen-Sticks",
+      "id": "k019",
+      "name": "Mini-Quiche",
       "baseIngredients": {
+        "Mürbeteig": {"amount": 75, "unit": "g"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Schinken": {"amount": 2, "unit": "Scheiben"},
+        "Käse": {"amount": 30, "unit": "g"}
+      },
+      "price": 2,
+      "prepTime": 25,
+      "tags": ["quiche", "mini"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Ofen auf 180°C vorheizen",
+        "Muffinform einfetten",
+        "Mürbeteig dünn ausrollen",
+        "Kreise ausstechen (Glas verwenden)",
+        "In Muffinförmchen drücken",
+        "Schinken klein würfeln",
+        "Käse reiben",
+        "Ei mit 3 EL Milch verquirlen",
+        "Mit Salz würzen (wenig - Schinken ist salzig)",
+        "Schinken und Käse in die Förmchen verteilen",
+        "Eiermischung darüber gießen (nicht ganz voll)",
+        "15-20 Min backen bis goldbraun",
+        "5 Min abkühlen lassen",
+        "Vorsichtig aus der Form lösen",
+        "Warm oder kalt servieren"
+      ],
+      "childTip": "Mini-Größe perfekt für Kinderhände",
+      "workTip": "Gut für Kindergeburtstage"
+    },
+    {
+      "id": "k020",
+      "name": "Grießbrei",
+      "baseIngredients": {
+        "Grieß": {"amount": 40, "unit": "g"},
+        "Milch": {"amount": 200, "unit": "ml"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Beeren": {"amount": 50, "unit": "g", "variations": ["Erdbeeren", "Himbeeren", "Blaubeeren"]}
+      },
+      "price": 1.5,
+      "prepTime": 15,
+      "tags": ["süß", "brei"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Milch in Topf erhitzen (nicht kochen lassen)",
+        "Prise Salz zugeben",
+        "Grieß unter ständigem Rühren einrieseln lassen",
+        "WICHTIG: Immer rühren, sonst gibt's Klumpen!",
+        "Bei kleiner Hitze 5 Min köcheln",
+        "Dabei ständig rühren",
+        "Zucker und optional Vanillezucker zugeben",
+        "Vom Herd nehmen",
+        "2 Min ruhen lassen (dickt nach)",
+        "In Schälchen füllen",
+        "Beeren waschen",
+        "Frische Beeren auf den Brei geben",
+        "Oder Kompott/Marmelade",
+        "Mit Zimt-Zucker bestreuen",
+        "Lauwarm servieren"
+      ],
+      "childTip": "Cremig süß - Wohlfühlessen",
+      "workTip": "Schneller süßer Nachtisch"
+    },
+    {
+      "id": "k021",
+      "name": "Tortellini mit Sahnesauce",
+      "baseIngredients": {
+        "Tortellini": {"amount": 125, "unit": "g"},
+        "Sahne": {"amount": 75, "unit": "ml"},
+        "Erbsen": {"amount": 50, "unit": "g"},
+        "Parmesan": {"amount": 20, "unit": "g"}
+      },
+      "price": 2.5,
+      "prepTime": 12,
+      "tags": ["pasta", "schnell"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Wasser in großem Topf zum Kochen bringen, salzen",
+        "Tortellini hineingeben (frische nur 3-4 Min, getrocknete 8-10 Min)",
+        "TK-Erbsen in kleinem Topf mit Sahne erwärmen",
+        "Mit Salz und wenig Muskat würzen",
+        "Optional: 1 TL Butter für extra Cremigkeit",
+        "Tortellini abgießen, zurück in den Topf",
+        "Sahne-Erbsen-Mischung darüber gießen",
+        "Vorsichtig mischen (Tortellini nicht zerdrücken)",
+        "Auf Teller anrichten",
+        "Parmesan darüber reiben",
+        "Sofort servieren"
+      ],
+      "childTip": "Gefüllte Nudeln mit cremiger Sauce",
+      "workTip": "Super schnell fertig"
+    },
+    {
+      "id": "k022",
+      "name": "Reis mit Hähnchen",
+      "baseIngredients": {
+        "Reis": {"amount": 60, "unit": "g"},
         "Hähnchenbrust": {"amount": 100, "unit": "g"},
-        "Panko": {"amount": 40, "unit": "g"},
-        "Süßkartoffelpommes": {"amount": 100, "unit": "g"}
+        "Mais": {"amount": 50, "unit": "g"},
+        "Curry": {"amount": 0.5, "unit": "TL"}
       },
       "price": 2.5,
       "prepTime": 20,
-      "tags": ["hähnchen", "knusprig"],
+      "tags": ["reis", "hähnchen"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Hähnchen in Sticks schneiden",
-        "In Mehl, Ei, Panko wenden",
-        "Im Ofen 15 Min backen",
-        "Süßkartoffelpommes dazu backen",
-        "Mit Dip servieren"
+        "Reis nach Packung kochen",
+        "Hähnchenbrust in kleine Würfel schneiden",
+        "In Pfanne mit etwas Öl anbraten",
+        "Mit mildem Curry und Salz würzen (wenig!)",
+        "5-7 Min braten bis durchgegart",
+        "Mais aus der Dose abgießen",
+        "Zum Hähnchen geben, kurz mitbraten",
+        "Gekochten Reis abgießen",
+        "Hähnchen-Mais-Mischung unter den Reis heben",
+        "Optional: 1 EL Butter unterrühren",
+        "Mit Ketchup oder süß-saurer Sauce servieren"
       ],
-      "childTip": "Extra knusprig",
+      "childTip": "Mildes Curry macht es interessant",
+      "workTip": "Komplette Mahlzeit in 20 Min"
+    },
+    {
+      "id": "k023",
+      "name": "Maultaschen in Brühe",
+      "baseIngredients": {
+        "Maultaschen": {"amount": 3, "unit": "Stück"},
+        "Gemüsebrühe": {"amount": 250, "unit": "ml"},
+        "Schnittlauch": {"amount": 1, "unit": "EL"}
+      },
+      "price": 2,
+      "prepTime": 10,
+      "tags": ["suppe", "regional"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Gemüsebrühe erhitzen (Instant oder selbstgemacht)",
+        "Maultaschen in die heiße Brühe geben",
+        "5-7 Min ziehen lassen (nicht kochen!)",
+        "Schnittlauch waschen und in Röllchen schneiden",
+        "Maultaschen mit Brühe in tiefen Teller",
+        "Mit Schnittlauch bestreuen",
+        "Optional: geröstete Zwiebeln darüber",
+        "Mit Brot servieren"
+      ],
+      "childTip": "Schwäbische Nudeltaschen in Suppe",
+      "workTip": "In 10 Minuten fertig"
+    },
+    {
+      "id": "k024",
+      "name": "Kartoffelecken aus dem Ofen",
+      "baseIngredients": {
+        "Kartoffeln": {"amount": 200, "unit": "g"},
+        "Öl": {"amount": 2, "unit": "EL"},
+        "Paprika": {"amount": 1, "unit": "TL"},
+        "Kräuterquark": {"amount": 60, "unit": "g"}
+      },
+      "price": 1.5,
+      "prepTime": 35,
+      "tags": ["kartoffel", "ofen"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Ofen auf 200°C vorheizen",
+        "Kartoffeln gründlich waschen (mit Schale!)",
+        "In Spalten schneiden (wie Pommes, nur dicker)",
+        "In Schüssel mit Öl und Paprika mischen",
+        "Mit Salz würzen",
+        "Auf Backblech verteilen (nicht übereinander)",
+        "25-30 Min backen",
+        "Nach 15 Min einmal wenden",
+        "Fertig wenn außen knusprig und innen weich",
+        "Mit Kräuterquark oder Ketchup servieren"
+      ],
+      "childTip": "Wie Pommes nur gesünder",
+      "workTip": "Beliebte Beilage"
+    },
+    {
+      "id": "k025",
+      "name": "Gnocchi mit Tomatensauce",
+      "baseIngredients": {
+        "Gnocchi": {"amount": 150, "unit": "g"},
+        "Tomatensauce": {"amount": 100, "unit": "ml"},
+        "Mozzarella": {"amount": 50, "unit": "g"},
+        "Basilikum": {"amount": 3, "unit": "Blätter"}
+      },
+      "price": 2,
+      "prepTime": 15,
+      "tags": ["italienisch", "schnell"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Salzwasser zum Kochen bringen",
+        "Gnocchi hineingeben",
+        "Warten bis sie an die Oberfläche steigen (2-3 Min)",
+        "Dann noch 1 Min kochen lassen",
+        "Tomatensauce in Pfanne erwärmen",
+        "Mit Salz und Prise Zucker abschmecken",
+        "Gnocchi abgießen",
+        "In die Pfanne zur Sauce geben",
+        "Vorsichtig durchschwenken",
+        "Mozzarella in Stücke zupfen",
+        "Über die heißen Gnocchi geben (schmilzt leicht)",
+        "Mit Basilikum garnieren"
+      ],
+      "childTip": "Kleine Kartoffelklößchen mit Käse",
+      "workTip": "Italienischer Klassiker, schnell gemacht"
+    },
+    {
+      "id": "k026",
+      "name": "Bratwurst mit Brötchen",
+      "baseIngredients": {
+        "Bratwurst": {"amount": 1, "unit": "Stück"},
+        "Brötchen": {"amount": 1, "unit": "Stück"},
+        "Senf": {"amount": 15, "unit": "ml"},
+        "Ketchup": {"amount": 20, "unit": "ml"}
+      },
+      "price": 2,
+      "prepTime": 10,
+      "tags": ["wurst", "schnell"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Pfanne auf mittlere Hitze erhitzen",
+        "Wenig Öl in die Pfanne",
+        "Bratwurst rundherum 8-10 Min braten",
+        "Dabei öfter wenden für gleichmäßige Bräune",
+        "Brötchen aufschneiden (nicht durchschneiden)",
+        "Optional: Brötchen kurz toasten",
+        "Bratwurst ins Brötchen legen",
+        "Mit Ketchup und/oder mildem Senf servieren",
+        "Dazu: Pommes oder Kartoffelsalat"
+      ],
+      "childTip": "Klassische Bratwurst im Brötchen",
+      "workTip": "Schnelles Mittagessen"
+    },
+    {
+      "id": "k027",
+      "name": "Couscous-Salat",
+      "baseIngredients": {
+        "Couscous": {"amount": 60, "unit": "g"},
+        "Gurke": {"amount": 50, "unit": "g"},
+        "Tomate": {"amount": 1, "unit": "Stück"},
+        "Feta": {"amount": 30, "unit": "g"}
+      },
+      "price": 2,
+      "prepTime": 15,
+      "tags": ["salat", "orientalisch"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Couscous in Schüssel geben",
+        "Mit 90ml kochendem Wasser übergießen",
+        "Abdecken und 5 Min quellen lassen",
+        "Mit Gabel auflockern",
+        "Gurke und Tomate würfeln",
+        "Feta zerbröckeln",
+        "Alles zum Couscous geben",
+        "Mit 1 EL Olivenöl und Zitronensaft mischen",
+        "Mit Salz abschmecken",
+        "Lauwarm oder kalt servieren"
+      ],
+      "childTip": "Bunter Salat zum Löffeln",
       "workTip": "Gesunde Alternative"
     },
     {
       "id": "k028",
-      "name": "Käse-Tortellini",
+      "name": "Spätzle mit Käse",
       "baseIngredients": {
-        "Tortellini": {"amount": 125, "unit": "g"},
-        "Butter": {"amount": 20, "unit": "g"},
-        "Parmesan": {"amount": 20, "unit": "g"}
+        "Spätzle": {"amount": 100, "unit": "g"},
+        "Emmentaler": {"amount": 50, "unit": "g"},
+        "Zwiebel": {"amount": 0.5, "unit": "Stück"},
+        "Butter": {"amount": 20, "unit": "g"}
       },
       "price": 2,
-      "prepTime": 10,
-      "tags": ["pasta", "käse"],
+      "prepTime": 20,
+      "tags": ["spätzle", "käse"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Tortellini kochen",
-        "In Butter schwenken",
-        "Mit Parmesan bestreuen",
-        "Sofort servieren"
+        "Spätzle nach Packung kochen",
+        "Zwiebel in Ringe schneiden",
+        "In Pfanne mit Butter goldbraun rösten",
+        "Käse reiben",
+        "Spätzle abgießen",
+        "Schichtweise mit Käse in Auflaufform",
+        "Kurz im heißen Ofen überbacken (5 Min)",
+        "Oder: Alles in der Pfanne mischen",
+        "Geröstete Zwiebeln darüber",
+        "Mit Schnittlauch garnieren"
       ],
-      "childTip": "Gefüllte Pasta",
-      "workTip": "Super schnell"
+      "childTip": "Käsespätzle - schwäbischer Klassiker",
+      "workTip": "Deftige Hausmannskost"
     },
     {
       "id": "k029",
-      "name": "Mini-Pizzabrötchen",
+      "name": "Quesadilla",
       "baseIngredients": {
-        "Brötchen": {"amount": 2, "unit": "Stück"},
-        "Tomatensauce": {"amount": 30, "unit": "ml"},
-        "Salami": {"amount": 4, "unit": "Scheiben"},
-        "Käse": {"amount": 30, "unit": "g"}
+        "Tortilla": {"amount": 2, "unit": "Stück"},
+        "Käse": {"amount": 50, "unit": "g"},
+        "Schinken": {"amount": 2, "unit": "Scheiben"},
+        "Mais": {"amount": 30, "unit": "g"}
       },
-      "price": 1.5,
+      "price": 2,
       "prepTime": 10,
-      "tags": ["pizza", "brötchen"],
+      "tags": ["mexikanisch", "schnell"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Brötchen halbieren",
-        "Mit Tomatensauce bestreichen",
-        "Salami und Käse drauf",
-        "5 Min im Ofen überbacken"
+        "Käse reiben",
+        "Schinken in Streifen schneiden",
+        "Eine Tortilla in die Pfanne legen",
+        "Hälfte mit Käse bestreuen",
+        "Schinken und Mais darauf verteilen",
+        "Nochmal Käse darüber",
+        "Tortilla zuklappen",
+        "Bei mittlerer Hitze 2-3 Min braten",
+        "Wenden, andere Seite auch goldbraun",
+        "In Dreiecke schneiden",
+        "Mit Sauerrahm oder Guacamole servieren"
       ],
-      "childTip": "Mini-Pizzen",
-      "workTip": "Schneller Snack"
+      "childTip": "Mexikanisches Käse-Sandwich",
+      "workTip": "Fingerfood in 10 Minuten"
     },
     {
       "id": "k030",
-      "name": "Reisbällchen",
+      "name": "Backfisch mit Kartoffelsalat",
       "baseIngredients": {
-        "Reis": {"amount": 100, "unit": "g"},
-        "Käse": {"amount": 30, "unit": "g"},
-        "Paniermehl": {"amount": 30, "unit": "g"}
+        "Backfisch": {"amount": 100, "unit": "g"},
+        "Kartoffelsalat": {"amount": 150, "unit": "g"},
+        "Zitrone": {"amount": 0.25, "unit": "Stück"}
       },
-      "price": 1.5,
-      "prepTime": 25,
-      "tags": ["reis", "fingerfood"],
+      "price": 2.5,
+      "prepTime": 15,
+      "tags": ["fisch", "salat"],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
-        "Reis kochen und abkühlen",
-        "Mit geriebenem Käse mischen",
-        "Zu Bällchen formen",
-        "In Paniermehl wälzen",
-        "In Öl frittieren",
-        "Mit Ketchup servieren"
+        "Ofen auf 200°C vorheizen",
+        "Backfisch auf Backblech legen",
+        "Nach Packung backen (meist 15-20 Min)",
+        "Fertigen Kartoffelsalat bereitstellen",
+        "Oder schnell selbst machen:",
+        "Gekochte Kartoffeln in Scheiben",
+        "Mit Mayo, Gurken und Zwiebeln mischen",
+        "Backfisch mit Zitrone beträufeln",
+        "Mit Kartoffelsalat servieren"
       ],
-      "childTip": "Käsige Reisbällchen",
-      "workTip": "Fingerfood"
+      "childTip": "Knuspriger Fisch ohne Gräten",
+      "workTip": "Einfach und lecker"
+    },
+    {
+      "id": "k031",
+      "name": "Omelett mit Schinken",
+      "baseIngredients": {
+        "Eier": {"amount": 2, "unit": "Stück"},
+        "Schinken": {"amount": 2, "unit": "Scheiben"},
+        "Käse": {"amount": 30, "unit": "g"},
+        "Milch": {"amount": 2, "unit": "EL"}
+      },
+      "price": 2,
+      "prepTime": 10,
+      "tags": ["ei", "schnell"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Eier mit Milch verquirlen",
+        "Mit Salz und wenig Pfeffer würzen",
+        "Schinken in Streifen schneiden",
+        "Käse reiben",
+        "Butter in Pfanne erhitzen",
+        "Eimasse hineingießen",
+        "Bei mittlerer Hitze stocken lassen",
+        "Nicht rühren, nur Pfanne schwenken",
+        "Wenn fast fest: Schinken und Käse auf eine Hälfte",
+        "Omelett zuklappen",
+        "Kurz durchziehen lassen",
+        "Auf Teller gleiten lassen",
+        "Mit Schnittlauch garnieren"
+      ],
+      "childTip": "Fluffiges Omelett mit Füllung",
+      "workTip": "Proteinreiches schnelles Essen"
+    },
+    {
+      "id": "k032",
+      "name": "Ravioli aus der Dose",
+      "baseIngredients": {
+        "Ravioli": {"amount": 200, "unit": "g"},
+        "Parmesan": {"amount": 20, "unit": "g"},
+        "Basilikum": {"amount": 3, "unit": "Blätter"}
+      },
+      "price": 1.5,
+      "prepTime": 5,
+      "tags": ["dose", "notfall"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Ravioli in Topf geben",
+        "Langsam erhitzen (nicht kochen)",
+        "Gelegentlich umrühren",
+        "In tiefen Teller geben",
+        "Parmesan darüber reiben",
+        "Mit frischem Basilikum garnieren",
+        "Aufwerten: Etwas Butter unterrühren",
+        "Mit Baguette servieren"
+      ],
+      "childTip": "Schnelle Notfall-Nudeln",
+      "workTip": "Wenn's mal ganz schnell gehen muss"
+    },
+    {
+      "id": "k033",
+      "name": "Wraps mit Hähnchen",
+      "baseIngredients": {
+        "Wrap": {"amount": 1, "unit": "Stück"},
+        "Hähnchen": {"amount": 80, "unit": "g"},
+        "Salat": {"amount": 30, "unit": "g"},
+        "Joghurtsauce": {"amount": 30, "unit": "ml"}
+      },
+      "price": 2.5,
+      "prepTime": 15,
+      "tags": ["wrap", "hähnchen"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hähnchen in Streifen schneiden",
+        "Mit mildem Paprika würzen",
+        "In Pfanne anbraten (5-7 Min)",
+        "Wrap kurz in Mikrowelle erwärmen (20 Sek)",
+        "Oder in trockener Pfanne",
+        "Salat waschen und zupfen",
+        "Wrap mit Joghurtsauce bestreichen",
+        "Salat in die Mitte",
+        "Hähnchen darauf",
+        "Optional: Tomaten, Gurken",
+        "Fest einrollen",
+        "Schräg halbieren"
+      ],
+      "childTip": "Alles eingerollt zum Reinbeißen",
+      "workTip": "Praktisch zum Essen"
+    },
+    {
+      "id": "k034",
+      "name": "Bulgur-Pfanne",
+      "baseIngredients": {
+        "Bulgur": {"amount": 60, "unit": "g"},
+        "Paprika": {"amount": 0.5, "unit": "Stück"},
+        "Zucchini": {"amount": 50, "unit": "g"},
+        "Feta": {"amount": 30, "unit": "g"}
+      },
+      "price": 2,
+      "prepTime": 20,
+      "tags": ["bulgur", "gemüse"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Bulgur mit doppelter Menge heißem Wasser übergießen",
+        "10 Min quellen lassen",
+        "Paprika und Zucchini würfeln",
+        "In Pfanne mit Öl anbraten",
+        "Mit Salz und mildem Paprika würzen",
+        "Gequollenen Bulgur zugeben",
+        "Alles gut durchmischen",
+        "2-3 Min zusammen braten",
+        "Feta darüber bröckeln",
+        "Mit Petersilie garnieren"
+      ],
+      "childTip": "Buntes Getreide mit Gemüse",
+      "workTip": "Gesunde Abwechslung"
+    },
+    {
+      "id": "k035",
+      "name": "Leberkäse mit Spiegelei",
+      "baseIngredients": {
+        "Leberkäse": {"amount": 100, "unit": "g"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Kartoffelpüree": {"amount": 150, "unit": "g"}
+      },
+      "price": 2,
+      "prepTime": 15,
+      "tags": ["bayrisch", "deftig"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Leberkäse in dicke Scheibe schneiden",
+        "In Pfanne von beiden Seiten anbraten",
+        "Warm stellen",
+        "Spiegelei in derselben Pfanne braten",
+        "Eigelb sollte noch weich sein",
+        "Kartoffelpüree zubereiten oder aufwärmen",
+        "Püree auf Teller",
+        "Leberkäse daneben",
+        "Spiegelei obendrauf",
+        "Mit Senf servieren"
+      ],
+      "childTip": "Bayrischer Klassiker",
+      "workTip": "Deftiges Mittagessen"
     }
   ]
 }
