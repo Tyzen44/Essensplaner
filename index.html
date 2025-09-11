@@ -996,7 +996,7 @@
             AppData.kidsLunchPlans[AppData.currentWeekKey] = lunch;
         }
 
-        // Navigation zwischen Wochen
+        // Navigation zwischen Wochen - MIT FIX FÜR TAB-AKTUALISIERUNG
         function previousWeek() {
             const current = new Date(AppData.currentWeekKey);
             current.setDate(current.getDate() - 7);
@@ -1004,6 +1004,16 @@
             updateWeekDisplay();
             displayWeekPlan();
             generateShoppingList();
+            
+            // Prüfe welcher Tab aktiv ist und aktualisiere entsprechend
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                if (activeTab.id === 'shopping') {
+                    displayShoppingList();
+                } else if (activeTab.id === 'recipes') {
+                    displayRecipes();
+                }
+            }
         }
 
         function nextWeek() {
@@ -1013,6 +1023,16 @@
             updateWeekDisplay();
             displayWeekPlan();
             generateShoppingList();
+            
+            // Prüfe welcher Tab aktiv ist und aktualisiere entsprechend
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                if (activeTab.id === 'shopping') {
+                    displayShoppingList();
+                } else if (activeTab.id === 'recipes') {
+                    displayRecipes();
+                }
+            }
         }
 
         function updateWeekDisplay() {
@@ -1586,13 +1606,20 @@
                 return positions.sort((a, b) => a - b);
             },
 
+            // UPDATED: MIT ZEITBESCHRÄNKUNG FÜR WERKTAGE
             selectSmartRecipe: function(availableRecipes, usedRecipes, usedMainIngredients, dayIndex) {
-                const isWeekend = dayIndex >= 5;
+                const isWeekend = dayIndex >= 5;  // Samstag und Sonntag
+                const isWeekday = dayIndex <= 4;  // Montag bis Freitag
                 const needsWorkFriendly = dayIndex < 4;
                 
                 let candidates = availableRecipes.filter(recipe => {
                     if (usedRecipes.has(recipe.id)) return false;
                     if (needsWorkFriendly && recipe.workFriendly === false) return false;
+                    
+                    // NEU: Zeitbeschränkung für Werktage
+                    if (isWeekday && recipe.prepTime && recipe.prepTime > 45) {
+                        return false;  // Maximal 45 Minuten an Werktagen
+                    }
                     
                     for (let [ingredient, lastDay] of usedMainIngredients) {
                         if (recipe.baseIngredients && recipe.baseIngredients[ingredient]) {
@@ -1606,7 +1633,13 @@
                 });
                 
                 if (candidates.length === 0) {
-                    candidates = availableRecipes.filter(r => !usedRecipes.has(r.id));
+                    candidates = availableRecipes.filter(r => {
+                        // Auch in der Fallback-Lösung: Zeitbeschränkung beachten
+                        if (isWeekday && r.prepTime && r.prepTime > 45) {
+                            return false;
+                        }
+                        return !usedRecipes.has(r.id);
+                    });
                 }
                 
                 if (candidates.length > 0) {
@@ -2258,7 +2291,17 @@
                 AppData.recipes.meat;
             
             const filtered = SmartPlanner.filterRecipes(availableRecipes);
-            const shuffled = shuffleArray(filtered);
+            
+            // ZEITBESCHRÄNKUNG AUCH BEIM MANUELLEN WECHSELN
+            const isWeekday = dayIndex <= 4;
+            const timeFiltered = filtered.filter(r => {
+                if (isWeekday && r.prepTime && r.prepTime > 45) {
+                    return false;
+                }
+                return true;
+            });
+            
+            const shuffled = shuffleArray(timeFiltered);
             
             const maxIndex = Math.min(10, shuffled.length);
             const randomIndex = Math.floor(Math.random() * maxIndex);
@@ -2274,6 +2317,7 @@
             triggerAutoSave();
         }
 
+        // FIX FÜR "ROT 3 EL" BUG
         function generateShoppingList() {
             const shoppingList = {};
             
@@ -2337,9 +2381,22 @@
                 
                 if (day.dinner && day.dinner.baseIngredients) {
                     Object.entries(day.dinner.baseIngredients).forEach(([key, value]) => {
-                        const ingredient = day.variations && day.variations.find(v => v.type === key)
-                            ? day.variations.find(v => v.type === key).selected
-                            : key;
+                        // FIX: Spezialbehandlung für Currypaste
+                        let ingredient = key;
+                        if (day.variations && day.variations.find(v => v.type === key)) {
+                            const variation = day.variations.find(v => v.type === key).selected;
+                            
+                            // Wenn es Currypaste ist, füge die Variation vorne an
+                            if (key.toLowerCase().includes('currypaste')) {
+                                ingredient = variation + ' Currypaste';
+                            } else if (key.toLowerCase().includes('curry') && variation.match(/^(Rot|Grün|Gelb|Rotes|Grünes|Gelbes)$/i)) {
+                                // Falls "Curry" im Namen und Variation ist eine Farbe
+                                ingredient = variation + ' ' + key;
+                            } else {
+                                // Für andere Variationen (z.B. Mozzarella-Varianten)
+                                ingredient = variation;
+                            }
+                        }
                         
                         const normalizedIngredient = normalizeIngredient(ingredient);
                         
