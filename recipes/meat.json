@@ -1,7 +1,7 @@
 {
   "category": "meat",
   "name": "Fleischgerichte",
-  "version": "1.1",
+  "version": "1.2",
   "lastUpdated": "2024-01-15",
   "recipes": [
     {
@@ -1698,6 +1698,192 @@
       ],
       "childTip": "Zu exotisch für die meisten Kinder",
       "workTip": "Tom Kha Gai - thailändischer Klassiker"
-    }
-  ]
-}
+    },
+    {
+      "id": "m056",
+      "name": "Hackfleisch-Quesadilla",
+      "baseIngredients": {
+        "Hackfleisch": {"amount": 100, "unit": "g"},
+        "Tortilla": {"amount": 2, "unit": "Stück"},
+        "Käse": {"amount": 60, "unit": "g"},
+        "Paprika": {"amount": 0.5, "unit": "Stück"},
+        "Saure Sahne": {"amount": 50, "unit": "ml"}
+      },
+      "price": 4,
+      "prepTime": 15,
+      "tags": ["mexikanisch", "schnell"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Hackfleisch mit Zwiebeln anbraten, würzen",
+        "Paprika würfeln, kurz mitbraten",
+        "Eine Tortilla in Pfanne legen",
+        "Mit Käse bestreuen, Hackfleisch darauf",
+        "Zweite Tortilla drauflegen",
+        "3-4 Min braten, wenden, nochmal 3 Min",
+        "In Dreiecke schneiden",
+        "Mit Saurer Sahne und Salsa servieren"
+      ],
+      "childTip": "Käse-Hackfleisch-Kombi ist beliebt",
+      "workTip": "Schneller Snack"
+    },
+    {
+      "id": "m057",
+      "name": "Schweinegeschnetzeltes Asia-Style",
+      "baseIngredients": {
+        "Schweinefleisch": {"amount": 150, "unit": "g"},
+        "Sojasprossen": {"amount": 100, "unit": "g"},
+        "Paprika": {"amount": 1, "unit": "Stück"},
+        "Süß-Sauer-Sauce": {"amount": 60, "unit": "ml"},
+        "Reis": {"amount": 125, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 20,
+      "tags": ["asiatisch", "schnell"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Reis kochen",
+        "Schweinefleisch in Streifen schneiden",
+        "Im Wok scharf anbraten",
+        "Paprika in Streifen, zugeben",
+        "2 Min mitbraten",
+        "Sojasprossen zugeben",
+        "Mit Süß-Sauer-Sauce ablöschen",
+        "1-2 Min köcheln",
+        "Auf Reis servieren"
+      ],
+      "childTip": "Süß-saure Sauce mögen Kinder",
+      "workTip": "Schnelles Wok-Gericht"
+    },
+    {
+      "id": "m058",
+      "name": "Rindersteak-Salat",
+      "baseIngredients": {
+        "Rindersteak": {"amount": 150, "unit": "g"},
+        "Gemischter Salat": {"amount": 150, "unit": "g"},
+        "Cherry-Tomaten": {"amount": 100, "unit": "g"},
+        "Balsamico-Dressing": {"amount": 50, "unit": "ml"},
+        "Baguette": {"amount": 3, "unit": "Scheiben"}
+      },
+      "price": 7,
+      "prepTime": 15,
+      "tags": ["salat", "leicht"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Steak würzen, in heißer Pfanne 3-4 Min pro Seite",
+        "5 Min ruhen lassen",
+        "Salat waschen, Tomaten halbieren",
+        "Dressing aus Balsamico, Öl, Senf, Honig",
+        "Steak in Streifen schneiden",
+        "Salat anrichten, Steak darauf",
+        "Mit geröstetem Baguette servieren"
+      ],
+      "childTip": "Steak separat servieren",
+      "workTip": "Leichtes Sommeressen"
+    },
+    {
+      "id": "m059",
+      "name": "Hähnchen-Avocado-Bowl",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Quinoa": {"amount": 100, "unit": "g"},
+        "Avocado": {"amount": 1, "unit": "Stück"},
+        "Edamame": {"amount": 75, "unit": "g"},
+        "Tahini-Dressing": {"amount": 50, "unit": "ml"}
+      },
+      "price": 6,
+      "prepTime": 25,
+      "tags": ["bowl", "gesund"],
+      "childFriendly": false,
+      "workFriendly": true,
+      "instructions": [
+        "Quinoa nach Packung kochen",
+        "Hähnchen würzen, in Streifen braten",
+        "Edamame 5 Min kochen",
+        "Avocado in Scheiben schneiden",
+        "Tahini mit Zitrone, Wasser, Salz mischen",
+        "Bowl zusammenstellen: Quinoa als Basis",
+        "Hähnchen, Avocado, Edamame arrangieren",
+        "Mit Dressing beträufeln"
+      ],
+      "childTip": "Komponenten getrennt servieren",
+      "workTip": "Gesunde Mittagspause"
+    },
+    {
+      "id": "m060",
+      "name": "Schweine-Minutensteaks",
+      "baseIngredients": {
+        "Minutensteaks": {"amount": 150, "unit": "g"},
+        "Zwiebeln": {"amount": 1, "unit": "Stück"},
+        "Bratkartoffeln": {"amount": 250, "unit": "g"},
+        "Grüner Salat": {"amount": 100, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 20,
+      "tags": ["schnell", "pfanne"],
+      "childFriendly": true,
+      "workFriendly": false,
+      "instructions": [
+        "Kartoffeln vom Vortag in Scheiben schneiden",
+        "In Pfanne goldbraun braten",
+        "Minutensteaks klopfen, würzen",
+        "Sehr heiß je 1-2 Min pro Seite braten",
+        "Zwiebeln in Ringe, in Bratfett rösten",
+        "Salat anmachen",
+        "Steaks mit Zwiebeln auf Bratkartoffeln",
+        "Mit Salat servieren"
+      ],
+      "childTip": "Dünn und schnell gebraten",
+      "workTip": "Blitzgericht"
+    },
+    {
+      "id": "m061",
+      "name": "Lamm-Burger",
+      "baseIngredients": {
+        "Lammhack": {"amount": 150, "unit": "g"},
+        "Burgerbrötchen": {"amount": 1, "unit": "Stück"},
+        "Feta": {"amount": 30, "unit": "g"},
+        "Tzatziki": {"amount": 50, "unit": "g"},
+        "Süßkartoffelpommes": {"amount": 150, "unit": "g"}
+      },
+      "price": 7,
+      "prepTime": 25,
+      "tags": ["burger", "mediterran"],
+      "childFriendly": false,
+      "workFriendly": false,
+      "instructions": [
+        "Süßkartoffelpommes in Ofen nach Packung",
+        "Lammhack mit Knoblauch, Minze, Salz mischen",
+        "Zu Patty formen",
+        "In heißer Pfanne 4-5 Min pro Seite",
+        "Brötchen toasten",
+        "Mit Tzatziki bestreichen",
+        "Patty drauf, Feta zerbröckeln",
+        "Mit Pommes servieren"
+      ],
+      "childTip": "Lammgeschmack ist speziell",
+      "workTip": "Mediterraner Burger"
+    },
+    {
+      "id": "m062",
+      "name": "Hähnchen-Spinat-Lasagne",
+      "baseIngredients": {
+        "Hähnchenbrust": {"amount": 150, "unit": "g"},
+        "Lasagneplatten": {"amount": 6, "unit": "Stück"},
+        "Spinat": {"amount": 150, "unit": "g"},
+        "Bechamelsauce": {"amount": 200, "unit": "ml"},
+        "Käse": {"amount": 60, "unit": "g"}
+      },
+      "price": 5,
+      "prepTime": 45,
+      "tags": ["lasagne", "auflauf"],
+      "childFriendly": true,
+      "workFriendly": true,
+      "instructions": [
+        "Ofen auf 180°C vorheizen",
+        "Hähnchen würfeln, anbraten",
+        "Spinat kurz blanchieren, ausdrücken",
+        "Bechamel zubereiten oder fertig kaufen",
+        "Auflaufform: Schichten aus Sauce, Platten, Hähnchen
