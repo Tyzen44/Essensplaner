@@ -12,7 +12,19 @@
         "Zucchini": {"amount": 1, "unit": "Stück"},
         "Aubergine": {"amount": 0.5, "unit": "Stück"},
         "Tomaten": {"amount": 300, "unit": "g"},
-        "Mozzarella": {"amount": 125, "unit": "g", "variations": ["Ricotta", "Feta", "Büffelmozzarella"]}
+        "Mozzarella": {"amount": 125, "unit": "g", "variations": ["Ricotta", "Feta", "Büffelmozzarella"]},
+        "Olivenöl": {"amount": 3, "unit": "EL"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Basilikum": {"amount": 6, "unit": "Blätter"},
+        "Butter": {"amount": 30, "unit": "g"},
+        "Mehl": {"amount": 30, "unit": "g"},
+        "Milch": {"amount": 400, "unit": "ml"},
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 60,
@@ -47,7 +59,11 @@
         "Emmentaler": {"amount": 100, "unit": "g", "variations": ["Bergkäse", "Gruyère", "Appenzeller"]},
         "Zwiebeln": {"amount": 1, "unit": "Stück"},
         "Butter": {"amount": 25, "unit": "g"},
-        "Salat": {"amount": 100, "unit": "g"}
+        "Salat": {"amount": 100, "unit": "g"},
+        "Essig": {"amount": 1, "unit": "EL"},
+        "Olivenöl": {"amount": 2, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 30,
@@ -82,7 +98,13 @@
         "Kokosmilch": {"amount": 150, "unit": "ml"},
         "Gemüse": {"amount": 200, "unit": "g", "variations": ["Blumenkohl", "Süßkartoffel", "Spinat"]},
         "Currypaste": {"amount": 1, "unit": "EL", "variations": ["Rot", "Grün", "Gelb"]},
-        "Reis": {"amount": 125, "unit": "g", "variations": ["Basmati", "Jasmin", "Naan"]}
+        "Reis": {"amount": 125, "unit": "g", "variations": ["Basmati", "Jasmin", "Naan"]},
+        "Kokosöl": {"amount": 1, "unit": "EL"},
+        "Limette": {"amount": 1, "unit": "Stück"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Koriander": {"amount": 10, "unit": "g"},
+        "Cashews": {"amount": 20, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 30,
@@ -116,7 +138,10 @@
         "Tomatensauce": {"amount": 75, "unit": "ml"},
         "Mozzarella": {"amount": 125, "unit": "g"},
         "Basilikum": {"amount": 5, "unit": "Blätter"},
-        "Olivenöl": {"amount": 1, "unit": "EL"}
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 20,
@@ -151,7 +176,12 @@
         "Pilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Steinpilze", "Pfifferlinge"]},
         "Weißwein": {"amount": 75, "unit": "ml"},
         "Parmesan": {"amount": 50, "unit": "g"},
-        "Brühe": {"amount": 500, "unit": "ml"}
+        "Brühe": {"amount": 500, "unit": "ml"},
+        "Schalotte": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Butter": {"amount": 30, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4.5,
       "prepTime": 35,
@@ -188,7 +218,14 @@
         "Spinat": {"amount": 150, "unit": "g"},
         "Ricotta": {"amount": 100, "unit": "g"},
         "Tomatensauce": {"amount": 150, "unit": "ml"},
-        "Parmesan": {"amount": 50, "unit": "g"}
+        "Parmesan": {"amount": 50, "unit": "g"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Sahne": {"amount": 200, "unit": "ml"},
+        "Milch": {"amount": 100, "unit": "ml"},
+        "Mozzarella": {"amount": 80, "unit": "g"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 45,
@@ -224,7 +261,17 @@
         "Tofu": {"amount": 100, "unit": "g"},
         "Erdnüsse": {"amount": 30, "unit": "g"},
         "Sojasprossen": {"amount": 50, "unit": "g"},
-        "Tamarinde": {"amount": 2, "unit": "EL"}
+        "Tamarinde": {"amount": 2, "unit": "EL"},
+        "Sojasauce": {"amount": 2, "unit": "EL"},
+        "Zucker": {"amount": 2, "unit": "EL"},
+        "Chili": {"amount": 1, "unit": "TL"},
+        "Öl": {"amount": 3, "unit": "EL"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Schalotte": {"amount": 1, "unit": "Stück"},
+        "Eier": {"amount": 2, "unit": "Stück"},
+        "Frühlingszwiebeln": {"amount": 2, "unit": "Stangen"},
+        "Limette": {"amount": 1, "unit": "Stück"},
+        "Koriander": {"amount": 10, "unit": "g"}
       },
       "price": 4,
       "prepTime": 25,
@@ -257,7 +304,9 @@
         "Gnocchi": {"amount": 200, "unit": "g"},
         "Butter": {"amount": 40, "unit": "g"},
         "Salbei": {"amount": 10, "unit": "Blätter"},
-        "Parmesan": {"amount": 50, "unit": "g"}
+        "Parmesan": {"amount": 50, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 15,
@@ -293,7 +342,17 @@
         "Eier": {"amount": 2, "unit": "Stück"},
         "Paprika": {"amount": 1, "unit": "Stück"},
         "Feta": {"amount": 50, "unit": "g"},
-        "Brot": {"amount": 3, "unit": "Scheiben"}
+        "Brot": {"amount": 3, "unit": "Scheiben"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Olivenöl": {"amount": 2, "unit": "EL"},
+        "Paprikapulver": {"amount": 1, "unit": "TL"},
+        "Kreuzkümmel": {"amount": 1, "unit": "TL"},
+        "Cayenne": {"amount": 1, "unit": "Prise"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Petersilie": {"amount": 10, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 25,
@@ -329,7 +388,13 @@
         "Avocado": {"amount": 1, "unit": "Stück"},
         "Kichererbsen": {"amount": 75, "unit": "g"},
         "Tahini": {"amount": 2, "unit": "EL"},
-        "Gemüse": {"amount": 150, "unit": "g"}
+        "Gemüse": {"amount": 150, "unit": "g"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Sesam": {"amount": 1, "unit": "EL"},
+        "Sonnenblumenkerne": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4.5,
       "prepTime": 25,
@@ -363,7 +428,21 @@
         "Kartoffeln": {"amount": 200, "unit": "g"},
         "Linsen": {"amount": 75, "unit": "g"},
         "Béchamel": {"amount": 150, "unit": "ml"},
-        "Käse": {"amount": 50, "unit": "g"}
+        "Käse": {"amount": 50, "unit": "g"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Olivenöl": {"amount": 3, "unit": "EL"},
+        "Tomaten": {"amount": 400, "unit": "g"},
+        "Tomatenmark": {"amount": 2, "unit": "EL"},
+        "Zimt": {"amount": 0.5, "unit": "TL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Butter": {"amount": 30, "unit": "g"},
+        "Mehl": {"amount": 30, "unit": "g"},
+        "Milch": {"amount": 400, "unit": "ml"},
+        "Eigelb": {"amount": 1, "unit": "Stück"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 60,
@@ -401,7 +480,20 @@
         "Kichererbsen": {"amount": 150, "unit": "g"},
         "Petersilie": {"amount": 0.5, "unit": "Bund"},
         "Hummus": {"amount": 75, "unit": "g"},
-        "Pita": {"amount": 2, "unit": "Stück"}
+        "Pita": {"amount": 2, "unit": "Stück"},
+        "Zwiebel": {"amount": 0.5, "unit": "Stück"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Kreuzkümmel": {"amount": 1, "unit": "TL"},
+        "Koriander": {"amount": 1, "unit": "TL"},
+        "Backpulver": {"amount": 0.5, "unit": "TL"},
+        "Mehl": {"amount": 2, "unit": "EL"},
+        "Öl": {"amount": 500, "unit": "ml"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Salat": {"amount": 50, "unit": "g"},
+        "Tomaten": {"amount": 1, "unit": "Stück"},
+        "Gurke": {"amount": 0.5, "unit": "Stück"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 30,
@@ -437,7 +529,13 @@
         "Ravioli": {"amount": 175, "unit": "g", "variations": ["Spinat-Ricotta", "Käse", "Pilz"]},
         "Tomatensauce": {"amount": 150, "unit": "ml"},
         "Basilikum": {"amount": 8, "unit": "Blätter"},
-        "Parmesan": {"amount": 40, "unit": "g"}
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Schalotte": {"amount": 1, "unit": "Stück"},
+        "Olivenöl": {"amount": 2, "unit": "EL"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 15,
@@ -471,7 +569,16 @@
         "Süßkartoffel": {"amount": 150, "unit": "g"},
         "Brokkoli": {"amount": 100, "unit": "g"},
         "Quinoa": {"amount": 75, "unit": "g"},
-        "Tahini Dressing": {"amount": 50, "unit": "ml"}
+        "Tahini Dressing": {"amount": 50, "unit": "ml"},
+        "Olivenöl": {"amount": 2, "unit": "EL"},
+        "Paprikapulver": {"amount": 1, "unit": "TL"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Ahornsirup": {"amount": 1, "unit": "TL"},
+        "Avocado": {"amount": 1, "unit": "Stück"},
+        "Edamame": {"amount": 100, "unit": "g"},
+        "Möhre": {"amount": 1, "unit": "Stück"},
+        "Sesam": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 30,
@@ -506,7 +613,13 @@
         "Tomaten": {"amount": 250, "unit": "g"},
         "Mozzarella": {"amount": 125, "unit": "g"},
         "Basilikum": {"amount": 0.5, "unit": "Bund"},
-        "Ciabatta": {"amount": 3, "unit": "Scheiben"}
+        "Ciabatta": {"amount": 3, "unit": "Scheiben"},
+        "Olivenöl": {"amount": 3, "unit": "EL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Balsamico": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 25,
@@ -540,7 +653,15 @@
         "Champignons": {"amount": 200, "unit": "g", "variations": ["Mischpilze", "Austernpilze"]},
         "Saure Sahne": {"amount": 75, "unit": "ml"},
         "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]},
-        "Petersilie": {"amount": 2, "unit": "EL"}
+        "Petersilie": {"amount": 2, "unit": "EL"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Butter": {"amount": 30, "unit": "g"},
+        "Mehl": {"amount": 10, "unit": "g"},
+        "Gemüsebrühe": {"amount": 100, "unit": "ml"},
+        "Paprikapulver": {"amount": 1, "unit": "TL"},
+        "Gewürzgurken": {"amount": 50, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 25,
@@ -575,7 +696,12 @@
         "Zucchini": {"amount": 300, "unit": "g"},
         "Ei": {"amount": 1, "unit": "Stück"},
         "Mehl": {"amount": 50, "unit": "g"},
-        "Joghurt Dip": {"amount": 75, "unit": "g"}
+        "Joghurt Dip": {"amount": 75, "unit": "g"},
+        "Öl": {"amount": 3, "unit": "EL"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Dill": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 20,
@@ -609,7 +735,12 @@
         "Tortellini": {"amount": 175, "unit": "g", "variations": ["Käse", "Spinat", "Pilz"]},
         "Sahne": {"amount": 100, "unit": "ml"},
         "Erbsen": {"amount": 75, "unit": "g"},
-        "Parmesan": {"amount": 40, "unit": "g"}
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Schalotte": {"amount": 1, "unit": "Stück"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 15,
@@ -643,7 +774,14 @@
         "Aubergine": {"amount": 0.5, "unit": "Stück"},
         "Paprika": {"amount": 1, "unit": "Stück"},
         "Tomaten": {"amount": 200, "unit": "g"},
-        "Baguette": {"amount": 4, "unit": "Scheiben"}
+        "Baguette": {"amount": 4, "unit": "Scheiben"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Olivenöl": {"amount": 3, "unit": "EL"},
+        "Thymian": {"amount": 1, "unit": "TL"},
+        "Rosmarin": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 45,
@@ -678,7 +816,12 @@
         "Pasta": {"type": "any", "amount": 150, "unit": "g", "variations": ["Penne", "Fusilli", "Rigatoni"]},
         "Spinat": {"amount": 100, "unit": "g"},
         "Gorgonzola": {"amount": 60, "unit": "g"},
-        "Walnüsse": {"amount": 30, "unit": "g"}
+        "Walnüsse": {"amount": 30, "unit": "g"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Sahne": {"amount": 100, "unit": "ml"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 20,
@@ -712,7 +855,13 @@
         "Gemüse gemischt": {"amount": 200, "unit": "g"},
         "Tempurateig": {"amount": 75, "unit": "g"},
         "Sojasauce": {"amount": 30, "unit": "ml"},
-        "Reis": {"amount": 125, "unit": "g"}
+        "Reis": {"amount": 125, "unit": "g"},
+        "Mehl": {"amount": 75, "unit": "g"},
+        "Sprudelwasser": {"amount": 100, "unit": "ml"},
+        "Öl": {"amount": 500, "unit": "ml"},
+        "Ingwer": {"amount": 1, "unit": "TL"},
+        "Rettich": {"amount": 50, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 25,
@@ -745,7 +894,15 @@
         "Kürbis": {"amount": 200, "unit": "g", "variations": ["Hokkaido", "Butternut"]},
         "Risottoreis": {"amount": 125, "unit": "g"},
         "Weißwein": {"amount": 75, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"}
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Butter": {"amount": 20, "unit": "g"},
+        "Schalotte": {"amount": 1, "unit": "Stück"},
+        "Gemüsebrühe": {"amount": 1000, "unit": "ml"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Kürbiskerne": {"amount": 20, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 35,
@@ -780,7 +937,11 @@
         "Halloumi": {"amount": 150, "unit": "g"},
         "Burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn"]},
         "Hummus": {"amount": 50, "unit": "g"},
-        "Salat": {"amount": 50, "unit": "g"}
+        "Salat": {"amount": 50, "unit": "g"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Tomate": {"amount": 1, "unit": "Stück"},
+        "Gurke": {"amount": 0.5, "unit": "Stück"},
+        "Zwiebel": {"amount": 0.5, "unit": "Stück"}
       },
       "price": 4.5,
       "prepTime": 15,
@@ -814,7 +975,12 @@
         "Pasta": {"type": "short", "amount": 150, "unit": "g", "variations": ["Penne", "Rigatoni"]},
         "Tomaten": {"amount": 250, "unit": "g"},
         "Chili": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"}
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Olivenöl": {"amount": 3, "unit": "EL"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Petersilie": {"amount": 10, "unit": "g"},
+        "Parmesan": {"amount": 30, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 20,
@@ -849,7 +1015,10 @@
         "Spätzle": {"amount": 200, "unit": "g"},
         "Bärlauch": {"amount": 50, "unit": "g"},
         "Sahne": {"amount": 75, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"}
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 25,
@@ -881,7 +1050,18 @@
         "Rote Linsen": {"amount": 125, "unit": "g"},
         "Kokosmilch": {"amount": 100, "unit": "ml"},
         "Curry Gewürze": {"amount": 2, "unit": "EL"},
-        "Naan": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Chapati"]}
+        "Naan": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Chapati"]},
+        "Ghee": {"amount": 2, "unit": "EL", "variations": ["Öl"]},
+        "Kreuzkümmel-Samen": {"amount": 1, "unit": "TL"},
+        "Senfsamen": {"amount": 1, "unit": "TL"},
+        "Zwiebel": {"amount": 1, "unit": "Stück"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Ingwer": {"amount": 1, "unit": "EL"},
+        "Kurkuma": {"amount": 1, "unit": "TL"},
+        "Garam Masala": {"amount": 1, "unit": "TL"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Koriander": {"amount": 10, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 30,
@@ -916,7 +1096,9 @@
         "Gnocchi": {"amount": 200, "unit": "g"},
         "Tomatensauce": {"amount": 150, "unit": "ml"},
         "Mozzarella": {"amount": 100, "unit": "g"},
-        "Basilikum": {"amount": 8, "unit": "Blätter"}
+        "Basilikum": {"amount": 8, "unit": "Blätter"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 25,
@@ -948,7 +1130,14 @@
         "Süßkartoffel": {"amount": 200, "unit": "g"},
         "Kokosmilch": {"amount": 150, "unit": "ml"},
         "Spinat": {"amount": 75, "unit": "g"},
-        "Reis": {"amount": 125, "unit": "g", "variations": ["Quinoa", "Couscous"]}
+        "Reis": {"amount": 125, "unit": "g", "variations": ["Quinoa", "Couscous"]},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Currypaste": {"amount": 1, "unit": "EL"},
+        "Gemüsebrühe": {"amount": 100, "unit": "ml"},
+        "Limette": {"amount": 1, "unit": "Stück"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Cashews": {"amount": 20, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 30,
@@ -981,7 +1170,14 @@
         "Champignons": {"amount": 150, "unit": "g"},
         "Eier": {"amount": 2, "unit": "Stück"},
         "Sahne": {"amount": 100, "unit": "ml"},
-        "Käse": {"amount": 50, "unit": "g"}
+        "Käse": {"amount": 50, "unit": "g"},
+        "Butter": {"amount": 20, "unit": "g"},
+        "Knoblauch": {"amount": 1, "unit": "Zehe"},
+        "Thymian": {"amount": 1, "unit": "TL"},
+        "Milch": {"amount": 100, "unit": "ml"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 45,
@@ -1016,7 +1212,12 @@
         "Blätterteig": {"amount": 150, "unit": "g"},
         "Tomaten": {"amount": 250, "unit": "g"},
         "Mozzarella": {"amount": 125, "unit": "g"},
-        "Pesto": {"amount": 30, "unit": "g"}
+        "Pesto": {"amount": 30, "unit": "g"},
+        "Basilikum": {"amount": 6, "unit": "Blätter"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 25,
@@ -1047,7 +1248,15 @@
         "Couscous": {"amount": 125, "unit": "g"},
         "Gemüse": {"amount": 200, "unit": "g"},
         "Rosinen": {"amount": 30, "unit": "g"},
-        "Minze": {"amount": 8, "unit": "Blätter"}
+        "Minze": {"amount": 8, "unit": "Blätter"},
+        "Gemüsebrühe": {"amount": 200, "unit": "ml"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Kreuzkümmel": {"amount": 1, "unit": "TL"},
+        "Paprikapulver": {"amount": 1, "unit": "TL"},
+        "Mandeln": {"amount": 20, "unit": "g"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 20,
@@ -1080,7 +1289,12 @@
         "Kartoffeln": {"amount": 300, "unit": "g"},
         "Lauch": {"amount": 100, "unit": "g"},
         "Sahne": {"amount": 125, "unit": "ml"},
-        "Käse": {"amount": 60, "unit": "g", "variations": ["Gruyère", "Emmentaler"]}
+        "Käse": {"amount": 60, "unit": "g", "variations": ["Gruyère", "Emmentaler"]},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Milch": {"amount": 100, "unit": "ml"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 50,
@@ -1114,7 +1328,9 @@
         "Pasta": {"type": "long", "amount": 150, "unit": "g", "variations": ["Tagliatelle", "Linguine", "Fettuccine"]},
         "Butter": {"amount": 40, "unit": "g"},
         "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Parmesan": {"amount": 40, "unit": "g"}
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 15,
@@ -1145,7 +1361,11 @@
         "Aubergine": {"amount": 1, "unit": "Stück"},
         "Tomatensauce": {"amount": 150, "unit": "ml"},
         "Mozzarella": {"amount": 100, "unit": "g"},
-        "Parmesan": {"amount": 50, "unit": "g"}
+        "Parmesan": {"amount": 50, "unit": "g"},
+        "Mehl": {"amount": 30, "unit": "g"},
+        "Öl": {"amount": 4, "unit": "EL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 4,
       "prepTime": 50,
@@ -1178,7 +1398,12 @@
         "Brokkoli": {"amount": 200, "unit": "g"},
         "Cheddar": {"amount": 75, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
         "Sahne": {"amount": 75, "unit": "ml"},
-        "Brot": {"amount": 3, "unit": "Scheiben"}
+        "Brot": {"amount": 3, "unit": "Scheiben"},
+        "Gemüsebrühe": {"amount": 500, "unit": "ml"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 25,
@@ -1208,7 +1433,8 @@
         "Tomatensauce": {"amount": 60, "unit": "ml"},
         "Mozzarella": {"amount": 80, "unit": "g"},
         "Basilikum": {"amount": 6, "unit": "Blätter"},
-        "Rucola": {"amount": 30, "unit": "g"}
+        "Rucola": {"amount": 30, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 10,
@@ -1269,7 +1495,12 @@
         "Feta": {"amount": 60, "unit": "g"},
         "Cherry-Tomaten": {"amount": 100, "unit": "g"},
         "Gurke": {"amount": 0.5, "unit": "Stück"},
-        "Oliven": {"amount": 40, "unit": "g"}
+        "Oliven": {"amount": 40, "unit": "g"},
+        "Olivenöl": {"amount": 3, "unit": "EL"},
+        "Zitrone": {"amount": 1, "unit": "Stück"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3.5,
       "prepTime": 10,
@@ -1300,7 +1531,10 @@
         "Spinat TK": {"amount": 100, "unit": "g"},
         "Feta": {"amount": 80, "unit": "g"},
         "Ei": {"amount": 1, "unit": "Stück"},
-        "Sesam": {"amount": 1, "unit": "EL"}
+        "Sesam": {"amount": 1, "unit": "EL"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 20,
@@ -1333,7 +1567,13 @@
         "Champignons": {"amount": 50, "unit": "g"},
         "Tomaten": {"amount": 1, "unit": "Stück"},
         "Kurkuma": {"amount": 0.5, "unit": "TL"},
-        "Toast": {"amount": 2, "unit": "Scheiben"}
+        "Toast": {"amount": 2, "unit": "Scheiben"},
+        "Sojasauce": {"amount": 1, "unit": "EL"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Hefeflocken": {"amount": 1, "unit": "EL"},
+        "Schnittlauch": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 15,
@@ -1367,7 +1607,9 @@
         "Mozzarella": {"amount": 100, "unit": "g"},
         "Tomaten": {"amount": 1, "unit": "Stück"},
         "Basilikum": {"amount": 8, "unit": "Blätter"},
-        "Balsamico": {"amount": 1, "unit": "EL"}
+        "Balsamico": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 8,
@@ -1399,7 +1641,11 @@
         "Eier": {"amount": 3, "unit": "Stück"},
         "Gemüse-Reste": {"amount": 150, "unit": "g"},
         "Käse": {"amount": 50, "unit": "g"},
-        "Milch": {"amount": 50, "unit": "ml"}
+        "Milch": {"amount": 50, "unit": "ml"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Kräuter": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 15,
@@ -1430,7 +1676,9 @@
         "Wraps": {"amount": 2, "unit": "Stück"},
         "Hummus": {"amount": 80, "unit": "g"},
         "Gemüse": {"amount": 150, "unit": "g"},
-        "Salat": {"amount": 40, "unit": "g"}
+        "Salat": {"amount": 40, "unit": "g"},
+        "Feta": {"amount": 30, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 5,
@@ -1459,7 +1707,12 @@
         "Tomaten Dose": {"amount": 400, "unit": "g"},
         "Sahne": {"amount": 50, "unit": "ml"},
         "Basilikum": {"amount": 6, "unit": "Blätter"},
-        "Baguette": {"amount": 3, "unit": "Scheiben"}
+        "Baguette": {"amount": 3, "unit": "Scheiben"},
+        "Gemüsebrühe": {"amount": 200, "unit": "ml"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 10,
@@ -1490,7 +1743,10 @@
         "Avocado": {"amount": 1, "unit": "Stück"},
         "Ei": {"amount": 1, "unit": "Stück"},
         "Feta": {"amount": 30, "unit": "g"},
-        "Chili-Flocken": {"amount": 1, "unit": "Prise"}
+        "Chili-Flocken": {"amount": 1, "unit": "Prise"},
+        "Limette": {"amount": 1, "unit": "Stück"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 10,
@@ -1521,7 +1777,12 @@
         "Pasta": {"amount": 150, "unit": "g"},
         "Gemüse": {"amount": 200, "unit": "g"},
         "Gemüsebrühe": {"amount": 400, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"}
+        "Parmesan": {"amount": 40, "unit": "g"},
+        "Knoblauch": {"amount": 2, "unit": "Zehen"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Kräuter": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 3,
       "prepTime": 20,
@@ -1552,7 +1813,12 @@
         "Reispapier": {"amount": 6, "unit": "Blätter"},
         "Gemüse": {"amount": 150, "unit": "g"},
         "Reisnudeln gekocht": {"amount": 50, "unit": "g"},
-        "Erdnusssauce": {"amount": 60, "unit": "ml"}
+        "Erdnusssauce": {"amount": 60, "unit": "ml"},
+        "Minze": {"amount": 10, "unit": "Blätter"},
+        "Koriander": {"amount": 10, "unit": "g"},
+        "Sojasauce": {"amount": 1, "unit": "EL"},
+        "Limette": {"amount": 1, "unit": "Stück"},
+        "Chili": {"amount": 1, "unit": "Stück"}
       },
       "price": 3.5,
       "prepTime": 15,
@@ -1584,7 +1850,11 @@
         "Lauch": {"amount": 1, "unit": "Stange"},
         "Schmelzkäse": {"amount": 100, "unit": "g"},
         "Gemüsebrühe": {"amount": 400, "unit": "ml"},
-        "Brot": {"amount": 2, "unit": "Scheiben"}
+        "Brot": {"amount": 2, "unit": "Scheiben"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 15,
@@ -1615,7 +1885,13 @@
         "Salat-Mix": {"amount": 100, "unit": "g"},
         "Tomaten": {"amount": 1, "unit": "Stück"},
         "Burger-Sauce": {"amount": 2, "unit": "EL"},
-        "Pommes": {"amount": 100, "unit": "g"}
+        "Pommes": {"amount": 100, "unit": "g"},
+        "Gurke": {"amount": 0.25, "unit": "Stück"},
+        "Zwiebel": {"amount": 0.25, "unit": "Stück"},
+        "Mayonnaise": {"amount": 1, "unit": "EL"},
+        "Ketchup": {"amount": 1, "unit": "EL"},
+        "Gurkenrelish": {"amount": 1, "unit": "EL"},
+        "Sesam": {"amount": 1, "unit": "TL"}
       },
       "price": 4,
       "prepTime": 15,
@@ -1647,7 +1923,13 @@
         "Dosentomaten": {"amount": 200, "unit": "g"},
         "Kleine Nudeln": {"amount": 50, "unit": "g"},
         "Bohnen Dose": {"amount": 100, "unit": "g"},
-        "TK-Gemüse": {"amount": 100, "unit": "g"}
+        "TK-Gemüse": {"amount": 100, "unit": "g"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Basilikum": {"amount": 4, "unit": "Blätter"},
+        "Parmesan": {"amount": 20, "unit": "g"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 15,
