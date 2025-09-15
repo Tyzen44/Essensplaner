@@ -11,7 +11,14 @@
         "Hackfleisch": {"amount": 80, "unit": "g"},
         "Ei": {"amount": 0.5, "unit": "Stück"},
         "Semmelbrösel": {"amount": 2, "unit": "EL"},
-        "Kartoffelbrei": {"amount": 150, "unit": "g"}
+        "Kartoffelbrei": {"amount": 150, "unit": "g"},
+        "Milch": {"amount": 50, "unit": "ml"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Zwiebel": {"amount": 10, "unit": "g"},
+        "Paprikapulver": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 25,
@@ -44,7 +51,10 @@
         "Mehl": {"amount": 75, "unit": "g"},
         "Milch": {"amount": 150, "unit": "ml"},
         "Eier": {"amount": 1, "unit": "Stück"},
-        "Apfelmus": {"amount": 100, "unit": "g", "variations": ["Nutella", "Marmelade", "Zimt-Zucker"]}
+        "Apfelmus": {"amount": 100, "unit": "g", "variations": ["Nutella", "Marmelade", "Zimt-Zucker"]},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 15,
@@ -78,7 +88,8 @@
         "Nudeln": {"amount": 75, "unit": "g", "variations": ["Spaghetti", "Fusilli", "Farfalle"]},
         "Butter": {"amount": 20, "unit": "g"},
         "Parmesan": {"amount": 20, "unit": "g"},
-        "Erbsen": {"amount": 50, "unit": "g"}
+        "Erbsen": {"amount": 50, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 10,
@@ -110,7 +121,9 @@
         "Pizzateig": {"amount": 100, "unit": "g"},
         "Tomatensauce": {"amount": 50, "unit": "ml"},
         "Salami": {"amount": 5, "unit": "Scheiben", "variations": ["Schinken", "Champignons"]},
-        "Käse": {"amount": 50, "unit": "g"}
+        "Käse": {"amount": 50, "unit": "g"},
+        "Mehl": {"amount": 1, "unit": "EL"},
+        "Ketchup": {"amount": 30, "unit": "ml"}
       },
       "price": 2,
       "prepTime": 20,
@@ -141,7 +154,13 @@
         "Hähnchen": {"amount": 100, "unit": "g"},
         "Cornflakes": {"amount": 40, "unit": "g"},
         "Ei": {"amount": 0.5, "unit": "Stück"},
-        "Pommes": {"amount": 125, "unit": "g"}
+        "Pommes": {"amount": 125, "unit": "g"},
+        "Mehl": {"amount": 2, "unit": "EL"},
+        "Paprikapulver": {"amount": 1, "unit": "TL"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Ketchup": {"amount": 20, "unit": "ml"},
+        "Mayonnaise": {"amount": 20, "unit": "ml"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 20,
@@ -173,7 +192,11 @@
       "baseIngredients": {
         "Spaghetti": {"amount": 75, "unit": "g"},
         "Tomatensauce": {"amount": 100, "unit": "ml"},
-        "Parmesan": {"amount": 20, "unit": "g"}
+        "Parmesan": {"amount": 20, "unit": "g"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Butter": {"amount": 5, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 12,
@@ -202,7 +225,12 @@
       "baseIngredients": {
         "Fischstäbchen": {"amount": 3, "unit": "Stück"},
         "Kartoffelpüree": {"amount": 150, "unit": "g"},
-        "Erbsen": {"amount": 50, "unit": "g"}
+        "Erbsen": {"amount": 50, "unit": "g"},
+        "Milch": {"amount": 50, "unit": "ml"},
+        "Butter": {"amount": 15, "unit": "g"},
+        "Ketchup": {"amount": 20, "unit": "ml"},
+        "Remoulade": {"amount": 20, "unit": "ml"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 15,
@@ -232,7 +260,9 @@
       "baseIngredients": {
         "Wiener": {"amount": 2, "unit": "Stück"},
         "Blätterteig": {"amount": 75, "unit": "g"},
-        "Ketchup": {"amount": 30, "unit": "ml"}
+        "Ketchup": {"amount": 30, "unit": "ml"},
+        "Senf": {"amount": 15, "unit": "ml"},
+        "Ei": {"amount": 0.5, "unit": "Stück"}
       },
       "price": 2,
       "prepTime": 15,
@@ -290,7 +320,11 @@
         "Hackfleisch": {"amount": 80, "unit": "g"},
         "Mini Brötchen": {"amount": 1, "unit": "Stück"},
         "Käse": {"amount": 1, "unit": "Scheibe"},
-        "Ketchup": {"amount": 20, "unit": "ml"}
+        "Ketchup": {"amount": 20, "unit": "ml"},
+        "Gurke": {"amount": 2, "unit": "Scheiben"},
+        "Tomate": {"amount": 2, "unit": "Scheiben"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 15,
@@ -321,7 +355,11 @@
         "Mehl": {"amount": 75, "unit": "g"},
         "Milch": {"amount": 150, "unit": "ml"},
         "Ei": {"amount": 1, "unit": "Stück"},
-        "Marmelade": {"amount": 50, "unit": "g", "variations": ["Erdbeere", "Aprikose", "Himbeere"]}
+        "Marmelade": {"amount": 50, "unit": "g", "variations": ["Erdbeere", "Aprikose", "Himbeere"]},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Puderzucker": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 15,
@@ -356,7 +394,10 @@
       "baseIngredients": {
         "Kartoffeln": {"amount": 200, "unit": "g"},
         "Ei": {"amount": 0.5, "unit": "Stück"},
-        "Apfelmus": {"amount": 75, "unit": "g"}
+        "Apfelmus": {"amount": 75, "unit": "g"},
+        "Mehl": {"amount": 1, "unit": "EL"},
+        "Öl": {"amount": 3, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 20,
@@ -391,7 +432,9 @@
         "Milchreis": {"amount": 50, "unit": "g"},
         "Milch": {"amount": 200, "unit": "ml"},
         "Zucker": {"amount": 1, "unit": "TL"},
-        "Zimt": {"amount": 1, "unit": "Prise"}
+        "Zimt": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Vanillezucker": {"amount": 1, "unit": "TL"}
       },
       "price": 1.5,
       "prepTime": 25,
@@ -424,7 +467,10 @@
         "Möhren": {"amount": 75, "unit": "g"},
         "Gurke": {"amount": 75, "unit": "g"},
         "Paprika": {"amount": 75, "unit": "g"},
-        "Frischkäse Dip": {"amount": 60, "unit": "g"}
+        "Frischkäse Dip": {"amount": 60, "unit": "g"},
+        "Milch": {"amount": 2, "unit": "EL"},
+        "Kräuter": {"amount": 1, "unit": "EL", "variations": ["Schnittlauch", "Petersilie"]},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 10,
@@ -456,7 +502,11 @@
         "Nudeln": {"amount": 75, "unit": "g"},
         "Schinken": {"amount": 3, "unit": "Scheiben"},
         "Käse": {"amount": 2, "unit": "Scheiben"},
-        "Sahne": {"amount": 60, "unit": "ml"}
+        "Sahne": {"amount": 60, "unit": "ml"},
+        "Ei": {"amount": 1, "unit": "Stück"},
+        "Butter": {"amount": 5, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 25,
@@ -490,7 +540,11 @@
         "Toast": {"amount": 2, "unit": "Scheiben"},
         "Ei": {"amount": 1, "unit": "Stück"},
         "Milch": {"amount": 50, "unit": "ml"},
-        "Ahornsirup": {"amount": 30, "unit": "ml", "variations": ["Puderzucker", "Zimt"]}
+        "Ahornsirup": {"amount": 30, "unit": "ml", "variations": ["Puderzucker", "Zimt"]},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Zimt": {"amount": 1, "unit": "Prise"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 10,
@@ -521,7 +575,13 @@
       "baseIngredients": {
         "Tomatensuppe": {"amount": 200, "unit": "ml"},
         "Reis": {"amount": 40, "unit": "g"},
-        "Croutons": {"amount": 30, "unit": "g"}
+        "Croutons": {"amount": 30, "unit": "g"},
+        "Brühe": {"amount": 200, "unit": "ml"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Oregano": {"amount": 1, "unit": "TL"},
+        "Sahne": {"amount": 20, "unit": "ml"},
+        "Basilikum": {"amount": 3, "unit": "Blätter"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 15,
@@ -582,7 +642,9 @@
         "Mürbeteig": {"amount": 75, "unit": "g"},
         "Ei": {"amount": 1, "unit": "Stück"},
         "Schinken": {"amount": 2, "unit": "Scheiben"},
-        "Käse": {"amount": 30, "unit": "g"}
+        "Käse": {"amount": 30, "unit": "g"},
+        "Milch": {"amount": 30, "unit": "ml"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 25,
@@ -616,7 +678,10 @@
         "Grieß": {"amount": 40, "unit": "g"},
         "Milch": {"amount": 200, "unit": "ml"},
         "Zucker": {"amount": 1, "unit": "TL"},
-        "Beeren": {"amount": 50, "unit": "g", "variations": ["Erdbeeren", "Himbeeren", "Blaubeeren"]}
+        "Beeren": {"amount": 50, "unit": "g", "variations": ["Erdbeeren", "Himbeeren", "Blaubeeren"]},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Vanillezucker": {"amount": 1, "unit": "TL"},
+        "Zimt": {"amount": 1, "unit": "Prise"}
       },
       "price": 1.5,
       "prepTime": 15,
@@ -650,7 +715,10 @@
         "Tortellini": {"amount": 125, "unit": "g"},
         "Sahne": {"amount": 75, "unit": "ml"},
         "Erbsen": {"amount": 50, "unit": "g"},
-        "Parmesan": {"amount": 20, "unit": "g"}
+        "Parmesan": {"amount": 20, "unit": "g"},
+        "Muskat": {"amount": 1, "unit": "Prise"},
+        "Butter": {"amount": 5, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 12,
@@ -680,7 +748,10 @@
         "Reis": {"amount": 60, "unit": "g"},
         "Hähnchenbrust": {"amount": 100, "unit": "g"},
         "Mais": {"amount": 50, "unit": "g"},
-        "Curry": {"amount": 0.5, "unit": "TL"}
+        "Curry": {"amount": 0.5, "unit": "TL"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Butter": {"amount": 5, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2.5,
       "prepTime": 20,
@@ -736,7 +807,8 @@
         "Kartoffeln": {"amount": 200, "unit": "g"},
         "Öl": {"amount": 2, "unit": "EL"},
         "Paprika": {"amount": 1, "unit": "TL"},
-        "Kräuterquark": {"amount": 60, "unit": "g"}
+        "Kräuterquark": {"amount": 60, "unit": "g"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 1.5,
       "prepTime": 35,
@@ -765,7 +837,9 @@
         "Gnocchi": {"amount": 150, "unit": "g"},
         "Tomatensauce": {"amount": 100, "unit": "ml"},
         "Mozzarella": {"amount": 50, "unit": "g"},
-        "Basilikum": {"amount": 3, "unit": "Blätter"}
+        "Basilikum": {"amount": 3, "unit": "Blätter"},
+        "Zucker": {"amount": 1, "unit": "TL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 15,
@@ -796,7 +870,8 @@
         "Bratwurst": {"amount": 1, "unit": "Stück"},
         "Brötchen": {"amount": 1, "unit": "Stück"},
         "Senf": {"amount": 15, "unit": "ml"},
-        "Ketchup": {"amount": 20, "unit": "ml"}
+        "Ketchup": {"amount": 20, "unit": "ml"},
+        "Öl": {"amount": 1, "unit": "EL"}
       },
       "price": 2,
       "prepTime": 10,
@@ -824,7 +899,10 @@
         "Couscous": {"amount": 60, "unit": "g"},
         "Gurke": {"amount": 50, "unit": "g"},
         "Tomate": {"amount": 1, "unit": "Stück"},
-        "Feta": {"amount": 30, "unit": "g"}
+        "Feta": {"amount": 30, "unit": "g"},
+        "Olivenöl": {"amount": 1, "unit": "EL"},
+        "Zitrone": {"amount": 0.5, "unit": "Stück"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 15,
@@ -853,7 +931,10 @@
         "Spätzle": {"amount": 100, "unit": "g"},
         "Emmentaler": {"amount": 50, "unit": "g"},
         "Zwiebel": {"amount": 0.5, "unit": "Stück"},
-        "Butter": {"amount": 20, "unit": "g"}
+        "Butter": {"amount": 20, "unit": "g"},
+        "Schnittlauch": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 20,
@@ -882,7 +963,8 @@
         "Tortilla": {"amount": 2, "unit": "Stück"},
         "Käse": {"amount": 50, "unit": "g"},
         "Schinken": {"amount": 2, "unit": "Scheiben"},
-        "Mais": {"amount": 30, "unit": "g"}
+        "Mais": {"amount": 30, "unit": "g"},
+        "Sauerrahm": {"amount": 30, "unit": "ml"}
       },
       "price": 2,
       "prepTime": 10,
@@ -911,7 +993,10 @@
       "baseIngredients": {
         "Backfisch": {"amount": 100, "unit": "g"},
         "Kartoffelsalat": {"amount": 150, "unit": "g"},
-        "Zitrone": {"amount": 0.25, "unit": "Stück"}
+        "Zitrone": {"amount": 0.25, "unit": "Stück"},
+        "Mayonnaise": {"amount": 20, "unit": "ml"},
+        "Essiggurke": {"amount": 30, "unit": "g"},
+        "Zwiebel": {"amount": 20, "unit": "g"}
       },
       "price": 2.5,
       "prepTime": 15,
@@ -939,7 +1024,11 @@
         "Eier": {"amount": 2, "unit": "Stück"},
         "Schinken": {"amount": 2, "unit": "Scheiben"},
         "Käse": {"amount": 30, "unit": "g"},
-        "Milch": {"amount": 2, "unit": "EL"}
+        "Milch": {"amount": 2, "unit": "EL"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Schnittlauch": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 10,
@@ -970,7 +1059,8 @@
       "baseIngredients": {
         "Ravioli": {"amount": 200, "unit": "g"},
         "Parmesan": {"amount": 20, "unit": "g"},
-        "Basilikum": {"amount": 3, "unit": "Blätter"}
+        "Basilikum": {"amount": 3, "unit": "Blätter"},
+        "Butter": {"amount": 5, "unit": "g"}
       },
       "price": 1.5,
       "prepTime": 5,
@@ -997,7 +1087,9 @@
         "Wrap": {"amount": 1, "unit": "Stück"},
         "Hähnchen": {"amount": 80, "unit": "g"},
         "Salat": {"amount": 30, "unit": "g"},
-        "Joghurtsauce": {"amount": 30, "unit": "ml"}
+        "Joghurtsauce": {"amount": 30, "unit": "ml"},
+        "Paprikapulver": {"amount": 0.5, "unit": "TL"},
+        "Öl": {"amount": 1, "unit": "EL"}
       },
       "price": 2.5,
       "prepTime": 15,
@@ -1028,7 +1120,10 @@
         "Bulgur": {"amount": 60, "unit": "g"},
         "Paprika": {"amount": 0.5, "unit": "Stück"},
         "Zucchini": {"amount": 50, "unit": "g"},
-        "Feta": {"amount": 30, "unit": "g"}
+        "Feta": {"amount": 30, "unit": "g"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"},
+        "Petersilie": {"amount": 1, "unit": "EL"}
       },
       "price": 2,
       "prepTime": 20,
@@ -1056,7 +1151,11 @@
       "baseIngredients": {
         "Leberkäse": {"amount": 100, "unit": "g"},
         "Ei": {"amount": 1, "unit": "Stück"},
-        "Kartoffelpüree": {"amount": 150, "unit": "g"}
+        "Kartoffelpüree": {"amount": 150, "unit": "g"},
+        "Butter": {"amount": 10, "unit": "g"},
+        "Öl": {"amount": 1, "unit": "EL"},
+        "Senf": {"amount": 10, "unit": "ml"},
+        "Salz": {"amount": 0, "unit": "nach Geschmack"}
       },
       "price": 2,
       "prepTime": 15,
