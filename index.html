@@ -1824,6 +1824,78 @@
             }
         }
 
+        // Dynamische Zubereitungslogik basierend auf ausgewählten Variationen
+        function buildDynamicInstructions(recipe, day) {
+            try {
+                const base = Array.isArray(recipe.instructions) ? [...recipe.instructions] : [];
+                if (!day || !day.variations || day.variations.length === 0) return base;
+
+                const byType = Object.fromEntries(day.variations.map(v => [v.type, v.selected]));
+
+                function replaceTerms(text) {
+                    let out = text;
+
+                    // Spätzle vs. Nudeln vs. Reis: passende Kochanweisungen
+                    const starchMap = [
+                        { key: 'Spätzle', terms: [/\bNudeln\b/gi, /\bPasta\b/gi], replacement: 'Spätzle' },
+                        { key: 'Reis', terms: [/\bNudeln\b/gi, /\bPasta\b/gi], replacement: 'Reis' },
+                        { key: 'Nudeln', terms: [/\bSpätzle\b/gi, /\bReis\b/gi], replacement: 'Nudeln' }
+                    ];
+
+                    // Wenn im Rezept ein Basis-Zutatentyp mit Variation vorhanden ist, passe Text an
+                    Object.entries(byType).forEach(([type, selected]) => {
+                        // 1) Currypaste-Varianten in Text hervorheben (Rot/Grün/Gelb)
+                        if (type.toLowerCase().includes('currypaste') || type.toLowerCase() === 'curry' || type.toLowerCase().includes('curry')) {
+                            out = out.replace(/(Currypaste|Curry)(?!-\w)/gi, `${selected} $1`);
+                        }
+
+                        // 2) Pasta-/Beilage-spezifische Kochhinweise
+                        const selLower = (selected || '').toLowerCase();
+                        if (['spätzle', 'spaetzle', 'spatzle'].some(s => selLower.includes(s))) {
+                            // Ersetze generische Nudelhinweise durch Spätzle-spezifische
+                            out = out
+                                .replace(/Nudeln nach Packung kochen/gi, 'Spätzle nach Packung kochen ODER frisch schaben')
+                                .replace(/Pasta nach Packung.*?kochen/gi, 'Spätzle in sprudelndem Salzwasser garen')
+                                .replace(/(mit )?Nudeln servieren/gi, 'mit Spätzle servieren');
+                        } else if (selLower.includes('reis') || type.toLowerCase().includes('reis')) {
+                            // Ersetze Nudel-/Pasta-Hinweise durch Reis-Hinweise
+                            out = out
+                                .replace(/Nudeln nach Packung kochen/gi, 'Reis im Verhältnis 1:2 (Reis:Wasser) garen')
+                                .replace(/Pasta nach Packung.*?kochen/gi, 'Reis aufkochen, dann 15 Min sanft köcheln und 5 Min ruhen lassen')
+                                .replace(/(mit )?Nudeln servieren/gi, 'mit Reis servieren');
+                        } else if (selLower.includes('nudel') || selLower.includes('pasta') || type.toLowerCase().includes('pasta') || type.toLowerCase().includes('nudel')) {
+                            // Standardisiere auf Nudeln
+                            out = out
+                                .replace(/Spätzle nach Packung.*?kochen.*?(OD|oder).*?schaben/gi, 'Nudeln nach Packung kochen')
+                                .replace(/Spätzle/gi, 'Nudeln')
+                                .replace(/(mit )?Reis servieren/gi, 'mit Nudeln servieren');
+                        }
+
+                        // 3) Käse-/Käsearten subtil anpassen, ohne die Kochlogik zu ändern
+                        if (type.toLowerCase().includes('mozzarella') || type.toLowerCase().includes('käse') || type.toLowerCase().includes('kaese')) {
+                            out = out.replace(/Mozzarella/gi, selected);
+                        }
+                    });
+
+                    // Zusätzliche Plausibilitäts-Regeln
+                    // Wenn der Text sowohl Reis als auch Spätzle/Nudeln enthält, bevorzuge ausgewählte Variante
+                    if (byType['Reis'] === 'Reis' || Object.values(byType).some(v => (v || '').toLowerCase().includes('reis'))) {
+                        out = out.replace(/Spätzle/gi, 'Reis').replace(/Nudeln/gi, 'Reis').replace(/Pasta/gi, 'Reis');
+                    }
+
+                    if (Object.values(byType).some(v => (v || '').toLowerCase().includes('spätzle'))) {
+                        out = out.replace(/Nudeln/gi, 'Spätzle').replace(/Pasta/gi, 'Spätzle');
+                    }
+
+                    return out;
+                }
+
+                return base.map(step => replaceTerms(step));
+            } catch (e) {
+                return Array.isArray(recipe.instructions) ? recipe.instructions : [];
+            }
+        }
+
         async function loadRecipes() {
             try {
                 console.log('Lade Rezepte aus dem recipes Ordner...');
@@ -2589,7 +2661,7 @@
                                 <div class="recipe-instructions">
                                     <h4>Zubereitung:</h4>
                                     <ol>
-                                        ${fullRecipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                                        ${buildDynamicInstructions(fullRecipe, day).map(step => `<li>${step}</li>`).join('')}
                                     </ol>
                                 </div>
                             ` : ''}
@@ -2645,7 +2717,7 @@
                                 <div class="recipe-instructions">
                                     <h4>Zubereitung:</h4>
                                     <ol>
-                                        ${fullKidsRecipe.instructions.map(step => `<li>${step}</li>`).join('')}
+                                        ${buildDynamicInstructions(fullKidsRecipe, day).map(step => `<li>${step}</li>`).join('')}
                                     </ol>
                                 </div>
                             ` : ''}
