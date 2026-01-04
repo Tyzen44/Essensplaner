@@ -695,16 +695,25 @@
 
                 <div class="settings-card">
                     <h3>☁️ Cloud Sync</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 15px;">
+                        Beide Nutzer müssen denselben Token und dieselbe Gist ID verwenden, um dieselben Daten zu teilen.
+                    </p>
                     <div class="form-group">
                         <label>GitHub Token</label>
                         <input type="password" id="githubToken" placeholder="ghp_...">
+                        <small style="color: var(--text-light); font-size: 0.75rem;">
+                            Erstelle einen Token unter: github.com/settings/tokens (nur "gist" Berechtigung)
+                        </small>
                     </div>
                     <div class="form-group">
                         <label>Gist ID</label>
-                        <input type="text" id="gistId" placeholder="abc123...">
+                        <input type="text" id="gistId" placeholder="7f8e9a0b1c2d3e4f5a6b7c8d9e0f1a2b">
+                        <small style="color: var(--text-light); font-size: 0.75rem;">
+                            32-stellige ID aus der Gist URL (z.B. gist.github.com/username/<strong>7f8e9a0b...</strong>)
+                        </small>
                     </div>
                     <button class="btn btn-primary" onclick="app.saveCloudConfig()">
-                        Speichern
+                        Speichern & Synchronisieren
                     </button>
                 </div>
             </div>
@@ -2000,11 +2009,24 @@
             }
 
             async saveCloudConfig() {
-                const token = document.getElementById('githubToken').value;
-                const gistId = document.getElementById('gistId').value;
+                const token = document.getElementById('githubToken').value.trim();
+                const gistId = document.getElementById('gistId').value.trim();
 
+                // Validation
                 if (!token || !gistId) {
                     this.syncService.showToast('❌ Bitte Token und Gist ID eingeben', 'error');
+                    return;
+                }
+
+                // Validate token format (should start with ghp_ or github_pat_)
+                if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
+                    this.syncService.showToast('❌ Token muss mit ghp_ oder github_pat_ beginnen', 'error');
+                    return;
+                }
+
+                // Validate Gist ID format (should be 32 chars alphanumeric)
+                if (!/^[a-f0-9]{32}$/i.test(gistId)) {
+                    this.syncService.showToast('❌ Ungültige Gist ID. Sie sollte 32 Zeichen lang sein (z.B. 7f8e9a0b1c2d3e4f5a6b7c8d9e0f1a2b)', 'error');
                     return;
                 }
 
