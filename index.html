@@ -1440,6 +1440,14 @@
                         })
                     });
 
+                    if (response.status === 401) {
+                        throw new Error('Token ungültig oder keine "gist" Berechtigung. Erstelle einen neuen Token mit "gist" Berechtigung.');
+                    }
+                    
+                    if (response.status === 404) {
+                        throw new Error('Gist nicht gefunden. Prüfe die Gist URL/ID.');
+                    }
+
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                     }
@@ -1449,8 +1457,8 @@
                     return true;
                 } catch (error) {
                     console.error('Sync error:', error);
-                    this.updateSyncStatus('error', 'Sync fehlgeschlagen: ' + error.message);
-                    this.showToast('❌ Cloud Sync fehlgeschlagen: ' + error.message, 'error');
+                    this.updateSyncStatus('error', 'Sync fehlgeschlagen');
+                    this.showToast('❌ ' + error.message, 'error');
                     return false;
                 } finally {
                     this.state.syncLock = false;
@@ -1474,6 +1482,14 @@
                             'Authorization': `token ${config.token}`
                         }
                     });
+
+                    if (response.status === 401) {
+                        throw new Error('Token ungültig oder keine "gist" Berechtigung. Erstelle einen neuen Token.');
+                    }
+                    
+                    if (response.status === 404) {
+                        throw new Error('Gist nicht gefunden. Prüfe die Gist URL/ID.');
+                    }
 
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -1507,9 +1523,9 @@
                     }
                 } catch (error) {
                     console.error('Load error:', error);
-                    this.updateSyncStatus('error', 'Laden fehlgeschlagen: ' + error.message);
+                    this.updateSyncStatus('error', 'Laden fehlgeschlagen');
                     if (!silent) {
-                        this.showToast('❌ Laden fehlgeschlagen: ' + error.message, 'error');
+                        this.showToast('❌ ' + error.message, 'error');
                     }
                 }
                 return false;
@@ -1863,35 +1879,48 @@
             }
 
             async initialize() {
+                console.log('🚀 App initialisiert...');
+                
                 // Load recipes first
                 await this.recipeService.loadRecipes();
+                console.log('✅ Rezepte geladen:', this.recipeService.recipes.length);
+
+                // WICHTIG: ZUERST localStorage laden, um cloudConfig zu haben
+                this.state.loadFromLocalStorage();
+                console.log('💾 localStorage geladen');
 
                 // Register auto-sync callback
                 this.state.setSyncCallback(() => this.syncService.syncToCloud());
 
-                // Check if cloud sync is configured
-                const hasConfig = this.state.getState().cloudConfig.token && 
-                                 this.state.getState().cloudConfig.gistId;
+                // JETZT prüfen ob cloud sync konfiguriert ist (nach localStorage load!)
+                const config = this.state.getState().cloudConfig;
+                const hasConfig = config.token && config.gistId;
+                
+                console.log('☁️ Cloud Config:', {
+                    hasToken: !!config.token,
+                    hasGistId: !!config.gistId,
+                    gistId: config.gistId ? config.gistId.substring(0, 8) + '...' : 'none'
+                });
 
                 if (hasConfig) {
-                    // ALWAYS load from cloud first if configured
+                    // Cloud sync ist konfiguriert - lade von Cloud
+                    console.log('📥 Lade von Cloud...');
                     await this.syncService.loadFromCloud();
+                    // Start auto-sync (both push and pull)
+                    this.syncService.startAutoSync();
+                    console.log('✅ Cloud Sync aktiv');
                 } else {
-                    // Only use localStorage if cloud not configured
-                    this.state.loadFromLocalStorage();
+                    // Kein Cloud Sync konfiguriert
+                    console.log('⚠️ Cloud Sync nicht konfiguriert');
                     this.syncService.updateSyncStatus('not-configured', 'Cloud Sync nicht konfiguriert');
                 }
 
                 // Ensure current week has a plan
                 this.ensureWeekPlan(this.state.getState().currentWeekKey);
 
-                // Start auto-sync (both push and pull)
-                if (hasConfig) {
-                    this.syncService.startAutoSync();
-                }
-
                 // Initial render
                 this.ui.render(this.state.getState());
+                console.log('✅ App bereit!');
             }
 
             ensureWeekPlan(weekKey) {
@@ -2107,8 +2136,13 @@
                         })
                     });
 
+                    if (response.status === 401) {
+                        this.syncService.showToast('❌ Token ungültig oder keine "gist" Berechtigung', 'error');
+                        return null;
+                    }
+
                     if (!response.ok) {
-                        console.error('Failed to create Gist:', response.status);
+                        console.error('Failed to create Gist:', response.status, response.statusText);
                         return null;
                     }
 
@@ -2116,6 +2150,7 @@
                     return gist.id;
                 } catch (error) {
                     console.error('Error creating Gist:', error);
+                    this.syncService.showToast('❌ Fehler beim Erstellen: ' + error.message, 'error');
                     return null;
                 }
             }
