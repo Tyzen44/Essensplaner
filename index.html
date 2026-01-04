@@ -696,7 +696,7 @@
                 <div class="settings-card">
                     <h3>☁️ Cloud Sync</h3>
                     <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 15px;">
-                        Beide Nutzer müssen denselben Token und dieselbe Gist ID verwenden, um dieselben Daten zu teilen.
+                        Beide Nutzer müssen denselben Token verwenden, um dieselben Daten zu teilen.
                     </p>
                     <div class="form-group">
                         <label>GitHub Token</label>
@@ -706,15 +706,22 @@
                         </small>
                     </div>
                     <div class="form-group">
-                        <label>Gist ID</label>
-                        <input type="text" id="gistId" placeholder="7f8e9a0b1c2d3e4f5a6b7c8d9e0f1a2b">
+                        <label>Gist URL oder ID (optional)</label>
+                        <input type="text" id="gistId" placeholder="https://gist.github.com/username/... oder leer lassen">
                         <small style="color: var(--text-light); font-size: 0.75rem;">
-                            32-stellige ID aus der Gist URL (z.B. gist.github.com/username/<strong>7f8e9a0b...</strong>)
+                            Leer lassen = automatisch neue Gist erstellen. Oder komplette URL einfügen zum Teilen.
                         </small>
                     </div>
                     <button class="btn btn-primary" onclick="app.saveCloudConfig()">
                         Speichern & Synchronisieren
                     </button>
+                    <div id="gistUrlDisplay" style="margin-top: 15px; display: none;">
+                        <label style="font-size: 0.85rem; font-weight: 600;">Zum Teilen mit Franzi:</label>
+                        <input type="text" id="gistUrlForSharing" readonly style="background: var(--bg-light); cursor: text;">
+                        <button class="btn btn-outline btn-small" onclick="app.copyGistUrl()" style="margin-top: 5px;">
+                            📋 URL kopieren
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1802,7 +1809,14 @@
                     document.getElementById('githubToken').value = state.cloudConfig.token;
                 }
                 if (state.cloudConfig.gistId) {
-                    document.getElementById('gistId').value = state.cloudConfig.gistId;
+                    const gistUrl = `https://gist.github.com/${state.cloudConfig.gistId}`;
+                    document.getElementById('gistId').value = gistUrl;
+                    
+                    // Show sharing URL
+                    const displayDiv = document.getElementById('gistUrlDisplay');
+                    const urlInput = document.getElementById('gistUrlForSharing');
+                    urlInput.value = gistUrl;
+                    displayDiv.style.display = 'block';
                 }
             }
 
@@ -2010,35 +2024,118 @@
 
             async saveCloudConfig() {
                 const token = document.getElementById('githubToken').value.trim();
-                const gistId = document.getElementById('gistId').value.trim();
+                let gistInput = document.getElementById('gistId').value.trim();
 
                 // Validation
-                if (!token || !gistId) {
-                    this.syncService.showToast('❌ Bitte Token und Gist ID eingeben', 'error');
+                if (!token) {
+                    this.syncService.showToast('❌ Bitte GitHub Token eingeben', 'error');
                     return;
                 }
 
-                // Validate token format (should start with ghp_ or github_pat_)
+                // Validate token format
                 if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
                     this.syncService.showToast('❌ Token muss mit ghp_ oder github_pat_ beginnen', 'error');
                     return;
                 }
 
-                // Validate Gist ID format (should be 32 chars alphanumeric)
-                if (!/^[a-f0-9]{32}$/i.test(gistId)) {
-                    this.syncService.showToast('❌ Ungültige Gist ID. Sie sollte 32 Zeichen lang sein (z.B. 7f8e9a0b1c2d3e4f5a6b7c8d9e0f1a2b)', 'error');
-                    return;
+                let gistId = null;
+
+                // Parse Gist ID from URL if provided
+                if (gistInput) {
+                    // Check if it's a URL
+                    if (gistInput.includes('gist.github.com')) {
+                        const match = gistInput.match(/gist\.github\.com\/[^\/]+\/([a-f0-9]{32})/i);
+                        if (match) {
+                            gistId = match[1];
+                        } else {
+                            this.syncService.showToast('❌ Konnte Gist ID nicht aus URL extrahieren', 'error');
+                            return;
+                        }
+                    } else if (/^[a-f0-9]{32}$/i.test(gistInput)) {
+                        // It's already a valid Gist ID
+                        gistId = gistInput;
+                    } else {
+                        this.syncService.showToast('❌ Ungültige Gist URL oder ID', 'error');
+                        return;
+                    }
                 }
 
+                // If no Gist ID provided, create a new Gist
+                if (!gistId) {
+                    this.syncService.showToast('📝 Erstelle neue Gist...', 'info');
+                    gistId = await this.createNewGist(token);
+                    
+                    if (!gistId) {
+                        this.syncService.showToast('❌ Gist erstellen fehlgeschlagen. Prüfe Token.', 'error');
+                        return;
+                    }
+                    
+                    this.syncService.showToast('✅ Neue Gist erstellt!', 'success');
+                }
+
+                // Save config
                 this.state.setState({
                     cloudConfig: { token, gistId }
                 });
+
+                // Show sharing URL
+                this.showGistUrl(gistId);
 
                 this.syncService.showToast('✅ Cloud-Konfiguration gespeichert', 'success');
                 
                 // Immediately load from cloud and start auto-sync
                 await this.syncService.loadFromCloud();
                 this.syncService.startAutoSync();
+            }
+
+            async createNewGist(token) {
+                try {
+                    const response = await fetch('https://api.github.com/gists', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            description: 'Meal Planner Data - Shared with Franzi',
+                            public: false,
+                            files: {
+                                'meal-planner-data.json': {
+                                    content: '{}'
+                                }
+                            }
+                        })
+                    });
+
+                    if (!response.ok) {
+                        console.error('Failed to create Gist:', response.status);
+                        return null;
+                    }
+
+                    const gist = await response.json();
+                    return gist.id;
+                } catch (error) {
+                    console.error('Error creating Gist:', error);
+                    return null;
+                }
+            }
+
+            showGistUrl(gistId) {
+                const displayDiv = document.getElementById('gistUrlDisplay');
+                const urlInput = document.getElementById('gistUrlForSharing');
+                
+                // Get username from token - we'll use the Gist ID directly
+                const gistUrl = `https://gist.github.com/${gistId}`;
+                
+                urlInput.value = gistUrl;
+                displayDiv.style.display = 'block';
+            }
+
+            copyGistUrl() {
+                const urlInput = document.getElementById('gistUrlForSharing');
+                urlInput.select();
+                document.execCommand('copy');
+                this.syncService.showToast('📋 URL kopiert! Sende sie an Franzi.', 'success');
             }
 
             async syncNow() {
