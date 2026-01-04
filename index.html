@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Familien Wochenplaner</title>
-    <!-- Version: 2.0 - Collapsible Instructions -->
+    <!-- Version: 2.1 - Deterministic Sync -->
     <style>
         :root {
             --primary: #4CAF50;
@@ -583,6 +583,47 @@
         .hidden { display: none !important; }
         .mt-20 { margin-top: 20px; }
         .text-center { text-align: center; }
+
+        .sync-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .sync-indicator {
+            font-size: 0.8rem;
+            animation: pulse 2s infinite;
+        }
+
+        .sync-indicator.synced {
+            color: var(--primary);
+            animation: none;
+        }
+
+        .sync-indicator.syncing {
+            color: var(--secondary);
+            animation: pulse 1s infinite;
+        }
+
+        .sync-indicator.error {
+            color: var(--danger);
+            animation: none;
+        }
+
+        .sync-indicator.not-configured {
+            color: var(--text-light);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
     </style>
 </head>
 <body>
@@ -590,6 +631,10 @@
         <header>
             <h1>🍽️ Familien Wochenplaner</h1>
             <div class="header-actions">
+                <div id="syncStatus" class="sync-status">
+                    <span class="sync-indicator" id="syncIndicator">●</span>
+                    <span id="syncStatusText">Initialisiert...</span>
+                </div>
                 <button class="btn btn-primary" onclick="app.generateNewPlan()">
                     ✨ Neuer Plan
                 </button>
@@ -676,6 +721,8 @@
                 this.state = this.getInitialState();
                 this.listeners = [];
                 this.syncLock = false;
+                this.syncCallback = null;
+                this.syncDebounceTimer = null;
             }
 
             getInitialState() {
@@ -701,7 +748,8 @@
                     cloudConfig: {
                         token: '',
                         gistId: ''
-                    }
+                    },
+                    lastSyncTime: null
                 };
             }
 
@@ -723,6 +771,18 @@
                 this.state = { ...this.state, ...updates };
                 this.notifyListeners();
                 this.saveToLocalStorage();
+                
+                // Trigger auto-sync with debounce (wait 2 seconds after last change)
+                if (this.syncCallback) {
+                    clearTimeout(this.syncDebounceTimer);
+                    this.syncDebounceTimer = setTimeout(() => {
+                        this.syncCallback();
+                    }, 2000);
+                }
+            }
+
+            setSyncCallback(callback) {
+                this.syncCallback = callback;
             }
 
             subscribe(listener) {
@@ -1066,12 +1126,31 @@
                 this.recipes = recipeService;
             }
 
+            // Seeded random number generator for deterministic results
+            // This ensures that both users get the SAME recipes for the same week
+            // even if they generate the plan independently
+            seededRandom(seed) {
+                const x = Math.sin(seed) * 10000;
+                return x - Math.floor(x);
+            }
+
+            // Generate a seed from weekKey and dayIndex
+            // Same date + same day = same seed = same recipe
+            generateSeed(weekKey, dayIndex) {
+                // Convert weekKey (e.g., "2025-01-06") to a number
+                const dateStr = weekKey.replace(/-/g, '');
+                const dateNum = parseInt(dateStr);
+                // Combine with dayIndex to get unique seed per day
+                return dateNum * 10 + dayIndex;
+            }
+
             generateWeekPlan(weekKey) {
                 const state = this.state.getState();
                 const pizzaDays = state.preferences.pizzaDays || [];
                 
                 const plan = [];
                 const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+                const usedInThisWeek = []; // Track recipes used within this week
                 
                 for (let i = 0; i < 7; i++) {
                     const isWeekday = i < 5;
@@ -1086,36 +1165,132 @@
                             ? this.recipes.getWorkFriendlyRecipes()
                             : this.recipes.recipes;
                         
-                        dinner = this.selectRandomRecipe(availableRecipes);
+                        // Get recently used recipes from previous weeks
+                        const recentlyUsed = this.getRecentlyUsedRecipes(weekKey, 14); // 14 days lookback
+                        const combined = [...recentlyUsed, ...usedInThisWeek];
+                        
+                        // Generate deterministic seed for this specific day
+                        const seed = this.generateSeed(weekKey, i);
+                        
+                        dinner = this.selectRandomRecipe(availableRecipes, combined, seed);
+                        if (dinner) {
+                            usedInThisWeek.push(dinner.id);
+                        }
                     }
 
                     plan.push({
                         day: days[i],
                         date: this.formatDate(weekKey, i),
                         dinner: dinner,
-                        kidsLunch: isWeekday ? this.getKidsLunchRecipe() : null
+                        kidsLunch: isWeekday ? this.getKidsLunchRecipe(weekKey, i) : null
                     });
                 }
 
                 return plan;
             }
 
-            selectRandomRecipe(recipes) {
-                if (!recipes || recipes.length === 0) return null;
-                const index = Math.floor(Math.random() * recipes.length);
-                return { ...recipes[index] };
+            getRecentlyUsedRecipes(currentWeekKey, daysLookback = 14) {
+                const state = this.state.getState();
+                const usedIds = [];
+                
+                // Parse current week key
+                const currentDate = new Date(currentWeekKey);
+                const lookbackDate = new Date(currentDate);
+                lookbackDate.setDate(lookbackDate.getDate() - daysLookback);
+                
+                // Check all stored week plans
+                Object.entries(state.weekPlans).forEach(([weekKey, weekPlan]) => {
+                    const weekDate = new Date(weekKey);
+                    
+                    // Only check weeks within the lookback period
+                    if (weekDate >= lookbackDate && weekDate < currentDate) {
+                        weekPlan.forEach(day => {
+                            if (day.dinner && day.dinner.id && day.dinner.special !== 'pizza-weekend') {
+                                usedIds.push(day.dinner.id);
+                            }
+                        });
+                    }
+                });
+                
+                return usedIds;
             }
 
-            getKidsLunchRecipe() {
-                // Simplified kids lunch
-                return {
-                    name: 'Kindermittagessen',
-                    cost: 1.50,
-                    ingredients: [
-                        { name: 'Brot', amount: 200, unit: 'g' },
-                        { name: 'Aufschnitt', amount: 100, unit: 'g' }
-                    ]
-                };
+            selectRandomRecipe(recipes, excludeIds = [], seed = null) {
+                if (!recipes || recipes.length === 0) return null;
+                
+                // Sort recipes by ID for consistent ordering across users
+                const sortedRecipes = [...recipes].sort((a, b) => {
+                    if (a.id < b.id) return -1;
+                    if (a.id > b.id) return 1;
+                    return 0;
+                });
+                
+                // Filter out recently used recipes
+                let filtered = sortedRecipes.filter(r => !excludeIds.includes(r.id));
+                
+                // If all recipes are excluded, use full list (better to repeat than have nothing)
+                if (filtered.length === 0) {
+                    filtered = sortedRecipes;
+                }
+                
+                // Use seeded random if seed provided, otherwise use Math.random
+                let index;
+                if (seed !== null) {
+                    const random = this.seededRandom(seed);
+                    index = Math.floor(random * filtered.length);
+                } else {
+                    index = Math.floor(Math.random() * filtered.length);
+                }
+                
+                return { ...filtered[index] };
+            }
+
+            getKidsLunchRecipe(weekKey, dayIndex) {
+                // Get kids recipes from the database
+                const kidsRecipes = this.recipes.getRecipesByCategory('kids');
+                
+                if (!kidsRecipes || kidsRecipes.length === 0) {
+                    // Fallback if no kids recipes available
+                    return {
+                        name: 'Kindermittagessen',
+                        cost: 1.50,
+                        ingredients: [
+                            { name: 'Brot', amount: 200, unit: 'g' },
+                            { name: 'Aufschnitt', amount: 100, unit: 'g' }
+                        ]
+                    };
+                }
+                
+                // Use deterministic seed for kids lunch (add 100 to differentiate from dinner)
+                const seed = this.generateSeed(weekKey, dayIndex) + 100;
+                
+                // Get recently used kids recipes
+                const recentlyUsed = this.getRecentlyUsedKidsRecipes(weekKey, 14);
+                
+                return this.selectRandomRecipe(kidsRecipes, recentlyUsed, seed);
+            }
+
+            getRecentlyUsedKidsRecipes(currentWeekKey, daysLookback = 14) {
+                const state = this.state.getState();
+                const usedIds = [];
+                
+                const currentDate = new Date(currentWeekKey);
+                const lookbackDate = new Date(currentDate);
+                lookbackDate.setDate(lookbackDate.getDate() - daysLookback);
+                
+                Object.entries(state.weekPlans).forEach(([weekKey, weekPlan]) => {
+                    const weekDate = new Date(weekKey);
+                    
+                    if (weekDate >= lookbackDate && weekDate < currentDate) {
+                        weekPlan.forEach(day => {
+                            if (day.kidsLunch && day.kidsLunch.id) {
+                                usedIds.push(day.kidsLunch.id);
+                            }
+                        });
+                    }
+                });
+                
+                return usedIds;
             }
 
             formatDate(weekKey, dayIndex) {
@@ -1142,10 +1317,15 @@
                     ? this.recipes.getWorkFriendlyRecipes()
                     : this.recipes.recipes;
                 
-                // Filter out current recipe
-                const filtered = availableRecipes.filter(r => r.id !== day.dinner?.id);
+                // Get recently used recipes and current week's recipes
+                const recentlyUsed = this.getRecentlyUsedRecipes(weekKey, 14);
+                const usedInThisWeek = weekPlan
+                    .filter((d, i) => i !== dayIndex && d.dinner && d.dinner.id)
+                    .map(d => d.dinner.id);
                 
-                const newRecipe = this.selectRandomRecipe(filtered);
+                const excludeIds = [...recentlyUsed, ...usedInThisWeek, day.dinner?.id];
+                
+                const newRecipe = this.selectRandomRecipe(availableRecipes, excludeIds);
                 weekPlan[dayIndex].dinner = newRecipe;
 
                 this.state.setState({
@@ -1196,23 +1376,39 @@
             constructor(stateManager) {
                 this.state = stateManager;
                 this.syncInterval = null;
+                this.pullInterval = null;
+                this.lastPullTime = null;
+            }
+
+            updateSyncStatus(status, message) {
+                const indicator = document.getElementById('syncIndicator');
+                const text = document.getElementById('syncStatusText');
+                
+                if (!indicator || !text) return;
+                
+                indicator.className = 'sync-indicator ' + status;
+                text.textContent = message;
             }
 
             async syncToCloud() {
                 if (this.state.syncLock) {
                     console.log('Sync already in progress');
-                    return;
+                    return false;
                 }
 
                 const config = this.state.getState().cloudConfig;
                 if (!config.token || !config.gistId) {
-                    console.log('Cloud sync not configured');
-                    return;
+                    this.updateSyncStatus('not-configured', 'Cloud Sync nicht konfiguriert');
+                    return false;
                 }
 
                 this.state.syncLock = true;
+                this.updateSyncStatus('syncing', 'Synchronisiere...');
 
                 try {
+                    const currentState = this.state.getState();
+                    const stateToSync = { ...currentState, lastSyncTime: new Date().toISOString() };
+                    
                     const response = await fetch(`https://api.github.com/gists/${config.gistId}`, {
                         method: 'PATCH',
                         headers: {
@@ -1222,60 +1418,99 @@
                         body: JSON.stringify({
                             files: {
                                 'meal-planner-data.json': {
-                                    content: JSON.stringify(this.state.getState(), null, 2)
+                                    content: JSON.stringify(stateToSync, null, 2)
                                 }
                             }
                         })
                     });
 
-                    if (!response.ok) throw new Error('Sync failed');
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
                     
-                    this.showToast('✅ Cloud Sync erfolgreich', 'success');
+                    this.state.state.lastSyncTime = stateToSync.lastSyncTime;
+                    this.updateSyncStatus('synced', `Synchronisiert (${this.formatTime(stateToSync.lastSyncTime)})`);
                     return true;
                 } catch (error) {
                     console.error('Sync error:', error);
-                    this.showToast('❌ Cloud Sync fehlgeschlagen', 'error');
+                    this.updateSyncStatus('error', 'Sync fehlgeschlagen: ' + error.message);
+                    this.showToast('❌ Cloud Sync fehlgeschlagen: ' + error.message, 'error');
                     return false;
                 } finally {
                     this.state.syncLock = false;
                 }
             }
 
-            async loadFromCloud() {
+            async loadFromCloud(silent = false) {
                 const config = this.state.getState().cloudConfig;
-                if (!config.token || !config.gistId) return false;
+                if (!config.token || !config.gistId) {
+                    this.updateSyncStatus('not-configured', 'Cloud Sync nicht konfiguriert');
+                    return false;
+                }
 
                 try {
+                    if (!silent) {
+                        this.updateSyncStatus('syncing', 'Lade Daten...');
+                    }
+
                     const response = await fetch(`https://api.github.com/gists/${config.gistId}`, {
                         headers: {
                             'Authorization': `token ${config.token}`
                         }
                     });
 
-                    if (!response.ok) throw new Error('Load failed');
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
 
                     const gist = await response.json();
                     const content = gist.files['meal-planner-data.json']?.content;
                     
                     if (content) {
-                        const data = JSON.parse(content);
-                        this.state.state = { ...this.state.getInitialState(), ...data };
+                        const cloudData = JSON.parse(content);
+                        const currentState = this.state.getState();
+                        
+                        // Merge logic: Cloud data wins, but preserve cloud config
+                        const mergedState = {
+                            ...this.state.getInitialState(),
+                            ...cloudData,
+                            cloudConfig: currentState.cloudConfig // Keep local config
+                        };
+                        
+                        this.state.state = mergedState;
                         this.state.notifyListeners();
-                        this.showToast('✅ Daten geladen', 'success');
+                        this.lastPullTime = new Date();
+                        
+                        if (!silent) {
+                            this.showToast('✅ Daten geladen', 'success');
+                        }
+                        
+                        const syncTime = cloudData.lastSyncTime || 'Unbekannt';
+                        this.updateSyncStatus('synced', `Synchronisiert (${this.formatTime(syncTime)})`);
                         return true;
                     }
                 } catch (error) {
                     console.error('Load error:', error);
-                    this.showToast('❌ Laden fehlgeschlagen', 'error');
+                    this.updateSyncStatus('error', 'Laden fehlgeschlagen: ' + error.message);
+                    if (!silent) {
+                        this.showToast('❌ Laden fehlgeschlagen: ' + error.message, 'error');
+                    }
                 }
                 return false;
             }
 
             startAutoSync() {
                 this.stopAutoSync();
+                
+                // Push changes every 5 minutes (if there were changes)
                 this.syncInterval = setInterval(() => {
                     this.syncToCloud();
-                }, 5 * 60 * 1000); // Every 5 minutes
+                }, 5 * 60 * 1000);
+                
+                // Pull updates every 30 seconds to get changes from other users
+                this.pullInterval = setInterval(() => {
+                    this.loadFromCloud(true); // silent pull
+                }, 30 * 1000);
             }
 
             stopAutoSync() {
@@ -1283,6 +1518,32 @@
                     clearInterval(this.syncInterval);
                     this.syncInterval = null;
                 }
+                if (this.pullInterval) {
+                    clearInterval(this.pullInterval);
+                    this.pullInterval = null;
+                }
+            }
+
+            formatTime(timestamp) {
+                if (!timestamp) return 'nie';
+                
+                const date = new Date(timestamp);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                
+                if (diffMins < 1) return 'gerade eben';
+                if (diffMins < 60) return `vor ${diffMins} Min`;
+                
+                const diffHours = Math.floor(diffMins / 60);
+                if (diffHours < 24) return `vor ${diffHours} Std`;
+                
+                return date.toLocaleString('de-DE', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
             }
 
             showToast(message, type) {
@@ -1526,6 +1787,14 @@
                 `).join('');
 
                 document.getElementById('maxPrepTime').value = state.preferences.maxPrepTime;
+                
+                // Populate cloud config fields
+                if (state.cloudConfig.token) {
+                    document.getElementById('githubToken').value = state.cloudConfig.token;
+                }
+                if (state.cloudConfig.gistId) {
+                    document.getElementById('gistId').value = state.cloudConfig.gistId;
+                }
             }
 
             getWeekKey(offset = 0) {
@@ -1571,20 +1840,32 @@
             }
 
             async initialize() {
-                // Load recipes
+                // Load recipes first
                 await this.recipeService.loadRecipes();
 
-                // Try to load from localStorage first
-                if (!this.state.loadFromLocalStorage()) {
-                    // Try cloud sync as fallback
+                // Register auto-sync callback
+                this.state.setSyncCallback(() => this.syncService.syncToCloud());
+
+                // Check if cloud sync is configured
+                const hasConfig = this.state.getState().cloudConfig.token && 
+                                 this.state.getState().cloudConfig.gistId;
+
+                if (hasConfig) {
+                    // ALWAYS load from cloud first if configured
                     await this.syncService.loadFromCloud();
+                } else {
+                    // Only use localStorage if cloud not configured
+                    this.state.loadFromLocalStorage();
+                    this.syncService.updateSyncStatus('not-configured', 'Cloud Sync nicht konfiguriert');
                 }
 
                 // Ensure current week has a plan
                 this.ensureWeekPlan(this.state.getState().currentWeekKey);
 
-                // Start auto-sync
-                this.syncService.startAutoSync();
+                // Start auto-sync (both push and pull)
+                if (hasConfig) {
+                    this.syncService.startAutoSync();
+                }
 
                 // Initial render
                 this.ui.render(this.state.getState());
@@ -1718,19 +1999,28 @@
                 this.state.setState({ familyMembers: members });
             }
 
-            saveCloudConfig() {
+            async saveCloudConfig() {
                 const token = document.getElementById('githubToken').value;
                 const gistId = document.getElementById('gistId').value;
+
+                if (!token || !gistId) {
+                    this.syncService.showToast('❌ Bitte Token und Gist ID eingeben', 'error');
+                    return;
+                }
 
                 this.state.setState({
                     cloudConfig: { token, gistId }
                 });
 
                 this.syncService.showToast('✅ Cloud-Konfiguration gespeichert', 'success');
+                
+                // Immediately load from cloud and start auto-sync
+                await this.syncService.loadFromCloud();
+                this.syncService.startAutoSync();
             }
 
-            syncNow() {
-                this.syncService.syncToCloud();
+            async syncNow() {
+                await this.syncService.syncToCloud();
             }
 
             async exportPDF() {
