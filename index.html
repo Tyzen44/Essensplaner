@@ -313,6 +313,37 @@
             margin-top: 10px;
         }
 
+        .recipe-instructions {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .instructions-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .instructions-list {
+            margin: 0;
+            padding-left: 20px;
+            list-style: decimal;
+        }
+
+        .instructions-list li {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .instructions-list li:last-child {
+            margin-bottom: 0;
+        }
+
         .btn-small {
             padding: 6px 12px;
             font-size: 0.85rem;
@@ -1314,6 +1345,7 @@
                                     </div>
                                 ` : ''}
                                 ${this.renderVariationSelector(state, weekKey, index, day.dinner)}
+                                ${this.renderInstructions(day.dinner)}
                                 ${!isPast && !isPizza ? `
                                     <div class="recipe-actions">
                                         <button class="btn btn-primary btn-small" 
@@ -1327,6 +1359,13 @@
                                 <div class="meal-section" style="border-top: 1px solid var(--border);">
                                     <div class="meal-title">KINDER MITTAGESSEN</div>
                                     <div class="recipe-name">${day.kidsLunch.name}</div>
+                                    ${day.kidsLunch.prepTime ? `
+                                        <div class="recipe-meta">
+                                            <span>⏱️ ${day.kidsLunch.prepTime} Min</span>
+                                            <span>💰 ${day.kidsLunch.cost.toFixed(2)} CHF</span>
+                                        </div>
+                                    ` : ''}
+                                    ${this.renderInstructions(day.kidsLunch)}
                                 </div>
                             ` : ''}
                         </div>
@@ -1350,6 +1389,21 @@
                                 </option>
                             `).join('')}
                         </select>
+                    </div>
+                `;
+            }
+
+            renderInstructions(recipe) {
+                if (!recipe.instructions || !Array.isArray(recipe.instructions)) return '';
+
+                return `
+                    <div class="recipe-instructions">
+                        <div class="instructions-title">Zubereitung:</div>
+                        <ol class="instructions-list">
+                            ${recipe.instructions.map(step => `
+                                <li>${step}</li>
+                            `).join('')}
+                        </ol>
                     </div>
                 `;
             }
