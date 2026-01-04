@@ -673,332 +673,131 @@
         // RECIPE SERVICE
         // ============================================================================
 
-        constructor() {
-        this.recipes = [];
-        this.categories = {
-            MEAT: 'meat',
-            VEGETARIAN: 'vegetarian',
-            KIDS: 'kids',
-            PIZZA: 'pizza'
-        };
-        
-        this.recipeSources = [
-            { file: 'meat.json', category: 'meat' },
-            { file: 'vegi.json', category: 'vegetarian' },
-            { file: 'kids.json', category: 'kids' }
-        ];
-    }
+        class RecipeService {
+            constructor() {
+                this.recipes = [];
+                this.categories = {
+                    KIDS: 'kids',
+                    MEAT: 'meat',
+                    VEGETARIAN: 'vegetarian',
+                    PIZZA: 'pizza'
+                };
+                // GitHub base URL für die Rezepte
+                this.baseUrl = 'https://raw.githubusercontent.com/Tyzen44/Essensplaner/main/recipes';
+                this.recipeFiles = ['kids.json', 'meat.json', 'vegetarian.json'];
+            }
 
-    async loadRecipes() {
-        const allRecipes = [];
-        let loadedFiles = 0;
+            async loadRecipes() {
+                try {
+                    const allRecipes = [];
+                    
+                    // Lade alle Rezept-Dateien parallel
+                    const promises = this.recipeFiles.map(file => 
+                        this.loadRecipeFile(file)
+                    );
+                    
+                    const results = await Promise.allSettled(promises);
+                    
+                    results.forEach((result, index) => {
+                        if (result.status === 'fulfilled' && result.value) {
+                            allRecipes.push(...result.value);
+                        } else {
+                            console.warn(`Failed to load ${this.recipeFiles[index]}:`, result.reason);
+                        }
+                    });
+                    
+                    this.recipes = allRecipes;
+                    console.log(`Loaded ${this.recipes.length} recipes from GitHub`);
+                    return this.recipes;
+                } catch (error) {
+                    console.error('Error loading recipes:', error);
+                    // Fallback zu Mock-Daten wenn GitHub nicht erreichbar ist
+                    this.recipes = this.getMockRecipes();
+                    return this.recipes;
+                }
+            }
 
-        for (const source of this.recipeSources) {
-            try {
-                console.log(`🔍 Versuche ${source.file} zu laden...`);
+            async loadRecipeFile(filename) {
+                const url = `${this.baseUrl}/${filename}`;
                 
-                const response = await fetch(source.file);
-                
-                if (response.ok) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
                     const data = await response.json();
                     
-                    const normalized = this.normalizeRecipes(data, source.category);
-                    allRecipes.push(...normalized);
-                    loadedFiles++;
-                    
-                    console.log(`✅ ${source.file} geladen: ${normalized.length} Rezepte`);
-                } else {
-                    console.warn(`⚠️ ${source.file} nicht gefunden (${response.status})`);
+                    // Konvertiere die Rezepte in unser internes Format
+                    return data.recipes.map(recipe => this.convertRecipe(recipe, data.category));
+                } catch (error) {
+                    console.error(`Error loading ${filename}:`, error);
+                    throw error;
                 }
-            } catch (error) {
-                console.warn(`⚠️ ${source.file} konnte nicht geladen werden:`, error.message);
             }
-        }
 
-        if (allRecipes.length === 0) {
-            console.log('📝 Keine JSON-Dateien gefunden - verwende Mock-Daten');
-            this.recipes = this.getMockRecipes();
-        } else {
-            console.log(`✅ Total geladen: ${allRecipes.length} Rezepte aus ${loadedFiles} Dateien`);
-            this.recipes = allRecipes;
-        }
+            convertRecipe(recipe, category) {
+                // Konvertiere baseIngredients Object zu ingredients Array
+                const ingredients = Object.entries(recipe.baseIngredients || {}).map(([name, data]) => ({
+                    name: name,
+                    amount: data.amount,
+                    unit: data.unit,
+                    variable: data.variations ? true : false
+                }));
 
-        return this.recipes;
-    }
-
-    normalizeRecipes(recipes, defaultCategory) {
-        const recipesArray = Array.isArray(recipes) ? recipes : [recipes];
-        
-        return recipesArray.map((recipe, index) => {
-            return {
-                id: recipe.id || `${defaultCategory}-${index + 1}`,
-                name: recipe.name || recipe.title || recipe.dish || 'Unbekanntes Gericht',
-                category: recipe.category || defaultCategory,
+                // Extrahiere Variationen falls vorhanden
+                let variations = null;
+                const variableIngredient = Object.entries(recipe.baseIngredients || {}).find(
+                    ([_, data]) => data.variations
+                );
                 
-                prepTime: parseInt(recipe.prepTime || recipe.prep_time || recipe.zubereitungszeit || 30),
-                cookTime: parseInt(recipe.cookTime || recipe.cook_time || recipe.kochzeit || 30),
-                
-                cost: parseFloat(recipe.cost || recipe.price_per_portion || recipe.preis || 3.50),
-                
-                workFriendly: recipe.workFriendly !== undefined 
-                    ? Boolean(recipe.workFriendly) 
-                    : (parseInt(recipe.prepTime || 30) <= 45),
-                
-                variations: recipe.variations || null,
-                
-                ingredients: this.normalizeIngredients(recipe.ingredients || recipe.zutaten || []),
-                
-                instructions: recipe.instructions || recipe.description || recipe.anleitung || '',
-                
-                tags: recipe.tags || recipe.kategorien || []
-            };
-        });
-    }
-
-    normalizeIngredients(ingredients) {
-        if (!Array.isArray(ingredients)) return [];
-        
-        return ingredients.map(ing => {
-            if (typeof ing === 'string') {
-                const match = ing.match(/^(\d+(?:\.\d+)?)\s*(\w+)\s+(.+)$/);
-                if (match) {
-                    return {
-                        name: match[3].trim(),
-                        amount: parseFloat(match[1]),
-                        unit: match[2],
-                        variable: false
+                if (variableIngredient) {
+                    const [ingredientName, ingredientData] = variableIngredient;
+                    variations = {
+                        type: ingredientName,
+                        options: ingredientData.variations,
+                        default: ingredientData.variations[0]
                     };
                 }
-                return { 
-                    name: ing.trim(), 
-                    amount: 1, 
-                    unit: 'x',
-                    variable: false
+
+                return {
+                    id: recipe.id,
+                    name: recipe.name,
+                    category: category,
+                    prepTime: recipe.prepTime,
+                    cookTime: 0, // Nicht in der JSON-Struktur
+                    cost: recipe.price,
+                    workFriendly: recipe.workFriendly || false,
+                    childFriendly: recipe.childFriendly || false,
+                    tags: recipe.tags || [],
+                    ingredients: ingredients,
+                    instructions: recipe.instructions,
+                    variations: variations
                 };
             }
 
-            return {
-                name: ing.name || ing.ingredient || ing.zutat || 'Unbekannt',
-                amount: parseFloat(ing.amount || ing.quantity || ing.menge || 1),
-                unit: ing.unit || ing.einheit || 'x',
-                variable: Boolean(ing.variable || ing.variabel)
-            };
-        });
-    }
-
-    getMockRecipes() {
-        return [
-            {
-                id: 'mock-meat-1',
-                name: 'Spaghetti Bolognese',
-                category: 'meat',
-                prepTime: 20,
-                cookTime: 40,
-                cost: 3.50,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Rinderhackfleisch', amount: 500, unit: 'g' },
-                    { name: 'Spaghetti', amount: 500, unit: 'g' },
-                    { name: 'Tomaten passiert', amount: 400, unit: 'g' },
-                    { name: 'Zwiebeln', amount: 2, unit: 'Stück' },
-                    { name: 'Knoblauch', amount: 2, unit: 'Zehen' }
-                ]
-            },
-            {
-                id: 'mock-meat-2',
-                name: 'Thai Curry',
-                category: 'meat',
-                prepTime: 25,
-                cookTime: 30,
-                cost: 4.20,
-                workFriendly: true,
-                variations: {
-                    type: 'Currypaste',
-                    options: ['Rote', 'Gelbe', 'Grüne'],
-                    default: 'Rote'
-                },
-                ingredients: [
-                    { name: 'Hähnchenbrust', amount: 400, unit: 'g' },
-                    { name: 'Currypaste', amount: 3, unit: 'EL', variable: true },
-                    { name: 'Kokosmilch', amount: 400, unit: 'ml' },
-                    { name: 'Reis', amount: 300, unit: 'g' },
-                    { name: 'Paprika', amount: 1, unit: 'Stück' }
-                ]
-            },
-            {
-                id: 'mock-meat-3',
-                name: 'Geschnetzeltes Zürich Art',
-                category: 'meat',
-                prepTime: 30,
-                cookTime: 25,
-                cost: 5.80,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Kalbfleisch', amount: 500, unit: 'g' },
-                    { name: 'Sahne', amount: 300, unit: 'ml' },
-                    { name: 'Champignons', amount: 250, unit: 'g' },
-                    { name: 'Zwiebeln', amount: 2, unit: 'Stück' },
-                    { name: 'Rösti', amount: 600, unit: 'g' }
-                ]
-            },
-            {
-                id: 'mock-vegi-1',
-                name: 'Gemüseauflauf',
-                category: 'vegetarian',
-                prepTime: 20,
-                cookTime: 40,
-                cost: 2.80,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Zucchini', amount: 2, unit: 'Stück' },
-                    { name: 'Paprika', amount: 2, unit: 'Stück' },
-                    { name: 'Aubergine', amount: 1, unit: 'Stück' },
-                    { name: 'Käse', amount: 200, unit: 'g' },
-                    { name: 'Sahne', amount: 200, unit: 'ml' }
-                ]
-            },
-            {
-                id: 'mock-vegi-2',
-                name: 'Vegetarische Lasagne',
-                category: 'vegetarian',
-                prepTime: 35,
-                cookTime: 45,
-                cost: 3.20,
-                workFriendly: false,
-                ingredients: [
-                    { name: 'Lasagneplatten', amount: 250, unit: 'g' },
-                    { name: 'Spinat', amount: 400, unit: 'g' },
-                    { name: 'Ricotta', amount: 250, unit: 'g' },
-                    { name: 'Tomatensauce', amount: 400, unit: 'g' },
-                    { name: 'Mozzarella', amount: 200, unit: 'g' }
-                ]
-            },
-            {
-                id: 'mock-vegi-3',
-                name: 'Veggie Burger',
-                category: 'vegetarian',
-                prepTime: 25,
-                cookTime: 20,
-                cost: 3.50,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Veggie Patties', amount: 4, unit: 'Stück' },
-                    { name: 'Burgerbrötchen', amount: 4, unit: 'Stück' },
-                    { name: 'Salat', amount: 1, unit: 'Kopf' },
-                    { name: 'Tomaten', amount: 2, unit: 'Stück' },
-                    { name: 'Käse', amount: 100, unit: 'g' }
-                ]
-            },
-            {
-                id: 'mock-kids-1',
-                name: 'Chicken Nuggets mit Pommes',
-                category: 'kids',
-                prepTime: 15,
-                cookTime: 20,
-                cost: 2.50,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Hähnchenbrust', amount: 300, unit: 'g' },
-                    { name: 'Paniermehl', amount: 100, unit: 'g' },
-                    { name: 'Eier', amount: 2, unit: 'Stück' },
-                    { name: 'Pommes Frites', amount: 400, unit: 'g' }
-                ]
-            },
-            {
-                id: 'mock-kids-2',
-                name: 'Kinderpasta mit Tomatensauce',
-                category: 'kids',
-                prepTime: 10,
-                cookTime: 15,
-                cost: 1.80,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Pasta (Tierformen)', amount: 300, unit: 'g' },
-                    { name: 'Tomatensauce', amount: 300, unit: 'ml' },
-                    { name: 'Parmesan', amount: 50, unit: 'g' }
-                ]
-            },
-            {
-                id: 'mock-meat-4',
-                name: 'Rindergulasch',
-                category: 'meat',
-                prepTime: 30,
-                cookTime: 120,
-                cost: 4.50,
-                workFriendly: false,
-                ingredients: [
-                    { name: 'Rindfleisch', amount: 600, unit: 'g' },
-                    { name: 'Zwiebeln', amount: 3, unit: 'Stück' },
-                    { name: 'Paprika', amount: 2, unit: 'Stück' },
-                    { name: 'Tomatenmark', amount: 2, unit: 'EL' },
-                    { name: 'Kartoffeln', amount: 600, unit: 'g' }
-                ]
-            },
-            {
-                id: 'mock-meat-5',
-                name: 'Lachs mit Gemüse',
-                category: 'meat',
-                prepTime: 20,
-                cookTime: 25,
-                cost: 6.50,
-                workFriendly: true,
-                ingredients: [
-                    { name: 'Lachsfilet', amount: 400, unit: 'g' },
-                    { name: 'Brokkoli', amount: 300, unit: 'g' },
-                    { name: 'Reis', amount: 300, unit: 'g' },
-                    { name: 'Zitrone', amount: 1, unit: 'Stück' }
-                ]
+            getMockRecipes() {
+                // Fallback Mock-Daten falls GitHub nicht erreichbar
+                return [
+                    {
+                        id: 'mock1',
+                        name: 'Spaghetti Bolognese',
+                        category: 'meat',
+                        prepTime: 30,
+                        cookTime: 45,
+                        cost: 3.50,
+                        workFriendly: true,
+                        ingredients: [
+                            { name: 'Hackfleisch', amount: 500, unit: 'g' },
+                            { name: 'Spaghetti', amount: 500, unit: 'g' },
+                            { name: 'Tomaten', amount: 400, unit: 'g' },
+                            { name: 'Zwiebeln', amount: 2, unit: 'Stück' }
+                        ]
+                    }
+                ];
             }
-        ];
-    }
 
-    getRecipeById(id) {
-        return this.recipes.find(r => r.id === id);
-    }
-
-    getRecipesByCategory(category) {
-        return this.recipes.filter(r => r.category === category);
-    }
-
-    getWorkFriendlyRecipes() {
-        return this.recipes.filter(r => r.workFriendly && (r.prepTime || 0) <= 45);
-    }
-
-    scaleIngredients(recipe, portions) {
-        const basePortions = 4;
-        const scale = portions / basePortions;
-        
-        return recipe.ingredients.map(ing => ({
-            ...ing,
-            amount: Math.round(ing.amount * scale * 10) / 10
-        }));
-    }
-
-    buildInstructions(recipe, selectedVariation) {
-        if (!recipe.variations) return null;
-
-        const variation = selectedVariation || recipe.variations.default;
-        
-        return recipe.ingredients.map(ing => {
-            if (ing.variable && ing.name.toLowerCase().includes('currypaste')) {
-                return `${variation} ${ing.name}: ${ing.amount} ${ing.unit}`;
-            }
-            return `${ing.name}: ${ing.amount} ${ing.unit}`;
-        }).join('\n');
-    }
-
-    getStats() {
-        return {
-            total: this.recipes.length,
-            meat: this.recipes.filter(r => r.category === 'meat').length,
-            vegetarian: this.recipes.filter(r => r.category === 'vegetarian').length,
-            kids: this.recipes.filter(r => r.category === 'kids').length,
-            workFriendly: this.recipes.filter(r => r.workFriendly).length
-        };
-    }
-}
-
-                        getRecipeById(id) {
+            getRecipeById(id) {
                 return this.recipes.find(r => r.id === id);
             }
 
@@ -1011,7 +810,7 @@
             }
 
             scaleIngredients(recipe, portions) {
-                const basePortions = 4;
+                const basePortions = 1; // Die Rezepte sind für 1 Person
                 const scale = portions / basePortions;
                 
                 return recipe.ingredients.map(ing => ({
@@ -1026,8 +825,8 @@
                 const variation = selectedVariation || recipe.variations.default;
                 
                 return recipe.ingredients.map(ing => {
-                    if (ing.variable && ing.name === 'Currypaste') {
-                        return `${variation} ${ing.name}: ${ing.amount} ${ing.unit}`;
+                    if (ing.variable && ing.name === recipe.variations.type) {
+                        return `${variation}: ${ing.amount} ${ing.unit}`;
                     }
                     return `${ing.name}: ${ing.amount} ${ing.unit}`;
                 }).join('\n');
@@ -1642,15 +1441,6 @@
             async initialize() {
                 // Load recipes
                 await this.recipeService.loadRecipes();
-                
-                // Zeige Rezept-Stats
-                const stats = this.recipeService.getStats();
-                const statsDiv = document.getElementById('recipeCount');
-                statsDiv.innerHTML = `
-                    📚 <strong>${stats.total} Rezepte</strong> geladen: 
-                    ${stats.meat} Fleisch | ${stats.vegetarian} Vegetarisch | ${stats.kids} Kids | 
-                    ${stats.workFriendly} werktags-tauglich
-                `;
 
                 // Try to load from localStorage first
                 if (!this.state.loadFromLocalStorage()) {
