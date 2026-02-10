@@ -8,27 +8,86 @@
       "id": "v001",
       "name": "Gemüse-Lasagne",
       "baseIngredients": {
-        "Lasagneplatten": {"amount": 100, "unit": "g"},
-        "Zucchini": {"amount": 1, "unit": "Stück"},
-        "Aubergine": {"amount": 0.5, "unit": "Stück"},
-        "Tomaten": {"amount": 300, "unit": "g"},
-        "Mozzarella": {"amount": 125, "unit": "g", "variations": ["Ricotta", "Feta", "Büffelmozzarella"]},
-        "Olivenöl": {"amount": 3, "unit": "EL"},
-        "Zwiebel": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Basilikum": {"amount": 6, "unit": "Blätter"},
-        "Butter": {"amount": 30, "unit": "g"},
-        "Mehl": {"amount": 30, "unit": "g"},
-        "Milch": {"amount": 400, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Lasagneplatten": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Zucchini": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Aubergine": {
+          "amount": 0.5,
+          "unit": "Stück"
+        },
+        "Tomaten": {
+          "amount": 300,
+          "unit": "g"
+        },
+        "Mozzarella": {
+          "amount": 125,
+          "unit": "g",
+          "variations": [
+            "Ricotta",
+            "Feta",
+            "Büffelmozzarella"
+          ]
+        },
+        "Olivenöl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Zwiebel": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Basilikum": {
+          "amount": 6,
+          "unit": "Blätter"
+        },
+        "Butter": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Mehl": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Milch": {
+          "amount": 400,
+          "unit": "ml"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 60,
-      "tags": ["italienisch", "auflauf"],
+      "tags": [
+        "italienisch",
+        "auflauf"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -55,19 +114,54 @@
       "id": "v002",
       "name": "Käsespätzle",
       "baseIngredients": {
-        "Spätzle": {"amount": 200, "unit": "g"},
-        "Emmentaler": {"amount": 100, "unit": "g", "variations": ["Bergkäse", "Gruyère", "Appenzeller"]},
-        "Zwiebeln": {"amount": 1, "unit": "Stück"},
-        "Butter": {"amount": 25, "unit": "g"},
-        "Salat": {"amount": 100, "unit": "g"},
-        "Essig": {"amount": 1, "unit": "EL"},
-        "Olivenöl": {"amount": 2, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Spätzle": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Emmentaler": {
+          "amount": 100,
+          "unit": "g",
+          "variations": [
+            "Bergkäse",
+            "Gruyère",
+            "Appenzeller"
+          ]
+        },
+        "Zwiebeln": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Butter": {
+          "amount": 25,
+          "unit": "g"
+        },
+        "Salat": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Essig": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Olivenöl": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 30,
-      "tags": ["schwäbisch", "käsig"],
+      "tags": [
+        "schwäbisch",
+        "käsig"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -94,21 +188,72 @@
       "id": "v003",
       "name": "Gemüse-Curry",
       "baseIngredients": {
-        "Kichererbsen": {"amount": 125, "unit": "g"},
-        "Kokosmilch": {"amount": 150, "unit": "ml"},
-        "Gemüse": {"amount": 200, "unit": "g", "variations": ["Blumenkohl", "Süßkartoffel", "Spinat"]},
-        "Currypaste": {"amount": 1, "unit": "EL", "variations": ["Rot", "Grün", "Gelb"]},
-        "Reis": {"amount": 125, "unit": "g", "variations": ["Basmati", "Jasmin", "Naan"]},
-        "Kokosöl": {"amount": 1, "unit": "EL"},
-        "Limette": {"amount": 1, "unit": "Stück"},
-        "Zucker": {"amount": 1, "unit": "TL"},
-        "Koriander": {"amount": 10, "unit": "g"},
-        "Cashews": {"amount": 20, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Kichererbsen": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Kokosmilch": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Gemüse": {
+          "amount": 200,
+          "unit": "g",
+          "variations": [
+            "Blumenkohl",
+            "Süßkartoffel",
+            "Spinat"
+          ]
+        },
+        "Currypaste": {
+          "amount": 1,
+          "unit": "EL",
+          "variations": [
+            "Rot",
+            "Grün",
+            "Gelb"
+          ]
+        },
+        "Reis": {
+          "amount": 125,
+          "unit": "g",
+          "variations": [
+            "Basmati",
+            "Jasmin",
+            "Naan"
+          ]
+        },
+        "Kokosöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Limette": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Zucker": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Koriander": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Cashews": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 30,
-      "tags": ["asiatisch", "vegan"],
+      "tags": [
+        "asiatisch",
+        "vegan"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -122,7 +267,7 @@
         "Deckel drauf, 10 Min köcheln lassen",
         "Kichererbsen und restliche Kokosmilch zugeben",
         "Weitere 5 Min köcheln, dabei gelegentlich umrühren",
-        "Spinat in den letzten 2 Min unterheben (fällt schnell zusammen)",
+        "Spinat in den letzten 2 Min vorsichtig untermischen (unterheben) (fällt schnell zusammen)",
         "Mit Limettensaft (wichtig für Frische!), Salz und 1 TL Zucker abschmecken",
         "Optional: 1 EL Erdnussbutter einrühren für Cremigkeit",
         "Mit Reis servieren, mit frischem Koriander und gerösteten Cashews toppen"
@@ -134,18 +279,45 @@
       "id": "v004",
       "name": "Pizza Margherita",
       "baseIngredients": {
-        "Pizzateig": {"amount": 200, "unit": "g"},
-        "Tomatensauce": {"amount": 75, "unit": "ml"},
-        "Mozzarella": {"amount": 125, "unit": "g"},
-        "Basilikum": {"amount": 5, "unit": "Blätter"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Pizzateig": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Tomatensauce": {
+          "amount": 75,
+          "unit": "ml"
+        },
+        "Mozzarella": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Basilikum": {
+          "amount": 5,
+          "unit": "Blätter"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 20,
-      "tags": ["italienisch", "klassiker"],
+      "tags": [
+        "italienisch",
+        "klassiker"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -172,20 +344,58 @@
       "id": "v005",
       "name": "Risotto mit Pilzen",
       "baseIngredients": {
-        "Risottoreis": {"amount": 125, "unit": "g"},
-        "Pilze": {"amount": 150, "unit": "g", "variations": ["Champignons", "Steinpilze", "Pfifferlinge"]},
-        "Weißwein": {"amount": 75, "unit": "ml"},
-        "Parmesan": {"amount": 50, "unit": "g"},
-        "Brühe": {"amount": 500, "unit": "ml"},
-        "Schalotte": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Butter": {"amount": 30, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Risottoreis": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Pilze": {
+          "amount": 150,
+          "unit": "g",
+          "variations": [
+            "Champignons",
+            "Steinpilze",
+            "Pfifferlinge"
+          ]
+        },
+        "Weißwein": {
+          "amount": 75,
+          "unit": "ml"
+        },
+        "Parmesan": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Brühe": {
+          "amount": 500,
+          "unit": "ml"
+        },
+        "Schalotte": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Butter": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4.5,
       "prepTime": 35,
-      "tags": ["italienisch", "cremig"],
+      "tags": [
+        "italienisch",
+        "cremig"
+      ],
       "childFriendly": false,
       "workFriendly": false,
       "instructions": [
@@ -196,7 +406,7 @@
         "Erst wenn sie Farbe haben salzen (vorher werden sie wässrig), herausnehmen",
         "Im selben Topf 1 EL Butter schmelzen, Schalotte glasig dünsten",
         "Reis zugeben, 2 Min unter Rühren 'anschwitzen' bis er leicht glasig wird",
-        "Mit Weißwein ablöschen, unter Rühren komplett einkochen lassen",
+        "Mit Weißwein ablöschen, etwas einkochen lassen (reduzieren)",
         "Jetzt beginnt die Arbeit: Eine Kelle heiße Brühe zugeben",
         "Ständig rühren bis die Flüssigkeit aufgesogen ist",
         "Nächste Kelle Brühe, wieder rühren bis aufgesogen",
@@ -214,28 +424,67 @@
       "id": "v006",
       "name": "Spinat-Ricotta-Cannelloni",
       "baseIngredients": {
-        "Cannelloni": {"amount": 125, "unit": "g"},
-        "Spinat": {"amount": 150, "unit": "g"},
-        "Ricotta": {"amount": 100, "unit": "g"},
-        "Tomatensauce": {"amount": 150, "unit": "ml"},
-        "Parmesan": {"amount": 50, "unit": "g"},
-        "Ei": {"amount": 1, "unit": "Stück"},
-        "Sahne": {"amount": 200, "unit": "ml"},
-        "Milch": {"amount": 100, "unit": "ml"},
-        "Mozzarella": {"amount": 80, "unit": "g"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Cannelloni": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Spinat": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Ricotta": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Tomatensauce": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Parmesan": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Ei": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Sahne": {
+          "amount": 200,
+          "unit": "ml"
+        },
+        "Milch": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Mozzarella": {
+          "amount": 80,
+          "unit": "g"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 45,
-      "tags": ["italienisch", "überbacken"],
+      "tags": [
+        "italienisch",
+        "überbacken"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
         "Ofen auf 180°C vorheizen, Auflaufform einfetten",
         "Frischen Spinat waschen ODER TK-Spinat auftauen",
-        "Frischen Spinat in kochendem Salzwasser 1 Min blanchieren, in Eiswasser abschrecken",
+        "Frischen Spinat in kochendem Salzwasser 1 Min kurz garen (blanchieren), in Eiswasser abschrecken",
         "Spinat sehr gut ausdrücken (wichtig, sonst wird's wässrig!) und grob hacken",
         "Ricotta mit Spinat mischen, 1 Ei unterrühren für Bindung",
         "Mit Salz, Pfeffer, Muskat und geriebenem Parmesan würzen",
@@ -257,25 +506,73 @@
       "id": "v007",
       "name": "Pad Thai vegetarisch",
       "baseIngredients": {
-        "Reisnudeln": {"amount": 125, "unit": "g"},
-        "Tofu": {"amount": 100, "unit": "g"},
-        "Erdnüsse": {"amount": 30, "unit": "g"},
-        "Sojasprossen": {"amount": 50, "unit": "g"},
-        "Tamarinde": {"amount": 2, "unit": "EL"},
-        "Sojasauce": {"amount": 2, "unit": "EL"},
-        "Zucker": {"amount": 2, "unit": "EL"},
-        "Chili": {"amount": 1, "unit": "TL"},
-        "Öl": {"amount": 3, "unit": "EL"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Schalotte": {"amount": 1, "unit": "Stück"},
-        "Eier": {"amount": 2, "unit": "Stück"},
-        "Frühlingszwiebeln": {"amount": 2, "unit": "Stangen"},
-        "Limette": {"amount": 1, "unit": "Stück"},
-        "Koriander": {"amount": 10, "unit": "g"}
+        "Reisnudeln": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Tofu": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Erdnüsse": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Sojasprossen": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Tamarinde": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Sojasauce": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Zucker": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Chili": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Öl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Schalotte": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Eier": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Frühlingszwiebeln": {
+          "amount": 2,
+          "unit": "Stangen"
+        },
+        "Limette": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Koriander": {
+          "amount": 10,
+          "unit": "g"
+        }
       },
       "price": 4,
       "prepTime": 25,
-      "tags": ["thailändisch", "streetfood"],
+      "tags": [
+        "thailändisch",
+        "streetfood"
+      ],
       "childFriendly": false,
       "workFriendly": false,
       "instructions": [
@@ -287,9 +584,9 @@
         "Wok oder große Pfanne sehr heiß werden lassen",
         "2 EL Öl hineingeben, Tofu goldbraun braten (3-4 Min), herausnehmen",
         "1 EL Öl nachgeben, 2 gehackte Knoblauchzehen und Schalotte anbraten",
-        "Optional: 2 Eier verquirlen, zugeben, stocken lassen, zerteilen",
+        "Optional: 2 Eier verquirlen, zugeben, fest werden lassen (stocken lassen), zerteilen",
         "Nudeln zugeben, Sauce darüber, 2-3 Min unter ständigem Wenden braten",
-        "Tofu wieder dazu, Sojasprossen unterheben",
+        "Tofu wieder dazu, Sojasprossen vorsichtig untermischen (unterheben)",
         "Vom Herd nehmen, Frühlingszwiebeln in Ringe schneiden, untermischen",
         "Auf Teller anrichten, mit Erdnüssen bestreuen",
         "Mit Limettenspalten, extra Chili und Koriander servieren"
@@ -301,16 +598,37 @@
       "id": "v008",
       "name": "Gnocchi mit Salbei-Butter",
       "baseIngredients": {
-        "Gnocchi": {"amount": 200, "unit": "g"},
-        "Butter": {"amount": 40, "unit": "g"},
-        "Salbei": {"amount": 10, "unit": "Blätter"},
-        "Parmesan": {"amount": 50, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Gnocchi": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Butter": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Salbei": {
+          "amount": 10,
+          "unit": "Blätter"
+        },
+        "Parmesan": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 15,
-      "tags": ["italienisch", "schnell"],
+      "tags": [
+        "italienisch",
+        "schnell"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -328,6 +646,7 @@
         "Etwas Nudelwasser (2-3 EL) dazu für eine leichte Sauce",
         "Pfanne schwenken, alles gut vermischen",
         "Vom Herd nehmen, Hälfte vom Parmesan unterrühren",
+        "1 Minute ruhen lassen, dann vorsichtig vermengen (unterheben), nicht kochen lassen (sonst gerinnt es!)",
         "Auf Teller anrichten, restlichen Parmesan darüber",
         "Mit frisch gemahlenem Pfeffer würzen"
       ],
@@ -338,25 +657,73 @@
       "id": "v009",
       "name": "Shakshuka",
       "baseIngredients": {
-        "Tomaten": {"amount": 300, "unit": "g"},
-        "Eier": {"amount": 2, "unit": "Stück"},
-        "Paprika": {"amount": 1, "unit": "Stück"},
-        "Feta": {"amount": 50, "unit": "g"},
-        "Brot": {"amount": 3, "unit": "Scheiben"},
-        "Zwiebel": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Olivenöl": {"amount": 2, "unit": "EL"},
-        "Paprikapulver": {"amount": 1, "unit": "TL"},
-        "Kreuzkümmel": {"amount": 1, "unit": "TL"},
-        "Cayenne": {"amount": 1, "unit": "Prise"},
-        "Zucker": {"amount": 1, "unit": "TL"},
-        "Petersilie": {"amount": 10, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Tomaten": {
+          "amount": 300,
+          "unit": "g"
+        },
+        "Eier": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Paprika": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Feta": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Brot": {
+          "amount": 3,
+          "unit": "Scheiben"
+        },
+        "Zwiebel": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Olivenöl": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Paprikapulver": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Kreuzkümmel": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Cayenne": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Zucker": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Petersilie": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 25,
-      "tags": ["orientalisch", "frühstück"],
+      "tags": [
+        "orientalisch",
+        "frühstück"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -384,21 +751,57 @@
       "id": "v010",
       "name": "Quinoa-Bowl",
       "baseIngredients": {
-        "Quinoa": {"amount": 100, "unit": "g"},
-        "Avocado": {"amount": 1, "unit": "Stück"},
-        "Kichererbsen": {"amount": 75, "unit": "g"},
-        "Tahini": {"amount": 2, "unit": "EL"},
-        "Gemüse": {"amount": 150, "unit": "g"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Sesam": {"amount": 1, "unit": "EL"},
-        "Sonnenblumenkerne": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Quinoa": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Avocado": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Kichererbsen": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Tahini": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Gemüse": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Sesam": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Sonnenblumenkerne": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4.5,
       "prepTime": 25,
-      "tags": ["bowl", "superfood"],
+      "tags": [
+        "bowl",
+        "superfood"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -424,29 +827,89 @@
       "id": "v011",
       "name": "Moussaka vegetarisch",
       "baseIngredients": {
-        "Aubergine": {"amount": 1, "unit": "Stück"},
-        "Kartoffeln": {"amount": 200, "unit": "g"},
-        "Linsen": {"amount": 75, "unit": "g"},
-        "Béchamel": {"amount": 150, "unit": "ml"},
-        "Käse": {"amount": 50, "unit": "g"},
-        "Zwiebel": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Olivenöl": {"amount": 3, "unit": "EL"},
-        "Tomaten": {"amount": 400, "unit": "g"},
-        "Tomatenmark": {"amount": 2, "unit": "EL"},
-        "Zimt": {"amount": 0.5, "unit": "TL"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Butter": {"amount": 30, "unit": "g"},
-        "Mehl": {"amount": 30, "unit": "g"},
-        "Milch": {"amount": 400, "unit": "ml"},
-        "Eigelb": {"amount": 1, "unit": "Stück"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Aubergine": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Kartoffeln": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Linsen": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Béchamel": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Käse": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Zwiebel": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Olivenöl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Tomaten": {
+          "amount": 400,
+          "unit": "g"
+        },
+        "Tomatenmark": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Zimt": {
+          "amount": 0.5,
+          "unit": "TL"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Butter": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Mehl": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Milch": {
+          "amount": 400,
+          "unit": "ml"
+        },
+        "Eigelb": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 60,
-      "tags": ["griechisch", "auflauf"],
+      "tags": [
+        "griechisch",
+        "auflauf"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -477,27 +940,81 @@
       "id": "v012",
       "name": "Falafel mit Hummus",
       "baseIngredients": {
-        "Kichererbsen": {"amount": 150, "unit": "g"},
-        "Petersilie": {"amount": 0.5, "unit": "Bund"},
-        "Hummus": {"amount": 75, "unit": "g"},
-        "Pita": {"amount": 2, "unit": "Stück"},
-        "Zwiebel": {"amount": 0.5, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Kreuzkümmel": {"amount": 1, "unit": "TL"},
-        "Koriander": {"amount": 1, "unit": "TL"},
-        "Backpulver": {"amount": 0.5, "unit": "TL"},
-        "Mehl": {"amount": 2, "unit": "EL"},
-        "Öl": {"amount": 500, "unit": "ml"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Salat": {"amount": 50, "unit": "g"},
-        "Tomaten": {"amount": 1, "unit": "Stück"},
-        "Gurke": {"amount": 0.5, "unit": "Stück"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Kichererbsen": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Petersilie": {
+          "amount": 0.5,
+          "unit": "Bund"
+        },
+        "Hummus": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Pita": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Zwiebel": {
+          "amount": 0.5,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Kreuzkümmel": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Koriander": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Backpulver": {
+          "amount": 0.5,
+          "unit": "TL"
+        },
+        "Mehl": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Öl": {
+          "amount": 500,
+          "unit": "ml"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Salat": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Tomaten": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Gurke": {
+          "amount": 0.5,
+          "unit": "Stück"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 30,
-      "tags": ["orientalisch", "streetfood"],
+      "tags": [
+        "orientalisch",
+        "streetfood"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -526,20 +1043,58 @@
       "id": "v013",
       "name": "Ravioli mit Tomatensauce",
       "baseIngredients": {
-        "Ravioli": {"amount": 175, "unit": "g", "variations": ["Spinat-Ricotta", "Käse", "Pilz"]},
-        "Tomatensauce": {"amount": 150, "unit": "ml"},
-        "Basilikum": {"amount": 8, "unit": "Blätter"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Schalotte": {"amount": 1, "unit": "Stück"},
-        "Olivenöl": {"amount": 2, "unit": "EL"},
-        "Zucker": {"amount": 1, "unit": "TL"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Ravioli": {
+          "amount": 175,
+          "unit": "g",
+          "variations": [
+            "Spinat-Ricotta",
+            "Käse",
+            "Pilz"
+          ]
+        },
+        "Tomatensauce": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Basilikum": {
+          "amount": 8,
+          "unit": "Blätter"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Schalotte": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Olivenöl": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Zucker": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 15,
-      "tags": ["italienisch", "schnell"],
+      "tags": [
+        "italienisch",
+        "schnell"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -566,23 +1121,65 @@
       "id": "v014",
       "name": "Buddha Bowl",
       "baseIngredients": {
-        "Süßkartoffel": {"amount": 150, "unit": "g"},
-        "Brokkoli": {"amount": 100, "unit": "g"},
-        "Quinoa": {"amount": 75, "unit": "g"},
-        "Tahini Dressing": {"amount": 50, "unit": "ml"},
-        "Olivenöl": {"amount": 2, "unit": "EL"},
-        "Paprikapulver": {"amount": 1, "unit": "TL"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Ahornsirup": {"amount": 1, "unit": "TL"},
-        "Avocado": {"amount": 1, "unit": "Stück"},
-        "Edamame": {"amount": 100, "unit": "g"},
-        "Möhre": {"amount": 1, "unit": "Stück"},
-        "Sesam": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Süßkartoffel": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Brokkoli": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Quinoa": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Tahini Dressing": {
+          "amount": 50,
+          "unit": "ml"
+        },
+        "Olivenöl": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Paprikapulver": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Ahornsirup": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Avocado": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Edamame": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Möhre": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Sesam": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 30,
-      "tags": ["bowl", "gesund"],
+      "tags": [
+        "bowl",
+        "gesund"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -601,7 +1198,7 @@
         "Geröstetes Gemüse arrangieren",
         "Avocado, Edamame, geraspelte Möhre dazu",
         "Mit Tahini-Dressing beträufeln",
-        "Mit Sesam und Mikrogrün toppen"
+        "Mit gerösteten Samen (Sesam, Sonnenblume) und frischen Kräutern toppen"
       ],
       "childTip": "Zu viele Komponenten für die meisten Kinder",
       "workTip": "Instagram-würdig und gesund"
@@ -610,20 +1207,53 @@
       "id": "v015",
       "name": "Caprese-Auflauf",
       "baseIngredients": {
-        "Tomaten": {"amount": 250, "unit": "g"},
-        "Mozzarella": {"amount": 125, "unit": "g"},
-        "Basilikum": {"amount": 0.5, "unit": "Bund"},
-        "Ciabatta": {"amount": 3, "unit": "Scheiben"},
-        "Olivenöl": {"amount": 3, "unit": "EL"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Balsamico": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Tomaten": {
+          "amount": 250,
+          "unit": "g"
+        },
+        "Mozzarella": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Basilikum": {
+          "amount": 0.5,
+          "unit": "Bund"
+        },
+        "Ciabatta": {
+          "amount": 3,
+          "unit": "Scheiben"
+        },
+        "Olivenöl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Balsamico": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 25,
-      "tags": ["italienisch", "sommer"],
+      "tags": [
+        "italienisch",
+        "sommer"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -650,22 +1280,69 @@
       "id": "v016",
       "name": "Pilz-Stroganoff",
       "baseIngredients": {
-        "Champignons": {"amount": 200, "unit": "g", "variations": ["Mischpilze", "Austernpilze"]},
-        "Saure Sahne": {"amount": 75, "unit": "ml"},
-        "Reis": {"amount": 125, "unit": "g", "variations": ["Nudeln", "Kartoffeln"]},
-        "Petersilie": {"amount": 2, "unit": "EL"},
-        "Zwiebel": {"amount": 1, "unit": "Stück"},
-        "Butter": {"amount": 30, "unit": "g"},
-        "Mehl": {"amount": 10, "unit": "g"},
-        "Gemüsebrühe": {"amount": 100, "unit": "ml"},
-        "Paprikapulver": {"amount": 1, "unit": "TL"},
-        "Gewürzgurken": {"amount": 50, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Champignons": {
+          "amount": 200,
+          "unit": "g",
+          "variations": [
+            "Mischpilze",
+            "Austernpilze"
+          ]
+        },
+        "Saure Sahne": {
+          "amount": 75,
+          "unit": "ml"
+        },
+        "Reis": {
+          "amount": 125,
+          "unit": "g",
+          "variations": [
+            "Nudeln",
+            "Kartoffeln"
+          ]
+        },
+        "Petersilie": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Zwiebel": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Butter": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Mehl": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Gemüsebrühe": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Paprikapulver": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Gewürzgurken": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 25,
-      "tags": ["russisch", "cremig"],
+      "tags": [
+        "russisch",
+        "cremig"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -682,7 +1359,7 @@
         "Hitze reduzieren, saure Sahne einrühren",
         "NICHT mehr kochen (gerinnt sonst!)",
         "Mit Paprika, Salz, Pfeffer würzen",
-        "Gehackte Petersilie unterheben",
+        "Gehackte Petersilie vorsichtig untermischen (unterheben)",
         "Über Reis servieren",
         "Mit Gewürzgurken als Beilage"
       ],
@@ -693,19 +1370,49 @@
       "id": "v017",
       "name": "Zucchini-Puffer",
       "baseIngredients": {
-        "Zucchini": {"amount": 300, "unit": "g"},
-        "Ei": {"amount": 1, "unit": "Stück"},
-        "Mehl": {"amount": 50, "unit": "g"},
-        "Joghurt Dip": {"amount": 75, "unit": "g"},
-        "Öl": {"amount": 3, "unit": "EL"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Dill": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Zucchini": {
+          "amount": 300,
+          "unit": "g"
+        },
+        "Ei": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Mehl": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Joghurt Dip": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Öl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Dill": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 20,
-      "tags": ["puffer", "gemüse"],
+      "tags": [
+        "puffer",
+        "gemüse"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -732,19 +1439,54 @@
       "id": "v018",
       "name": "Tortellini in Sahnesauce",
       "baseIngredients": {
-        "Tortellini": {"amount": 175, "unit": "g", "variations": ["Käse", "Spinat", "Pilz"]},
-        "Sahne": {"amount": 100, "unit": "ml"},
-        "Erbsen": {"amount": 75, "unit": "g"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Schalotte": {"amount": 1, "unit": "Stück"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Tortellini": {
+          "amount": 175,
+          "unit": "g",
+          "variations": [
+            "Käse",
+            "Spinat",
+            "Pilz"
+          ]
+        },
+        "Sahne": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Erbsen": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Schalotte": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 15,
-      "tags": ["italienisch", "cremig"],
+      "tags": [
+        "italienisch",
+        "cremig"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -770,22 +1512,61 @@
       "id": "v019",
       "name": "Ratatouille",
       "baseIngredients": {
-        "Zucchini": {"amount": 1, "unit": "Stück"},
-        "Aubergine": {"amount": 0.5, "unit": "Stück"},
-        "Paprika": {"amount": 1, "unit": "Stück"},
-        "Tomaten": {"amount": 200, "unit": "g"},
-        "Baguette": {"amount": 4, "unit": "Scheiben"},
-        "Zwiebel": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Olivenöl": {"amount": 3, "unit": "EL"},
-        "Thymian": {"amount": 1, "unit": "TL"},
-        "Rosmarin": {"amount": 1, "unit": "TL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Zucchini": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Aubergine": {
+          "amount": 0.5,
+          "unit": "Stück"
+        },
+        "Paprika": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Tomaten": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Baguette": {
+          "amount": 4,
+          "unit": "Scheiben"
+        },
+        "Zwiebel": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Olivenöl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Thymian": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Rosmarin": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 45,
-      "tags": ["französisch", "gemüse"],
+      "tags": [
+        "französisch",
+        "gemüse"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -813,19 +1594,55 @@
       "id": "v020",
       "name": "Spinat-Gorgonzola-Pasta",
       "baseIngredients": {
-        "Pasta": {"type": "any", "amount": 150, "unit": "g", "variations": ["Penne", "Fusilli", "Rigatoni"]},
-        "Spinat": {"amount": 100, "unit": "g"},
-        "Gorgonzola": {"amount": 60, "unit": "g"},
-        "Walnüsse": {"amount": 30, "unit": "g"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Sahne": {"amount": 100, "unit": "ml"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Pasta": {
+          "type": "any",
+          "amount": 150,
+          "unit": "g",
+          "variations": [
+            "Penne",
+            "Fusilli",
+            "Rigatoni"
+          ]
+        },
+        "Spinat": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Gorgonzola": {
+          "amount": 60,
+          "unit": "g"
+        },
+        "Walnüsse": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Sahne": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 20,
-      "tags": ["italienisch", "käsig"],
+      "tags": [
+        "italienisch",
+        "käsig"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -834,7 +1651,7 @@
         "Frischen Spinat waschen oder TK auftauen",
         "In großer Pfanne 1 EL Butter schmelzen",
         "1 Knoblauchzehe pressen, kurz andünsten",
-        "Spinat zugeben, zusammenfallen lassen",
+        "Spinat vorsichtig untermischen (unterheben) bis er zusammenfällt",
         "100ml Sahne zugießen",
         "Gorgonzola in Stücke brechen, zugeben",
         "Bei kleiner Hitze schmelzen lassen, rühren",
@@ -842,7 +1659,7 @@
         "Pasta zur Sauce geben",
         "Falls zu dick: Nudelwasser zugeben",
         "Mit Salz und viel Pfeffer abschmecken",
-        "Geröstete Walnüsse unterheben",
+        "Geröstete Walnüsse vorsichtig untermischen (unterheben)",
         "Mit extra Gorgonzola servieren"
       ],
       "childTip": "Gorgonzola ist sehr intensiv für Kinder",
@@ -852,20 +1669,53 @@
       "id": "v021",
       "name": "Gemüse-Tempura",
       "baseIngredients": {
-        "Gemüse gemischt": {"amount": 200, "unit": "g"},
-        "Tempurateig": {"amount": 75, "unit": "g"},
-        "Sojasauce": {"amount": 30, "unit": "ml"},
-        "Reis": {"amount": 125, "unit": "g"},
-        "Mehl": {"amount": 75, "unit": "g"},
-        "Sprudelwasser": {"amount": 100, "unit": "ml"},
-        "Öl": {"amount": 500, "unit": "ml"},
-        "Ingwer": {"amount": 1, "unit": "TL"},
-        "Rettich": {"amount": 50, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Gemüse gemischt": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Tempurateig": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Sojasauce": {
+          "amount": 30,
+          "unit": "ml"
+        },
+        "Reis": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Mehl": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Sprudelwasser": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Öl": {
+          "amount": 500,
+          "unit": "ml"
+        },
+        "Ingwer": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Rettich": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 25,
-      "tags": ["japanisch", "frittiert"],
+      "tags": [
+        "japanisch",
+        "frittiert"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -891,22 +1741,65 @@
       "id": "v022",
       "name": "Kürbis-Risotto",
       "baseIngredients": {
-        "Kürbis": {"amount": 200, "unit": "g", "variations": ["Hokkaido", "Butternut"]},
-        "Risottoreis": {"amount": 125, "unit": "g"},
-        "Weißwein": {"amount": 75, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Butter": {"amount": 20, "unit": "g"},
-        "Schalotte": {"amount": 1, "unit": "Stück"},
-        "Gemüsebrühe": {"amount": 1000, "unit": "ml"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Kürbiskerne": {"amount": 20, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Kürbis": {
+          "amount": 200,
+          "unit": "g",
+          "variations": [
+            "Hokkaido",
+            "Butternut"
+          ]
+        },
+        "Risottoreis": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Weißwein": {
+          "amount": 75,
+          "unit": "ml"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Butter": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Schalotte": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Gemüsebrühe": {
+          "amount": 1000,
+          "unit": "ml"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Kürbiskerne": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 35,
-      "tags": ["italienisch", "herbstlich"],
+      "tags": [
+        "italienisch",
+        "herbstlich"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -934,18 +1827,49 @@
       "id": "v023",
       "name": "Halloumi-Burger",
       "baseIngredients": {
-        "Halloumi": {"amount": 150, "unit": "g"},
-        "Burgerbrötchen": {"amount": 1, "unit": "Stück", "variations": ["Brioche", "Vollkorn"]},
-        "Hummus": {"amount": 50, "unit": "g"},
-        "Salat": {"amount": 50, "unit": "g"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Tomate": {"amount": 1, "unit": "Stück"},
-        "Gurke": {"amount": 0.5, "unit": "Stück"},
-        "Zwiebel": {"amount": 0.5, "unit": "Stück"}
+        "Halloumi": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Burgerbrötchen": {
+          "amount": 1,
+          "unit": "Stück",
+          "variations": [
+            "Brioche",
+            "Vollkorn"
+          ]
+        },
+        "Hummus": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Salat": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Tomate": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Gurke": {
+          "amount": 0.5,
+          "unit": "Stück"
+        },
+        "Zwiebel": {
+          "amount": 0.5,
+          "unit": "Stück"
+        }
       },
       "price": 4.5,
       "prepTime": 15,
-      "tags": ["burger", "vegetarisch"],
+      "tags": [
+        "burger",
+        "vegetarisch"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -972,19 +1896,54 @@
       "id": "v024",
       "name": "Penne all'Arrabbiata",
       "baseIngredients": {
-        "Pasta": {"type": "short", "amount": 150, "unit": "g", "variations": ["Penne", "Rigatoni"]},
-        "Tomaten": {"amount": 250, "unit": "g"},
-        "Chili": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Olivenöl": {"amount": 3, "unit": "EL"},
-        "Zucker": {"amount": 1, "unit": "TL"},
-        "Petersilie": {"amount": 10, "unit": "g"},
-        "Parmesan": {"amount": 30, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Pasta": {
+          "type": "short",
+          "amount": 150,
+          "unit": "g",
+          "variations": [
+            "Penne",
+            "Rigatoni"
+          ]
+        },
+        "Tomaten": {
+          "amount": 250,
+          "unit": "g"
+        },
+        "Chili": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Olivenöl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Zucker": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Petersilie": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Parmesan": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 20,
-      "tags": ["italienisch", "scharf"],
+      "tags": [
+        "italienisch",
+        "scharf"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -1012,17 +1971,41 @@
       "id": "v025",
       "name": "Bärlauch-Spätzle",
       "baseIngredients": {
-        "Spätzle": {"amount": 200, "unit": "g"},
-        "Bärlauch": {"amount": 50, "unit": "g"},
-        "Sahne": {"amount": 75, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Spätzle": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Bärlauch": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Sahne": {
+          "amount": 75,
+          "unit": "ml"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 25,
-      "tags": ["frühling", "saisonal"],
+      "tags": [
+        "frühling",
+        "saisonal"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1034,7 +2017,7 @@
         "Sahne zugießen, aufkochen",
         "Spätzle direkt aus dem Wasser dazu",
         "Gut durchschwenken",
-        "Restlichen frischen Bärlauch unterheben",
+        "Restlichen frischen Bärlauch vorsichtig untermischen (unterheben)",
         "Parmesan unterrühren",
         "Mit Salz und Pfeffer abschmecken",
         "Mit extra Parmesan servieren",
@@ -1047,25 +2030,80 @@
       "id": "v026",
       "name": "Linsen-Dal",
       "baseIngredients": {
-        "Rote Linsen": {"amount": 125, "unit": "g"},
-        "Kokosmilch": {"amount": 100, "unit": "ml"},
-        "Curry Gewürze": {"amount": 2, "unit": "EL"},
-        "Naan": {"amount": 2, "unit": "Stück", "variations": ["Reis", "Chapati"]},
-        "Ghee": {"amount": 2, "unit": "EL", "variations": ["Öl"]},
-        "Kreuzkümmel-Samen": {"amount": 1, "unit": "TL"},
-        "Senfsamen": {"amount": 1, "unit": "TL"},
-        "Zwiebel": {"amount": 1, "unit": "Stück"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Ingwer": {"amount": 1, "unit": "EL"},
-        "Kurkuma": {"amount": 1, "unit": "TL"},
-        "Garam Masala": {"amount": 1, "unit": "TL"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Koriander": {"amount": 10, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Rote Linsen": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Kokosmilch": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Curry Gewürze": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Naan": {
+          "amount": 2,
+          "unit": "Stück",
+          "variations": [
+            "Reis",
+            "Chapati"
+          ]
+        },
+        "Ghee": {
+          "amount": 2,
+          "unit": "EL",
+          "variations": [
+            "Öl"
+          ]
+        },
+        "Kreuzkümmel-Samen": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Senfsamen": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Zwiebel": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Ingwer": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Kurkuma": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Garam Masala": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Koriander": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 30,
-      "tags": ["indisch", "vegan"],
+      "tags": [
+        "indisch",
+        "vegan"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -1093,16 +2131,37 @@
       "id": "v027",
       "name": "Gnocchi-Auflauf",
       "baseIngredients": {
-        "Gnocchi": {"amount": 200, "unit": "g"},
-        "Tomatensauce": {"amount": 150, "unit": "ml"},
-        "Mozzarella": {"amount": 100, "unit": "g"},
-        "Basilikum": {"amount": 8, "unit": "Blätter"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Gnocchi": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Tomatensauce": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Mozzarella": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Basilikum": {
+          "amount": 8,
+          "unit": "Blätter"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 25,
-      "tags": ["italienisch", "auflauf"],
+      "tags": [
+        "italienisch",
+        "auflauf"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1127,21 +2186,61 @@
       "id": "v028",
       "name": "Süßkartoffel-Curry",
       "baseIngredients": {
-        "Süßkartoffel": {"amount": 200, "unit": "g"},
-        "Kokosmilch": {"amount": 150, "unit": "ml"},
-        "Spinat": {"amount": 75, "unit": "g"},
-        "Reis": {"amount": 125, "unit": "g", "variations": ["Quinoa", "Couscous"]},
-        "Öl": {"amount": 1, "unit": "EL"},
-        "Currypaste": {"amount": 1, "unit": "EL"},
-        "Gemüsebrühe": {"amount": 100, "unit": "ml"},
-        "Limette": {"amount": 1, "unit": "Stück"},
-        "Zucker": {"amount": 1, "unit": "TL"},
-        "Cashews": {"amount": 20, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Süßkartoffel": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Kokosmilch": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Spinat": {
+          "amount": 75,
+          "unit": "g"
+        },
+        "Reis": {
+          "amount": 125,
+          "unit": "g",
+          "variations": [
+            "Quinoa",
+            "Couscous"
+          ]
+        },
+        "Öl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Currypaste": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Gemüsebrühe": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Limette": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Zucker": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Cashews": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 30,
-      "tags": ["curry", "vegan"],
+      "tags": [
+        "curry",
+        "vegan"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1154,7 +2253,7 @@
         "100ml Wasser oder Brühe zugeben",
         "15 Min köcheln bis Kartoffeln weich",
         "Spinat waschen, grob hacken",
-        "In den letzten 2 Min unterheben",
+        "In den letzten 2 Min: Erbsen und Spinat vorsichtig untermischen (unterheben)",
         "Mit Limettensaft, Salz, Zucker abschmecken",
         "Mit Reis servieren",
         "Mit gerösteten Cashews toppen"
@@ -1166,22 +2265,61 @@
       "id": "v029",
       "name": "Pilz-Quiche",
       "baseIngredients": {
-        "Mürbeteig": {"amount": 150, "unit": "g"},
-        "Champignons": {"amount": 150, "unit": "g"},
-        "Eier": {"amount": 2, "unit": "Stück"},
-        "Sahne": {"amount": 100, "unit": "ml"},
-        "Käse": {"amount": 50, "unit": "g"},
-        "Butter": {"amount": 20, "unit": "g"},
-        "Knoblauch": {"amount": 1, "unit": "Zehe"},
-        "Thymian": {"amount": 1, "unit": "TL"},
-        "Milch": {"amount": 100, "unit": "ml"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Mürbeteig": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Champignons": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Eier": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Sahne": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Käse": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Butter": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Knoblauch": {
+          "amount": 1,
+          "unit": "Zehe"
+        },
+        "Thymian": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Milch": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 45,
-      "tags": ["französisch", "quiche"],
+      "tags": [
+        "französisch",
+        "quiche"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1189,7 +2327,7 @@
         "Quicheform einfetten",
         "Mürbeteig ausrollen, in Form legen",
         "Rand hochziehen, mit Gabel einstechen",
-        "10 Min blindbacken (mit Backpapier und Linsen)",
+        "10 Min ohne Belag vorbacken (blindbacken) (mit Backpapier und Linsen)",
         "Pilze in Scheiben schneiden",
         "In Pfanne mit Butter anbraten bis goldbraun",
         "Knoblauch und Thymian zugeben",
@@ -1209,19 +2347,49 @@
       "id": "v030",
       "name": "Tomaten-Mozzarella-Tarte",
       "baseIngredients": {
-        "Blätterteig": {"amount": 150, "unit": "g"},
-        "Tomaten": {"amount": 250, "unit": "g"},
-        "Mozzarella": {"amount": 125, "unit": "g"},
-        "Pesto": {"amount": 30, "unit": "g"},
-        "Basilikum": {"amount": 6, "unit": "Blätter"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Blätterteig": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Tomaten": {
+          "amount": 250,
+          "unit": "g"
+        },
+        "Mozzarella": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Pesto": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Basilikum": {
+          "amount": 6,
+          "unit": "Blätter"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 25,
-      "tags": ["tarte", "sommer"],
+      "tags": [
+        "tarte",
+        "sommer"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1245,22 +2413,61 @@
       "id": "v031",
       "name": "Gemüse-Couscous",
       "baseIngredients": {
-        "Couscous": {"amount": 125, "unit": "g"},
-        "Gemüse": {"amount": 200, "unit": "g"},
-        "Rosinen": {"amount": 30, "unit": "g"},
-        "Minze": {"amount": 8, "unit": "Blätter"},
-        "Gemüsebrühe": {"amount": 200, "unit": "ml"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Kreuzkümmel": {"amount": 1, "unit": "TL"},
-        "Paprikapulver": {"amount": 1, "unit": "TL"},
-        "Mandeln": {"amount": 20, "unit": "g"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Couscous": {
+          "amount": 125,
+          "unit": "g"
+        },
+        "Gemüse": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Rosinen": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Minze": {
+          "amount": 8,
+          "unit": "Blätter"
+        },
+        "Gemüsebrühe": {
+          "amount": 200,
+          "unit": "ml"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Kreuzkümmel": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Paprikapulver": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Mandeln": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 20,
-      "tags": ["orientalisch", "leicht"],
+      "tags": [
+        "orientalisch",
+        "leicht"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1274,7 +2481,7 @@
         "Rosinen in warmem Wasser einweichen",
         "Geröstete Mandeln oder Pinienkerne hacken",
         "Couscous mit Gemüse mischen",
-        "Abgetropfte Rosinen unterheben",
+        "Abgetropfte Rosinen vorsichtig untermischen (unterheben)",
         "Mit Zitronensaft, Salz, Pfeffer abschmecken",
         "Frische Minze hacken, untermischen",
         "Lauwarm oder kalt servieren"
@@ -1286,19 +2493,53 @@
       "id": "v032",
       "name": "Kartoffel-Lauch-Gratin",
       "baseIngredients": {
-        "Kartoffeln": {"amount": 300, "unit": "g"},
-        "Lauch": {"amount": 100, "unit": "g"},
-        "Sahne": {"amount": 125, "unit": "ml"},
-        "Käse": {"amount": 60, "unit": "g", "variations": ["Gruyère", "Emmentaler"]},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Milch": {"amount": 100, "unit": "ml"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Kartoffeln": {
+          "amount": 300,
+          "unit": "g"
+        },
+        "Lauch": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Sahne": {
+          "amount": 125,
+          "unit": "ml"
+        },
+        "Käse": {
+          "amount": 60,
+          "unit": "g",
+          "variations": [
+            "Gruyère",
+            "Emmentaler"
+          ]
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Milch": {
+          "amount": 100,
+          "unit": "ml"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 50,
-      "tags": ["auflauf", "gratin"],
+      "tags": [
+        "auflauf",
+        "gratin"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1325,16 +2566,43 @@
       "id": "v033",
       "name": "Tagliatelle mit Zitronen-Butter",
       "baseIngredients": {
-        "Pasta": {"type": "long", "amount": 150, "unit": "g", "variations": ["Tagliatelle", "Linguine", "Fettuccine"]},
-        "Butter": {"amount": 40, "unit": "g"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Pasta": {
+          "type": "long",
+          "amount": 150,
+          "unit": "g",
+          "variations": [
+            "Tagliatelle",
+            "Linguine",
+            "Fettuccine"
+          ]
+        },
+        "Butter": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 15,
-      "tags": ["italienisch", "sommerlich"],
+      "tags": [
+        "italienisch",
+        "sommerlich"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1358,18 +2626,45 @@
       "id": "v034",
       "name": "Auberginen-Parmigiana",
       "baseIngredients": {
-        "Aubergine": {"amount": 1, "unit": "Stück"},
-        "Tomatensauce": {"amount": 150, "unit": "ml"},
-        "Mozzarella": {"amount": 100, "unit": "g"},
-        "Parmesan": {"amount": 50, "unit": "g"},
-        "Mehl": {"amount": 30, "unit": "g"},
-        "Öl": {"amount": 4, "unit": "EL"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Aubergine": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Tomatensauce": {
+          "amount": 150,
+          "unit": "ml"
+        },
+        "Mozzarella": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Parmesan": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Mehl": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Öl": {
+          "amount": 4,
+          "unit": "EL"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 4,
       "prepTime": 50,
-      "tags": ["italienisch", "auflauf"],
+      "tags": [
+        "italienisch",
+        "auflauf"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1395,19 +2690,53 @@
       "id": "v035",
       "name": "Brokkoli-Käse-Suppe",
       "baseIngredients": {
-        "Brokkoli": {"amount": 200, "unit": "g"},
-        "Cheddar": {"amount": 75, "unit": "g", "variations": ["Gouda", "Emmentaler"]},
-        "Sahne": {"amount": 75, "unit": "ml"},
-        "Brot": {"amount": 3, "unit": "Scheiben"},
-        "Gemüsebrühe": {"amount": 500, "unit": "ml"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Brokkoli": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Cheddar": {
+          "amount": 75,
+          "unit": "g",
+          "variations": [
+            "Gouda",
+            "Emmentaler"
+          ]
+        },
+        "Sahne": {
+          "amount": 75,
+          "unit": "ml"
+        },
+        "Brot": {
+          "amount": 3,
+          "unit": "Scheiben"
+        },
+        "Gemüsebrühe": {
+          "amount": 500,
+          "unit": "ml"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 25,
-      "tags": ["suppe", "cremig"],
+      "tags": [
+        "suppe",
+        "cremig"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1429,16 +2758,37 @@
       "id": "v036",
       "name": "Blitz-Margherita-Wrap",
       "baseIngredients": {
-        "Wraps": {"amount": 2, "unit": "Stück"},
-        "Tomatensauce": {"amount": 60, "unit": "ml"},
-        "Mozzarella": {"amount": 80, "unit": "g"},
-        "Basilikum": {"amount": 6, "unit": "Blätter"},
-        "Rucola": {"amount": 30, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Wraps": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Tomatensauce": {
+          "amount": 60,
+          "unit": "ml"
+        },
+        "Mozzarella": {
+          "amount": 80,
+          "unit": "g"
+        },
+        "Basilikum": {
+          "amount": 6,
+          "unit": "Blätter"
+        },
+        "Rucola": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 2.5,
       "prepTime": 10,
-      "tags": ["schnell", "wrap"],
+      "tags": [
+        "schnell",
+        "wrap"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1459,15 +2809,38 @@
       "id": "v037",
       "name": "Schnelle Asia-Nudeln",
       "baseIngredients": {
-        "Instant-Nudeln": {"amount": 150, "unit": "g", "variations": ["Udon", "Soba", "Ramen"]},
-        "Gemüse TK": {"amount": 150, "unit": "g"},
-        "Sojasauce": {"amount": 2, "unit": "EL"},
-        "Erdnussbutter": {"amount": 1, "unit": "EL"},
-        "Sesam": {"amount": 1, "unit": "EL"}
+        "Instant-Nudeln": {
+          "amount": 150,
+          "unit": "g",
+          "variations": [
+            "Udon",
+            "Soba",
+            "Ramen"
+          ]
+        },
+        "Gemüse TK": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Sojasauce": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Erdnussbutter": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Sesam": {
+          "amount": 1,
+          "unit": "EL"
+        }
       },
       "price": 3,
       "prepTime": 12,
-      "tags": ["asiatisch", "schnell"],
+      "tags": [
+        "asiatisch",
+        "schnell"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1491,20 +2864,53 @@
       "id": "v038",
       "name": "Mediterraner Kichererbsen-Salat",
       "baseIngredients": {
-        "Kichererbsen Dose": {"amount": 200, "unit": "g"},
-        "Feta": {"amount": 60, "unit": "g"},
-        "Cherry-Tomaten": {"amount": 100, "unit": "g"},
-        "Gurke": {"amount": 0.5, "unit": "Stück"},
-        "Oliven": {"amount": 40, "unit": "g"},
-        "Olivenöl": {"amount": 3, "unit": "EL"},
-        "Zitrone": {"amount": 1, "unit": "Stück"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Kichererbsen Dose": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Feta": {
+          "amount": 60,
+          "unit": "g"
+        },
+        "Cherry-Tomaten": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Gurke": {
+          "amount": 0.5,
+          "unit": "Stück"
+        },
+        "Oliven": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Olivenöl": {
+          "amount": 3,
+          "unit": "EL"
+        },
+        "Zitrone": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3.5,
       "prepTime": 10,
-      "tags": ["salat", "mediterran"],
+      "tags": [
+        "salat",
+        "mediterran"
+      ],
       "childFriendly": false,
       "workFriendly": true,
       "instructions": [
@@ -1527,18 +2933,45 @@
       "id": "v039",
       "name": "Spinat-Feta-Blätterteig-Taschen",
       "baseIngredients": {
-        "Blätterteig": {"amount": 150, "unit": "g"},
-        "Spinat TK": {"amount": 100, "unit": "g"},
-        "Feta": {"amount": 80, "unit": "g"},
-        "Ei": {"amount": 1, "unit": "Stück"},
-        "Sesam": {"amount": 1, "unit": "EL"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Blätterteig": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Spinat TK": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Feta": {
+          "amount": 80,
+          "unit": "g"
+        },
+        "Ei": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Sesam": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 20,
-      "tags": ["griechisch", "snack"],
+      "tags": [
+        "griechisch",
+        "snack"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1563,21 +2996,57 @@
       "id": "v040",
       "name": "Tofu-Scramble",
       "baseIngredients": {
-        "Tofu": {"amount": 150, "unit": "g"},
-        "Champignons": {"amount": 50, "unit": "g"},
-        "Tomaten": {"amount": 1, "unit": "Stück"},
-        "Kurkuma": {"amount": 0.5, "unit": "TL"},
-        "Toast": {"amount": 2, "unit": "Scheiben"},
-        "Sojasauce": {"amount": 1, "unit": "EL"},
-        "Öl": {"amount": 1, "unit": "EL"},
-        "Hefeflocken": {"amount": 1, "unit": "EL"},
-        "Schnittlauch": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Tofu": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Champignons": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Tomaten": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Kurkuma": {
+          "amount": 0.5,
+          "unit": "TL"
+        },
+        "Toast": {
+          "amount": 2,
+          "unit": "Scheiben"
+        },
+        "Sojasauce": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Öl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Hefeflocken": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Schnittlauch": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 15,
-      "tags": ["vegan", "frühstück"],
+      "tags": [
+        "vegan",
+        "frühstück"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1603,17 +3072,41 @@
       "id": "v041",
       "name": "Quesadilla Caprese",
       "baseIngredients": {
-        "Tortillas": {"amount": 2, "unit": "Stück"},
-        "Mozzarella": {"amount": 100, "unit": "g"},
-        "Tomaten": {"amount": 1, "unit": "Stück"},
-        "Basilikum": {"amount": 8, "unit": "Blätter"},
-        "Balsamico": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Tortillas": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Mozzarella": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Tomaten": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Basilikum": {
+          "amount": 8,
+          "unit": "Blätter"
+        },
+        "Balsamico": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 8,
-      "tags": ["mexikanisch-italienisch", "fusion"],
+      "tags": [
+        "mexikanisch-italienisch",
+        "fusion"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1638,18 +3131,45 @@
       "id": "v042",
       "name": "Blitz-Gemüse-Frittata",
       "baseIngredients": {
-        "Eier": {"amount": 3, "unit": "Stück"},
-        "Gemüse-Reste": {"amount": 150, "unit": "g"},
-        "Käse": {"amount": 50, "unit": "g"},
-        "Milch": {"amount": 50, "unit": "ml"},
-        "Öl": {"amount": 1, "unit": "EL"},
-        "Kräuter": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Eier": {
+          "amount": 3,
+          "unit": "Stück"
+        },
+        "Gemüse-Reste": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Käse": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Milch": {
+          "amount": 50,
+          "unit": "ml"
+        },
+        "Öl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Kräuter": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 2.5,
       "prepTime": 15,
-      "tags": ["resteverwertung", "frittata"],
+      "tags": [
+        "resteverwertung",
+        "frittata"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1660,7 +3180,7 @@
         "Mit Salz, Pfeffer, Kräutern würzen",
         "Über das Gemüse gießen",
         "Käse darüber reiben",
-        "Bei mittlerer Hitze 3-4 Min stocken lassen",
+        "Bei kleiner Hitze mit Deckel 10-15 Min fest werden lassen (stocken lassen)",
         "Dann 3-4 Min unter den Grill",
         "Bis oben goldbraun",
         "In Tortenstücke schneiden",
@@ -1673,16 +3193,37 @@
       "id": "v043",
       "name": "Hummus-Gemüse-Wrap",
       "baseIngredients": {
-        "Wraps": {"amount": 2, "unit": "Stück"},
-        "Hummus": {"amount": 80, "unit": "g"},
-        "Gemüse": {"amount": 150, "unit": "g"},
-        "Salat": {"amount": 40, "unit": "g"},
-        "Feta": {"amount": 30, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"}
+        "Wraps": {
+          "amount": 2,
+          "unit": "Stück"
+        },
+        "Hummus": {
+          "amount": 80,
+          "unit": "g"
+        },
+        "Gemüse": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Salat": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Feta": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 2.5,
       "prepTime": 5,
-      "tags": ["wrap", "kalt"],
+      "tags": [
+        "wrap",
+        "kalt"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1704,19 +3245,49 @@
       "id": "v044",
       "name": "Express-Tomatensuppe",
       "baseIngredients": {
-        "Tomaten Dose": {"amount": 400, "unit": "g"},
-        "Sahne": {"amount": 50, "unit": "ml"},
-        "Basilikum": {"amount": 6, "unit": "Blätter"},
-        "Baguette": {"amount": 3, "unit": "Scheiben"},
-        "Gemüsebrühe": {"amount": 200, "unit": "ml"},
-        "Zucker": {"amount": 1, "unit": "TL"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Tomaten Dose": {
+          "amount": 400,
+          "unit": "g"
+        },
+        "Sahne": {
+          "amount": 50,
+          "unit": "ml"
+        },
+        "Basilikum": {
+          "amount": 6,
+          "unit": "Blätter"
+        },
+        "Baguette": {
+          "amount": 3,
+          "unit": "Scheiben"
+        },
+        "Gemüsebrühe": {
+          "amount": 200,
+          "unit": "ml"
+        },
+        "Zucker": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 2.5,
       "prepTime": 10,
-      "tags": ["suppe", "schnell"],
+      "tags": [
+        "suppe",
+        "schnell"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1726,7 +3297,7 @@
         "Mit Stabmixer pürieren",
         "Sahne einrühren",
         "Mit Salz, Pfeffer, 1 TL Zucker würzen",
-        "Basilikum grob hacken, unterheben",
+        "Basilikum grob hacken, vorsichtig untermischen (unterheben)",
         "Baguette in Würfel, in Pfanne mit Butter rösten",
         "Suppe in Schüsseln",
         "Croûtons drüber",
@@ -1739,18 +3310,45 @@
       "id": "v045",
       "name": "Avocado-Toast deluxe",
       "baseIngredients": {
-        "Vollkornbrot": {"amount": 2, "unit": "Scheiben"},
-        "Avocado": {"amount": 1, "unit": "Stück"},
-        "Ei": {"amount": 1, "unit": "Stück"},
-        "Feta": {"amount": 30, "unit": "g"},
-        "Chili-Flocken": {"amount": 1, "unit": "Prise"},
-        "Limette": {"amount": 1, "unit": "Stück"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Vollkornbrot": {
+          "amount": 2,
+          "unit": "Scheiben"
+        },
+        "Avocado": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Ei": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Feta": {
+          "amount": 30,
+          "unit": "g"
+        },
+        "Chili-Flocken": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Limette": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 10,
-      "tags": ["frühstück", "trendy"],
+      "tags": [
+        "frühstück",
+        "trendy"
+      ],
       "childFriendly": false,
       "workFriendly": false,
       "instructions": [
@@ -1774,19 +3372,49 @@
       "id": "v046",
       "name": "One-Pot-Pasta Primavera",
       "baseIngredients": {
-        "Pasta": {"amount": 150, "unit": "g"},
-        "Gemüse": {"amount": 200, "unit": "g"},
-        "Gemüsebrühe": {"amount": 400, "unit": "ml"},
-        "Parmesan": {"amount": 40, "unit": "g"},
-        "Knoblauch": {"amount": 2, "unit": "Zehen"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Kräuter": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Pasta": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Gemüse": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Gemüsebrühe": {
+          "amount": 400,
+          "unit": "ml"
+        },
+        "Parmesan": {
+          "amount": 40,
+          "unit": "g"
+        },
+        "Knoblauch": {
+          "amount": 2,
+          "unit": "Zehen"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Kräuter": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 3,
       "prepTime": 20,
-      "tags": ["one-pot", "einfach"],
+      "tags": [
+        "one-pot",
+        "einfach"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1810,19 +3438,49 @@
       "id": "v047",
       "name": "Schnelle Sommerrollen",
       "baseIngredients": {
-        "Reispapier": {"amount": 6, "unit": "Blätter"},
-        "Gemüse": {"amount": 150, "unit": "g"},
-        "Reisnudeln gekocht": {"amount": 50, "unit": "g"},
-        "Erdnusssauce": {"amount": 60, "unit": "ml"},
-        "Minze": {"amount": 10, "unit": "Blätter"},
-        "Koriander": {"amount": 10, "unit": "g"},
-        "Sojasauce": {"amount": 1, "unit": "EL"},
-        "Limette": {"amount": 1, "unit": "Stück"},
-        "Chili": {"amount": 1, "unit": "Stück"}
+        "Reispapier": {
+          "amount": 6,
+          "unit": "Blätter"
+        },
+        "Gemüse": {
+          "amount": 150,
+          "unit": "g"
+        },
+        "Reisnudeln gekocht": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Erdnusssauce": {
+          "amount": 60,
+          "unit": "ml"
+        },
+        "Minze": {
+          "amount": 10,
+          "unit": "Blätter"
+        },
+        "Koriander": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Sojasauce": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Limette": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Chili": {
+          "amount": 1,
+          "unit": "Stück"
+        }
       },
       "price": 3.5,
       "prepTime": 15,
-      "tags": ["vietnamesisch", "frisch"],
+      "tags": [
+        "vietnamesisch",
+        "frisch"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1847,18 +3505,45 @@
       "id": "v048",
       "name": "Käse-Lauch-Suppe Express",
       "baseIngredients": {
-        "Lauch": {"amount": 1, "unit": "Stange"},
-        "Schmelzkäse": {"amount": 100, "unit": "g"},
-        "Gemüsebrühe": {"amount": 400, "unit": "ml"},
-        "Brot": {"amount": 2, "unit": "Scheiben"},
-        "Butter": {"amount": 10, "unit": "g"},
-        "Muskat": {"amount": 1, "unit": "Prise"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Lauch": {
+          "amount": 1,
+          "unit": "Stange"
+        },
+        "Schmelzkäse": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Gemüsebrühe": {
+          "amount": 400,
+          "unit": "ml"
+        },
+        "Brot": {
+          "amount": 2,
+          "unit": "Scheiben"
+        },
+        "Butter": {
+          "amount": 10,
+          "unit": "g"
+        },
+        "Muskat": {
+          "amount": 1,
+          "unit": "Prise"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 2.5,
       "prepTime": 15,
-      "tags": ["suppe", "käsig"],
+      "tags": [
+        "suppe",
+        "käsig"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
@@ -1881,21 +3566,57 @@
       "id": "v049",
       "name": "Veggie-Burger-Bowl",
       "baseIngredients": {
-        "Veggie-Patty": {"amount": 1, "unit": "Stück"},
-        "Salat-Mix": {"amount": 100, "unit": "g"},
-        "Tomaten": {"amount": 1, "unit": "Stück"},
-        "Burger-Sauce": {"amount": 2, "unit": "EL"},
-        "Pommes": {"amount": 100, "unit": "g"},
-        "Gurke": {"amount": 0.25, "unit": "Stück"},
-        "Zwiebel": {"amount": 0.25, "unit": "Stück"},
-        "Mayonnaise": {"amount": 1, "unit": "EL"},
-        "Ketchup": {"amount": 1, "unit": "EL"},
-        "Gurkenrelish": {"amount": 1, "unit": "EL"},
-        "Sesam": {"amount": 1, "unit": "TL"}
+        "Veggie-Patty": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Salat-Mix": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Tomaten": {
+          "amount": 1,
+          "unit": "Stück"
+        },
+        "Burger-Sauce": {
+          "amount": 2,
+          "unit": "EL"
+        },
+        "Pommes": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Gurke": {
+          "amount": 0.25,
+          "unit": "Stück"
+        },
+        "Zwiebel": {
+          "amount": 0.25,
+          "unit": "Stück"
+        },
+        "Mayonnaise": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Ketchup": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Gurkenrelish": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Sesam": {
+          "amount": 1,
+          "unit": "TL"
+        }
       },
       "price": 4,
       "prepTime": 15,
-      "tags": ["bowl", "burger"],
+      "tags": [
+        "bowl",
+        "burger"
+      ],
       "childFriendly": true,
       "workFriendly": false,
       "instructions": [
@@ -1919,21 +3640,57 @@
       "id": "v050",
       "name": "Blitz-Minestrone",
       "baseIngredients": {
-        "Gemüsebrühe": {"amount": 500, "unit": "ml"},
-        "Dosentomaten": {"amount": 200, "unit": "g"},
-        "Kleine Nudeln": {"amount": 50, "unit": "g"},
-        "Bohnen Dose": {"amount": 100, "unit": "g"},
-        "TK-Gemüse": {"amount": 100, "unit": "g"},
-        "Oregano": {"amount": 1, "unit": "TL"},
-        "Basilikum": {"amount": 4, "unit": "Blätter"},
-        "Parmesan": {"amount": 20, "unit": "g"},
-        "Olivenöl": {"amount": 1, "unit": "EL"},
-        "Salz": {"amount": 0, "unit": "nach Geschmack"},
-        "Pfeffer": {"amount": 0, "unit": "nach Geschmack"}
+        "Gemüsebrühe": {
+          "amount": 500,
+          "unit": "ml"
+        },
+        "Dosentomaten": {
+          "amount": 200,
+          "unit": "g"
+        },
+        "Kleine Nudeln": {
+          "amount": 50,
+          "unit": "g"
+        },
+        "Bohnen Dose": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "TK-Gemüse": {
+          "amount": 100,
+          "unit": "g"
+        },
+        "Oregano": {
+          "amount": 1,
+          "unit": "TL"
+        },
+        "Basilikum": {
+          "amount": 4,
+          "unit": "Blätter"
+        },
+        "Parmesan": {
+          "amount": 20,
+          "unit": "g"
+        },
+        "Olivenöl": {
+          "amount": 1,
+          "unit": "EL"
+        },
+        "Salz": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        },
+        "Pfeffer": {
+          "amount": 0,
+          "unit": "nach Geschmack"
+        }
       },
       "price": 2.5,
       "prepTime": 15,
-      "tags": ["suppe", "italienisch"],
+      "tags": [
+        "suppe",
+        "italienisch"
+      ],
       "childFriendly": true,
       "workFriendly": true,
       "instructions": [
